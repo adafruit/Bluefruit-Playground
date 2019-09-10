@@ -7,21 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2956DC9F231039FC004231AB /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956DC9E231039FC004231AB /* Swift+Gif.swift */; };
+		2956DCA123103C60004231AB /* OPageOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956DCA023103C60004231AB /* OPageOne.swift */; };
+		2956DCA5231049E6004231AB /* NewTest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2956DCA4231049E6004231AB /* NewTest.gif */; };
+		29E624032326A8440051641D /* ColorPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E624022326A8440051641D /* ColorPaletteViewController.swift */; };
+		29E624052326B28D0051641D /* BLEScannerPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E624042326B28D0051641D /* BLEScannerPageViewController.swift */; };
+		29E624072326B3390051641D /* NeoPixelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E624062326B3390051641D /* NeoPixelViewController.swift */; };
+		29E624092326B4020051641D /* ThermometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E624082326B4020051641D /* ThermometerViewController.swift */; };
+		29E6240B2326B45C0051641D /* SpeakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E6240A2326B45C0051641D /* SpeakerViewController.swift */; };
+		29E6240D2326B53B0051641D /* ButtonRecognitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E6240C2326B53B0051641D /* ButtonRecognitionViewController.swift */; };
+		29E6240F2326B5840051641D /* LightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E6240E2326B5840051641D /* LightViewController.swift */; };
+		29E624112326B7EC0051641D /* VisualizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E624102326B7EC0051641D /* VisualizationViewController.swift */; };
 		29F21D2023049A6600405990 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F21D1F23049A6600405990 /* AppDelegate.swift */; };
 		29F21D2223049A6600405990 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F21D2123049A6600405990 /* ViewController.swift */; };
-		29F21D2523049A6600405990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F21D2323049A6600405990 /* Main.storyboard */; };
 		29F21D2723049A6700405990 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29F21D2623049A6700405990 /* Assets.xcassets */; };
-		29F21D2A23049A6800405990 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F21D2823049A6800405990 /* LaunchScreen.storyboard */; };
+		29F21D3223049A7D00405990 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29F21D3123049A7D00405990 /* Main.storyboard */; };
+		29F21D3623049D5500405990 /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29F21D3523049D5500405990 /* RootPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2956DC9E231039FC004231AB /* Swift+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
+		2956DCA023103C60004231AB /* OPageOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPageOne.swift; sourceTree = "<group>"; };
+		2956DCA4231049E6004231AB /* NewTest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = NewTest.gif; sourceTree = "<group>"; };
+		29E624022326A8440051641D /* ColorPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPaletteViewController.swift; sourceTree = "<group>"; };
+		29E624042326B28D0051641D /* BLEScannerPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEScannerPageViewController.swift; sourceTree = "<group>"; };
+		29E624062326B3390051641D /* NeoPixelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeoPixelViewController.swift; sourceTree = "<group>"; };
+		29E624082326B4020051641D /* ThermometerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThermometerViewController.swift; sourceTree = "<group>"; };
+		29E6240A2326B45C0051641D /* SpeakerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakerViewController.swift; sourceTree = "<group>"; };
+		29E6240C2326B53B0051641D /* ButtonRecognitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonRecognitionViewController.swift; sourceTree = "<group>"; };
+		29E6240E2326B5840051641D /* LightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightViewController.swift; sourceTree = "<group>"; };
+		29E624102326B7EC0051641D /* VisualizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizationViewController.swift; sourceTree = "<group>"; };
 		29F21D1C23049A6600405990 /* CPX+BLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "CPX+BLE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		29F21D1F23049A6600405990 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		29F21D2123049A6600405990 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		29F21D2423049A6600405990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		29F21D2623049A6700405990 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		29F21D2923049A6800405990 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		29F21D2B23049A6800405990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29F21D3123049A7D00405990 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		29F21D3523049D5500405990 /* RootPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
+		29F21D3723049DE700405990 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +58,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29E624122326B8500051641D /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				29E624102326B7EC0051641D /* VisualizationViewController.swift */,
+				29E6240A2326B45C0051641D /* SpeakerViewController.swift */,
+				29E6240C2326B53B0051641D /* ButtonRecognitionViewController.swift */,
+				29E624062326B3390051641D /* NeoPixelViewController.swift */,
+				29E624082326B4020051641D /* ThermometerViewController.swift */,
+				29E6240E2326B5840051641D /* LightViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		29F21D1323049A6600405990 = {
 			isa = PBXGroup;
 			children = (
@@ -56,10 +92,17 @@
 			children = (
 				29F21D1F23049A6600405990 /* AppDelegate.swift */,
 				29F21D2123049A6600405990 /* ViewController.swift */,
-				29F21D2323049A6600405990 /* Main.storyboard */,
+				29F21D3523049D5500405990 /* RootPageViewController.swift */,
+				29E624042326B28D0051641D /* BLEScannerPageViewController.swift */,
+				2956DC9E231039FC004231AB /* Swift+Gif.swift */,
+				2956DCA023103C60004231AB /* OPageOne.swift */,
+				29F21D3123049A7D00405990 /* Main.storyboard */,
+				29E624122326B8500051641D /* View Controllers */,
+				29E624022326A8440051641D /* ColorPaletteViewController.swift */,
 				29F21D2623049A6700405990 /* Assets.xcassets */,
-				29F21D2823049A6800405990 /* LaunchScreen.storyboard */,
+				2956DCA4231049E6004231AB /* NewTest.gif */,
 				29F21D2B23049A6800405990 /* Info.plist */,
+				29F21D3723049DE700405990 /* LaunchScreen.storyboard */,
 			);
 			path = "CPX+BLE";
 			sourceTree = "<group>";
@@ -122,9 +165,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				29F21D2A23049A6800405990 /* LaunchScreen.storyboard in Resources */,
+				2956DCA5231049E6004231AB /* NewTest.gif in Resources */,
 				29F21D2723049A6700405990 /* Assets.xcassets in Resources */,
-				29F21D2523049A6600405990 /* Main.storyboard in Resources */,
+				29F21D3223049A7D00405990 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,31 +178,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29E6240B2326B45C0051641D /* SpeakerViewController.swift in Sources */,
+				2956DC9F231039FC004231AB /* Swift+Gif.swift in Sources */,
+				2956DCA123103C60004231AB /* OPageOne.swift in Sources */,
+				29E624072326B3390051641D /* NeoPixelViewController.swift in Sources */,
+				29E624092326B4020051641D /* ThermometerViewController.swift in Sources */,
+				29E624052326B28D0051641D /* BLEScannerPageViewController.swift in Sources */,
+				29F21D3623049D5500405990 /* RootPageViewController.swift in Sources */,
+				29E6240F2326B5840051641D /* LightViewController.swift in Sources */,
 				29F21D2223049A6600405990 /* ViewController.swift in Sources */,
+				29E624032326A8440051641D /* ColorPaletteViewController.swift in Sources */,
 				29F21D2023049A6600405990 /* AppDelegate.swift in Sources */,
+				29E6240D2326B53B0051641D /* ButtonRecognitionViewController.swift in Sources */,
+				29E624112326B7EC0051641D /* VisualizationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		29F21D2323049A6600405990 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				29F21D2423049A6600405990 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		29F21D2823049A6800405990 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				29F21D2923049A6800405990 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		29F21D2C23049A6800405990 /* Debug */ = {
