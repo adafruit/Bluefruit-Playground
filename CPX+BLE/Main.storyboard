@@ -2152,7 +2152,7 @@ Next, connect the Battery or a USB connected to a power source to the CPB</strin
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CPBF" translatesAutoresizingMaskIntoConstraints="NO" id="Ymo-CT-CDq" userLabel="Onboarding_image1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ymo-CT-CDq" userLabel="Onboarding_image1">
                                 <rect key="frame" x="37" y="164" width="300" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -2199,7 +2199,7 @@ Contine to begin pairing your CPB!</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CPBF" translatesAutoresizingMaskIntoConstraints="NO" id="9pD-5F-1Ud" userLabel="Onboarding_image3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9pD-5F-1Ud" userLabel="Onboarding_image3">
                                 <rect key="frame" x="37" y="164" width="300" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
@@ -2246,7 +2246,6 @@ Contine to begin pairing your CPB!</string>
         </scene>
     </scenes>
     <resources>
-        <image name="CPBF" width="866" height="859"/>
         <image name="CPBvector3" width="146" height="146"/>
         <image name="Color_Pallete_Icon" width="250" height="250"/>
         <image name="Color_Wheel_Icon" width="175" height="175"/>
@@ -2266,7 +2265,6 @@ Contine to begin pairing your CPB!</string>
         <image name="rainbow_Seq_Icon" width="220" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="sVg-EB-1Yx"/>
-        <segue reference="qIV-rk-qne"/>
+        <segue reference="5D1-8m-7of"/>
     </inferredMetricsTieBreakers>
 </document>
