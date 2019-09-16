@@ -173,749 +173,236 @@ CPB
                                     <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GN6-mC-wAQ">
-                                <rect key="frame" x="17" y="133" width="342" height="342"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sjp-hf-PSF" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="342"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sWE-6e-ULY" userLabel="CPX View">
-                                                <rect key="frame" x="0.0" y="0.0" width="342" height="342"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="CPBvector3" translatesAutoresizingMaskIntoConstraints="NO" id="YtQ-Zn-Y3W" userLabel="CPX">
-                                                        <rect key="frame" x="0.0" y="0.0" width="342" height="343"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wf2-QY-jv6">
-                                                        <rect key="frame" x="54" y="96" width="34" height="35"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp4-Av-hb0">
-                                                        <rect key="frame" x="54" y="212" width="34" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMu-rY-Rig">
-                                                        <rect key="frame" x="212" y="255" width="34" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikk-Fh-vDx">
-                                                        <rect key="frame" x="253" y="206" width="34" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8H-yL-OQl">
-                                                        <rect key="frame" x="254" y="98" width="36" height="33"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h03-LQ-eVf">
-                                                        <rect key="frame" x="212" y="51" width="34" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrC-c3-4lD">
-                                                        <rect key="frame" x="98" y="255" width="34" height="35"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pq-TQ-RfR">
-                                                        <rect key="frame" x="39" y="153" width="34" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXc-ep-yDU">
-                                                        <rect key="frame" x="271" y="154" width="32" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqG-6h-liB">
-                                                        <rect key="frame" x="98" y="51" width="34" height="34"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="18"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                <real key="value" value="2"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </view>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TPh-Kh-vhw">
+                                <rect key="frame" x="0.0" y="510" width="375" height="302"/>
                                 <constraints>
-                                    <constraint firstItem="sjp-hf-PSF" firstAttribute="leading" secondItem="GN6-mC-wAQ" secondAttribute="leading" id="1kd-UU-Dcr"/>
-                                    <constraint firstItem="sjp-hf-PSF" firstAttribute="height" secondItem="GN6-mC-wAQ" secondAttribute="height" id="3wU-ZY-Vb3"/>
-                                    <constraint firstItem="sjp-hf-PSF" firstAttribute="top" secondItem="GN6-mC-wAQ" secondAttribute="top" id="71g-Gn-OH1"/>
-                                    <constraint firstAttribute="trailing" secondItem="sjp-hf-PSF" secondAttribute="trailing" id="ZXf-zf-BE4"/>
-                                    <constraint firstAttribute="bottom" secondItem="sjp-hf-PSF" secondAttribute="bottom" id="q2P-RS-FmV"/>
-                                    <constraint firstItem="sjp-hf-PSF" firstAttribute="width" secondItem="GN6-mC-wAQ" secondAttribute="width" id="rGe-Fi-sHb"/>
+                                    <constraint firstAttribute="height" constant="302" id="Qze-qi-CGr"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="0.0" height="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </scrollView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubW-4n-3rB" userLabel="Color Wheel Page">
-                                <rect key="frame" x="15" y="543" width="344" height="269"/>
+                                <connections>
+                                    <segue destination="2iX-gm-YlJ" kind="embed" id="8pb-4M-q6d"/>
+                                </connections>
+                            </containerView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sWE-6e-ULY" userLabel="CPX View">
+                                <rect key="frame" x="8" y="80" width="367" height="422"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0Q-iM-C3J">
-                                        <rect key="frame" x="10" y="211" width="38" height="41"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="41" id="1z7-Fi-ZDU"/>
-                                            <constraint firstAttribute="width" constant="38" id="3S2-Pi-Sar"/>
-                                        </constraints>
-                                        <state key="normal" title="Button" image="Color_Pallete_Icon"/>
-                                    </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uOt-Ma-MT2">
-                                        <rect key="frame" x="78" y="170" width="90.333333333333329" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RGB: 0-0-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COR-R5-FZf">
-                                                <rect key="frame" x="0.0" y="0.0" width="90.333333333333329" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hex: #00000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoW-gs-L7n">
-                                                <rect key="frame" x="0.0" y="20" width="90.333333333333329" height="18"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGs-7G-bDE">
-                                        <rect key="frame" x="275" y="207" width="50" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="Nb1-Iq-lDW"/>
-                                            <constraint firstAttribute="height" constant="45" id="hwa-Aj-KLk"/>
-                                        </constraints>
-                                        <state key="normal" image="Sequence_list_Icon"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QJ6-Te-aNh">
-                                        <rect key="frame" x="16" y="170" width="37" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wf2-QY-jv6">
+                                        <rect key="frame" x="54" y="96" width="34" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="10"/>
+                                                <real key="value" value="18"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbV-zQ-tZz">
-                                        <rect key="frame" x="138" y="228" width="65" height="32"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Send"/>
-                                    </button>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-0.5" maxValue="1.5" translatesAutoresizingMaskIntoConstraints="NO" id="evj-cw-UTz" customClass="CustomUILabel" customModule="CPX_BLE" customModuleProvider="target">
-                                        <rect key="frame" x="222" y="109" width="156" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="thumbTintColor" red="0.0" green="0.61960784310000006" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dp4-Av-hb0">
+                                        <rect key="frame" x="54" y="212" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="label_Rotation">
-                                                <real key="value" value="4.7110000000000003"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="-4"/>
+                                                <real key="value" value="2"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                    </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i14-Wp-jUm">
-                                        <rect key="frame" x="256" y="17" width="80" height="17"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="17" id="FoQ-ss-hlo"/>
-                                            <constraint firstAttribute="width" constant="80" id="z6C-W0-Lyt"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rMu-rY-Rig">
+                                        <rect key="frame" x="212" y="255" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ikk-Fh-vDx">
+                                        <rect key="frame" x="253" y="206" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8H-yL-OQl">
+                                        <rect key="frame" x="254" y="98" width="36" height="33"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h03-LQ-eVf">
+                                        <rect key="frame" x="212" y="51" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrC-c3-4lD">
+                                        <rect key="frame" x="98" y="255" width="34" height="35"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pq-TQ-RfR">
+                                        <rect key="frame" x="39" y="153" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dXc-ep-yDU">
+                                        <rect key="frame" x="271" y="154" width="32" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NqG-6h-liB">
+                                        <rect key="frame" x="98" y="51" width="34" height="34"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="C0Q-iM-C3J" secondAttribute="bottom" constant="17" id="F3Q-Bk-6QD"/>
-                                    <constraint firstItem="C0Q-iM-C3J" firstAttribute="leading" secondItem="ubW-4n-3rB" secondAttribute="leading" constant="10" id="Uss-dB-1ss"/>
-                                    <constraint firstAttribute="trailing" secondItem="i14-Wp-jUm" secondAttribute="trailing" constant="8" id="V2O-E3-t55"/>
-                                    <constraint firstAttribute="trailing" secondItem="bGs-7G-bDE" secondAttribute="trailing" constant="19" id="c0Y-e0-eAh"/>
-                                    <constraint firstItem="i14-Wp-jUm" firstAttribute="top" secondItem="ubW-4n-3rB" secondAttribute="top" constant="17" id="gUs-NO-h7T"/>
-                                    <constraint firstAttribute="bottom" secondItem="bGs-7G-bDE" secondAttribute="bottom" constant="17" id="hO2-So-BVA"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="wf2-QY-jv6"/>
+                                        <exclude reference="dp4-Av-hb0"/>
+                                        <exclude reference="rMu-rY-Rig"/>
+                                        <exclude reference="ikk-Fh-vDx"/>
+                                        <exclude reference="k8H-yL-OQl"/>
+                                        <exclude reference="h03-LQ-eVf"/>
+                                        <exclude reference="wrC-c3-4lD"/>
+                                        <exclude reference="2pq-TQ-RfR"/>
+                                        <exclude reference="dXc-ep-yDU"/>
+                                        <exclude reference="NqG-6h-liB"/>
+                                    </mask>
+                                </variation>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CPBvector3" translatesAutoresizingMaskIntoConstraints="NO" id="YtQ-Zn-Y3W" userLabel="CPX">
+                                <rect key="frame" x="0.0" y="87" width="375" height="422"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyk-vB-hWk">
+                                <rect key="frame" x="310" y="443" width="45" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="jWW-hN-0VZ"/>
+                                    <constraint firstAttribute="height" constant="50" id="wgK-Jt-vYZ"/>
+                                </constraints>
+                                <state key="normal" image="Restart_Icon_Gray"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="GN6-mC-wAQ" secondAttribute="trailing" constant="16" id="4GM-r5-Bb3"/>
+                            <constraint firstItem="YtQ-Zn-Y3W" firstAttribute="leading" secondItem="xAp-mt-aII" secondAttribute="leading" id="5Fw-qi-qyr"/>
                             <constraint firstItem="Nne-EE-6gS" firstAttribute="top" secondItem="xAp-mt-aII" secondAttribute="top" constant="40" id="Drd-Nc-dKb"/>
+                            <constraint firstAttribute="trailing" secondItem="TPh-Kh-vhw" secondAttribute="trailing" id="Fxx-Be-y3D"/>
+                            <constraint firstAttribute="bottom" secondItem="TPh-Kh-vhw" secondAttribute="bottom" id="Gc5-gl-xAp"/>
+                            <constraint firstAttribute="trailing" secondItem="YtQ-Zn-Y3W" secondAttribute="trailing" id="Im4-6G-56K"/>
                             <constraint firstAttribute="trailing" secondItem="Nne-EE-6gS" secondAttribute="trailing" constant="17" id="JCo-As-4w1"/>
-                            <constraint firstAttribute="bottom" secondItem="GN6-mC-wAQ" secondAttribute="bottom" constant="337" id="Kl1-sn-2kX"/>
-                            <constraint firstItem="ubW-4n-3rB" firstAttribute="top" secondItem="GN6-mC-wAQ" secondAttribute="bottom" constant="68" id="VFa-xl-M6x"/>
-                            <constraint firstItem="GN6-mC-wAQ" firstAttribute="top" secondItem="I9F-jo-284" secondAttribute="bottom" constant="89" id="Wf4-Xh-GBR"/>
-                            <constraint firstAttribute="trailing" secondItem="ubW-4n-3rB" secondAttribute="trailing" constant="16" id="XMt-ri-wMe"/>
-                            <constraint firstItem="GN6-mC-wAQ" firstAttribute="leading" secondItem="xAp-mt-aII" secondAttribute="leading" constant="17" id="jHP-yJ-K4T"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Cyk-vB-hWk" secondAttribute="trailing" constant="4" id="Jnx-l9-Mlv"/>
+                            <constraint firstItem="TPh-Kh-vhw" firstAttribute="top" secondItem="Cyk-vB-hWk" secondAttribute="bottom" constant="17" id="M2u-rM-jcY"/>
+                            <constraint firstItem="TPh-Kh-vhw" firstAttribute="top" secondItem="YtQ-Zn-Y3W" secondAttribute="bottom" constant="1" id="OyV-54-vfn"/>
+                            <constraint firstItem="TPh-Kh-vhw" firstAttribute="leading" secondItem="xAp-mt-aII" secondAttribute="leading" id="cki-VU-b7a"/>
+                            <constraint firstItem="YtQ-Zn-Y3W" firstAttribute="top" secondItem="I9F-jo-284" secondAttribute="bottom" constant="43" id="fhp-ng-xiQ"/>
                             <constraint firstItem="DLK-Y5-hzG" firstAttribute="leading" secondItem="xAp-mt-aII" secondAttribute="leading" constant="16" id="la6-Np-dIq"/>
-                            <constraint firstItem="ubW-4n-3rB" firstAttribute="leading" secondItem="xAp-mt-aII" secondAttribute="leading" constant="15" id="oNM-ec-IPp"/>
                             <constraint firstItem="DLK-Y5-hzG" firstAttribute="top" secondItem="I9F-jo-284" secondAttribute="bottom" constant="5" id="sqz-bs-gNt"/>
-                            <constraint firstAttribute="bottom" secondItem="ubW-4n-3rB" secondAttribute="bottom" id="uRq-57-1pL"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="JJP-vZ-1ua"/>
                                 <exclude reference="dpI-mG-7j5"/>
+                                <exclude reference="sWE-6e-ULY"/>
                             </mask>
                         </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HG2-Du-XEM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="7jc-qc-9dG" userLabel="Color Sequence">
-                    <rect key="frame" x="0.0" y="0.0" width="343" height="341"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imc-it-Kgn">
-                            <rect key="frame" x="14" y="282" width="45" height="45"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="45" id="Dca-M1-6im"/>
-                                <constraint firstAttribute="height" constant="45" id="P6J-md-AMw"/>
-                            </constraints>
-                            <state key="normal" title="Button" image="Color_Pallete_Icon"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="2" height="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epQ-56-X14">
-                            <rect key="frame" x="284" y="282" width="45" height="45"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="45" id="b9v-BH-Olx"/>
-                                <constraint firstAttribute="width" constant="45" id="lxW-5w-BU5"/>
-                            </constraints>
-                            <state key="normal" image="Color_Wheel_Icon"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="2" height="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fye-j3-gCf">
-                            <rect key="frame" x="216" y="67" width="70" height="66"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="66" id="Pxn-yU-kDL"/>
-                                <constraint firstAttribute="width" constant="70" id="gsn-Vq-Nvf"/>
-                            </constraints>
-                            <state key="normal" image="Pulse_seq_icon"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="2" height="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHH-Xc-YF9">
-                            <rect key="frame" x="216" y="177" width="70" height="63"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="63" id="hO5-cr-RqG"/>
-                                <constraint firstAttribute="width" constant="70" id="lHw-6f-SQl"/>
-                            </constraints>
-                            <state key="normal" image="rainbow_Seq_Icon"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="2" height="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohh-ML-YVW">
-                            <rect key="frame" x="55" y="177" width="70" height="63"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="70" id="9xt-YT-tpA"/>
-                                <constraint firstAttribute="height" constant="63" id="FUU-pU-NA7"/>
-                            </constraints>
-                            <state key="normal" image="Sequence_list_Icon"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="2" height="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXt-Yd-oli">
-                            <rect key="frame" x="55" y="67" width="70" height="66"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="66" id="3dn-Ri-lvZ"/>
-                                <constraint firstAttribute="width" constant="70" id="dgZ-nc-mDX"/>
-                            </constraints>
-                            <state key="normal" image="Solid_Seq_Icon"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="2" height="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Light Sequence List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhx-0N-CYN">
-                            <rect key="frame" x="72" y="22" width="198" height="24"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8p3-er-whp">
-                            <rect key="frame" x="151" y="286" width="41" height="37"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="37" id="rjn-G3-DDT"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="Send"/>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="epQ-56-X14" secondAttribute="bottom" constant="14" id="7R2-CB-Tgt"/>
-                        <constraint firstItem="Ohh-ML-YVW" firstAttribute="leading" secondItem="7jc-qc-9dG" secondAttribute="leading" constant="55" id="QTg-UW-0Bj"/>
-                        <constraint firstAttribute="bottom" secondItem="XHH-Xc-YF9" secondAttribute="bottom" constant="101" id="RNK-gp-40u"/>
-                        <constraint firstItem="FXt-Yd-oli" firstAttribute="leading" secondItem="7jc-qc-9dG" secondAttribute="leading" constant="55" id="RPZ-av-tKU"/>
-                        <constraint firstItem="FXt-Yd-oli" firstAttribute="top" secondItem="7jc-qc-9dG" secondAttribute="top" constant="67" id="SD8-sE-MFE"/>
-                        <constraint firstAttribute="bottom" secondItem="Ohh-ML-YVW" secondAttribute="bottom" constant="101" id="SJx-Rx-fOI"/>
-                        <constraint firstAttribute="trailing" secondItem="XHH-Xc-YF9" secondAttribute="trailing" constant="57" id="dXA-73-btk"/>
-                        <constraint firstItem="epQ-56-X14" firstAttribute="leading" secondItem="8p3-er-whp" secondAttribute="trailing" constant="92" id="fOr-Sp-Yo1"/>
-                        <constraint firstItem="fye-j3-gCf" firstAttribute="top" secondItem="7jc-qc-9dG" secondAttribute="top" constant="67" id="g5C-Iy-Scb"/>
-                        <constraint firstItem="8p3-er-whp" firstAttribute="leading" secondItem="imc-it-Kgn" secondAttribute="trailing" constant="92" id="gEh-kk-ag8"/>
-                        <constraint firstItem="imc-it-Kgn" firstAttribute="leading" secondItem="7jc-qc-9dG" secondAttribute="leading" constant="14" id="jbh-Cp-oRU"/>
-                        <constraint firstAttribute="trailing" secondItem="epQ-56-X14" secondAttribute="trailing" constant="14" id="miI-LZ-bIB"/>
-                        <constraint firstAttribute="bottom" secondItem="8p3-er-whp" secondAttribute="bottom" constant="18" id="p3S-M2-YV7"/>
-                        <constraint firstAttribute="bottom" secondItem="imc-it-Kgn" secondAttribute="bottom" constant="14" id="sjU-JF-aF4"/>
-                        <constraint firstAttribute="trailing" secondItem="fye-j3-gCf" secondAttribute="trailing" constant="57" id="wfZ-6T-MIE"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" id="dKN-AI-xqP" userLabel="Color Palette Page">
-                    <rect key="frame" x="0.0" y="0.0" width="349" height="294"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yMb-ve-oGa" userLabel="Color Palette">
-                            <rect key="frame" x="16" y="23" width="180" height="180"/>
-                            <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="oux-rc-cm9">
-                                    <rect key="frame" x="0.0" y="0.0" width="180" height="180"/>
-                                    <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QtU-0i-jFo">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="45.333333333333336"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZv-p8-cGa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="1" green="0.59374525509043252" blue="0.67728916881857892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smF-ZO-YwR">
-                                                    <rect key="frame" x="47" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="1" green="0.99945866484352297" blue="0.35144549267539615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nd4-zF-fgj">
-                                                    <rect key="frame" x="94" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="0.51041370546614195" green="1" blue="0.81028898199005284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hef-lM-DCn">
-                                                    <rect key="frame" x="141" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="0.53973556123329702" green="0.81582628816022695" blue="0.91942214965820312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zrS-hU-VbB">
-                                            <rect key="frame" x="0.0" y="67.333333333333329" width="180" height="45.333333333333329"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-wf-hNr">
-                                                    <rect key="frame" x="0.0" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="1" green="0.35298979095805982" blue="0.33085676678593468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uld-VI-iCc">
-                                                    <rect key="frame" x="47" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="1" green="0.88052815890268488" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ual-L7-PK7">
-                                                    <rect key="frame" x="94" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="0.28797695457440564" green="1" blue="0.48200239905653541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok1-ag-6u3">
-                                                    <rect key="frame" x="141" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="0.26429425270085471" green="0.76035817389958882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="15"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ws3-3W-o0l">
-                                            <rect key="frame" x="0.0" y="134.66666666666666" width="180" height="45.333333333333343"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6M-F2-7LP">
-                                                    <rect key="frame" x="0.0" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="1" green="0.026764849601675467" blue="0.0015636777992542594" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFy-fi-yfE">
-                                                    <rect key="frame" x="47" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="0.98014503717422485" green="0.6801151160122858" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3d-Cj-OOJ">
-                                                    <rect key="frame" x="94" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.83936712533156499" blue="0.022760707129925752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ia6-v7-kDD">
-                                                    <rect key="frame" x="141" y="0.0" width="39" height="45.333333333333336"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.54296212521472587" blue="0.91942214965820312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="10"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </button>
-                                            </subviews>
-                                        </stackView>
-                                    </subviews>
-                                </stackView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="bottom" secondItem="oux-rc-cm9" secondAttribute="bottom" id="SGg-CC-jko"/>
-                                <constraint firstItem="oux-rc-cm9" firstAttribute="leading" secondItem="yMb-ve-oGa" secondAttribute="leading" id="UEN-Vm-jP9"/>
-                                <constraint firstAttribute="trailing" secondItem="oux-rc-cm9" secondAttribute="trailing" id="jGH-mp-b1G"/>
-                                <constraint firstItem="oux-rc-cm9" firstAttribute="top" secondItem="yMb-ve-oGa" secondAttribute="top" id="uEU-cm-U8o"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                    <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maz-ay-Ege">
-                            <rect key="frame" x="149" y="247" width="51" height="38"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
-                            <state key="normal" title="Send"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMc-Ts-f89">
-                            <rect key="frame" x="16" y="240" width="45" height="45"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="45" id="6Fc-1d-Djl"/>
-                                <constraint firstAttribute="width" constant="45" id="FKS-U4-4cA"/>
-                            </constraints>
-                            <state key="normal" image="Color_Wheel_Icon"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="1"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="2" height="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9df-Ye-uNz">
-                            <rect key="frame" x="280" y="234" width="53" height="51"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="53" id="4Gm-mV-YN0"/>
-                                <constraint firstAttribute="height" constant="51" id="Rp0-G5-TKt"/>
-                            </constraints>
-                            <state key="normal" image="Sequence_list_Icon"/>
-                        </button>
-                        <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="-1.5" maxValue="3.5" translatesAutoresizingMaskIntoConstraints="NO" id="NNS-tB-pKZ" customClass="CustomUILabel" customModule="CPX_BLE" customModuleProvider="target">
-                            <rect key="frame" x="203" y="132" width="152" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="thumbTintColor" red="0.0" green="0.61960784310000006" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="label_Rotation">
-                                    <real key="value" value="4.7110000000000003"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </slider>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr4-PS-rUw">
-                            <rect key="frame" x="238" y="29" width="82" height="21"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="21" id="4oG-gQ-wH5"/>
-                                <constraint firstAttribute="width" constant="82" id="YjD-gI-D6A"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DKO-Gw-dtV">
-                            <rect key="frame" x="167" y="289" width="40" height="33"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="Send"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NkL-6J-W1z">
-                            <rect key="frame" x="321" y="283" width="45" height="41"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="Sequence_list_Icon"/>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTD-Yh-CEp">
-                            <rect key="frame" x="30" y="281" width="45" height="45"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" image="Color_Wheel_Icon"/>
-                        </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F55-yu-WYD">
-                            <rect key="frame" x="308" y="19" width="70" height="17"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstItem="nr4-PS-rUw" firstAttribute="top" secondItem="dKN-AI-xqP" secondAttribute="top" constant="29" id="2eR-fJ-5mV"/>
-                        <constraint firstAttribute="trailing" secondItem="nr4-PS-rUw" secondAttribute="trailing" constant="29" id="39u-29-gYc"/>
-                        <constraint firstAttribute="bottom" secondItem="9df-Ye-uNz" secondAttribute="bottom" constant="9" id="7yV-bp-YM6"/>
-                        <constraint firstItem="fMc-Ts-f89" firstAttribute="leading" secondItem="dKN-AI-xqP" secondAttribute="leading" constant="16" id="U07-Rj-pWN"/>
-                        <constraint firstItem="yMb-ve-oGa" firstAttribute="top" secondItem="dKN-AI-xqP" secondAttribute="top" constant="23" id="cPm-tE-jgf"/>
-                        <constraint firstItem="yMb-ve-oGa" firstAttribute="leading" secondItem="dKN-AI-xqP" secondAttribute="leading" constant="16" id="dPO-VW-5pN"/>
-                        <constraint firstAttribute="trailing" secondItem="9df-Ye-uNz" secondAttribute="trailing" constant="16" id="gb6-0A-vcG"/>
-                        <constraint firstAttribute="bottom" secondItem="yMb-ve-oGa" secondAttribute="bottom" constant="91" id="qbc-Pc-81J"/>
-                        <constraint firstAttribute="trailing" secondItem="yMb-ve-oGa" secondAttribute="trailing" constant="153" id="sf8-84-bN9"/>
-                        <constraint firstAttribute="bottom" secondItem="fMc-Ts-f89" secondAttribute="bottom" constant="9" id="zDp-Dp-EXm"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="subviews">
-                            <exclude reference="DKO-Gw-dtV"/>
-                            <exclude reference="NkL-6J-W1z"/>
-                            <exclude reference="tTD-Yh-CEp"/>
-                            <exclude reference="F55-yu-WYD"/>
-                        </mask>
-                    </variation>
-                </view>
             </objects>
-            <point key="canvasLocation" x="-1292" y="-205"/>
+            <point key="canvasLocation" x="-2937" y="621"/>
         </scene>
         <!--Home Page-->
         <scene sceneID="bIr-uU-yP0">
@@ -1070,7 +557,7 @@ CPB
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4sL-qG-Bvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2427" y="-212"/>
+            <point key="canvasLocation" x="-2872" y="-223"/>
         </scene>
         <!--Button Rec. Page-->
         <scene sceneID="yrQ-BO-gYt">
@@ -1165,7 +652,7 @@ CPB
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kJB-FA-o3L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1386" y="-211"/>
+            <point key="canvasLocation" x="921" y="-214"/>
         </scene>
         <!--Lumination Page-->
         <scene sceneID="4dv-ai-Smw">
@@ -1198,7 +685,7 @@ CPB
                                         <state key="normal" image="Moon_Icon"/>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fut-I9-NeV">
-                                        <rect key="frame" x="51.000000000000014" y="22" width="195.33333333333334" height="42"/>
+                                        <rect key="frame" x="51" y="22" width="195.33333333333334" height="42"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jod-bC-NpY">
@@ -1255,7 +742,7 @@ CPB
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUe-TO-m2A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2489" y="-213"/>
+            <point key="canvasLocation" x="1702" y="-214"/>
         </scene>
         <!--Thermometer Page-->
         <scene sceneID="cEq-QU-p1P">
@@ -1410,7 +897,7 @@ CPB
                     </userDefinedRuntimeAttributes>
                 </view>
             </objects>
-            <point key="canvasLocation" x="4503" y="-210"/>
+            <point key="canvasLocation" x="3199" y="-205"/>
         </scene>
         <!--3D Visual Page-->
         <scene sceneID="f7p-nX-gc1">
@@ -1624,7 +1111,7 @@ CPB
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGD-R1-82W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3505" y="-211"/>
+            <point key="canvasLocation" x="2417" y="-214"/>
         </scene>
         <!--Sound Page-->
         <scene sceneID="LPu-WC-6CP">
@@ -2049,7 +1536,7 @@ CPB
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CiE-xa-bOt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="148" y="-211"/>
+            <point key="canvasLocation" x="145" y="-222"/>
         </scene>
         <!--Onboarding Page 1-->
         <scene sceneID="V4O-us-MQq">
@@ -2244,6 +1731,504 @@ Contine to begin pairing your CPB!</string>
             </objects>
             <point key="canvasLocation" x="1702" y="-1213"/>
         </scene>
+        <!--Neo Pixel Page View Controller-->
+        <scene sceneID="dah-UT-lrn">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" pageSpacing="6" navigationOrientation="horizontal" spineLocation="none" id="2iX-gm-YlJ" customClass="NeoPixelPageViewController" customModule="CPX_BLE" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="puy-vJ-EgL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1580" y="448"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="XUB-fW-M9l">
+            <objects>
+                <viewController storyboardIdentifier="intro1" id="g9H-uT-wQG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="VkO-nX-1eI"/>
+                        <viewControllerLayoutGuide type="bottom" id="RdH-zP-1Uv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o9S-m8-yyb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="302"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8p3-er-whp">
+                                <rect key="frame" x="167" y="254" width="41" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Send"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imc-it-Kgn">
+                                <rect key="frame" x="15" y="246" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="Dca-M1-6im"/>
+                                    <constraint firstAttribute="height" constant="45" id="P6J-md-AMw"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Color_Pallete_Icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="epQ-56-X14">
+                                <rect key="frame" x="314" y="242" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="b9v-BH-Olx"/>
+                                    <constraint firstAttribute="width" constant="45" id="lxW-5w-BU5"/>
+                                </constraints>
+                                <state key="normal" image="Color_Wheel_Icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fye-j3-gCf">
+                                <rect key="frame" x="232" y="44" width="70" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="Pxn-yU-kDL"/>
+                                    <constraint firstAttribute="width" constant="70" id="gsn-Vq-Nvf"/>
+                                </constraints>
+                                <state key="normal" image="Pulse_seq_icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XHH-Xc-YF9">
+                                <rect key="frame" x="232" y="154" width="70" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="hO5-cr-RqG"/>
+                                    <constraint firstAttribute="width" constant="70" id="lHw-6f-SQl"/>
+                                </constraints>
+                                <state key="normal" image="rainbow_Seq_Icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ohh-ML-YVW">
+                                <rect key="frame" x="71" y="154" width="70" height="63"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="9xt-YT-tpA"/>
+                                    <constraint firstAttribute="height" constant="63" id="FUU-pU-NA7"/>
+                                </constraints>
+                                <state key="normal" image="Sequence_list_Icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXt-Yd-oli">
+                                <rect key="frame" x="71" y="44" width="70" height="66"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="3dn-Ri-lvZ"/>
+                                    <constraint firstAttribute="width" constant="70" id="dgZ-nc-mDX"/>
+                                </constraints>
+                                <state key="normal" image="Solid_Seq_Icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Light Sequence List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhx-0N-CYN">
+                                <rect key="frame" x="106" y="12" width="163" height="24"/>
+                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FXt-Yd-oli" firstAttribute="leading" secondItem="o9S-m8-yyb" secondAttribute="leading" constant="71" id="4UP-OH-q92"/>
+                            <constraint firstAttribute="trailing" secondItem="epQ-56-X14" secondAttribute="trailing" constant="16" id="5T0-DP-iku"/>
+                            <constraint firstItem="8p3-er-whp" firstAttribute="leading" secondItem="o9S-m8-yyb" secondAttribute="leading" constant="167" id="86r-pY-r9U"/>
+                            <constraint firstAttribute="bottom" secondItem="epQ-56-X14" secondAttribute="bottom" constant="15" id="Ab5-h5-YoC"/>
+                            <constraint firstAttribute="bottom" secondItem="Ohh-ML-YVW" secondAttribute="bottom" constant="85" id="Q09-8w-YbN"/>
+                            <constraint firstItem="fye-j3-gCf" firstAttribute="top" secondItem="o9S-m8-yyb" secondAttribute="top" constant="44" id="S3K-Bx-Ia8"/>
+                            <constraint firstAttribute="trailing" secondItem="Mhx-0N-CYN" secondAttribute="trailing" constant="106" id="bhE-pS-RfU"/>
+                            <constraint firstItem="imc-it-Kgn" firstAttribute="leading" secondItem="o9S-m8-yyb" secondAttribute="leading" constant="15" id="dQY-rr-z3O"/>
+                            <constraint firstAttribute="trailing" secondItem="XHH-Xc-YF9" secondAttribute="trailing" constant="73" id="dyR-xl-zj7"/>
+                            <constraint firstAttribute="bottom" secondItem="8p3-er-whp" secondAttribute="bottom" constant="15" id="gVK-ot-4X0"/>
+                            <constraint firstAttribute="trailing" secondItem="fye-j3-gCf" secondAttribute="trailing" constant="73" id="k6G-OQ-DMk"/>
+                            <constraint firstAttribute="trailing" secondItem="8p3-er-whp" secondAttribute="trailing" constant="167" id="om3-GR-wfo"/>
+                            <constraint firstItem="FXt-Yd-oli" firstAttribute="top" secondItem="o9S-m8-yyb" secondAttribute="top" constant="44" id="rJi-4x-OXE"/>
+                            <constraint firstItem="Mhx-0N-CYN" firstAttribute="top" secondItem="o9S-m8-yyb" secondAttribute="top" constant="12" id="rwZ-MJ-a40"/>
+                            <constraint firstItem="Ohh-ML-YVW" firstAttribute="leading" secondItem="o9S-m8-yyb" secondAttribute="leading" constant="71" id="uQW-tg-5ic"/>
+                            <constraint firstAttribute="bottom" secondItem="imc-it-Kgn" secondAttribute="bottom" constant="11" id="vHb-TL-C8H"/>
+                            <constraint firstItem="Mhx-0N-CYN" firstAttribute="leading" secondItem="o9S-m8-yyb" secondAttribute="leading" constant="106" id="vjn-p8-bBw"/>
+                            <constraint firstAttribute="bottom" secondItem="XHH-Xc-YF9" secondAttribute="bottom" constant="85" id="wCh-2C-jE0"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <size key="freeformSize" width="375" height="302"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ynN-T0-Cud" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2233" y="812"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uAp-7Z-gO1">
+            <objects>
+                <viewController storyboardIdentifier="intro2" id="Hh7-ro-ZLG" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YR8-m4-Nxe"/>
+                        <viewControllerLayoutGuide type="bottom" id="9Ca-Kc-ecb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pMe-Yh-qyc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="302"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="oux-rc-cm9">
+                                <rect key="frame" x="16" y="44" width="180" height="180"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QtU-0i-jFo">
+                                        <rect key="frame" x="0.0" y="0.0" width="180" height="45.333333333333336"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UZv-p8-cGa">
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="1" green="0.59374525509043252" blue="0.67728916881857892" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="smF-ZO-YwR">
+                                                <rect key="frame" x="47" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="1" green="0.99945866484352297" blue="0.35144549267539615" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nd4-zF-fgj">
+                                                <rect key="frame" x="94" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="0.51041370546614195" green="1" blue="0.81028898199005284" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hef-lM-DCn">
+                                                <rect key="frame" x="141" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="0.53973556123329702" green="0.81582628816022695" blue="0.91942214965820312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zrS-hU-VbB">
+                                        <rect key="frame" x="0.0" y="67.333333333333329" width="180" height="45.333333333333329"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iEd-wf-hNr">
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="1" green="0.35298979095805982" blue="0.33085676678593468" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uld-VI-iCc">
+                                                <rect key="frame" x="47" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="1" green="0.88052815890268488" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ual-L7-PK7">
+                                                <rect key="frame" x="94" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="0.28797695457440564" green="1" blue="0.48200239905653541" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ok1-ag-6u3">
+                                                <rect key="frame" x="141" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="0.26429425270085471" green="0.76035817389958882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Ws3-3W-o0l">
+                                        <rect key="frame" x="0.0" y="134.66666666666666" width="180" height="45.333333333333343"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6M-F2-7LP">
+                                                <rect key="frame" x="0.0" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="1" green="0.026764849601675467" blue="0.0015636777992542594" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFy-fi-yfE">
+                                                <rect key="frame" x="47" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="0.98014503717422485" green="0.6801151160122858" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t3d-Cj-OOJ">
+                                                <rect key="frame" x="94" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="0.0" green="0.83936712533156499" blue="0.022760707129925752" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ia6-v7-kDD">
+                                                <rect key="frame" x="141" y="0.0" width="39" height="45.333333333333336"/>
+                                                <color key="backgroundColor" red="0.0" green="0.54296212521472587" blue="0.91942214965820312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maz-ay-Ege">
+                                <rect key="frame" x="162" y="245" width="51" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Send"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fMc-Ts-f89">
+                                <rect key="frame" x="15" y="246" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="6Fc-1d-Djl"/>
+                                    <constraint firstAttribute="width" constant="45" id="FKS-U4-4cA"/>
+                                </constraints>
+                                <state key="normal" image="Color_Wheel_Icon"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9df-Ye-uNz">
+                                <rect key="frame" x="293" y="232" width="53" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="53" id="4Gm-mV-YN0"/>
+                                    <constraint firstAttribute="height" constant="51" id="Rp0-G5-TKt"/>
+                                </constraints>
+                                <state key="normal" image="Sequence_list_Icon"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nr4-PS-rUw">
+                                <rect key="frame" x="273" y="28" width="82" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="4oG-gQ-wH5"/>
+                                    <constraint firstAttribute="width" constant="82" id="YjD-gI-D6A"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1.5" minValue="-1.5" maxValue="3.5" translatesAutoresizingMaskIntoConstraints="NO" id="NNS-tB-pKZ" customClass="CustomUILabel" customModule="CPX_BLE" customModuleProvider="target">
+                                <rect key="frame" x="265" y="136" width="152" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="thumbTintColor" red="0.0" green="0.61960784310000006" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="label_Rotation">
+                                        <real key="value" value="4.7110000000000003"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oux-rc-cm9" secondAttribute="trailing" constant="179" id="4Iy-KH-kd0"/>
+                            <constraint firstItem="oux-rc-cm9" firstAttribute="top" secondItem="pMe-Yh-qyc" secondAttribute="top" constant="44" id="9VC-cN-sdn"/>
+                            <constraint firstAttribute="trailing" secondItem="9df-Ye-uNz" secondAttribute="trailing" constant="29" id="JRA-za-JnE"/>
+                            <constraint firstItem="nr4-PS-rUw" firstAttribute="top" secondItem="pMe-Yh-qyc" secondAttribute="top" constant="28" id="LNN-bR-nwL"/>
+                            <constraint firstAttribute="bottom" secondItem="fMc-Ts-f89" secondAttribute="bottom" constant="11" id="Reb-Ua-oIC"/>
+                            <constraint firstItem="fMc-Ts-f89" firstAttribute="leading" secondItem="pMe-Yh-qyc" secondAttribute="leading" constant="15" id="RzL-Zm-uh3"/>
+                            <constraint firstAttribute="trailing" secondItem="nr4-PS-rUw" secondAttribute="trailing" constant="20" id="TIJ-Rc-s61"/>
+                            <constraint firstItem="oux-rc-cm9" firstAttribute="leading" secondItem="pMe-Yh-qyc" secondAttribute="leading" constant="16" id="fhG-yu-cnJ"/>
+                            <constraint firstAttribute="bottom" secondItem="9df-Ye-uNz" secondAttribute="bottom" constant="19" id="r64-JC-ejq"/>
+                            <constraint firstAttribute="bottom" secondItem="oux-rc-cm9" secondAttribute="bottom" constant="78" id="rat-lc-W0N"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <size key="freeformSize" width="375" height="302"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lzx-3b-SUU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1580" y="811"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="QAX-jb-FSd">
+            <objects>
+                <viewController storyboardIdentifier="intro3" id="C5x-8i-XtD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="k8n-3u-X57"/>
+                        <viewControllerLayoutGuide type="bottom" id="qLH-eT-63v"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7B7-TD-C0l">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="302"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0Q-iM-C3J">
+                                <rect key="frame" x="15" y="246" width="45" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="1z7-Fi-ZDU"/>
+                                    <constraint firstAttribute="width" constant="45" id="3S2-Pi-Sar"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="Color_Pallete_Icon"/>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="uOt-Ma-MT2">
+                                <rect key="frame" x="16" y="178" width="90.333333333333329" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RGB: 0-0-0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COR-R5-FZf">
+                                        <rect key="frame" x="0.0" y="0.0" width="90.333333333333329" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hex: #00000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QoW-gs-L7n">
+                                        <rect key="frame" x="0.0" y="20" width="90.333333333333329" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGs-7G-bDE">
+                                <rect key="frame" x="310" y="246" width="50" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Nb1-Iq-lDW"/>
+                                    <constraint firstAttribute="height" constant="45" id="hwa-Aj-KLk"/>
+                                </constraints>
+                                <state key="normal" image="Sequence_list_Icon"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cbV-zQ-tZz">
+                                <rect key="frame" x="144" y="241" width="65" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Send"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i14-Wp-jUm">
+                                <rect key="frame" x="275" y="30" width="80" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="FoQ-ss-hlo"/>
+                                    <constraint firstAttribute="width" constant="80" id="z6C-W0-Lyt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="-0.5" maxValue="1.5" translatesAutoresizingMaskIntoConstraints="NO" id="evj-cw-UTz" customClass="CustomUILabel" customModule="CPX_BLE" customModuleProvider="target">
+                                <rect key="frame" x="274" y="112" width="156" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <color key="thumbTintColor" red="0.0" green="0.61960784310000006" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="label_Rotation">
+                                        <real key="value" value="4.7110000000000003"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="-4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bGs-7G-bDE" secondAttribute="trailing" constant="15" id="Ut5-ap-a3E"/>
+                            <constraint firstAttribute="bottom" secondItem="C0Q-iM-C3J" secondAttribute="bottom" constant="11" id="aND-sU-0we"/>
+                            <constraint firstAttribute="trailing" secondItem="i14-Wp-jUm" secondAttribute="trailing" constant="20" id="nRD-gD-6ks"/>
+                            <constraint firstAttribute="bottom" secondItem="bGs-7G-bDE" secondAttribute="bottom" constant="11" id="v0m-TB-wym"/>
+                            <constraint firstItem="i14-Wp-jUm" firstAttribute="top" secondItem="7B7-TD-C0l" secondAttribute="top" constant="30" id="xdp-d0-S9g"/>
+                            <constraint firstItem="C0Q-iM-C3J" firstAttribute="leading" secondItem="7B7-TD-C0l" secondAttribute="leading" constant="15" id="zWs-0h-Co7"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="20"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <size key="freeformSize" width="375" height="302"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wh1-zY-4qi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-922" y="813"/>
+        </scene>
     </scenes>
     <resources>
         <image name="CPBvector3" width="146" height="146"/>
@@ -2254,6 +2239,7 @@ Contine to begin pairing your CPB!</string>
         <image name="Hamburger_Menu_Icon" width="700" height="550"/>
         <image name="Moon_Icon" width="650" height="650"/>
         <image name="Pulse_seq_icon" width="220" height="200"/>
+        <image name="Restart_Icon_Gray" width="487" height="578"/>
         <image name="Sequence_list_Icon" width="220" height="200"/>
         <image name="Solid_Seq_Icon" width="220" height="200"/>
         <image name="Sun_Icon" width="630" height="660"/>
@@ -2265,6 +2251,6 @@ Contine to begin pairing your CPB!</string>
         <image name="rainbow_Seq_Icon" width="220" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5D1-8m-7of"/>
+        <segue reference="qIV-rk-qne"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29321595233006D1004BA0E7 /* NeoPixelPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29321594233006D1004BA0E7 /* NeoPixelPageViewController.swift */; };
 		2956DC9F231039FC004231AB /* Swift+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956DC9E231039FC004231AB /* Swift+Gif.swift */; };
 		2956DCA123103C60004231AB /* OPageOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2956DCA023103C60004231AB /* OPageOne.swift */; };
 		2956DCA5231049E6004231AB /* NewTest.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2956DCA4231049E6004231AB /* NewTest.gif */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29321594233006D1004BA0E7 /* NeoPixelPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeoPixelPageViewController.swift; sourceTree = "<group>"; };
 		2956DC9E231039FC004231AB /* Swift+Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Gif.swift"; sourceTree = "<group>"; };
 		2956DCA023103C60004231AB /* OPageOne.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OPageOne.swift; sourceTree = "<group>"; };
 		2956DCA4231049E6004231AB /* NewTest.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = NewTest.gif; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				29F21D3523049D5500405990 /* RootPageViewController.swift */,
 				29E624042326B28D0051641D /* BLEScannerPageViewController.swift */,
 				2956DC9E231039FC004231AB /* Swift+Gif.swift */,
+				29321594233006D1004BA0E7 /* NeoPixelPageViewController.swift */,
 				2956DCA023103C60004231AB /* OPageOne.swift */,
 				29F21D3123049A7D00405990 /* Main.storyboard */,
 				29E624122326B8500051641D /* View Controllers */,
@@ -188,6 +191,7 @@
 				29E6240F2326B5840051641D /* LightViewController.swift in Sources */,
 				29F21D2223049A6600405990 /* ViewController.swift in Sources */,
 				29E624032326A8440051641D /* ColorPaletteViewController.swift in Sources */,
+				29321595233006D1004BA0E7 /* NeoPixelPageViewController.swift in Sources */,
 				29F21D2023049A6600405990 /* AppDelegate.swift in Sources */,
 				29E6240D2326B53B0051641D /* ButtonRecognitionViewController.swift in Sources */,
 				29E624112326B7EC0051641D /* VisualizationViewController.swift in Sources */,
