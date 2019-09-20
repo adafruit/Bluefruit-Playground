@@ -23,6 +23,8 @@ class ViewController: UIViewController {
         
     }
  
+    @IBAction func unwindToMain(_sender: UIStoryboardSegue){}
+    
 }
 
 extension ViewController: UIScrollViewDelegate {

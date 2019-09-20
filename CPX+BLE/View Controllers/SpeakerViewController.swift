@@ -15,11 +15,9 @@ class SpeakerViewController:UIViewController {
         print("Speaker Page Loaded")
     }
     
-    @IBOutlet var FKey: UIButton!
-    @IBAction func FKeyAction(_ sender: Any) {
-    print("F3 Key was pressed!")
+   
     
-    }
+    
     
 }
 

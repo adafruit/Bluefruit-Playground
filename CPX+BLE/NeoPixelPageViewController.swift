@@ -66,7 +66,7 @@ private var pageViewController: UIPageViewController!
     
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        let pageContentViewController = pageViewController.viewControllers![0]
+        _ = pageViewController.viewControllers![0]
 //        pageControl.currentPage = viewControllerList.index(of: pageContentViewController)!
 //        print("Page Check: \(pageControl.currentPage)")
     }
@@ -74,7 +74,7 @@ private var pageViewController: UIPageViewController!
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        guard let vcIndex = viewControllerList.index(of: viewController) else {return nil}
+        guard let vcIndex = viewControllerList.firstIndex(of: viewController) else {return nil}
         let previousIndex = vcIndex - 1
         
         guard previousIndex >= 0 else {return nil}
@@ -87,7 +87,7 @@ private var pageViewController: UIPageViewController!
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        guard let vcIndex = viewControllerList.index(of: viewController) else {return nil}
+        guard let vcIndex = viewControllerList.firstIndex(of: viewController) else {return nil}
         
         let nextIndex = vcIndex + 1
         

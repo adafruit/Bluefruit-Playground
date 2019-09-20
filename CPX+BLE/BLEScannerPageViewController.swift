@@ -17,5 +17,6 @@ class BLEScannerPageViewController: UIViewController {
         
     }
 
+    @IBAction func unwindToScanner(_sender: UIStoryboardSegue){}
 
 }
