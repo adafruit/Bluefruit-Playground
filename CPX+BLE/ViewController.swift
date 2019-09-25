@@ -12,10 +12,7 @@ class ViewController: UIViewController {
 
     
     
-    @IBOutlet var cpxScrollView: UIScrollView!
-    @IBOutlet var contentView: UIView!
-    @IBOutlet var cpxView: UIView!
-    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,15 +24,6 @@ class ViewController: UIViewController {
     
 }
 
-extension ViewController: UIScrollViewDelegate {
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-        return contentView
-    }
-    
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-   print("did attempt to zoom")
-    }
-}
 
 
 
