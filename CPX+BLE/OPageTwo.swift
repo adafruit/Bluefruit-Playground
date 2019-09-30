@@ -19,7 +19,7 @@ class OPageTwo : UIViewController {
         super.viewDidLoad()
         
         
-        pageTwoGif.loadGif(name: "Powerup1200")
+        pageTwoGif.loadGif(name: "Powerup")
         
     }
     

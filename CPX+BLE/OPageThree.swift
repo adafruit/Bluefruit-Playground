@@ -18,7 +18,7 @@ class OPageThree : UIViewController {
         super.viewDidLoad()
         
         
-        pageThreeGif.loadGif(name: "Discover1200")
+        pageThreeGif.loadGif(name: "Discover")
         
     }
     
