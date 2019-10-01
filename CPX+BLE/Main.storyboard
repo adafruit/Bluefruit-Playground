@@ -219,12 +219,12 @@ CPB
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="cPU-FY-Dxl">
                                                         <rect key="frame" x="0.0" y="0.0" width="700" height="324"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpQ-iC-l5w" userLabel="NeoPixel Button">
+                                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="leading" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gpQ-iC-l5w" userLabel="NeoPixel Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="216.66666666666666" height="324"/>
                                                                 <color key="backgroundColor" red="0.33678779009999998" green="0.66869717839999998" blue="0.9098311067" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                                <fontDescription key="fontDescription" name="ChalkboardSE-Bold" family="Chalkboard SE" pointSize="27"/>
-                                                                <state key="normal">
-                                                                    <color key="titleColor" red="0.94901960780000005" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <state key="normal" title="NeoPixels" image="neop">
+                                                                    <color key="titleColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -769,39 +769,31 @@ CPB
                                     <color key="titleColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </state>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M0K-to-QKS">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M0K-to-QKS">
                                 <rect key="frame" x="18" y="633" width="339" height="179"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3D Visualization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-mB-REz">
-                                        <rect key="frame" x="108" y="7" width="123" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fRJ-f2-fhM">
-                                        <rect key="frame" x="8" y="42.000000000000007" width="92.333333333333329" height="74.666666666666671"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fRJ-f2-fhM">
+                                        <rect key="frame" x="10" y="42.000000000000007" width="90.333333333333329" height="74.666666666666686"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accelerometer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTr-Ib-tPV">
-                                                <rect key="frame" x="0.0" y="0.0" width="92.333333333333329" height="15.666666666666666"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Accelerometer:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTr-Ib-tPV">
+                                                <rect key="frame" x="0.0" y="0.0" width="90.333333333333329" height="15.666666666666666"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" white="0.062639794220000003" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quaternion:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPw-Px-ChN">
-                                                <rect key="frame" x="0.0" y="19.666666666666668" width="71" height="15.666666666666668"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Quaternion:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PPw-Px-ChN">
+                                                <rect key="frame" x="0.0" y="19.666666666666629" width="71" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" white="0.062639794220000003" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gyroscope:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wl9-dI-2u4">
-                                                <rect key="frame" x="0.0" y="39.333333333333336" width="69.666666666666671" height="15.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="39.333333333333371" width="69.666666666666671" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" white="0.062639794220000003" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Euler Angles:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbG-b6-Ixt">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text="Euler Angles:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fbG-b6-Ixt">
                                                 <rect key="frame" x="0.0" y="58.999999999999993" width="79.333333333333329" height="15.666666666666664"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <color key="textColor" white="0.062639794220000003" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -917,8 +909,24 @@ CPB
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3D Visualization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-mB-REz">
+                                        <rect key="frame" x="102" y="9" width="135" height="25"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="fRJ-f2-fhM" secondAttribute="trailing" constant="238.66999999999999" id="7nC-lz-9wr"/>
+                                    <constraint firstAttribute="trailing" secondItem="hhz-mB-REz" secondAttribute="trailing" constant="102" id="BhE-SY-fUx"/>
+                                    <constraint firstAttribute="height" constant="179" id="FBe-Lh-rr0"/>
+                                    <constraint firstItem="hhz-mB-REz" firstAttribute="top" secondItem="M0K-to-QKS" secondAttribute="top" constant="9" id="KYq-Tu-Pcg"/>
+                                    <constraint firstAttribute="bottom" secondItem="fRJ-f2-fhM" secondAttribute="bottom" constant="62.329999999999998" id="PxS-TH-7Cf"/>
+                                    <constraint firstItem="fRJ-f2-fhM" firstAttribute="top" secondItem="M0K-to-QKS" secondAttribute="top" constant="42" id="QOi-RW-Ly9"/>
+                                    <constraint firstItem="fRJ-f2-fhM" firstAttribute="leading" secondItem="M0K-to-QKS" secondAttribute="leading" constant="10" id="Sbs-Ec-mxT"/>
+                                    <constraint firstItem="hhz-mB-REz" firstAttribute="leading" secondItem="M0K-to-QKS" secondAttribute="leading" constant="102" id="zXM-bg-aAH"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="12"/>
@@ -939,7 +947,10 @@ CPB
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="M0K-to-QKS" secondAttribute="bottom" id="5t1-8A-fxC"/>
+                            <constraint firstAttribute="trailing" secondItem="M0K-to-QKS" secondAttribute="trailing" constant="18" id="7ml-4W-ETy"/>
                             <constraint firstAttribute="trailing" secondItem="3es-vc-VcB" secondAttribute="trailing" constant="18" id="8Bi-te-o7R"/>
+                            <constraint firstItem="M0K-to-QKS" firstAttribute="leading" secondItem="Apy-8t-mT2" secondAttribute="leading" constant="18" id="8MO-LN-Apm"/>
                             <constraint firstItem="3es-vc-VcB" firstAttribute="top" secondItem="Apy-8t-mT2" secondAttribute="top" constant="40" id="I0h-6V-zIk"/>
                             <constraint firstItem="zY1-b9-lxE" firstAttribute="top" secondItem="COi-fC-DSx" secondAttribute="bottom" constant="9" id="aQZ-t1-2QW"/>
                             <constraint firstItem="zY1-b9-lxE" firstAttribute="leading" secondItem="Apy-8t-mT2" secondAttribute="leading" constant="28" id="nGG-K5-foW"/>
@@ -949,7 +960,7 @@ CPB
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nGD-R1-82W" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="d08-lJ-YhR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2666" y="887"/>
+            <point key="canvasLocation" x="2664.8000000000002" y="886.69950738916259"/>
         </scene>
         <!--Sound Page-->
         <scene sceneID="LPu-WC-6CP">
@@ -1355,7 +1366,7 @@ CPB
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_Speaker_10453" translatesAutoresizingMaskIntoConstraints="NO" id="Kli-KC-60J">
-                                <rect key="frame" x="67" y="128" width="240" height="240.00000000000011"/>
+                                <rect key="frame" x="67" y="128" width="240" height="240"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SVW-ih-FUh">
                                 <rect key="frame" x="0.0" y="412" width="375" height="400"/>
@@ -1561,7 +1572,7 @@ Let's get started...</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gPV-kr-zBY" userLabel="Onboarding_image1">
-                                <rect key="frame" x="16" y="164" width="343" height="300"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="315"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2v4-vt-JNn">
                                 <rect key="frame" x="297" y="54" width="40" height="40"/>
@@ -1581,13 +1592,13 @@ Let's get started...</string>
                         <color key="backgroundColor" red="0.0" green="0.61960784310000006" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="20e-s8-laP" firstAttribute="top" secondItem="Jdq-yL-uOs" secondAttribute="bottom" constant="11" id="48c-bd-Wso"/>
-                            <constraint firstItem="gPV-kr-zBY" firstAttribute="leading" secondItem="aCu-hQ-lS6" secondAttribute="leadingMargin" id="8SO-qn-zYe"/>
+                            <constraint firstItem="gPV-kr-zBY" firstAttribute="leading" secondItem="aCu-hQ-lS6" secondAttribute="leadingMargin" constant="-16" id="8SO-qn-zYe"/>
                             <constraint firstItem="Jdq-yL-uOs" firstAttribute="leading" secondItem="aCu-hQ-lS6" secondAttribute="leading" constant="79" id="Gwz-GF-UgM"/>
                             <constraint firstItem="2v4-vt-JNn" firstAttribute="top" secondItem="z1I-ca-aoj" secondAttribute="bottom" constant="10" id="IbG-4T-mWu"/>
                             <constraint firstItem="20e-s8-laP" firstAttribute="leading" secondItem="aCu-hQ-lS6" secondAttribute="leading" constant="16" id="JuY-yD-g6U"/>
                             <constraint firstItem="gPV-kr-zBY" firstAttribute="top" secondItem="z1I-ca-aoj" secondAttribute="bottom" constant="120" id="M3i-Q7-QOc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="gPV-kr-zBY" secondAttribute="trailing" id="PjR-0U-oDM"/>
-                            <constraint firstItem="Jdq-yL-uOs" firstAttribute="top" secondItem="gPV-kr-zBY" secondAttribute="bottom" constant="72" id="b2G-qn-Apt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gPV-kr-zBY" secondAttribute="trailing" constant="-16" id="PjR-0U-oDM"/>
+                            <constraint firstItem="Jdq-yL-uOs" firstAttribute="top" secondItem="gPV-kr-zBY" secondAttribute="bottom" constant="57" id="b2G-qn-Apt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2v4-vt-JNn" secondAttribute="trailing" constant="22" id="bGL-v1-8RP"/>
                             <constraint firstAttribute="trailing" secondItem="Jdq-yL-uOs" secondAttribute="trailing" constant="80" id="ng1-kU-bR2"/>
                             <constraint firstAttribute="trailing" secondItem="20e-s8-laP" secondAttribute="trailing" constant="16" id="wvT-R3-LsW"/>
@@ -1600,7 +1611,7 @@ Let's get started...</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TKn-Fb-Vnm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-234" y="-749"/>
+            <point key="canvasLocation" x="-234.40000000000001" y="-749.26108374384239"/>
         </scene>
         <!--Onboarding Page 2-->
         <scene sceneID="9ng-12-PDE">
@@ -1630,7 +1641,7 @@ Connect your Circuit Playground Bluefruit to a micro-USB, AAA battery pack or a 
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ymo-CT-CDq" userLabel="Onboarding_image1">
-                                <rect key="frame" x="16" y="164" width="343" height="314"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="315"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9oH-QW-kDu">
@@ -1652,16 +1663,16 @@ Connect your Circuit Playground Bluefruit to a micro-USB, AAA battery pack or a 
                         <constraints>
                             <constraint firstItem="Ymo-CT-CDq" firstAttribute="top" secondItem="2Zs-O2-Dtv" secondAttribute="bottom" constant="120" id="2RM-KO-wqO"/>
                             <constraint firstItem="iaP-cB-PVO" firstAttribute="trailing" secondItem="Nzy-yZ-L2S" secondAttribute="trailingMargin" id="CDa-ob-mpp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Ymo-CT-CDq" secondAttribute="trailing" id="MV8-C6-oTI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Ymo-CT-CDq" secondAttribute="trailing" constant="-16" id="MV8-C6-oTI"/>
                             <constraint firstItem="iaP-cB-PVO" firstAttribute="top" secondItem="4WJ-82-g4v" secondAttribute="bottom" constant="8" id="Mxg-2h-Ocf"/>
-                            <constraint firstItem="Ymo-CT-CDq" firstAttribute="leading" secondItem="Nzy-yZ-L2S" secondAttribute="leadingMargin" id="XB9-ae-vPt"/>
+                            <constraint firstItem="Ymo-CT-CDq" firstAttribute="leading" secondItem="Nzy-yZ-L2S" secondAttribute="leadingMargin" constant="-16" id="XB9-ae-vPt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4WJ-82-g4v" secondAttribute="trailing" constant="65" id="ZYd-jy-hHu"/>
                             <constraint firstAttribute="bottomMargin" secondItem="iaP-cB-PVO" secondAttribute="bottom" constant="25" id="aM6-AD-ffs"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9oH-QW-kDu" secondAttribute="trailing" constant="21" id="aRq-IE-A2c"/>
                             <constraint firstItem="9oH-QW-kDu" firstAttribute="top" secondItem="2Zs-O2-Dtv" secondAttribute="bottom" constant="10" id="aSU-Ay-08I"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="Ymo-CT-CDq" secondAttribute="bottom" constant="300" id="c84-l6-gEH"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="Ymo-CT-CDq" secondAttribute="bottom" constant="299" id="c84-l6-gEH"/>
                             <constraint firstItem="4WJ-82-g4v" firstAttribute="leading" secondItem="Nzy-yZ-L2S" secondAttribute="leadingMargin" constant="62" id="cJe-ka-Dgq"/>
-                            <constraint firstItem="4WJ-82-g4v" firstAttribute="top" secondItem="Ymo-CT-CDq" secondAttribute="bottom" constant="80" id="qVq-qA-2R8"/>
+                            <constraint firstItem="4WJ-82-g4v" firstAttribute="top" secondItem="Ymo-CT-CDq" secondAttribute="bottom" constant="79" id="qVq-qA-2R8"/>
                             <constraint firstItem="iaP-cB-PVO" firstAttribute="leading" secondItem="Nzy-yZ-L2S" secondAttribute="leadingMargin" id="xzq-7r-qCl"/>
                         </constraints>
                     </view>
@@ -1671,7 +1682,7 @@ Connect your Circuit Playground Bluefruit to a micro-USB, AAA battery pack or a 
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLU-wZ-Fit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="-749"/>
+            <point key="canvasLocation" x="596" y="-749.26108374384239"/>
         </scene>
         <!--Onboarding Page 3-->
         <scene sceneID="rGG-hl-cYo">
@@ -1696,7 +1707,7 @@ Continue to begin pairing.</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9pD-5F-1Ud" userLabel="Onboarding_image3">
-                                <rect key="frame" x="0.0" y="164" width="375" height="300"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="315"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3tR-wu-v16">
@@ -1720,9 +1731,9 @@ Continue to begin pairing.</string>
                         <constraints>
                             <constraint firstItem="9pD-5F-1Ud" firstAttribute="top" secondItem="5oj-pN-cJm" secondAttribute="bottom" constant="120" id="4nz-EI-TqW"/>
                             <constraint firstAttribute="trailing" secondItem="QZV-oc-N7Q" secondAttribute="trailing" constant="135" id="6Qp-iP-flw"/>
-                            <constraint firstItem="3tR-wu-v16" firstAttribute="top" secondItem="9pD-5F-1Ud" secondAttribute="bottom" constant="56" id="Aws-B3-9y8"/>
+                            <constraint firstItem="3tR-wu-v16" firstAttribute="top" secondItem="9pD-5F-1Ud" secondAttribute="bottom" constant="41" id="Aws-B3-9y8"/>
                             <constraint firstItem="RNJ-Du-FCV" firstAttribute="top" secondItem="3tR-wu-v16" secondAttribute="bottom" constant="213" id="Nlz-UG-A7M"/>
-                            <constraint firstItem="RNJ-Du-FCV" firstAttribute="top" secondItem="9pD-5F-1Ud" secondAttribute="bottom" constant="314" id="OB4-Eq-K6d"/>
+                            <constraint firstItem="RNJ-Du-FCV" firstAttribute="top" secondItem="9pD-5F-1Ud" secondAttribute="bottom" constant="299" id="OB4-Eq-K6d"/>
                             <constraint firstItem="QZV-oc-N7Q" firstAttribute="top" secondItem="SXX-Gm-MPd" secondAttribute="bottom" constant="8" id="PUc-ri-HOp"/>
                             <constraint firstAttribute="trailing" secondItem="3tR-wu-v16" secondAttribute="trailing" constant="80" id="Wbq-Yg-GR2"/>
                             <constraint firstAttribute="trailing" secondItem="9pD-5F-1Ud" secondAttribute="trailing" id="aai-aA-p08"/>
@@ -2323,10 +2334,11 @@ Continue to begin pairing.</string>
         <image name="blackKey" width="118" height="340"/>
         <image name="bluerprint_background_gray" width="853.33331298828125" height="533.33331298828125"/>
         <image name="info_Icon" width="650" height="650"/>
+        <image name="neop" width="2700" height="2861"/>
         <image name="noun_Speaker_10453" width="540" height="425"/>
         <image name="rainbow_Seq_Icon" width="220" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jRT-bH-WRU"/>
+        <segue reference="ogR-DG-y7T"/>
     </inferredMetricsTieBreakers>
 </document>

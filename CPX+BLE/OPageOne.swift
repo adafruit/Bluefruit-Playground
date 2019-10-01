@@ -14,6 +14,7 @@ class OPageOne : UIViewController {
     
 override func viewDidLoad() {
     super.viewDidLoad()
+    pageOneGif.loadGif(name: "Welcome")
  
 }
 

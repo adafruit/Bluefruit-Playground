@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2901F5112343DE780057B543 /* Welcome.gif in Resources */ = {isa = PBXBuildFile; fileRef = 2901F5102343DE780057B543 /* Welcome.gif */; };
 		29321595233006D1004BA0E7 /* NeoPixelPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29321594233006D1004BA0E7 /* NeoPixelPageViewController.swift */; };
 		29433B21233EB38600A1B63A /* Discover.gif in Resources */ = {isa = PBXBuildFile; fileRef = 29433B20233EB38500A1B63A /* Discover.gif */; };
 		29433B23233EB38F00A1B63A /* Powerup.gif in Resources */ = {isa = PBXBuildFile; fileRef = 29433B22233EB38F00A1B63A /* Powerup.gif */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2901F5102343DE780057B543 /* Welcome.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Welcome.gif; sourceTree = "<group>"; };
 		29321594233006D1004BA0E7 /* NeoPixelPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeoPixelPageViewController.swift; sourceTree = "<group>"; };
 		29433B20233EB38500A1B63A /* Discover.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Discover.gif; sourceTree = "<group>"; };
 		29433B22233EB38F00A1B63A /* Powerup.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Powerup.gif; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				29E624022326A8440051641D /* ColorPaletteViewController.swift */,
 				29F21D2623049A6700405990 /* Assets.xcassets */,
 				29433B22233EB38F00A1B63A /* Powerup.gif */,
+				2901F5102343DE780057B543 /* Welcome.gif */,
 				29433B20233EB38500A1B63A /* Discover.gif */,
 				29F21D2B23049A6800405990 /* Info.plist */,
 				29F21D3723049DE700405990 /* LaunchScreen.storyboard */,
@@ -179,6 +182,7 @@
 			files = (
 				29F21D2723049A6700405990 /* Assets.xcassets in Resources */,
 				29433B21233EB38600A1B63A /* Discover.gif in Resources */,
+				2901F5112343DE780057B543 /* Welcome.gif in Resources */,
 				29433B23233EB38F00A1B63A /* Powerup.gif in Resources */,
 				29F21D3223049A7D00405990 /* Main.storyboard in Resources */,
 			);
