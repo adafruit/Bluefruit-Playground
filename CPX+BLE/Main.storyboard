@@ -223,8 +223,8 @@ CPB
                                                                 <rect key="frame" x="0.0" y="0.0" width="216.66666666666666" height="324"/>
                                                                 <color key="backgroundColor" red="0.33678779009999998" green="0.66869717839999998" blue="0.9098311067" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <state key="normal" title="NeoPixels" image="neop">
-                                                                    <color key="titleColor" systemColor="tertiarySystemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -247,9 +247,13 @@ CPB
                                                                     <segue destination="jhQ-bK-qVk" kind="presentation" modalPresentationStyle="fullScreen" id="blj-D4-kDp"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aro-Nn-Drt" userLabel="Button Reg">
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aro-Nn-Drt" userLabel="Button Reg">
                                                                 <rect key="frame" x="483.33333333333331" y="0.0" width="216.66666666666669" height="324"/>
                                                                 <color key="backgroundColor" red="0.9098311067" green="0.48613091920000001" blue="0.82294909760000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <state key="normal">
+                                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="12"/>
@@ -910,7 +914,7 @@ CPB
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3D Visualization" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhz-mB-REz">
-                                        <rect key="frame" x="102" y="9" width="135" height="25"/>
+                                        <rect key="frame" x="102" y="9.0000000000000018" width="135" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="18"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1365,7 +1369,7 @@ CPB
                                     <constraint firstItem="wcX-qG-aUw" firstAttribute="top" secondItem="nIS-ac-7TV" secondAttribute="top" id="vx9-EQ-4q1"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noun_Speaker_10453" translatesAutoresizingMaskIntoConstraints="NO" id="Kli-KC-60J">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sound_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Kli-KC-60J">
                                 <rect key="frame" x="67" y="128" width="240" height="240"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="SVW-ih-FUh">
@@ -2330,12 +2334,11 @@ Continue to begin pairing.</string>
         <image name="Restart_Icon_Gray" width="487" height="578"/>
         <image name="Sequence_list_Icon" width="220" height="200"/>
         <image name="Solid_Seq_Icon" width="220" height="200"/>
+        <image name="Sound_Icon" width="925" height="680"/>
         <image name="Sun_Icon" width="630" height="660"/>
         <image name="blackKey" width="118" height="340"/>
         <image name="bluerprint_background_gray" width="853.33331298828125" height="533.33331298828125"/>
         <image name="info_Icon" width="650" height="650"/>
-        <image name="neop" width="2700" height="2861"/>
-        <image name="noun_Speaker_10453" width="540" height="425"/>
         <image name="rainbow_Seq_Icon" width="220" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
