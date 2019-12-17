@@ -1,0 +1,1449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A901EC48237C43C000687BE6 /* Data+LittleEndianTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */; };
+		A901EC4D237C47D800687BE6 /* CPBDataSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC4C237C47D800687BE6 /* CPBDataSeries.swift */; };
+		A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */; };
+		A92B9F14234DE4A2002374F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F12234DE4A2002374F0 /* Main.storyboard */; };
+		A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
+		A92BC5F523A7A7E4009CAD0E /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92BC5F423A7A7E4009CAD0E /* SnapshotHelper.swift */; };
+		A948298D237B73B100B6FC13 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482989237B73B100B6FC13 /* HelpViewController.swift */; };
+		A948298E237B73B100B6FC13 /* CommonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */; };
+		A948298F237B73B100B6FC13 /* ModulePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */; };
+		A9482990237B73B100B6FC13 /* ModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298C237B73B100B6FC13 /* ModuleViewController.swift */; };
+		A9482992237B86C600B6FC13 /* BlePeripheral+CPBTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482991237B86C600B6FC13 /* BlePeripheral+CPBTemperature.swift */; };
+		A9482994237B880000B6FC13 /* BlePeripheral+CPBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482993237B880000B6FC13 /* BlePeripheral+CPBCommon.swift */; };
+		A94AC1462363A59B0062AB11 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC1452363A59B0062AB11 /* TemperatureViewController.swift */; };
+		A94AC1482363A7BD0062AB11 /* TemperaturePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC1472363A7BD0062AB11 /* TemperaturePanelViewController.swift */; };
+		A94AC14E2364A82B0062AB11 /* CPBBle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC14D2364A82A0062AB11 /* CPBBle.swift */; };
+		A958E77A23821EF8006A225A /* BlePeripheral+CPBToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77923821EF8006A225A /* BlePeripheral+CPBToneGenerator.swift */; };
+		A958E77C238AFA4E006A225A /* BlePeripheral+CPBPixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77B238AFA4E006A225A /* BlePeripheral+CPBPixels.swift */; };
+		A958E77E238B7457006A225A /* NormalBrightnessSliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77D238B7457006A225A /* NormalBrightnessSliderControl.swift */; };
+		A958E780238B75D9006A225A /* NormalBrightnessColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77F238B75D9006A225A /* NormalBrightnessColorPickerController.swift */; };
+		A958E782238B7936006A225A /* BlePeripheral+CPBAccelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E781238B7936006A225A /* BlePeripheral+CPBAccelerometer.swift */; };
+		A96AA5BB235F903D004A06BA /* CPB_PcbSurface_Color.png in Resources */ = {isa = PBXBuildFile; fileRef = A96AA5BA235F903D004A06BA /* CPB_PcbSurface_Color.png */; };
+		A96AA5BD235F9159004A06BA /* ScanProblemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5BC235F9159004A06BA /* ScanProblemsViewController.swift */; };
+		A96AA5BF23604DA3004A06BA /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5BE23604DA3004A06BA /* HelpTableViewCell.swift */; };
+		A96AA5C1236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C0236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift */; };
+		A96AA5C32362F488004A06BA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C22362F488004A06BA /* AboutViewController.swift */; };
+		A96AA5C6236312CE004A06BA /* ToneGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C5236312CE004A06BA /* ToneGeneratorViewController.swift */; };
+		A96AA5C823633EB3004A06BA /* UIButton+BackgroundColorForState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C723633EB2004A06BA /* UIButton+BackgroundColorForState.swift */; };
+		A96AA5CD23634B45004A06BA /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5CC23634B45004A06BA /* AccelerometerViewController.swift */; };
+		A96AA5CF23634BC3004A06BA /* AccelerometerPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5CE23634BC3004A06BA /* AccelerometerPanelViewController.swift */; };
+		A96AA5D123634F03004A06BA /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5D023634F03004A06BA /* GridView.swift */; };
+		A96AA5D3236358A8004A06BA /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5D2236358A8004A06BA /* UIView+RoundedCorners.swift */; };
+		A96AA5D523635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5D423635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift */; };
+		A9716BAA2350128100CB174D /* PeripheralList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9716BA82350128100CB174D /* PeripheralList.swift */; };
+		A9716BAB2350128100CB174D /* RssiUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9716BA92350128100CB174D /* RssiUI.swift */; };
+		A980FE6D2357D14400E3A909 /* TipPowerUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A980FE6C2357D14400E3A909 /* TipPowerUpViewController.swift */; };
+		A980FE6F2357D15400E3A909 /* TipDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A980FE6E2357D15400E3A909 /* TipDiscoverViewController.swift */; };
+		A986AB93235942D600DF12C8 /* LightSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A986AB92235942D600DF12C8 /* LightSensorViewController.swift */; };
+		A98B0D1D239FBE9300BF3696 /* BlePeripheral+ManufacturerAdafruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B0D1C239FBE9300BF3696 /* BlePeripheral+ManufacturerAdafruit.swift */; };
+		A98E4D2823565B76005B166D /* TipWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98E4D2723565B76005B166D /* TipWelcomeViewController.swift */; };
+		A98E4D3223566785005B166D /* cpb.scn in Resources */ = {isa = PBXBuildFile; fileRef = A98E4D3123566785005B166D /* cpb.scn */; };
+		A98F1B892359494500C5269E /* ConfigUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98F1B882359494500C5269E /* ConfigUI.swift */; };
+		A98F1B8B23594BE400C5269E /* LightSensorPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98F1B8A23594BE400C5269E /* LightSensorPanelViewController.swift */; };
+		A99BA71D234FFE780080D03F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99BA71C234FFE780080D03F /* Settings.swift */; };
+		A99BA71F234FFECF0080D03F /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99BA71E234FFECF0080D03F /* DefaultPreferences.plist */; };
+		A99BA723235000520080D03F /* ScreenFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99BA722235000520080D03F /* ScreenFlowManager.swift */; };
+		A9A08B2323A2841200498069 /* LightSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B2223A2841200498069 /* LightSequence.swift */; };
+		A9A08B2523A2CBCF00498069 /* LightSequenceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B2423A2CBCF00498069 /* LightSequenceAnimation.swift */; };
+		A9A08B2723A2E4B900498069 /* PixelsPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B2623A2E4B900498069 /* PixelsPreviewViewController.swift */; };
+		A9A08B2F23A5238000498069 /* BluefruitPlaygroundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B2E23A5238000498069 /* BluefruitPlaygroundUITests.swift */; };
+		A9A08B3923A523C900498069 /* Int+Bytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED762234FBEAB002FFF53 /* Int+Bytes.swift */; };
+		A9A08B3A23A523C900498069 /* UIView+AllSubviewsWithClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5FA23533FA000777535 /* UIView+AllSubviewsWithClass.swift */; };
+		A9A08B3B23A523C900498069 /* PeripheralList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9716BA82350128100CB174D /* PeripheralList.swift */; };
+		A9A08B3C23A523C900498069 /* ButtonStatusPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF06132359B31C0094327F /* ButtonStatusPanelViewController.swift */; };
+		A9A08B3D23A523C900498069 /* BleUUIDNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED755234FBEAB002FFF53 /* BleUUIDNames.swift */; };
+		A9A08B3E23A523C900498069 /* NeopixelsColorWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C02F2358EBDB00B5A493 /* NeopixelsColorWheelViewController.swift */; };
+		A9A08B3F23A523C900498069 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED70C234F76C5002FFF53 /* LocalizationManager.swift */; };
+		A9A08B4023A523C900498069 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC1452363A59B0062AB11 /* TemperatureViewController.swift */; };
+		A9A08B4123A523C900498069 /* HexUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75F234FBEAB002FFF53 /* HexUtils.swift */; };
+		A9A08B4323A523C900498069 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */; };
+		A9A08B4423A523C900498069 /* ToneGeneratorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C5236312CE004A06BA /* ToneGeneratorViewController.swift */; };
+		A9A08B4523A523C900498069 /* Data+ScanValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */; };
+		A9A08B4623A523C900498069 /* Data+LittleEndianTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */; };
+		A9A08B4723A523C900498069 /* TipPowerUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A980FE6C2357D14400E3A909 /* TipPowerUpViewController.swift */; };
+		A9A08B4823A523C900498069 /* CPBBle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC14D2364A82A0062AB11 /* CPBBle.swift */; };
+		A9A08B4923A523C900498069 /* NavigationBarWithScrollAwareRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C0236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift */; };
+		A9A08B4A23A523C900498069 /* NeopixelsUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC257B239FF45700A5586A /* NeopixelsUIUtils.swift */; };
+		A9A08B4B23A523C900498069 /* UartPacketManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED74D234FBEAB002FFF53 /* UartPacketManagerBase.swift */; };
+		A9A08B4C23A523C900498069 /* ModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298C237B73B100B6FC13 /* ModuleViewController.swift */; };
+		A9A08B4D23A523C900498069 /* NeopixelsColorPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */; };
+		A9A08B4E23A523C900498069 /* CornerShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA19423514B2800FA615E /* CornerShadowButton.swift */; };
+		A9A08B4F23A523C900498069 /* NSLayoutConstraint+ChangeMultiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5D423635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift */; };
+		A9A08B5023A523C900498069 /* UIButton+BackgroundColorForState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C723633EB2004A06BA /* UIButton+BackgroundColorForState.swift */; };
+		A9A08B5123A523C900498069 /* LightSequenceAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B2423A2CBCF00498069 /* LightSequenceAnimation.swift */; };
+		A9A08B5223A523C900498069 /* TipAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED706234F75E4002FFF53 /* TipAnimationViewController.swift */; };
+		A9A08B5323A523C900498069 /* AccelerometerPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5CE23634BC3004A06BA /* AccelerometerPanelViewController.swift */; };
+		A9A08B5423A523C900498069 /* UartLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED758234FBEAB002FFF53 /* UartLogManager.swift */; };
+		A9A08B5523A523C900498069 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED763234FBEAB002FFF53 /* CommandQueue.swift */; };
+		A9A08B5623A523C900498069 /* LightSequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B2223A2841200498069 /* LightSequence.swift */; };
+		A9A08B5723A523C900498069 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5D023634F03004A06BA /* GridView.swift */; };
+		A9A08B5823A523C900498069 /* BlePeripheral+Uart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75C234FBEAB002FFF53 /* BlePeripheral+Uart.swift */; };
+		A9A08B5923A523C900498069 /* BlePeripheral+CPBCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482993237B880000B6FC13 /* BlePeripheral+CPBCommon.swift */; };
+		A9A08B5A23A523C900498069 /* BlePeripheral+CPBToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77923821EF8006A225A /* BlePeripheral+CPBToneGenerator.swift */; };
+		A9A08B5B23A523C900498069 /* RssiUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9716BA92350128100CB174D /* RssiUI.swift */; };
+		A9A08B5C23A523C900498069 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482989237B73B100B6FC13 /* HelpViewController.swift */; };
+		A9A08B5D23A523C900498069 /* NeoPixelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1A02352973400FA615E /* NeoPixelsViewController.swift */; };
+		A9A08B5E23A523C900498069 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED716234FBDBA002FFF53 /* StartupViewController.swift */; };
+		A9A08B5F23A523C900498069 /* ScreenFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99BA722235000520080D03F /* ScreenFlowManager.swift */; };
+		A9A08B6123A523C900498069 /* TipsAnimationComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED710234F7753002FFF53 /* TipsAnimationComposerViewController.swift */; };
+		A9A08B6223A523C900498069 /* BlePeripheral+CPBPixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77B238AFA4E006A225A /* BlePeripheral+CPBPixels.swift */; };
+		A9A08B6323A523C900498069 /* PixelsPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B2623A2E4B900498069 /* PixelsPreviewViewController.swift */; };
+		A9A08B6423A523C900498069 /* BlePeripheralSimulated+CPBButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+CPBButtons.swift */; };
+		A9A08B6523A523C900498069 /* BlePeripheral+CPBAccelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E781238B7936006A225A /* BlePeripheral+CPBAccelerometer.swift */; };
+		A9A08B6623A523C900498069 /* ButtonStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF06112359B0600094327F /* ButtonStatusViewController.swift */; };
+		A9A08B6723A523C900498069 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5D2236358A8004A06BA /* UIView+RoundedCorners.swift */; };
+		A9A08B6823A523C900498069 /* TipWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98E4D2723565B76005B166D /* TipWelcomeViewController.swift */; };
+		A9A08B6923A523C900498069 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED70A234F7617002FFF53 /* Config.swift */; };
+		A9A08B6A23A523C900498069 /* TipDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A980FE6E2357D15400E3A909 /* TipDiscoverViewController.swift */; };
+		A9A08B6B23A523C900498069 /* ModulePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */; };
+		A9A08B6C23A523C900498069 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED704234F75E4002FFF53 /* TipsViewController.swift */; };
+		A9A08B6D23A523C900498069 /* NormalBrightnessColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77F238B75D9006A225A /* NormalBrightnessColorPickerController.swift */; };
+		A9A08B6E23A523C900498069 /* PanelInsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B3569E2365D420002093EE /* PanelInsetView.swift */; };
+		A9A08B6F23A523C900498069 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED764234FBEAB002FFF53 /* LogHelper.swift */; };
+		A9A08B7023A523C900498069 /* CommonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */; };
+		A9A08B7123A523C900498069 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1992351F1DD00FA615E /* HomeViewController.swift */; };
+		A9A08B7223A523C900498069 /* BlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED756234FBEAB002FFF53 /* BlePeripheral.swift */; };
+		A9A08B7323A523C900498069 /* BleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED757234FBEAB002FFF53 /* BleManager.swift */; };
+		A9A08B7423A523C900498069 /* LightSensorPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98F1B8A23594BE400C5269E /* LightSensorPanelViewController.swift */; };
+		A9A08B7523A523C900498069 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C22362F488004A06BA /* AboutViewController.swift */; };
+		A9A08B7623A523C900498069 /* ConfigUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98F1B882359494500C5269E /* ConfigUI.swift */; };
+		A9A08B7723A523C900498069 /* UartPacketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75B234FBEAB002FFF53 /* UartPacketManager.swift */; };
+		A9A08B7823A523C900498069 /* LightSensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A986AB92235942D600DF12C8 /* LightSensorViewController.swift */; };
+		A9A08B7923A523C900498069 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1922350F93A00FA615E /* TitleTableViewCell.swift */; };
+		A9A08B7A23A523C900498069 /* HelpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5BE23604DA3004A06BA /* HelpTableViewCell.swift */; };
+		A9A08B7B23A523C900498069 /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED705234F75E4002FFF53 /* TipViewController.swift */; };
+		A9A08B7C23A523C900498069 /* UIColor+LightAndDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C02D2358E6B400B5A493 /* UIColor+LightAndDark.swift */; };
+		A9A08B7D23A523C900498069 /* AccelerometerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5CC23634B45004A06BA /* AccelerometerViewController.swift */; };
+		A9A08B7E23A523C900498069 /* NormalBrightnessSliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77D238B7457006A225A /* NormalBrightnessSliderControl.swift */; };
+		A9A08B7F23A523C900498069 /* CircuitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1A423529C7A00FA615E /* CircuitViewController.swift */; };
+		A9A08B8023A523C900498069 /* BlePeripheral+ManufacturerAdafruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98B0D1C239FBE9300BF3696 /* BlePeripheral+ManufacturerAdafruit.swift */; };
+		A9A08B8123A523C900498069 /* UartDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75A234FBEAB002FFF53 /* UartDataManager.swift */; };
+		A9A08B8323A523C900498069 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED701234F754B002FFF53 /* GradientView.swift */; };
+		A9A08B8423A523C900498069 /* Types+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDEC40237C75C900EDDC46 /* Types+Data.swift */; };
+		A9A08B8523A523C900498069 /* NeopixelsLightSequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1A2235297B400FA615E /* NeopixelsLightSequenceViewController.swift */; };
+		A9A08B8623A523C900498069 /* CPBDataSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC4C237C47D800687BE6 /* CPBDataSeries.swift */; };
+		A9A08B8723A523C900498069 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99BA71C234FFE780080D03F /* Settings.swift */; };
+		A9A08B8823A523C900498069 /* BlePeripheral+Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75D234FBEAB002FFF53 /* BlePeripheral+Battery.swift */; };
+		A9A08B8923A523C900498069 /* TemperaturePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC1472363A7BD0062AB11 /* TemperaturePanelViewController.swift */; };
+		A9A08B8B23A523C900498069 /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA18F2350B26B00FA615E /* ScannerViewController.swift */; };
+		A9A08B8C23A523C900498069 /* ScanProblemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5BC235F9159004A06BA /* ScanProblemsViewController.swift */; };
+		A9A08B8E23A523C900498069 /* Pods_BluefruitPlayground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFE7B5A63DA548F17D0945D /* Pods_BluefruitPlayground.framework */; };
+		A9A08B9023A523C900498069 /* cpb.scn in Resources */ = {isa = PBXBuildFile; fileRef = A98E4D3123566785005B166D /* cpb.scn */; };
+		A9A08B9123A523C900498069 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
+		A9A08B9223A523C900498069 /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99BA71E234FFECF0080D03F /* DefaultPreferences.plist */; };
+		A9A08B9323A523C900498069 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9BED713234FBD2E002FFF53 /* Localizable.strings */; };
+		A9A08B9423A523C900498069 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9F2F1E0234E45FD00D85E6C /* Assets.xcassets */; };
+		A9A08B9523A523C900498069 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F12234DE4A2002374F0 /* Main.storyboard */; };
+		A9A08B9623A523C900498069 /* CPB_PcbSurface_Color.png in Resources */ = {isa = PBXBuildFile; fileRef = A96AA5BA235F903D004A06BA /* CPB_PcbSurface_Color.png */; };
+		A9A08BA123A5260300498069 /* BleManagerSimulated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B9F23A5260300498069 /* BleManagerSimulated.swift */; };
+		A9A08BA423A5286700498069 /* BlePeripheralSimulated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BA223A5286700498069 /* BlePeripheralSimulated.swift */; };
+		A9A08BAA23A7891500498069 /* ObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BA823A7891500498069 /* ObjectBuilder.m */; };
+		A9A08BAD23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BAC23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift */; };
+		A9A08BAF23A7957700498069 /* BlePeripheral+CPBButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BAE23A7956C00498069 /* BlePeripheral+CPBButtons.swift */; };
+		A9A08BB123A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BB023A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift */; };
+		A9ADE5F923533D5400777535 /* NeopixelsColorPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */; };
+		A9ADE5FB23533FA000777535 /* UIView+AllSubviewsWithClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5FA23533FA000777535 /* UIView+AllSubviewsWithClass.swift */; };
+		A9B3569F2365D420002093EE /* PanelInsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B3569E2365D420002093EE /* PanelInsetView.swift */; };
+		A9BDEC3D237C59C400EDDC46 /* BlePeripheral+CPBLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDEC3C237C59C400EDDC46 /* BlePeripheral+CPBLight.swift */; };
+		A9BDEC41237C75C900EDDC46 /* Types+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDEC40237C75C900EDDC46 /* Types+Data.swift */; };
+		A9BED702234F754B002FFF53 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED701234F754B002FFF53 /* GradientView.swift */; };
+		A9BED707234F75E4002FFF53 /* TipsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED704234F75E4002FFF53 /* TipsViewController.swift */; };
+		A9BED708234F75E4002FFF53 /* TipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED705234F75E4002FFF53 /* TipViewController.swift */; };
+		A9BED709234F75E4002FFF53 /* TipAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED706234F75E4002FFF53 /* TipAnimationViewController.swift */; };
+		A9BED70B234F7617002FFF53 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED70A234F7617002FFF53 /* Config.swift */; };
+		A9BED70D234F76C5002FFF53 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED70C234F76C5002FFF53 /* LocalizationManager.swift */; };
+		A9BED711234F7753002FFF53 /* TipsAnimationComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED710234F7753002FFF53 /* TipsAnimationComposerViewController.swift */; };
+		A9BED715234FBD2E002FFF53 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A9BED713234FBD2E002FFF53 /* Localizable.strings */; };
+		A9BED717234FBDBA002FFF53 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED716234FBDBA002FFF53 /* StartupViewController.swift */; };
+		A9BED767234FBEAB002FFF53 /* UartPacketManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED74D234FBEAB002FFF53 /* UartPacketManagerBase.swift */; };
+		A9BED76D234FBEAB002FFF53 /* BleUUIDNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED755234FBEAB002FFF53 /* BleUUIDNames.swift */; };
+		A9BED76E234FBEAB002FFF53 /* BlePeripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED756234FBEAB002FFF53 /* BlePeripheral.swift */; };
+		A9BED76F234FBEAB002FFF53 /* BleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED757234FBEAB002FFF53 /* BleManager.swift */; };
+		A9BED770234FBEAB002FFF53 /* UartLogManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED758234FBEAB002FFF53 /* UartLogManager.swift */; };
+		A9BED772234FBEAB002FFF53 /* UartDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75A234FBEAB002FFF53 /* UartDataManager.swift */; };
+		A9BED773234FBEAB002FFF53 /* UartPacketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75B234FBEAB002FFF53 /* UartPacketManager.swift */; };
+		A9BED774234FBEAB002FFF53 /* BlePeripheral+Uart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75C234FBEAB002FFF53 /* BlePeripheral+Uart.swift */; };
+		A9BED775234FBEAB002FFF53 /* BlePeripheral+Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75D234FBEAB002FFF53 /* BlePeripheral+Battery.swift */; };
+		A9BED776234FBEAB002FFF53 /* HexUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75F234FBEAB002FFF53 /* HexUtils.swift */; };
+		A9BED779234FBEAB002FFF53 /* Int+Bytes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED762234FBEAB002FFF53 /* Int+Bytes.swift */; };
+		A9BED77A234FBEAB002FFF53 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED763234FBEAB002FFF53 /* CommandQueue.swift */; };
+		A9BED77B234FBEAB002FFF53 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED764234FBEAB002FFF53 /* LogHelper.swift */; };
+		A9BED77D234FBEAB002FFF53 /* Data+ScanValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */; };
+		A9DC257C239FF45700A5586A /* NeopixelsUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC257B239FF45700A5586A /* NeopixelsUIUtils.swift */; };
+		A9DF06122359B0600094327F /* ButtonStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF06112359B0600094327F /* ButtonStatusViewController.swift */; };
+		A9DF06142359B31C0094327F /* ButtonStatusPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF06132359B31C0094327F /* ButtonStatusPanelViewController.swift */; };
+		A9E4C02E2358E6B400B5A493 /* UIColor+LightAndDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C02D2358E6B400B5A493 /* UIColor+LightAndDark.swift */; };
+		A9E4C0302358EBDB00B5A493 /* NeopixelsColorWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C02F2358EBDB00B5A493 /* NeopixelsColorWheelViewController.swift */; };
+		A9EAA1912350B26B00FA615E /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA18F2350B26B00FA615E /* ScannerViewController.swift */; };
+		A9EAA1932350F93A00FA615E /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1922350F93A00FA615E /* TitleTableViewCell.swift */; };
+		A9EAA19523514B2800FA615E /* CornerShadowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA19423514B2800FA615E /* CornerShadowButton.swift */; };
+		A9EAA19B2351F1DD00FA615E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1992351F1DD00FA615E /* HomeViewController.swift */; };
+		A9EAA1A12352973400FA615E /* NeoPixelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1A02352973400FA615E /* NeoPixelsViewController.swift */; };
+		A9EAA1A3235297B400FA615E /* NeopixelsLightSequenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1A2235297B400FA615E /* NeopixelsLightSequenceViewController.swift */; };
+		A9EAA1A523529C7A00FA615E /* CircuitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1A423529C7A00FA615E /* CircuitViewController.swift */; };
+		A9F2F1E1234E45FD00D85E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9F2F1E0234E45FD00D85E6C /* Assets.xcassets */; };
+		BDAEA47A6813DAA7C46DEC37 /* Pods_BluefruitPlayground.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BFE7B5A63DA548F17D0945D /* Pods_BluefruitPlayground.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A9A08B3123A5238000498069 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A92B9F01234DE4A2002374F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A92B9F08234DE4A2002374F0;
+			remoteInfo = BluefruitPlayground;
+		};
+		A9A08B9D23A523DE00498069 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A92B9F01234DE4A2002374F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A9A08B3623A523C900498069;
+			remoteInfo = "BluefruitPlayground-SimulateBluetooth";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		02A29BC776CC7DA5C23560A7 /* Pods-BluefruitPlayground.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluefruitPlayground.release.xcconfig"; path = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.release.xcconfig"; sourceTree = "<group>"; };
+		02C55600113CD967F7C0C908 /* Pods-CPX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPX.debug.xcconfig"; path = "Target Support Files/Pods-CPX/Pods-CPX.debug.xcconfig"; sourceTree = "<group>"; };
+		3348DDE33D89A5959702CAC9 /* Pods-BluefruitPlayground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluefruitPlayground.debug.xcconfig"; path = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.debug.xcconfig"; sourceTree = "<group>"; };
+		41FC984EE1CDB9B54C5084ED /* Pods-CPX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPX.release.xcconfig"; path = "Target Support Files/Pods-CPX/Pods-CPX.release.xcconfig"; sourceTree = "<group>"; };
+		8BFE7B5A63DA548F17D0945D /* Pods_BluefruitPlayground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BluefruitPlayground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+LittleEndianTypes.swift"; sourceTree = "<group>"; };
+		A901EC4C237C47D800687BE6 /* CPBDataSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPBDataSeries.swift; sourceTree = "<group>"; };
+		A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluefruit Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A92B9F13234DE4A2002374F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A92B9F18234DE4A5002374F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A92B9F1A234DE4A5002374F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A92BC5F423A7A7E4009CAD0E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		A9482989237B73B100B6FC13 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTableViewCell.swift; sourceTree = "<group>"; };
+		A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModulePanelViewController.swift; sourceTree = "<group>"; };
+		A948298C237B73B100B6FC13 /* ModuleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleViewController.swift; sourceTree = "<group>"; };
+		A9482991237B86C600B6FC13 /* BlePeripheral+CPBTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+CPBTemperature.swift"; sourceTree = "<group>"; };
+		A9482993237B880000B6FC13 /* BlePeripheral+CPBCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+CPBCommon.swift"; sourceTree = "<group>"; };
+		A94AC1452363A59B0062AB11 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
+		A94AC1472363A7BD0062AB11 /* TemperaturePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturePanelViewController.swift; sourceTree = "<group>"; };
+		A94AC14D2364A82A0062AB11 /* CPBBle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPBBle.swift; sourceTree = "<group>"; };
+		A958E77923821EF8006A225A /* BlePeripheral+CPBToneGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+CPBToneGenerator.swift"; sourceTree = "<group>"; };
+		A958E77B238AFA4E006A225A /* BlePeripheral+CPBPixels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+CPBPixels.swift"; sourceTree = "<group>"; };
+		A958E77D238B7457006A225A /* NormalBrightnessSliderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalBrightnessSliderControl.swift; sourceTree = "<group>"; };
+		A958E77F238B75D9006A225A /* NormalBrightnessColorPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalBrightnessColorPickerController.swift; sourceTree = "<group>"; };
+		A958E781238B7936006A225A /* BlePeripheral+CPBAccelerometer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+CPBAccelerometer.swift"; sourceTree = "<group>"; };
+		A96AA5BA235F903D004A06BA /* CPB_PcbSurface_Color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CPB_PcbSurface_Color.png; sourceTree = "<group>"; };
+		A96AA5BC235F9159004A06BA /* ScanProblemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanProblemsViewController.swift; sourceTree = "<group>"; };
+		A96AA5BE23604DA3004A06BA /* HelpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTableViewCell.swift; sourceTree = "<group>"; };
+		A96AA5C0236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarWithScrollAwareRightButton.swift; sourceTree = "<group>"; };
+		A96AA5C22362F488004A06BA /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		A96AA5C5236312CE004A06BA /* ToneGeneratorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToneGeneratorViewController.swift; sourceTree = "<group>"; };
+		A96AA5C723633EB2004A06BA /* UIButton+BackgroundColorForState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+BackgroundColorForState.swift"; sourceTree = "<group>"; };
+		A96AA5CC23634B45004A06BA /* AccelerometerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerViewController.swift; sourceTree = "<group>"; };
+		A96AA5CE23634BC3004A06BA /* AccelerometerPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerPanelViewController.swift; sourceTree = "<group>"; };
+		A96AA5D023634F03004A06BA /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		A96AA5D2236358A8004A06BA /* UIView+RoundedCorners.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+RoundedCorners.swift"; sourceTree = "<group>"; };
+		A96AA5D423635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+ChangeMultiplier.swift"; sourceTree = "<group>"; };
+		A9716BA82350128100CB174D /* PeripheralList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralList.swift; sourceTree = "<group>"; };
+		A9716BA92350128100CB174D /* RssiUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RssiUI.swift; sourceTree = "<group>"; };
+		A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+CPBButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+CPBButtons.swift"; sourceTree = "<group>"; };
+		A980FE6C2357D14400E3A909 /* TipPowerUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPowerUpViewController.swift; sourceTree = "<group>"; };
+		A980FE6E2357D15400E3A909 /* TipDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDiscoverViewController.swift; sourceTree = "<group>"; };
+		A986AB92235942D600DF12C8 /* LightSensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSensorViewController.swift; sourceTree = "<group>"; };
+		A98B0D1C239FBE9300BF3696 /* BlePeripheral+ManufacturerAdafruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+ManufacturerAdafruit.swift"; sourceTree = "<group>"; };
+		A98E4D2723565B76005B166D /* TipWelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipWelcomeViewController.swift; sourceTree = "<group>"; };
+		A98E4D3123566785005B166D /* cpb.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = cpb.scn; sourceTree = "<group>"; };
+		A98F1B882359494500C5269E /* ConfigUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigUI.swift; sourceTree = "<group>"; };
+		A98F1B8A23594BE400C5269E /* LightSensorPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSensorPanelViewController.swift; sourceTree = "<group>"; };
+		A99BA71C234FFE780080D03F /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		A99BA71E234FFECF0080D03F /* DefaultPreferences.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DefaultPreferences.plist; sourceTree = "<group>"; };
+		A99BA722235000520080D03F /* ScreenFlowManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenFlowManager.swift; sourceTree = "<group>"; };
+		A9A08B2223A2841200498069 /* LightSequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSequence.swift; sourceTree = "<group>"; };
+		A9A08B2423A2CBCF00498069 /* LightSequenceAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSequenceAnimation.swift; sourceTree = "<group>"; };
+		A9A08B2623A2E4B900498069 /* PixelsPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixelsPreviewViewController.swift; sourceTree = "<group>"; };
+		A9A08B2C23A5238000498069 /* BluefruitPlaygroundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluefruitPlaygroundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9A08B2E23A5238000498069 /* BluefruitPlaygroundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluefruitPlaygroundUITests.swift; sourceTree = "<group>"; };
+		A9A08B3023A5238000498069 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9A08B9B23A523C900498069 /* BluefruitPlayground-SimulateBluetooth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "BluefruitPlayground-SimulateBluetooth.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9A08B9C23A523C900498069 /* BluefruitPlayground-SimulatedBluetooth-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "BluefruitPlayground-SimulatedBluetooth-Info.plist"; path = "/Users/antonio/Development/Adafruit/BluefruitPlayground/apps/BluefruitPlayground_iOS/BluefruitPlayground-SimulatedBluetooth-Info.plist"; sourceTree = "<absolute>"; };
+		A9A08B9F23A5260300498069 /* BleManagerSimulated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BleManagerSimulated.swift; sourceTree = "<group>"; };
+		A9A08BA223A5286700498069 /* BlePeripheralSimulated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlePeripheralSimulated.swift; sourceTree = "<group>"; };
+		A9A08BA623A7891500498069 /* BluefruitPlayground-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BluefruitPlayground-Bridging-Header.h"; sourceTree = "<group>"; };
+		A9A08BA723A7891500498069 /* BluefruitPlayground-SimulateBluetooth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BluefruitPlayground-SimulateBluetooth-Bridging-Header.h"; sourceTree = "<group>"; };
+		A9A08BA823A7891500498069 /* ObjectBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjectBuilder.m; sourceTree = "<group>"; };
+		A9A08BAB23A789E100498069 /* ObjectBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectBuilder.h; sourceTree = "<group>"; };
+		A9A08BAC23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+CPBLight.swift"; sourceTree = "<group>"; };
+		A9A08BAE23A7956C00498069 /* BlePeripheral+CPBButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+CPBButtons.swift"; sourceTree = "<group>"; };
+		A9A08BB023A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+CPBTemperature.swift"; sourceTree = "<group>"; };
+		A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeopixelsColorPaletteViewController.swift; sourceTree = "<group>"; };
+		A9ADE5FA23533FA000777535 /* UIView+AllSubviewsWithClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AllSubviewsWithClass.swift"; sourceTree = "<group>"; };
+		A9B3569E2365D420002093EE /* PanelInsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelInsetView.swift; sourceTree = "<group>"; };
+		A9BDEC3C237C59C400EDDC46 /* BlePeripheral+CPBLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+CPBLight.swift"; sourceTree = "<group>"; };
+		A9BDEC40237C75C900EDDC46 /* Types+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Types+Data.swift"; sourceTree = "<group>"; };
+		A9BED701234F754B002FFF53 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		A9BED704234F75E4002FFF53 /* TipsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsViewController.swift; sourceTree = "<group>"; };
+		A9BED705234F75E4002FFF53 /* TipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipViewController.swift; sourceTree = "<group>"; };
+		A9BED706234F75E4002FFF53 /* TipAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipAnimationViewController.swift; sourceTree = "<group>"; };
+		A9BED70A234F7617002FFF53 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A9BED70C234F76C5002FFF53 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		A9BED710234F7753002FFF53 /* TipsAnimationComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipsAnimationComposerViewController.swift; sourceTree = "<group>"; };
+		A9BED714234FBD2E002FFF53 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A9BED716234FBDBA002FFF53 /* StartupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupViewController.swift; sourceTree = "<group>"; };
+		A9BED74D234FBEAB002FFF53 /* UartPacketManagerBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UartPacketManagerBase.swift; sourceTree = "<group>"; };
+		A9BED755234FBEAB002FFF53 /* BleUUIDNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BleUUIDNames.swift; sourceTree = "<group>"; };
+		A9BED756234FBEAB002FFF53 /* BlePeripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlePeripheral.swift; sourceTree = "<group>"; };
+		A9BED757234FBEAB002FFF53 /* BleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BleManager.swift; sourceTree = "<group>"; };
+		A9BED758234FBEAB002FFF53 /* UartLogManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UartLogManager.swift; sourceTree = "<group>"; };
+		A9BED75A234FBEAB002FFF53 /* UartDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UartDataManager.swift; sourceTree = "<group>"; };
+		A9BED75B234FBEAB002FFF53 /* UartPacketManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UartPacketManager.swift; sourceTree = "<group>"; };
+		A9BED75C234FBEAB002FFF53 /* BlePeripheral+Uart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+Uart.swift"; sourceTree = "<group>"; };
+		A9BED75D234FBEAB002FFF53 /* BlePeripheral+Battery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+Battery.swift"; sourceTree = "<group>"; };
+		A9BED75F234FBEAB002FFF53 /* HexUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexUtils.swift; sourceTree = "<group>"; };
+		A9BED762234FBEAB002FFF53 /* Int+Bytes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Int+Bytes.swift"; sourceTree = "<group>"; };
+		A9BED763234FBEAB002FFF53 /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
+		A9BED764234FBEAB002FFF53 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
+		A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+ScanValue.swift"; sourceTree = "<group>"; };
+		A9DC257B239FF45700A5586A /* NeopixelsUIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeopixelsUIUtils.swift; sourceTree = "<group>"; };
+		A9DF06112359B0600094327F /* ButtonStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatusViewController.swift; sourceTree = "<group>"; };
+		A9DF06132359B31C0094327F /* ButtonStatusPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatusPanelViewController.swift; sourceTree = "<group>"; };
+		A9E4C02D2358E6B400B5A493 /* UIColor+LightAndDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+LightAndDark.swift"; sourceTree = "<group>"; };
+		A9E4C02F2358EBDB00B5A493 /* NeopixelsColorWheelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeopixelsColorWheelViewController.swift; sourceTree = "<group>"; };
+		A9EAA18F2350B26B00FA615E /* ScannerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScannerViewController.swift; sourceTree = "<group>"; };
+		A9EAA1922350F93A00FA615E /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		A9EAA19423514B2800FA615E /* CornerShadowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerShadowButton.swift; sourceTree = "<group>"; };
+		A9EAA1992351F1DD00FA615E /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A9EAA1A02352973400FA615E /* NeoPixelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeoPixelsViewController.swift; sourceTree = "<group>"; };
+		A9EAA1A2235297B400FA615E /* NeopixelsLightSequenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeopixelsLightSequenceViewController.swift; sourceTree = "<group>"; };
+		A9EAA1A423529C7A00FA615E /* CircuitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircuitViewController.swift; sourceTree = "<group>"; };
+		A9F2F1E0234E45FD00D85E6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A92B9F06234DE4A2002374F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BDAEA47A6813DAA7C46DEC37 /* Pods_BluefruitPlayground.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9A08B2923A5238000498069 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9A08B8D23A523C900498069 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9A08B8E23A523C900498069 /* Pods_BluefruitPlayground.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		02DA6BD5CD8E323E106720FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BFE7B5A63DA548F17D0945D /* Pods_BluefruitPlayground.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		956724BCE9736AD0AC02567C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				02C55600113CD967F7C0C908 /* Pods-CPX.debug.xcconfig */,
+				41FC984EE1CDB9B54C5084ED /* Pods-CPX.release.xcconfig */,
+				3348DDE33D89A5959702CAC9 /* Pods-BluefruitPlayground.debug.xcconfig */,
+				02A29BC776CC7DA5C23560A7 /* Pods-BluefruitPlayground.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		A901EC50237C51B100687BE6 /* CPB */ = {
+			isa = PBXGroup;
+			children = (
+				A9482993237B880000B6FC13 /* BlePeripheral+CPBCommon.swift */,
+				A9482991237B86C600B6FC13 /* BlePeripheral+CPBTemperature.swift */,
+				A9A08BAE23A7956C00498069 /* BlePeripheral+CPBButtons.swift */,
+				A9BDEC3C237C59C400EDDC46 /* BlePeripheral+CPBLight.swift */,
+				A958E77923821EF8006A225A /* BlePeripheral+CPBToneGenerator.swift */,
+				A958E77B238AFA4E006A225A /* BlePeripheral+CPBPixels.swift */,
+				A958E781238B7936006A225A /* BlePeripheral+CPBAccelerometer.swift */,
+				A98B0D1C239FBE9300BF3696 /* BlePeripheral+ManufacturerAdafruit.swift */,
+			);
+			path = CPB;
+			sourceTree = "<group>";
+		};
+		A92B9F00234DE4A2002374F0 = {
+			isa = PBXGroup;
+			children = (
+				A92B9F0B234DE4A2002374F0 /* BluefruitPlayground */,
+				A9A08B2D23A5238000498069 /* BluefruitPlaygroundUITests */,
+				A92B9F0A234DE4A2002374F0 /* Products */,
+				956724BCE9736AD0AC02567C /* Pods */,
+				02DA6BD5CD8E323E106720FF /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A92B9F0A234DE4A2002374F0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */,
+				A9A08B2C23A5238000498069 /* BluefruitPlaygroundUITests.xctest */,
+				A9A08B9B23A523C900498069 /* BluefruitPlayground-SimulateBluetooth.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A92B9F0B234DE4A2002374F0 /* BluefruitPlayground */ = {
+			isa = PBXGroup;
+			children = (
+				A9BED70A234F7617002FFF53 /* Config.swift */,
+				A98F1B882359494500C5269E /* ConfigUI.swift */,
+				A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */,
+				A92B9F12234DE4A2002374F0 /* Main.storyboard */,
+				A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */,
+				A9F2F1E0234E45FD00D85E6C /* Assets.xcassets */,
+				A9A08BA623A7891500498069 /* BluefruitPlayground-Bridging-Header.h */,
+				A9A08BA723A7891500498069 /* BluefruitPlayground-SimulateBluetooth-Bridging-Header.h */,
+				A92B9F1A234DE4A5002374F0 /* Info.plist */,
+				A9A08B9C23A523C900498069 /* BluefruitPlayground-SimulatedBluetooth-Info.plist */,
+				A9F2F1DC234E45E600D85E6C /* Resources */,
+				A99BA71B234FFE780080D03F /* Model */,
+				A9F2F1DA234E45E600D85E6C /* ViewControllers */,
+				A9BED700234F754B002FFF53 /* Utils */,
+				A9BED74B234FBEAB002FFF53 /* AdafruitKit */,
+			);
+			path = BluefruitPlayground;
+			sourceTree = "<group>";
+		};
+		A9482988237B73B100B6FC13 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A9482989237B73B100B6FC13 /* HelpViewController.swift */,
+				A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */,
+				A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */,
+				A948298C237B73B100B6FC13 /* ModuleViewController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		A94AC1442363A5750062AB11 /* Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				A94AC1452363A59B0062AB11 /* TemperatureViewController.swift */,
+				A94AC1472363A7BD0062AB11 /* TemperaturePanelViewController.swift */,
+			);
+			path = Temperature;
+			sourceTree = "<group>";
+		};
+		A96AA5C4236312C1004A06BA /* ToneGenerator */ = {
+			isa = PBXGroup;
+			children = (
+				A96AA5C5236312CE004A06BA /* ToneGeneratorViewController.swift */,
+			);
+			path = ToneGenerator;
+			sourceTree = "<group>";
+		};
+		A96AA5CB23634B37004A06BA /* Accelerometer */ = {
+			isa = PBXGroup;
+			children = (
+				A96AA5CC23634B45004A06BA /* AccelerometerViewController.swift */,
+				A96AA5CE23634BC3004A06BA /* AccelerometerPanelViewController.swift */,
+			);
+			path = Accelerometer;
+			sourceTree = "<group>";
+		};
+		A9716BA72350128100CB174D /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				A9716BA82350128100CB174D /* PeripheralList.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		A986AB91235942C400DF12C8 /* LightSensor */ = {
+			isa = PBXGroup;
+			children = (
+				A986AB92235942D600DF12C8 /* LightSensorViewController.swift */,
+				A98F1B8A23594BE400C5269E /* LightSensorPanelViewController.swift */,
+			);
+			path = LightSensor;
+			sourceTree = "<group>";
+		};
+		A98E4D222356565C005B166D /* models3d */ = {
+			isa = PBXGroup;
+			children = (
+				A98E4D3123566785005B166D /* cpb.scn */,
+				A96AA5BA235F903D004A06BA /* CPB_PcbSurface_Color.png */,
+			);
+			path = models3d;
+			sourceTree = "<group>";
+		};
+		A99BA71B234FFE780080D03F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A9716BA72350128100CB174D /* Scanner */,
+				A99BA71C234FFE780080D03F /* Settings.swift */,
+				A94AC14D2364A82A0062AB11 /* CPBBle.swift */,
+				A901EC4C237C47D800687BE6 /* CPBDataSeries.swift */,
+				A9A08B2223A2841200498069 /* LightSequence.swift */,
+				A9A08B2423A2CBCF00498069 /* LightSequenceAnimation.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A9A08B2D23A5238000498069 /* BluefruitPlaygroundUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A9A08B2E23A5238000498069 /* BluefruitPlaygroundUITests.swift */,
+				A92BC5F423A7A7E4009CAD0E /* SnapshotHelper.swift */,
+				A9A08B3023A5238000498069 /* Info.plist */,
+			);
+			path = BluefruitPlaygroundUITests;
+			sourceTree = "<group>";
+		};
+		A9A08BA523A788D100498069 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A9A08B9F23A5260300498069 /* BleManagerSimulated.swift */,
+				A9A08BA223A5286700498069 /* BlePeripheralSimulated.swift */,
+				A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+CPBButtons.swift */,
+				A9A08BAC23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift */,
+				A9A08BB023A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift */,
+				A9A08BAB23A789E100498069 /* ObjectBuilder.h */,
+				A9A08BA823A7891500498069 /* ObjectBuilder.m */,
+			);
+			name = Tests;
+			path = BluefruitPlayground/AdafruitKit/Ble/Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		A9BED700234F754B002FFF53 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A9716BA92350128100CB174D /* RssiUI.swift */,
+				A96AA5D2236358A8004A06BA /* UIView+RoundedCorners.swift */,
+				A96AA5D423635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift */,
+				A96AA5C723633EB2004A06BA /* UIButton+BackgroundColorForState.swift */,
+				A9E4C02D2358E6B400B5A493 /* UIColor+LightAndDark.swift */,
+				A9EAA19423514B2800FA615E /* CornerShadowButton.swift */,
+				A9ADE5FA23533FA000777535 /* UIView+AllSubviewsWithClass.swift */,
+				A96AA5C0236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift */,
+				A9BED701234F754B002FFF53 /* GradientView.swift */,
+				A96AA5D023634F03004A06BA /* GridView.swift */,
+				A9BED70C234F76C5002FFF53 /* LocalizationManager.swift */,
+				A99BA722235000520080D03F /* ScreenFlowManager.swift */,
+				A9B3569E2365D420002093EE /* PanelInsetView.swift */,
+				A958E77D238B7457006A225A /* NormalBrightnessSliderControl.swift */,
+				A958E77F238B75D9006A225A /* NormalBrightnessColorPickerController.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A9BED703234F75E4002FFF53 /* Tips */ = {
+			isa = PBXGroup;
+			children = (
+				A9BED704234F75E4002FFF53 /* TipsViewController.swift */,
+				A9BED705234F75E4002FFF53 /* TipViewController.swift */,
+				A9BED706234F75E4002FFF53 /* TipAnimationViewController.swift */,
+				A9BED710234F7753002FFF53 /* TipsAnimationComposerViewController.swift */,
+				A98E4D2723565B76005B166D /* TipWelcomeViewController.swift */,
+				A980FE6C2357D14400E3A909 /* TipPowerUpViewController.swift */,
+				A980FE6E2357D15400E3A909 /* TipDiscoverViewController.swift */,
+			);
+			path = Tips;
+			sourceTree = "<group>";
+		};
+		A9BED712234FBD2E002FFF53 /* localization */ = {
+			isa = PBXGroup;
+			children = (
+				A9BED713234FBD2E002FFF53 /* Localizable.strings */,
+			);
+			path = localization;
+			sourceTree = "<group>";
+		};
+		A9BED74B234FBEAB002FFF53 /* AdafruitKit */ = {
+			isa = PBXGroup;
+			children = (
+				A9BED74C234FBEAB002FFF53 /* Ble */,
+				A9BED75E234FBEAB002FFF53 /* Utils */,
+			);
+			path = AdafruitKit;
+			sourceTree = "<group>";
+		};
+		A9BED74C234FBEAB002FFF53 /* Ble */ = {
+			isa = PBXGroup;
+			children = (
+				A9BED74D234FBEAB002FFF53 /* UartPacketManagerBase.swift */,
+				A9BED754234FBEAB002FFF53 /* BleCentralMode */,
+				A901EC50237C51B100687BE6 /* CPB */,
+				A9A08BA523A788D100498069 /* Tests */,
+			);
+			path = Ble;
+			sourceTree = "<group>";
+		};
+		A9BED754234FBEAB002FFF53 /* BleCentralMode */ = {
+			isa = PBXGroup;
+			children = (
+				A9BED755234FBEAB002FFF53 /* BleUUIDNames.swift */,
+				A9BED756234FBEAB002FFF53 /* BlePeripheral.swift */,
+				A9BED757234FBEAB002FFF53 /* BleManager.swift */,
+				A9BED758234FBEAB002FFF53 /* UartLogManager.swift */,
+				A9BED75A234FBEAB002FFF53 /* UartDataManager.swift */,
+				A9BED75B234FBEAB002FFF53 /* UartPacketManager.swift */,
+				A9BED75C234FBEAB002FFF53 /* BlePeripheral+Uart.swift */,
+				A9BED75D234FBEAB002FFF53 /* BlePeripheral+Battery.swift */,
+			);
+			path = BleCentralMode;
+			sourceTree = "<group>";
+		};
+		A9BED75E234FBEAB002FFF53 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				A9BED763234FBEAB002FFF53 /* CommandQueue.swift */,
+				A9BED764234FBEAB002FFF53 /* LogHelper.swift */,
+				A9BED75F234FBEAB002FFF53 /* HexUtils.swift */,
+				A9BED762234FBEAB002FFF53 /* Int+Bytes.swift */,
+				A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */,
+				A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */,
+				A9BDEC40237C75C900EDDC46 /* Types+Data.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		A9DF06102359B04C0094327F /* ButtonStatus */ = {
+			isa = PBXGroup;
+			children = (
+				A9DF06112359B0600094327F /* ButtonStatusViewController.swift */,
+				A9DF06132359B31C0094327F /* ButtonStatusPanelViewController.swift */,
+			);
+			path = ButtonStatus;
+			sourceTree = "<group>";
+		};
+		A9EAA18D2350B26B00FA615E /* Scanner */ = {
+			isa = PBXGroup;
+			children = (
+				A9EAA18F2350B26B00FA615E /* ScannerViewController.swift */,
+				A9EAA1922350F93A00FA615E /* TitleTableViewCell.swift */,
+				A96AA5C22362F488004A06BA /* AboutViewController.swift */,
+				A96AA5BC235F9159004A06BA /* ScanProblemsViewController.swift */,
+				A96AA5BE23604DA3004A06BA /* HelpTableViewCell.swift */,
+			);
+			path = Scanner;
+			sourceTree = "<group>";
+		};
+		A9EAA1982351F1DD00FA615E /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A9EAA1992351F1DD00FA615E /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A9EAA19F2352973400FA615E /* Neopixels */ = {
+			isa = PBXGroup;
+			children = (
+				A9EAA1A02352973400FA615E /* NeoPixelsViewController.swift */,
+				A9EAA1A423529C7A00FA615E /* CircuitViewController.swift */,
+				A9EAA1A2235297B400FA615E /* NeopixelsLightSequenceViewController.swift */,
+				A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */,
+				A9E4C02F2358EBDB00B5A493 /* NeopixelsColorWheelViewController.swift */,
+				A9DC257B239FF45700A5586A /* NeopixelsUIUtils.swift */,
+				A9A08B2623A2E4B900498069 /* PixelsPreviewViewController.swift */,
+			);
+			path = Neopixels;
+			sourceTree = "<group>";
+		};
+		A9F2F1DA234E45E600D85E6C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A9BED716234FBDBA002FFF53 /* StartupViewController.swift */,
+				A9482988237B73B100B6FC13 /* Common */,
+				A9BED703234F75E4002FFF53 /* Tips */,
+				A9EAA18D2350B26B00FA615E /* Scanner */,
+				A9EAA1982351F1DD00FA615E /* Home */,
+				A9EAA19F2352973400FA615E /* Neopixels */,
+				A986AB91235942C400DF12C8 /* LightSensor */,
+				A9DF06102359B04C0094327F /* ButtonStatus */,
+				A96AA5C4236312C1004A06BA /* ToneGenerator */,
+				A96AA5CB23634B37004A06BA /* Accelerometer */,
+				A94AC1442363A5750062AB11 /* Temperature */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A9F2F1DC234E45E600D85E6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A99BA71E234FFECF0080D03F /* DefaultPreferences.plist */,
+				A9BED712234FBD2E002FFF53 /* localization */,
+				A98E4D222356565C005B166D /* models3d */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A92B9F08234DE4A2002374F0 /* BluefruitPlayground */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A92B9F1D234DE4A5002374F0 /* Build configuration list for PBXNativeTarget "BluefruitPlayground" */;
+			buildPhases = (
+				0BB54983E008F03A1FD98DBE /* [CP] Check Pods Manifest.lock */,
+				A92B9F05234DE4A2002374F0 /* Sources */,
+				A92B9F06234DE4A2002374F0 /* Frameworks */,
+				A92B9F07234DE4A2002374F0 /* Resources */,
+				B6BCA356C48844C00AD34438 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BluefruitPlayground;
+			productName = CPX;
+			productReference = A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A9A08B2B23A5238000498069 /* BluefruitPlaygroundUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9A08B3523A5238000498069 /* Build configuration list for PBXNativeTarget "BluefruitPlaygroundUITests" */;
+			buildPhases = (
+				A9A08B2823A5238000498069 /* Sources */,
+				A9A08B2923A5238000498069 /* Frameworks */,
+				A9A08B2A23A5238000498069 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A9A08B3223A5238000498069 /* PBXTargetDependency */,
+				A9A08B9E23A523DE00498069 /* PBXTargetDependency */,
+			);
+			name = BluefruitPlaygroundUITests;
+			productName = BluefruitPlaygroundUITests;
+			productReference = A9A08B2C23A5238000498069 /* BluefruitPlaygroundUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		A9A08B3623A523C900498069 /* BluefruitPlayground-SimulateBluetooth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A9A08B9823A523C900498069 /* Build configuration list for PBXNativeTarget "BluefruitPlayground-SimulateBluetooth" */;
+			buildPhases = (
+				A9A08B3723A523C900498069 /* [CP] Check Pods Manifest.lock */,
+				A9A08B3823A523C900498069 /* Sources */,
+				A9A08B8D23A523C900498069 /* Frameworks */,
+				A9A08B8F23A523C900498069 /* Resources */,
+				A9A08B9723A523C900498069 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "BluefruitPlayground-SimulateBluetooth";
+			productName = CPX;
+			productReference = A9A08B9B23A523C900498069 /* BluefruitPlayground-SimulateBluetooth.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A92B9F01234DE4A2002374F0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = Adafruit;
+				TargetAttributes = {
+					A92B9F08234DE4A2002374F0 = {
+						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1130;
+					};
+					A9A08B2B23A5238000498069 = {
+						CreatedOnToolsVersion = 11.3;
+						TestTargetID = A9A08B3623A523C900498069;
+					};
+					A9A08B3623A523C900498069 = {
+						LastSwiftMigration = 1130;
+					};
+				};
+			};
+			buildConfigurationList = A92B9F04234DE4A2002374F0 /* Build configuration list for PBXProject "BluefruitPlayground" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A92B9F00234DE4A2002374F0;
+			productRefGroup = A92B9F0A234DE4A2002374F0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A92B9F08234DE4A2002374F0 /* BluefruitPlayground */,
+				A9A08B3623A523C900498069 /* BluefruitPlayground-SimulateBluetooth */,
+				A9A08B2B23A5238000498069 /* BluefruitPlaygroundUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A92B9F07234DE4A2002374F0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A98E4D3223566785005B166D /* cpb.scn in Resources */,
+				A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */,
+				A99BA71F234FFECF0080D03F /* DefaultPreferences.plist in Resources */,
+				A9BED715234FBD2E002FFF53 /* Localizable.strings in Resources */,
+				A9F2F1E1234E45FD00D85E6C /* Assets.xcassets in Resources */,
+				A92B9F14234DE4A2002374F0 /* Main.storyboard in Resources */,
+				A96AA5BB235F903D004A06BA /* CPB_PcbSurface_Color.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9A08B2A23A5238000498069 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9A08B8F23A523C900498069 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9A08B9023A523C900498069 /* cpb.scn in Resources */,
+				A9A08B9123A523C900498069 /* LaunchScreen.storyboard in Resources */,
+				A9A08B9223A523C900498069 /* DefaultPreferences.plist in Resources */,
+				A9A08B9323A523C900498069 /* Localizable.strings in Resources */,
+				A9A08B9423A523C900498069 /* Assets.xcassets in Resources */,
+				A9A08B9523A523C900498069 /* Main.storyboard in Resources */,
+				A9A08B9623A523C900498069 /* CPB_PcbSurface_Color.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0BB54983E008F03A1FD98DBE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BluefruitPlayground-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9A08B3723A523C900498069 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BluefruitPlayground-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A9A08B9723A523C900498069 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6BCA356C48844C00AD34438 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A92B9F05234DE4A2002374F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9BED779234FBEAB002FFF53 /* Int+Bytes.swift in Sources */,
+				A9ADE5FB23533FA000777535 /* UIView+AllSubviewsWithClass.swift in Sources */,
+				A9716BAA2350128100CB174D /* PeripheralList.swift in Sources */,
+				A9DF06142359B31C0094327F /* ButtonStatusPanelViewController.swift in Sources */,
+				A9BED76D234FBEAB002FFF53 /* BleUUIDNames.swift in Sources */,
+				A9E4C0302358EBDB00B5A493 /* NeopixelsColorWheelViewController.swift in Sources */,
+				A9BED70D234F76C5002FFF53 /* LocalizationManager.swift in Sources */,
+				A94AC1462363A59B0062AB11 /* TemperatureViewController.swift in Sources */,
+				A9BED776234FBEAB002FFF53 /* HexUtils.swift in Sources */,
+				A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */,
+				A96AA5C6236312CE004A06BA /* ToneGeneratorViewController.swift in Sources */,
+				A9BED77D234FBEAB002FFF53 /* Data+ScanValue.swift in Sources */,
+				A901EC48237C43C000687BE6 /* Data+LittleEndianTypes.swift in Sources */,
+				A980FE6D2357D14400E3A909 /* TipPowerUpViewController.swift in Sources */,
+				A94AC14E2364A82B0062AB11 /* CPBBle.swift in Sources */,
+				A96AA5C1236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift in Sources */,
+				A9DC257C239FF45700A5586A /* NeopixelsUIUtils.swift in Sources */,
+				A9BED767234FBEAB002FFF53 /* UartPacketManagerBase.swift in Sources */,
+				A9482990237B73B100B6FC13 /* ModuleViewController.swift in Sources */,
+				A9ADE5F923533D5400777535 /* NeopixelsColorPaletteViewController.swift in Sources */,
+				A9EAA19523514B2800FA615E /* CornerShadowButton.swift in Sources */,
+				A96AA5D523635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift in Sources */,
+				A96AA5C823633EB3004A06BA /* UIButton+BackgroundColorForState.swift in Sources */,
+				A9A08B2523A2CBCF00498069 /* LightSequenceAnimation.swift in Sources */,
+				A9BED709234F75E4002FFF53 /* TipAnimationViewController.swift in Sources */,
+				A96AA5CF23634BC3004A06BA /* AccelerometerPanelViewController.swift in Sources */,
+				A9BED770234FBEAB002FFF53 /* UartLogManager.swift in Sources */,
+				A9BED77A234FBEAB002FFF53 /* CommandQueue.swift in Sources */,
+				A9A08B2323A2841200498069 /* LightSequence.swift in Sources */,
+				A96AA5D123634F03004A06BA /* GridView.swift in Sources */,
+				A9BED774234FBEAB002FFF53 /* BlePeripheral+Uart.swift in Sources */,
+				A9482994237B880000B6FC13 /* BlePeripheral+CPBCommon.swift in Sources */,
+				A958E77A23821EF8006A225A /* BlePeripheral+CPBToneGenerator.swift in Sources */,
+				A9716BAB2350128100CB174D /* RssiUI.swift in Sources */,
+				A948298D237B73B100B6FC13 /* HelpViewController.swift in Sources */,
+				A9EAA1A12352973400FA615E /* NeoPixelsViewController.swift in Sources */,
+				A9BED717234FBDBA002FFF53 /* StartupViewController.swift in Sources */,
+				A99BA723235000520080D03F /* ScreenFlowManager.swift in Sources */,
+				A9482992237B86C600B6FC13 /* BlePeripheral+CPBTemperature.swift in Sources */,
+				A9BED711234F7753002FFF53 /* TipsAnimationComposerViewController.swift in Sources */,
+				A958E77C238AFA4E006A225A /* BlePeripheral+CPBPixels.swift in Sources */,
+				A9A08B2723A2E4B900498069 /* PixelsPreviewViewController.swift in Sources */,
+				A958E782238B7936006A225A /* BlePeripheral+CPBAccelerometer.swift in Sources */,
+				A9DF06122359B0600094327F /* ButtonStatusViewController.swift in Sources */,
+				A96AA5D3236358A8004A06BA /* UIView+RoundedCorners.swift in Sources */,
+				A98E4D2823565B76005B166D /* TipWelcomeViewController.swift in Sources */,
+				A9BED70B234F7617002FFF53 /* Config.swift in Sources */,
+				A980FE6F2357D15400E3A909 /* TipDiscoverViewController.swift in Sources */,
+				A948298F237B73B100B6FC13 /* ModulePanelViewController.swift in Sources */,
+				A9BED707234F75E4002FFF53 /* TipsViewController.swift in Sources */,
+				A958E780238B75D9006A225A /* NormalBrightnessColorPickerController.swift in Sources */,
+				A9B3569F2365D420002093EE /* PanelInsetView.swift in Sources */,
+				A9BED77B234FBEAB002FFF53 /* LogHelper.swift in Sources */,
+				A948298E237B73B100B6FC13 /* CommonTableViewCell.swift in Sources */,
+				A9EAA19B2351F1DD00FA615E /* HomeViewController.swift in Sources */,
+				A9BED76E234FBEAB002FFF53 /* BlePeripheral.swift in Sources */,
+				A9BED76F234FBEAB002FFF53 /* BleManager.swift in Sources */,
+				A98F1B8B23594BE400C5269E /* LightSensorPanelViewController.swift in Sources */,
+				A96AA5C32362F488004A06BA /* AboutViewController.swift in Sources */,
+				A9A08BAF23A7957700498069 /* BlePeripheral+CPBButtons.swift in Sources */,
+				A98F1B892359494500C5269E /* ConfigUI.swift in Sources */,
+				A9BED773234FBEAB002FFF53 /* UartPacketManager.swift in Sources */,
+				A986AB93235942D600DF12C8 /* LightSensorViewController.swift in Sources */,
+				A9EAA1932350F93A00FA615E /* TitleTableViewCell.swift in Sources */,
+				A96AA5BF23604DA3004A06BA /* HelpTableViewCell.swift in Sources */,
+				A9BED708234F75E4002FFF53 /* TipViewController.swift in Sources */,
+				A9E4C02E2358E6B400B5A493 /* UIColor+LightAndDark.swift in Sources */,
+				A96AA5CD23634B45004A06BA /* AccelerometerViewController.swift in Sources */,
+				A958E77E238B7457006A225A /* NormalBrightnessSliderControl.swift in Sources */,
+				A9EAA1A523529C7A00FA615E /* CircuitViewController.swift in Sources */,
+				A98B0D1D239FBE9300BF3696 /* BlePeripheral+ManufacturerAdafruit.swift in Sources */,
+				A9BED772234FBEAB002FFF53 /* UartDataManager.swift in Sources */,
+				A9BDEC3D237C59C400EDDC46 /* BlePeripheral+CPBLight.swift in Sources */,
+				A9BED702234F754B002FFF53 /* GradientView.swift in Sources */,
+				A9BDEC41237C75C900EDDC46 /* Types+Data.swift in Sources */,
+				A9EAA1A3235297B400FA615E /* NeopixelsLightSequenceViewController.swift in Sources */,
+				A901EC4D237C47D800687BE6 /* CPBDataSeries.swift in Sources */,
+				A99BA71D234FFE780080D03F /* Settings.swift in Sources */,
+				A9BED775234FBEAB002FFF53 /* BlePeripheral+Battery.swift in Sources */,
+				A94AC1482363A7BD0062AB11 /* TemperaturePanelViewController.swift in Sources */,
+				A9EAA1912350B26B00FA615E /* ScannerViewController.swift in Sources */,
+				A96AA5BD235F9159004A06BA /* ScanProblemsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9A08B2823A5238000498069 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9A08B2F23A5238000498069 /* BluefruitPlaygroundUITests.swift in Sources */,
+				A92BC5F523A7A7E4009CAD0E /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9A08B3823A523C900498069 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A9A08B3923A523C900498069 /* Int+Bytes.swift in Sources */,
+				A9A08B3A23A523C900498069 /* UIView+AllSubviewsWithClass.swift in Sources */,
+				A9A08BAD23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift in Sources */,
+				A9A08B3B23A523C900498069 /* PeripheralList.swift in Sources */,
+				A9A08B3C23A523C900498069 /* ButtonStatusPanelViewController.swift in Sources */,
+				A9A08B3D23A523C900498069 /* BleUUIDNames.swift in Sources */,
+				A9A08B3E23A523C900498069 /* NeopixelsColorWheelViewController.swift in Sources */,
+				A9A08B3F23A523C900498069 /* LocalizationManager.swift in Sources */,
+				A9A08B4023A523C900498069 /* TemperatureViewController.swift in Sources */,
+				A9A08B4123A523C900498069 /* HexUtils.swift in Sources */,
+				A9A08B4323A523C900498069 /* AppDelegate.swift in Sources */,
+				A9A08B4423A523C900498069 /* ToneGeneratorViewController.swift in Sources */,
+				A9A08B4523A523C900498069 /* Data+ScanValue.swift in Sources */,
+				A9A08B4623A523C900498069 /* Data+LittleEndianTypes.swift in Sources */,
+				A9A08B4723A523C900498069 /* TipPowerUpViewController.swift in Sources */,
+				A9A08B4823A523C900498069 /* CPBBle.swift in Sources */,
+				A9A08B4923A523C900498069 /* NavigationBarWithScrollAwareRightButton.swift in Sources */,
+				A9A08B4A23A523C900498069 /* NeopixelsUIUtils.swift in Sources */,
+				A9A08B4B23A523C900498069 /* UartPacketManagerBase.swift in Sources */,
+				A9A08B4C23A523C900498069 /* ModuleViewController.swift in Sources */,
+				A9A08B4D23A523C900498069 /* NeopixelsColorPaletteViewController.swift in Sources */,
+				A9A08B4E23A523C900498069 /* CornerShadowButton.swift in Sources */,
+				A9A08B4F23A523C900498069 /* NSLayoutConstraint+ChangeMultiplier.swift in Sources */,
+				A9A08B5023A523C900498069 /* UIButton+BackgroundColorForState.swift in Sources */,
+				A9A08B5123A523C900498069 /* LightSequenceAnimation.swift in Sources */,
+				A9A08B5223A523C900498069 /* TipAnimationViewController.swift in Sources */,
+				A9A08B5323A523C900498069 /* AccelerometerPanelViewController.swift in Sources */,
+				A9A08B5423A523C900498069 /* UartLogManager.swift in Sources */,
+				A9A08B5523A523C900498069 /* CommandQueue.swift in Sources */,
+				A9A08B5623A523C900498069 /* LightSequence.swift in Sources */,
+				A9A08B5723A523C900498069 /* GridView.swift in Sources */,
+				A9A08B5823A523C900498069 /* BlePeripheral+Uart.swift in Sources */,
+				A9A08B5923A523C900498069 /* BlePeripheral+CPBCommon.swift in Sources */,
+				A9A08B5A23A523C900498069 /* BlePeripheral+CPBToneGenerator.swift in Sources */,
+				A9A08B5B23A523C900498069 /* RssiUI.swift in Sources */,
+				A9A08B5C23A523C900498069 /* HelpViewController.swift in Sources */,
+				A9A08B5D23A523C900498069 /* NeoPixelsViewController.swift in Sources */,
+				A9A08B5E23A523C900498069 /* StartupViewController.swift in Sources */,
+				A9A08B5F23A523C900498069 /* ScreenFlowManager.swift in Sources */,
+				A9A08B6123A523C900498069 /* TipsAnimationComposerViewController.swift in Sources */,
+				A9A08B6223A523C900498069 /* BlePeripheral+CPBPixels.swift in Sources */,
+				A9A08B6323A523C900498069 /* PixelsPreviewViewController.swift in Sources */,
+				A9A08B6423A523C900498069 /* BlePeripheralSimulated+CPBButtons.swift in Sources */,
+				A9A08B6523A523C900498069 /* BlePeripheral+CPBAccelerometer.swift in Sources */,
+				A9A08B6623A523C900498069 /* ButtonStatusViewController.swift in Sources */,
+				A9A08B6723A523C900498069 /* UIView+RoundedCorners.swift in Sources */,
+				A9A08B6823A523C900498069 /* TipWelcomeViewController.swift in Sources */,
+				A9A08BA423A5286700498069 /* BlePeripheralSimulated.swift in Sources */,
+				A9A08B6923A523C900498069 /* Config.swift in Sources */,
+				A9A08B6A23A523C900498069 /* TipDiscoverViewController.swift in Sources */,
+				A9A08B6B23A523C900498069 /* ModulePanelViewController.swift in Sources */,
+				A9A08B6C23A523C900498069 /* TipsViewController.swift in Sources */,
+				A9A08B6D23A523C900498069 /* NormalBrightnessColorPickerController.swift in Sources */,
+				A9A08B6E23A523C900498069 /* PanelInsetView.swift in Sources */,
+				A9A08B6F23A523C900498069 /* LogHelper.swift in Sources */,
+				A9A08BB123A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift in Sources */,
+				A9A08B7023A523C900498069 /* CommonTableViewCell.swift in Sources */,
+				A9A08BA123A5260300498069 /* BleManagerSimulated.swift in Sources */,
+				A9A08B7123A523C900498069 /* HomeViewController.swift in Sources */,
+				A9A08B7223A523C900498069 /* BlePeripheral.swift in Sources */,
+				A9A08B7323A523C900498069 /* BleManager.swift in Sources */,
+				A9A08B7423A523C900498069 /* LightSensorPanelViewController.swift in Sources */,
+				A9A08B7523A523C900498069 /* AboutViewController.swift in Sources */,
+				A9A08BAA23A7891500498069 /* ObjectBuilder.m in Sources */,
+				A9A08B7623A523C900498069 /* ConfigUI.swift in Sources */,
+				A9A08B7723A523C900498069 /* UartPacketManager.swift in Sources */,
+				A9A08B7823A523C900498069 /* LightSensorViewController.swift in Sources */,
+				A9A08B7923A523C900498069 /* TitleTableViewCell.swift in Sources */,
+				A9A08B7A23A523C900498069 /* HelpTableViewCell.swift in Sources */,
+				A9A08B7B23A523C900498069 /* TipViewController.swift in Sources */,
+				A9A08B7C23A523C900498069 /* UIColor+LightAndDark.swift in Sources */,
+				A9A08B7D23A523C900498069 /* AccelerometerViewController.swift in Sources */,
+				A9A08B7E23A523C900498069 /* NormalBrightnessSliderControl.swift in Sources */,
+				A9A08B7F23A523C900498069 /* CircuitViewController.swift in Sources */,
+				A9A08B8023A523C900498069 /* BlePeripheral+ManufacturerAdafruit.swift in Sources */,
+				A9A08B8123A523C900498069 /* UartDataManager.swift in Sources */,
+				A9A08B8323A523C900498069 /* GradientView.swift in Sources */,
+				A9A08B8423A523C900498069 /* Types+Data.swift in Sources */,
+				A9A08B8523A523C900498069 /* NeopixelsLightSequenceViewController.swift in Sources */,
+				A9A08B8623A523C900498069 /* CPBDataSeries.swift in Sources */,
+				A9A08B8723A523C900498069 /* Settings.swift in Sources */,
+				A9A08B8823A523C900498069 /* BlePeripheral+Battery.swift in Sources */,
+				A9A08B8923A523C900498069 /* TemperaturePanelViewController.swift in Sources */,
+				A9A08B8B23A523C900498069 /* ScannerViewController.swift in Sources */,
+				A9A08B8C23A523C900498069 /* ScanProblemsViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A9A08B3223A5238000498069 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A92B9F08234DE4A2002374F0 /* BluefruitPlayground */;
+			targetProxy = A9A08B3123A5238000498069 /* PBXContainerItemProxy */;
+		};
+		A9A08B9E23A523DE00498069 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A9A08B3623A523C900498069 /* BluefruitPlayground-SimulateBluetooth */;
+			targetProxy = A9A08B9D23A523DE00498069 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A92B9F12234DE4A2002374F0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A92B9F13234DE4A2002374F0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A92B9F18234DE4A5002374F0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A9BED713234FBD2E002FFF53 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A9BED714234FBD2E002FFF53 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A92B9F1B234DE4A5002374F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A92B9F1C234DE4A5002374F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A92B9F1E234DE4A5002374F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3348DDE33D89A5959702CAC9 /* Pods-BluefruitPlayground.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = 2X94RM7457;
+				INFOPLIST_FILE = BluefruitPlayground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlayground;
+				PRODUCT_NAME = "Bluefruit Playground";
+				SWIFT_OBJC_BRIDGING_HEADER = "BluefruitPlayground/BluefruitPlayground-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A92B9F1F234DE4A5002374F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02A29BC776CC7DA5C23560A7 /* Pods-BluefruitPlayground.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = 2X94RM7457;
+				INFOPLIST_FILE = BluefruitPlayground/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlayground;
+				PRODUCT_NAME = "Bluefruit Playground";
+				SWIFT_OBJC_BRIDGING_HEADER = "BluefruitPlayground/BluefruitPlayground-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A9A08B3323A5238000498069 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X94RM7457;
+				INFOPLIST_FILE = BluefruitPlaygroundUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlaygroundUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "BluefruitPlayground-SimulateBluetooth";
+			};
+			name = Debug;
+		};
+		A9A08B3423A5238000498069 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2X94RM7457;
+				INFOPLIST_FILE = BluefruitPlaygroundUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlaygroundUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "BluefruitPlayground-SimulateBluetooth";
+			};
+			name = Release;
+		};
+		A9A08B9923A523C900498069 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3348DDE33D89A5959702CAC9 /* Pods-BluefruitPlayground.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = 2X94RM7457;
+				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D SIMULATEBLUETOOTH";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BluefruitPlayground/BluefruitPlayground-SimulateBluetooth-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A9A08B9A23A523C900498069 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 02A29BC776CC7DA5C23560A7 /* Pods-BluefruitPlayground.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				DEVELOPMENT_TEAM = 2X94RM7457;
+				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.1;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D SIMULATEBLUETOOTH";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlayground;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BluefruitPlayground/BluefruitPlayground-SimulateBluetooth-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A92B9F04234DE4A2002374F0 /* Build configuration list for PBXProject "BluefruitPlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A92B9F1B234DE4A5002374F0 /* Debug */,
+				A92B9F1C234DE4A5002374F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A92B9F1D234DE4A5002374F0 /* Build configuration list for PBXNativeTarget "BluefruitPlayground" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A92B9F1E234DE4A5002374F0 /* Debug */,
+				A92B9F1F234DE4A5002374F0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9A08B3523A5238000498069 /* Build configuration list for PBXNativeTarget "BluefruitPlaygroundUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9A08B3323A5238000498069 /* Debug */,
+				A9A08B3423A5238000498069 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A9A08B9823A523C900498069 /* Build configuration list for PBXNativeTarget "BluefruitPlayground-SimulateBluetooth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A9A08B9923A523C900498069 /* Debug */,
+				A9A08B9A23A523C900498069 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A92B9F01234DE4A2002374F0 /* Project object */;
+}

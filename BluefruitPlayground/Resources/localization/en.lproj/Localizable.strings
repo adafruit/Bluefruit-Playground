@@ -1,0 +1,213 @@
+// AUTO-GENERATED
+// General
+
+"NSBluetoothAlwaysUsageDescription" = "This app needs access to Bluetooth to connect to Circuit Playground Bluefruit devices";
+
+// Startup
+"startup_bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy which is needed to connect to the Circuit Playground Bluefruit device";
+
+// Bluetooth Management
+
+"bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy";
+"bluetooth_notauthorized" = "This app is not authorized to use the Bluetooth Low Energy";
+"bluetooth_poweredoff" = "Bluetooth is currently powered off";
+
+"bluetooth_locationpermission_disabled_text" = "Location Services should be enabled to scan bluetooth peripherals.
+Please, go to settings and enable it to start scanning peripherals";
+"bluetooth_locationpermission_title" = "This app needs location access";
+"bluetooth_locationpermission_text" = "Please grant location access so this app can scan for Bluetooth peripherals";
+"bluetooth_locationpermission_notavailable_title" = "Bluetooth Scanning not available";
+"bluetooth_locationpermission_notavailable_text" = "Since location access has not been granted, the app will not be able to scan for Bluetooth peripherals";
+"bluetooth_scanner_errorregisteringapp" = "App cannot be registered for bluetooth scanning.
+Please reset bluetooth and try again.";
+"bluetooth_connecting_error" = "Error connecting to peripheral";
+"bluetooth_advertising_start_error" = "Error starting advertising";
+
+// Welcome
+"tip0_title" = "Welcome";
+"tip0_detail" = "Bluefruit Playground provides you with a variety of tools to communicate with your Circuit Playground Bluefruit device!
+Circuit Playground Bluefruit is available at the Adafruit shop.";
+"tip0_link_text" = "Adafruit shop";
+"tip0_link_url" = "https://www.adafruit.com/product/4333";
+"tip0_action" = "Let's get started...";
+"tip1_title" = "Power Up";
+"tip1_detail" = "First, follow the instructions here to load the correct firmware. Then, connect Circuit Playground Bluefruit to USB, AAA battery pack or a Lipoly battery to power up.";
+"tip1_link_text" = "instructions here";
+"tip1_link_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
+"tip1_action" = "Next";
+"tip2_title" = "Discover";
+"tip2_detail" = "Once Circuit Playground Bluefruit is powered, place it near your iPhone and tap the button below.";
+"tip2_action" = "Begin pairing";
+
+
+// About
+"about_title" = "About";
+"about_app_name" = "Bluefruit Playground";
+"about_ios_text" = "Bluefruit Playground is designed for use with Circuit Playground Bluefruit, available for purchase from the Adafruit shop
+
+Before you can use this app, you'll need to load the uf2 firmware file on your Circuit Playground Bluefruit.
+
+
+Acknowledgements
+
+Portions of this Software may utilize the following copyrighted material, the use of which is hereby acknowledged. 
+
+FlexColorPicker
+Copyright (c) 2018 Rastislav Mirek
+https://github.com/RastislavMirek/FlexColorPicker
+
+Charts
+Copyright (c) 2016 Daniel Cohen Gindi & Philipp Jahoda
+https://github.com/danielgindi/Charts
+
+ActiveLabel
+Copyright (c) 2015 Optonaut
+https://github.com/optonaut/ActiveLabel.swift
+
+MSWeakTimer
+Copyright (c) 2013 MindSnacks
+https://github.com/mindsnacks/MSWeakTimer";
+"about_ios_link0_text" = "Adafruit shop";
+"about_ios_link0_url" = "https://www.adafruit.com/product/4333";
+"about_ios_link1_text" = "uf2 firmware file";
+"about_ios_link1_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
+
+
+// Scanner
+"scanner_title" = "Finding CPB";
+
+"scanner_connecting" = "Connecting...";
+"scanner_discoveringservices" = "Discovering services...";
+"scanner_errordiscoveringservices" = "Error discovering peripheral services";
+"scanner_peripheraldisconnected" = "Peripheral disconnected";
+
+"scanner_searching" = "Finding Circuit Playground Bluefruit devices...";
+"scanner_subtitle" = "Select a Circuit Playground Bluefruit device to connect to:";
+"scanner_unnamed" = "<Unknown>";
+
+"scanner_problems_action" = "I can't find my device";
+"scanner_backbutton" = "Disconnect";
+
+"scanner_setupuart" = "Starting UART protocol";
+"uart_error_peripheralinit" = "Uart protocol can not be initialized";
+
+// Scanner Problems
+"scannerproblems_title" = "Troubleshooting";
+
+"scannerproblems_tip0_title" = "Turn on the CPB";
+"scannerproblems_tip0_details" = "Make sure that the Circuit Playground Bluefruit is powered on. 
+Verify that the green \"On\" light is lit.";
+"scannerproblems_tip1_title" = "Check the Circuit Playground Bluefruit firmware";
+"scannerproblems_tip1_details" = "You'll need to load a specific firmware on your CPB to interact with this app.
+Download it from the Bluefruit Playground guide at learn.adafruit.com";
+"scannerproblems_tip1_link_text" = "Bluefruit Playground guide at learn.adafruit.com";
+"scannerproblems_tip1_link_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
+"scannerproblems_tip2_title" = "Reset Circuit Playground Bluefruit";
+"scannerproblems_tip2_details" = "Try pressing the small Reset button near the center of the Circuit Playground Bluefruit.";
+
+
+// Modules
+"modules_title" = "Modules";
+"modules_subtitle" = "Each module interacts with a specific type of sensor on the Circuit Playground Bluefruit device";
+
+"modules_color_title" = "Neopixels";
+"modules_color_subtitle" = "Control LED color & animation";
+"modules_light_title" = "Light Sensor";
+"modules_light_subtitle" = "View continuous light sensor readings";
+"modules_button_title" = "Button Status";
+"modules_button_subtitle" = "View state of built-in buttons & switch";
+"modules_tone_title" = "Tone Generator";
+"modules_tone_subtitle" = "Turn CPB into a musical instrument";
+"modules_accelerometer_title" = "Accelerometer";
+"modules_accelerometer_subtitle" = "View orientation based on accelerometer data";
+"modules_temperature_title" = "Temperature";
+"modules_temperature_subtitle" = "View current temperature readings";
+
+// Neopixels
+"neopixels_title" = "Neopixels";
+"neopixels_help" = "Neopixel mode allows you to control the color of CPB’s built-in neopixel LEDs individually, as a group, or by playing preset animations.
+
+• Select neopixels to control by tapping them in the Circuit Playground Bluefruit image.
+
+• Set the color of selected neopixels by choosing a color from the Color Palette or Color Wheel at the bottom.
+
+• Tap a light sequence to trigger an animation using all of the neopixels.";
+
+"neopixels_sequence_title" = "Light Sequence";
+"neopixels_sequence_speed" = "Speed";
+"neopixels_palette_title" = "Color Palette";
+"neopixels_palette_brightness" = "Brightness";
+"neopixels_colorwheel_title" = "Color Wheel";
+"neopixels_colorwheel_brightness" = "Brightness";
+
+
+// Light Sensor
+"lightsensor_title" = "Light Sensor";
+"lightsensor_help" = "Light Sensor mode allows you to view the amount of light detected by Circuit Playground Bluefruit’s built-in ALS-PT19 light sensor.
+
+• The current light level reading is displayed at the bottom of the screen. 
+
+• Try shining a flashlight on the CPB and watch the values change in realtime";
+
+"lightsensor_panel_title" = "Luminance Reading";
+"lightsensor_panel_unit" = "Light level";
+
+// Button Status
+"buttonstatus_title" = "Button Status";
+"buttonstatus_help" = "Button Status mode shows which buttons are currently being pressed on Circuit Playground Bluefruit. 
+
+• Currently active buttons are displayed in orange at the bottom
+
+• Current state of the built-in slide switch is displayed as an arrow indicating its position";
+
+"buttonstatus_panel_title" = "Buttons Pressed";
+"buttonstatus_panel_switch" = "Switch";
+"buttonstatus_panel_button_a" = "Button A";
+"buttonstatus_panel_button_b" = "Button B";
+
+
+// Tone Generator
+"tonegenerator_title" = "Tone Generator";
+"tonegenerator_help" = "Tone Generator mode allows you to use Circuit Playground Bluefruit as a simple music synthesizer.
+
+• Press a key on the piano keyboard to play a corresponding tone on the built-in piezo buzzer.
+
+• Press keys in sequence to perform a song";
+
+// Accelerometer
+"accelerometer_title" = "Accelerometer";
+"accelerometer_help" = "Accelerometer mode uses readings from Circuit Playground Bluefruit’s LIS3DH 3-axis XYZ accelerometer to determine the board’s current orientation.
+ 
+• Orientation is reflected in the position of the 3D model
+
+• Individual values are displayed in the space at the bottom of the screen.";
+
+"accelerometer_panel_title" = "Device orientation";
+"accelerometer_panel_accelerometer_title" = "Accelerometer (m/s):";
+"accelerometer_panel_eulerangles_title" = "Euler Angles (degrees):";
+
+// Temperature
+"temperature_title" = "Temperature";
+"temperature_help" = "Temperature mode displays continuous temperature readings from Circuit Playground Bluefruit’s built-in thermistor. 
+
+• Switch between Fahrenheit and Celsius units by tapping the °F/°C button in the lower right corner.
+
+• Previous temperature values are recorded and displayed in the graph at the bottom.
+
+• Try breathing hot air on the CPB and watch the values change in realtime";
+"temperature_units_celsius" = "ºC";
+"temperature_units_farenheit" = "ºF";
+
+"temperature_panel_title" = "Temperature Reading";
+"temperature_chart_nodata" = "No chart data available";
+
+// Help
+"help_title" = "Help";
+
+// Common
+"dialog_ok" = "OK";
+"dialog_cancel" = "Cancel";
+"dialog_error" = "Error";
+"dialog_notice" = "Notice";
+"dialog_dontshowagain" = "Don't show again";
+"dialog_done" = "Done";

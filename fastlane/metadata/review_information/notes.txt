@@ -1,0 +1,2 @@
+Full demo video using Circuit Playground Bluefruit:
+https://vimeo.com/379712002/6ade7288de
