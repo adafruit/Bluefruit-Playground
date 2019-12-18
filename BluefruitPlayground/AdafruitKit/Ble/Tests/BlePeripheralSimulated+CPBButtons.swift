@@ -41,6 +41,14 @@ extension BlePeripheral {
     func cpbButtonsDisable() {
     }
     
+    func cpbButtonsReadState(completion: @escaping(Result<(ButtonsState, UUID), Error>) -> Void) {
+        guard let state = cpbButtonsLastValue() else {
+            completion(.failure(PeripheralCPBError.invalidResponseData))
+            return
+        }
+        completion(.success((state, self.identifier)))
+    }
+    
     func cpbButtonsLastValue() -> ButtonsState? {
         return ButtonsState(slideSwitch: .left, buttonA: .pressed, buttonB: .released)
         

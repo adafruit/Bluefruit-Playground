@@ -19,7 +19,7 @@ struct Config {
     static let isBleUnsupportedWarningEnabled = false
     static let bleManager = BleManagerSimulated.simulated
     #else
-    static let isTutorialEnabled = !isDebugEnabled
+    static let isTutorialEnabled = true //!isDebugEnabled
     static let isBleUnsupportedWarningEnabled = true
     static let bleManager = BleManager.shared
     #endif
