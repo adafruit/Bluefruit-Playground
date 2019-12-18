@@ -20,12 +20,12 @@ class ToneGeneratorViewController: UIViewController {
         392,
         440,
         
+        493.88,
         523.25,
         587.33,
         659.26,
         698.46,
         783.99,
-        880
     ]
     
     private static let kBlackFrequencies: [Double] = [      // https://newt.phys.unsw.edu.au/jw/notes.html
