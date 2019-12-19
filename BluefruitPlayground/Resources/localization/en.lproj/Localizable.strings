@@ -180,7 +180,11 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
  
 • Orientation is reflected in the position of the 3D model
 
-• Individual values are displayed in the space at the bottom of the screen.";
+• Individual values are displayed in the space at the bottom of the screen.
+
+• Drag the 3D model in any direction to apply a rotation offset.
+
+• Double tap the 3D model to remove rotation offset";
 
 "accelerometer_panel_title" = "Device orientation";
 "accelerometer_panel_accelerometer_title" = "Accelerometer (m/s):";
