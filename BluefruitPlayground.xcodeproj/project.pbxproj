@@ -72,7 +72,6 @@
 		A9A08B4723A523C900498069 /* TipPowerUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A980FE6C2357D14400E3A909 /* TipPowerUpViewController.swift */; };
 		A9A08B4823A523C900498069 /* CPBBle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC14D2364A82A0062AB11 /* CPBBle.swift */; };
 		A9A08B4923A523C900498069 /* NavigationBarWithScrollAwareRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5C0236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift */; };
-		A9A08B4A23A523C900498069 /* NeopixelsUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC257B239FF45700A5586A /* NeopixelsUIUtils.swift */; };
 		A9A08B4B23A523C900498069 /* UartPacketManagerBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED74D234FBEAB002FFF53 /* UartPacketManagerBase.swift */; };
 		A9A08B4C23A523C900498069 /* ModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298C237B73B100B6FC13 /* ModuleViewController.swift */; };
 		A9A08B4D23A523C900498069 /* NeopixelsColorPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */; };
@@ -178,7 +177,6 @@
 		A9BED77A234FBEAB002FFF53 /* CommandQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED763234FBEAB002FFF53 /* CommandQueue.swift */; };
 		A9BED77B234FBEAB002FFF53 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED764234FBEAB002FFF53 /* LogHelper.swift */; };
 		A9BED77D234FBEAB002FFF53 /* Data+ScanValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */; };
-		A9DC257C239FF45700A5586A /* NeopixelsUIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DC257B239FF45700A5586A /* NeopixelsUIUtils.swift */; };
 		A9DF06122359B0600094327F /* ButtonStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF06112359B0600094327F /* ButtonStatusViewController.swift */; };
 		A9DF06142359B31C0094327F /* ButtonStatusPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF06132359B31C0094327F /* ButtonStatusPanelViewController.swift */; };
 		A9E4C02E2358E6B400B5A493 /* UIColor+LightAndDark.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9E4C02D2358E6B400B5A493 /* UIColor+LightAndDark.swift */; };
@@ -310,7 +308,6 @@
 		A9BED763234FBEAB002FFF53 /* CommandQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandQueue.swift; sourceTree = "<group>"; };
 		A9BED764234FBEAB002FFF53 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+ScanValue.swift"; sourceTree = "<group>"; };
-		A9DC257B239FF45700A5586A /* NeopixelsUIUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeopixelsUIUtils.swift; sourceTree = "<group>"; };
 		A9DF06112359B0600094327F /* ButtonStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatusViewController.swift; sourceTree = "<group>"; };
 		A9DF06132359B31C0094327F /* ButtonStatusPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStatusPanelViewController.swift; sourceTree = "<group>"; };
 		A9E4C02D2358E6B400B5A493 /* UIColor+LightAndDark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+LightAndDark.swift"; sourceTree = "<group>"; };
@@ -660,7 +657,6 @@
 				A9EAA1A2235297B400FA615E /* NeopixelsLightSequenceViewController.swift */,
 				A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */,
 				A9E4C02F2358EBDB00B5A493 /* NeopixelsColorWheelViewController.swift */,
-				A9DC257B239FF45700A5586A /* NeopixelsUIUtils.swift */,
 				A9A08B2623A2E4B900498069 /* PixelsPreviewViewController.swift */,
 			);
 			path = Neopixels;
@@ -937,7 +933,6 @@
 				A980FE6D2357D14400E3A909 /* TipPowerUpViewController.swift in Sources */,
 				A94AC14E2364A82B0062AB11 /* CPBBle.swift in Sources */,
 				A96AA5C1236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift in Sources */,
-				A9DC257C239FF45700A5586A /* NeopixelsUIUtils.swift in Sources */,
 				A9BED767234FBEAB002FFF53 /* UartPacketManagerBase.swift in Sources */,
 				A9482990237B73B100B6FC13 /* ModuleViewController.swift in Sources */,
 				A9ADE5F923533D5400777535 /* NeopixelsColorPaletteViewController.swift in Sources */,
@@ -1036,7 +1031,6 @@
 				A9A08B4723A523C900498069 /* TipPowerUpViewController.swift in Sources */,
 				A9A08B4823A523C900498069 /* CPBBle.swift in Sources */,
 				A9A08B4923A523C900498069 /* NavigationBarWithScrollAwareRightButton.swift in Sources */,
-				A9A08B4A23A523C900498069 /* NeopixelsUIUtils.swift in Sources */,
 				A9A08B4B23A523C900498069 /* UartPacketManagerBase.swift in Sources */,
 				A9A08B4C23A523C900498069 /* ModuleViewController.swift in Sources */,
 				A9A08B4D23A523C900498069 /* NeopixelsColorPaletteViewController.swift in Sources */,
