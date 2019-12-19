@@ -187,7 +187,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 • Double tap the 3D model to remove rotation offset";
 
 "accelerometer_panel_title" = "Device orientation";
-"accelerometer_panel_accelerometer_title" = "Accelerometer (m/s):";
+"accelerometer_panel_accelerometer_title" = "Accelerometer (m/s²):";
 "accelerometer_panel_eulerangles_title" = "Euler Angles (degrees):";
 
 // Temperature
