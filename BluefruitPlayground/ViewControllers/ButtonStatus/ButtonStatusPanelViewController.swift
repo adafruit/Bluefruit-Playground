@@ -37,16 +37,6 @@ class ButtonStatusPanelViewController: ModulePanelViewController {
         
         // Init
         switchImageView.tintColor = offColor
-        
-        // Read initial state
-        CPBBle.shared.buttonsReadState { [weak self] response in
-            switch response {
-            case let .success(buttonsStatus, _):
-                self?.buttonsStateReceived(buttonsStatus)
-            case .failure(let error):
-                DLog("Error receiving temperature data: \(error)")
-            }
-        }
             
         // Localization
         let localizationManager = LocalizationManager.shared
