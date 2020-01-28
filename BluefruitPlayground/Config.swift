@@ -12,10 +12,13 @@ struct Config {
     
     // Debug-----------------------------------------------------------------------------
     static let isDebugEnabled = _isDebugAssertConfiguration()
+
+    // Fastlane snapshots
+    private static let areFastlaneSnapshotsRunning = UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
     
     // Bluetooth
     #if SIMULATEBLUETOOTH
-    static let isTutorialEnabled = !isDebugEnabled
+    static let isTutorialEnabled = areFastlaneSnapshotsRunning || !isDebugEnabled
     static let isBleUnsupportedWarningEnabled = false
     static let bleManager = BleManagerSimulated.simulated
     #else

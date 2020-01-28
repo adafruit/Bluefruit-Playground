@@ -27,7 +27,7 @@ class BluefruitPlaygroundUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
+    func testSnapshots() {
         /*
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
@@ -40,7 +40,7 @@ class BluefruitPlaygroundUITests: XCTestCase {
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
         
-        sleep(3)        // Wait for the intro animation
+        sleep(2)        // Wait for the intro animation
         snapshot("01a_Welcome")
         
         elementsQuery.buttons["LET'S GET STARTED..."].tap()
@@ -51,7 +51,7 @@ class BluefruitPlaygroundUITests: XCTestCase {
         elementsQuery.buttons["BEGIN PAIRING"].tap()
         
         let tablesQuery = app.tables
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Simulated Peripheral"]/*[[".cells.staticTexts[\"Simulated Peripheral\"]",".staticTexts[\"Simulated Peripheral\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        tablesQuery.staticTexts["Simulated Peripheral"].tap()
 
         snapshot("02_Modules")
 

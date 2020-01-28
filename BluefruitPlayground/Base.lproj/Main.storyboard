@@ -1223,14 +1223,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HelpCell" id="U5T-Rn-JoM" customClass="HelpTableViewCell" customModule="BluefruitPlayground_SimulateBluetooth" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="220"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="222"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U5T-Rn-JoM" id="luQ-sf-H0h">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="220"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="222"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6j-6k-zao">
-                                                    <rect key="frame" x="20" y="19" width="374" height="190"/>
+                                                    <rect key="frame" x="20" y="19" width="374" height="192"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="NeJ-ep-YDO">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43"/>
@@ -1280,10 +1280,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="lX3-kv-DYx">
-                                                            <rect key="frame" x="0.0" y="104" width="374" height="86"/>
+                                                            <rect key="frame" x="0.0" y="104" width="374" height="88"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" image="scanproblems_powerup" translatesAutoresizingMaskIntoConstraints="NO" id="UAb-G3-y7N">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="86"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="374" height="88"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" name="cell_light"/>
@@ -1550,19 +1550,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-zG-od1">
-                                <rect key="frame" x="27" y="122" width="360" height="400"/>
+                                <rect key="frame" x="27" y="-78" width="360" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCj-Gb-k6T">
-                                        <rect key="frame" x="0.0" y="0.0" width="360" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="800"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip_datacable" translatesAutoresizingMaskIntoConstraints="NO" id="eyT-6W-nB8">
-                                                <rect key="frame" x="159" y="-87.5" width="42" height="124"/>
+                                                <rect key="frame" x="138" y="50.5" width="84" height="248"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip_powercable" translatesAutoresizingMaskIntoConstraints="NO" id="5s4-fh-H68">
-                                                <rect key="frame" x="153" y="334" width="54" height="175"/>
+                                                <rect key="frame" x="126" y="446.5" width="108" height="350"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cpb_circuit" translatesAutoresizingMaskIntoConstraints="NO" id="i3T-Db-EAx">
-                                                <rect key="frame" x="0.0" y="0.0" width="360" height="400"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="800"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="360" id="twB-P9-kif"/>
                                                 </constraints>

@@ -110,7 +110,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_title" = "Modules";
 "modules_subtitle" = "Each module interacts with a specific type of sensor on the Circuit Playground Bluefruit device";
 
-"modules_color_title" = "Neopixels";
+"modules_color_title" = "NeoPixels";
 "modules_color_subtitle" = "Control LED color & animation";
 "modules_light_title" = "Light Sensor";
 "modules_light_subtitle" = "View continuous light sensor readings";
@@ -124,14 +124,14 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_temperature_subtitle" = "View current temperature readings";
 
 // Neopixels
-"neopixels_title" = "Neopixels";
-"neopixels_help" = "Neopixel mode allows you to control the color of CPB’s built-in neopixel LEDs individually, as a group, or by playing preset animations.
+"neopixels_title" = "NeoPixels";
+"neopixels_help" = "NeoPixels mode allows you to control the color of CPB’s built-in NeoPixel LEDs individually, as a group, or by playing preset animations.
 
-• Select neopixels to control by tapping them in the Circuit Playground Bluefruit image.
+• Select NeoPixels to control by tapping them in the Circuit Playground Bluefruit image.
 
-• Set the color of selected neopixels by choosing a color from the Color Palette or Color Wheel at the bottom.
+• Set the color of selected NeoPixels by choosing a color from the Color Palette or Color Wheel at the bottom.
 
-• Tap a light sequence to trigger an animation using all of the neopixels.";
+• Tap a light sequence to trigger an animation using all of the NeoPixels.";
 
 "neopixels_sequence_title" = "Light Sequence";
 "neopixels_sequence_speed" = "Speed";
