@@ -6,22 +6,11 @@
 // Startup
 "startup_bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy which is needed to connect to the Circuit Playground Bluefruit device";
 
-// Bluetooth Management
 
-"bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy";
-"bluetooth_notauthorized" = "This app is not authorized to use the Bluetooth Low Energy";
-"bluetooth_poweredoff" = "Bluetooth is currently powered off";
+// Splash
+"splash_restoringconnection" = "Restoring connection...";
 
-"bluetooth_locationpermission_disabled_text" = "Location Services should be enabled to scan bluetooth peripherals.
-Please, go to settings and enable it to start scanning peripherals";
-"bluetooth_locationpermission_title" = "This app needs location access";
-"bluetooth_locationpermission_text" = "Please grant location access so this app can scan for Bluetooth peripherals";
-"bluetooth_locationpermission_notavailable_title" = "Bluetooth Scanning not available";
-"bluetooth_locationpermission_notavailable_text" = "Since location access has not been granted, the app will not be able to scan for Bluetooth peripherals";
-"bluetooth_scanner_errorregisteringapp" = "App cannot be registered for bluetooth scanning.
-Please reset bluetooth and try again.";
-"bluetooth_connecting_error" = "Error connecting to peripheral";
-"bluetooth_advertising_start_error" = "Error starting advertising";
+
 
 // Welcome
 "tip0_title" = "Welcome";
@@ -72,9 +61,26 @@ https://github.com/mindsnacks/MSWeakTimer";
 "about_ios_link1_text" = "uf2 firmware file";
 "about_ios_link1_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
 
+// Bluetooth Status
+
+"bluetooth_unsupported" = "This device doesn't support Bluetooth";
+"bluetooth_unsupported_detail" = "Bluetooth support and specifically Bluetooth Low Energy support is needed to communicate with a Circuit Playground Device";
+"bluetooth_unsupported_le" = "This device doesn't support Bluetooth Low Energy";
+"bluetooth_unsupported_le_detail" = "Bluetooth Low Energy support is needed to communicate with a Circuit Playground Device";
+"bluetooth_notauthorized" = "This app is not authorized to use the Bluetooth Low Energy";
+"bluetooth_notauthorized_detail" = "Bluetooth permission should be granted or Bluefruit Playground to connect to a Circuit Playground Device";
+"bluetooth_poweredoff" = "Bluetooth is currently powered off";
+"bluetooth_poweredoff_detail" = "Bluetooth should be enabled on your device for Bluefruit Playground to communicate with a Circuit Playground Device";
+
+"bluetooth_enable_action" = "Bluetooth permissions";
+
+// Autoconnect
+"autoconnect_title" = "Finding CPB";
+"autoconnect_manual_action" = "Select device manually";
+"autoconnect_backbutton" = "Autoconnect";
 
 // Scanner
-"scanner_title" = "Finding CPB";
+"scanner_title" = "Select CPB";
 
 "scanner_connecting" = "Connecting...";
 "scanner_discoveringservices" = "Discovering services...";
@@ -85,6 +91,7 @@ https://github.com/mindsnacks/MSWeakTimer";
 "scanner_subtitle" = "Select a Circuit Playground Bluefruit device to connect to:";
 "scanner_unnamed" = "<Unknown>";
 
+"scanner_automatic_action" = "Select device automatically";
 "scanner_problems_action" = "I can't find my device";
 "scanner_backbutton" = "Disconnect";
 
@@ -108,7 +115,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 
 // Modules
 "modules_title" = "Modules";
-"modules_subtitle" = "Each module interacts with a specific type of sensor on the Circuit Playground Bluefruit device";
+"modules_subtitle" = "Each module interacts with a type of sensor on the Circuit Playground Bluefruit device";
 
 "modules_color_title" = "NeoPixels";
 "modules_color_subtitle" = "Control LED color & animation";
@@ -122,6 +129,8 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_accelerometer_subtitle" = "View orientation based on accelerometer data";
 "modules_temperature_title" = "Temperature";
 "modules_temperature_subtitle" = "View current temperature readings";
+"modules_disconnect_title" = "Disconnect";
+"modules_disconnect_subtitle" = "Close the current connection and scan for a new CPB device";
 
 // Neopixels
 "neopixels_title" = "NeoPixels";

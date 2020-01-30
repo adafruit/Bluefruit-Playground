@@ -10,7 +10,7 @@ import UIKit
 import FlexColorPicker
 
 protocol NeopixelsColorPaletteViewControllerDelegate: class {
-    func colorPaletteColorSelected(color: UIColor)
+    func colorPaletteColorSelected(color: UIColor, baseColor: UIColor)
 }
 
 class NeopixelsColorPaletteViewController: ModulePanelViewController {
@@ -124,6 +124,6 @@ class NeopixelsColorPaletteViewController: ModulePanelViewController {
         let hsbColor = HSBColor(color: color)
         let colorWithBrighness = hsbColor.withBrightness(brightness).toUIColor()
         
-        delegate?.colorPaletteColorSelected(color: colorWithBrighness)
+        delegate?.colorPaletteColorSelected(color: colorWithBrighness, baseColor: color)
     }
 }

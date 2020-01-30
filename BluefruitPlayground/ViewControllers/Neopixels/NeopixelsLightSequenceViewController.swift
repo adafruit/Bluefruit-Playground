@@ -20,7 +20,6 @@ class NeopixelsLightSequenceViewController: ModulePanelViewController {
     
     // Data
     private var previewViewControllers = [PixelsPreviewViewController]()
-    private var speed: Double = 0.3
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -30,8 +29,10 @@ class NeopixelsLightSequenceViewController: ModulePanelViewController {
         let _ = previewViewControllers.map{$0.tag = $0.view.superview?.tag ?? 0}
         
         // Set initial speed
+        let speed = CPBBle.kLightSequenceDefaultSpeed
         speedSlider.value = Float(speed)
-        speedChanged(speedSlider)
+        //speedChanged(speedSlider)
+        let _ = previewViewControllers.map{$0.speed = speed}
         
         // Localization
         let localizationManager = LocalizationManager.shared
@@ -47,10 +48,10 @@ class NeopixelsLightSequenceViewController: ModulePanelViewController {
     }
     
     @IBAction func speedChanged(_ sender: UISlider) {
-        speed = Double(sender.value)
+        let speed = Double(sender.value)
         DLog("speed: \(speed)")
         
-        CPBBle.shared.neopixelLightSequenceAnimationSpeed = speed
+        CPBBle.shared.neopixelCurrentLightSequenceAnimationSpeed = speed
         let _ = previewViewControllers.map{$0.speed = speed}
     }
 }

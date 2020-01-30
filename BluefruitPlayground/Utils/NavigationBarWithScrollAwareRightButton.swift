@@ -16,19 +16,21 @@ import UIKit
 class NavigationBarWithScrollAwareRightButton : UINavigationBar {
     // Constants
     private static let kButtonTag = 100
-    public struct CustomButtonMetrics {
-        static let rightMargin: CGFloat = 8//12
-        
-        static let bottomMarginForLargeState: CGFloat = 9
-        static let bottomMarginForSmallState: CGFloat = 2
-        
-        static let navBarHeightSmallState: CGFloat = 44
-        static let navBarHeightLargeState: CGFloat = 96.5
-    }
-    
+
+    // Config (navbar metrics)
+    static let navBarHeightSmallState: CGFloat = 44
+    static let navBarHeightLargeState: CGFloat = 96.5
+
+    private static let rightMargin: CGFloat = 6//8
+
+    private static let bottomMarginForLargeState: CGFloat = 6//9
+    private static let bottomMarginForSmallState: CGFloat = 2
+
     // Data
     private var navigationButton: UIButton?// = UIButton(type: .custom)
     private var topViewController: UIViewController?
+    
+    
     
     // MARK: -
     public func setRightButton(topViewController: UIViewController, image: UIImage?, target: Any?, action: Selector) {
@@ -47,8 +49,8 @@ class NavigationBarWithScrollAwareRightButton : UINavigationBar {
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             
-            button.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -CustomButtonMetrics.rightMargin),
-            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -CustomButtonMetrics.bottomMarginForLargeState),
+            button.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -NavigationBarWithScrollAwareRightButton.rightMargin),
+            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -NavigationBarWithScrollAwareRightButton.bottomMarginForLargeState),
         ])
         
         self.layoutIfNeeded()       // Force layout to remove adding animation
@@ -58,22 +60,15 @@ class NavigationBarWithScrollAwareRightButton : UINavigationBar {
         // Detect topViewControllerChange
         self.topViewController = topViewController
         topViewController.navigationController?.delegate = self
-        
-        /*
-        // Detect content scrollview scroll
-        if let contentScrollView = topViewController.view as? UIScrollView ?? topViewController.view.subviews.first as? UIScrollView {
-            
-            contentScrollView.delegate = self
-        }
-        */
+
     }
     
     public var navigationBarScrollViewProgress: CGFloat {
-        return (self.frame.height  - CustomButtonMetrics.navBarHeightSmallState) / (CustomButtonMetrics.navBarHeightLargeState - CustomButtonMetrics.navBarHeightSmallState)
+        return (self.frame.height  - NavigationBarWithScrollAwareRightButton.navBarHeightSmallState) / (NavigationBarWithScrollAwareRightButton.navBarHeightLargeState - NavigationBarWithScrollAwareRightButton.navBarHeightSmallState)
     }
     
     public func updateRightButtonPosition() {
-          let yDelta = CustomButtonMetrics.bottomMarginForLargeState - CustomButtonMetrics.bottomMarginForSmallState
+          let yDelta = NavigationBarWithScrollAwareRightButton.bottomMarginForLargeState - NavigationBarWithScrollAwareRightButton.bottomMarginForSmallState
 
           let y = yDelta * max(0, (1-navigationBarScrollViewProgress))
           navigationButton?.transform = CGAffineTransform(translationX: 0, y: y)

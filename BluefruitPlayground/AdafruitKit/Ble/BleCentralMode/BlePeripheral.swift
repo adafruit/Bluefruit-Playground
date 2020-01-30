@@ -206,6 +206,12 @@ class BlePeripheral: NSObject {
         let command = BleCommand(type: .discoverDescriptor, parameters: [characteristic], completion: completion)
         commandQueue.append(command)
     }
+    
+    // MARK: - Connection
+    func disconnect(centralManager: CBCentralManager) {
+         let command = BleCommand(type: .disconnect, parameters: [centralManager], completion: nil)
+        commandQueue.append(command)
+    }
 
     // MARK: - Service
     func discoveredService(uuid: CBUUID) -> CBService? {
@@ -319,6 +325,7 @@ class BlePeripheral: NSObject {
             case writeCharacteristic
             case writeCharacteristicAndWaitNofity
             case readDescriptor
+            case disconnect
         }
 
         enum CommandError: Error {
@@ -362,6 +369,8 @@ class BlePeripheral: NSObject {
             write(with: command)
         case .readDescriptor:
             readDescriptor(with: command)
+        case .disconnect:
+            disconnect(with: command)
         }
     }
 
@@ -490,6 +499,12 @@ class BlePeripheral: NSObject {
         captureReadHandlers.append(captureReadHandler)
 
         peripheral.readValue(for: descriptor)
+    }
+    
+    private func disconnect(with command: BleCommand) {
+        let centralManager = command.parameters!.first as! CBCentralManager
+        centralManager.cancelPeripheralConnection(self.peripheral)
+        finishedExecutingCommand(error: nil)
     }
 }
 

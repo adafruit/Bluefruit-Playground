@@ -1,34 +1,35 @@
 //
-//  ScannerViewController.swift
+//  AutoConnectViewController.swift
 //  BluefruitPlayground
 //
-//  Created by Antonio García on 11/10/2019.
-//  Copyright © 2019 Adafruit. All rights reserved.
+//  Created by Antonio García on 28/01/2020.
+//  Copyright © 2020 Adafruit. All rights reserved.
 //
 
 import UIKit
-import CoreBluetooth
 
-class ScannerViewController: UIViewController {
+class AutoConnectViewController: UIViewController {
     // Constants
-    static let kNavigationControllerIdentifier = "ScannerNavigationController"
+    static let kNavigationControllerIdentifier = "AutoConnectNavigationController"
     
     // Config
-    private static let kDelayToShowWait: TimeInterval = 1.0
+    private static let kMinScanningTimeToAutoconnect: TimeInterval = 5
     
     // UI
-    @IBOutlet weak var baseTableView: UITableView!
-    @IBOutlet weak var waitView: UIView!
-    @IBOutlet weak var waitLabel: UILabel!
-    @IBOutlet weak var problemsButton: UIButton!
-    @IBOutlet weak var scanAutomaticallyButton: CornerShadowButton!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var scanManuallyButton: UIButton!
+    @IBOutlet weak var problemButton: CornerShadowButton!
+    @IBOutlet weak var wave0ImageView: UIImageView!
+    @IBOutlet weak var wave1ImageView: UIImageView!
+    @IBOutlet weak var wave2ImageView: UIImageView!
+    @IBOutlet weak var detailLabel: UILabel!
+    @IBOutlet weak var cpbContainerView: UIView!
+    @IBOutlet weak var cpbImageView: UIImageView!
     @IBOutlet weak var actionsContainerView: UIStackView!
     
     // Data
-    private let refreshControl = UIRefreshControl()
     private let bleManager = Config.bleManager
     private var peripheralList = PeripheralList(bleManager: Config.bleManager)
-    
     private var selectedPeripheral: BlePeripheral? {
         didSet {
             if isViewLoaded {
@@ -38,48 +39,31 @@ class ScannerViewController: UIViewController {
             }
         }
     }
-    private var infoAlertController: UIAlertController?
-    
-    private var isBaseTableScrolling = false
-    private var isScannerTableWaitingForReload = false
-
     private let navigationButton = UIButton(type: .custom)
+    private var isAnimating = false
+    
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup UI
-        waitView.alpha = 0
-        let topContentInsetForDetails: CGFloat = 20
-        baseTableView.contentInset = UIEdgeInsets(top: topContentInsetForDetails, left: 0, bottom: 0, right: 0)
-        
-        // Setup table refresh
-        refreshControl.addTarget(self, action: #selector(tableRefresh), for: UIControl.Event.valueChanged)
-        baseTableView.addSubview(refreshControl)
-        refreshControl.tintColor = waitLabel.textColor
-
-        // Ble Notifications
-        registerNotifications(enabled: true)
-        
         // Localization
         let localizationManager = LocalizationManager.shared
-        self.title = localizationManager.localizedString("scanner_title")
+        self.title = localizationManager.localizedString("autoconnect_title")
         
-        waitLabel.text = localizationManager.localizedString("scanner_searching")
-        problemsButton.setTitle(localizationManager.localizedString("scanner_problems_action").uppercased(), for: .normal)
-        scanAutomaticallyButton.setTitle(localizationManager.localizedString("scanner_automatic_action").uppercased(), for: .normal)
+        scanManuallyButton.setTitle(localizationManager.localizedString("autoconnect_manual_action").uppercased(), for: .normal)
+        problemButton.setTitle(localizationManager.localizedString("scanner_problems_action").uppercased(), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         self.navigationItem.backBarButtonItem = nil     // Clear any custom back button
         
         if let customNavigationBar = navigationController?.navigationBar as? NavigationBarWithScrollAwareRightButton {
-            customNavigationBar.setRightButton(topViewController: self, image: UIImage(named: "info"), target: self, action: #selector(about(_:)))
+            customNavigationBar.setRightButton(topViewController: self, image: UIImage(named: "info"), target: self, action: #selector(troubleshooting(_:)))
         }
-
+        
         // Disconnect if needed
         let connectedPeripherals = bleManager.connectedPeripherals()
         if connectedPeripherals.count == 1, let peripheral = connectedPeripherals.first {
@@ -87,23 +71,33 @@ class ScannerViewController: UIViewController {
             // Disconnect from peripheral
             disconnect(peripheral: peripheral)
         }
+        
+        // UI
+        updateStatusLabel()
+        
+        // Animations
+        if !isAnimating {
+            startAnimating()
+        }
+        
+        // Ble Notifications
+        registerNotifications(enabled: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
         // Flush any pending state notifications
         didUpdateBleState()
         
         // Update UI
         updateScannedPeripherals()
-
+        
         // Start scannning
-        //bleManager.startScan(withServices: ScannerViewController.kServicesToScan)
         if !bleManager.isScanning {
             bleManager.startScan()
-
         }
+        
         // Remove saved peripheral for autoconnect
         Settings.autoconnectPeripheralIdentifier = nil
     }
@@ -113,14 +107,24 @@ class ScannerViewController: UIViewController {
         
         // Stop scanning
         bleManager.stopScan()
-                
+        
         // Clear peripherals
         peripheralList.clear()
-    }
-    
-    deinit {
+        
+        // Animations
+        stopAnimating()
+        
         // Ble Notifications
         registerNotifications(enabled: false)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is ScannerViewController {
+            // Go to scanner screen
+            let backItem = UIBarButtonItem()
+            backItem.title = LocalizationManager.shared.localizedString("autoconnect_backbutton")
+            self.navigationItem.backBarButtonItem = backItem
+        }
     }
     
     // MARK: - BLE Notifications
@@ -131,7 +135,7 @@ class ScannerViewController: UIViewController {
     private weak var didDisconnectFromPeripheralObserver: NSObjectProtocol?
     private weak var peripheralDidUpdateNameObserver: NSObjectProtocol?
     private weak var willDiscoverServicesObserver: NSObjectProtocol?
-
+    
     
     private func registerNotifications(enabled: Bool) {
         let notificationCenter = NotificationCenter.default
@@ -143,7 +147,7 @@ class ScannerViewController: UIViewController {
             didDisconnectFromPeripheralObserver = notificationCenter.addObserver(forName: .didDisconnectFromPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.didDisconnectFromPeripheral(notification: notification)})
             peripheralDidUpdateNameObserver = notificationCenter.addObserver(forName: .peripheralDidUpdateName, object: nil, queue: .main, using: {[weak self] notification in self?.peripheralDidUpdateName(notification: notification)})
             willDiscoverServicesObserver = notificationCenter.addObserver(forName: .willDiscoverServices, object: nil, queue: .main, using: {[weak self] notification in self?.willDiscoverServices(notification: notification)})
-
+            
         } else {
             if let didUpdateBleStateObserver = didUpdateBleStateObserver {notificationCenter.removeObserver(didUpdateBleStateObserver)}
             if let didDiscoverPeripheralObserver = didDiscoverPeripheralObserver {notificationCenter.removeObserver(didDiscoverPeripheralObserver)}
@@ -200,13 +204,19 @@ class ScannerViewController: UIViewController {
     }
     
     private func willConnectToPeripheral(notification: Notification) {
-        guard let peripheral = bleManager.peripheral(from: notification) else { return }
-        presentInfoDialog(title: LocalizationManager.shared.localizedString("scanner_connecting"), peripheral: peripheral)
+        guard let selectedPeripheral = selectedPeripheral, let identifier = notification.userInfo?[BleManager.NotificationUserInfoKey.uuid.rawValue] as? UUID, selectedPeripheral.identifier == identifier else {
+                 DLog("willConnect to an unexpected peripheral")
+                 return
+             }
+        
+        let localizationManager = LocalizationManager.shared
+        updateStatusLabel()
+        detailLabel.text = localizationManager.localizedString("scanner_connecting")
     }
     
     private func didConnectToPeripheral(notification: Notification) {
         guard let selectedPeripheral = selectedPeripheral, let identifier = notification.userInfo?[BleManager.NotificationUserInfoKey.uuid.rawValue] as? UUID, selectedPeripheral.identifier == identifier else {
-            DLog("Connected to an unexpected peripheral")
+            DLog("didConnect to an unexpected peripheral")
             return
         }
         
@@ -219,9 +229,12 @@ class ScannerViewController: UIViewController {
                 DLog("setupPeripheral success")
                 
                 // Finished setup
-                self.dismissInfoDialog {
-                    self.showPeripheralDetails()
-                }
+                /*
+                 self.dismissInfoDialog {
+                 self.showPeripheralDetails()
+                 }*/
+                
+                self.showPeripheralDetails()
                 
             case .failure(let error):
                 DLog("setupPeripheral error: \(error.localizedDescription)")
@@ -238,26 +251,21 @@ class ScannerViewController: UIViewController {
     }
     
     private func willDiscoverServices(notification: Notification) {
-        infoAlertController?.message = LocalizationManager.shared.localizedString("scanner_discoveringservices")
+        detailLabel.text = LocalizationManager.shared.localizedString("scanner_discoveringservices")
     }
-
+    
     private func didDisconnectFromPeripheral(notification: Notification) {
         let peripheral = bleManager.peripheral(from: notification)
         let currentlyConnectedPeripheralsCount = bleManager.connectedPeripherals().count
-        
         guard let selectedPeripheral = selectedPeripheral, selectedPeripheral.identifier == peripheral?.identifier || currentlyConnectedPeripheralsCount == 0 else {        // If selected peripheral is disconnected or if there are no peripherals connected (after a failed dfu update)
             return
         }
         
         // Clear selected peripheral
         self.selectedPeripheral = nil
-        
-        // Dismiss any info open dialogs
-        infoAlertController?.dismiss(animated: true, completion: nil)
-        infoAlertController = nil
-        
-        // Reload table
-        reloadBaseTable()
+
+        // UI
+        updateStatusLabel()
 
         /*
         // If is not the topViewController, pop any other thing and come back to scanning
@@ -277,10 +285,7 @@ class ScannerViewController: UIViewController {
         let name = notification.userInfo?[BlePeripheral.NotificationUserInfoKey.name.rawValue] as? String
         DLog("centralManager peripheralDidUpdateName: \(name ?? "<unknown>")")
         
-        DispatchQueue.main.async {
-            // Reload table
-            self.reloadBaseTable()
-        }
+        updateStatusLabel()
     }
     
     // MARK: - Connections
@@ -288,220 +293,170 @@ class ScannerViewController: UIViewController {
         // Connect to selected peripheral
         selectedPeripheral = peripheral
         bleManager.connect(to: peripheral)
-        reloadBaseTable()
     }
     
     private func disconnect(peripheral: BlePeripheral) {
         selectedPeripheral = nil
         bleManager.disconnect(from: peripheral)
-        reloadBaseTable()
     }
     
     // MARK: - Actions
-    @objc func tableRefresh() {
-        refreshPeripherals()
-        refreshControl.endRefreshing()
-    }
-    
-    @IBAction func about(_ sender: Any) {
+    @IBAction func troubleshooting(_ sender: Any) {
         guard let viewController = storyboard?.instantiateViewController(withIdentifier: AboutViewController.kIdentifier) else { return }
-    
+        
         self.present(viewController, animated: true, completion: nil)
     }
     
-    @IBAction func scanAutomatically(_ sender: Any) {
-        ScreenFlowManager.gotoAutoconnect()
+    @IBAction func scanManually(_ sender: Any) {
+        ScreenFlowManager.goToManualScan()
     }
     
     private func showPeripheralDetails() {
         // Save selected peripheral for autoconnect
         Settings.autoconnectPeripheralIdentifier = selectedPeripheral?.identifier
         
-        /*
-        // Go to home screen
-        let backItem = UIBarButtonItem()
-        backItem.title = LocalizationManager.shared.localizedString("scanner_backbutton")
-        self.navigationItem.backBarButtonItem = backItem
-        
-        guard let modulesViewController = self.storyboard?.instantiateViewController(withIdentifier: HomeViewController.kIdentifier) else { return }
-        self.show(modulesViewController, sender: self)
- */
         ScreenFlowManager.gotoCPBModules()
     }
     
     // MARK: - UI
     private func refreshPeripherals() {
         bleManager.refreshPeripherals()
-        reloadBaseTable()
+        //   reloadBaseTable()
     }
     
     private func updateScannedPeripherals() {
+        // Only update autoconnect if we are not already connecting to a peripheral
+        guard bleManager.connectedOrConnectingPeripherals().isEmpty else { return }
         
-        // Reload table
-        if isBaseTableScrolling {
-            isScannerTableWaitingForReload = true
-        } else {
-            reloadBaseTable()
-        }
-    }
-    
-    private func reloadBaseTable() {
-        isBaseTableScrolling = false
-        isScannerTableWaitingForReload = false
-        let filteredPeripherals = peripheralList.filteredPeripherals(forceUpdate: true)     // Refresh the peripherals
-        baseTableView.reloadData()
-        
-        // Select the previously selected row
-        if let selectedPeripheral = selectedPeripheral, let selectedRow = filteredPeripherals.firstIndex(of: selectedPeripheral) {
-            baseTableView.selectRow(at: IndexPath(row: selectedRow + 1, section: 0), animated: false, scrollPosition: .none)
-        }
-        
-        //
-        updateDetailsCellOpacity()
-    }
-    
-    private func presentInfoDialog(title: String, peripheral: BlePeripheral) {
-        if infoAlertController != nil {
-            infoAlertController?.dismiss(animated: true, completion: nil)
-        }
-        
-        infoAlertController = UIAlertController(title: nil, message: title, preferredStyle: .alert)
-        infoAlertController!.addAction(UIAlertAction(title: LocalizationManager.shared.localizedString("dialog_cancel"), style: .cancel, handler: { [weak self] _ in
-            self?.bleManager.disconnect(from: peripheral)
-        }))
-        present(infoAlertController!, animated: true, completion:nil)
-    }
-    
-    private func dismissInfoDialog(completion: (() -> Void)? = nil) {
-        guard infoAlertController != nil else {
-            completion?()
+        guard bleManager.scanningElapsedTime ?? 0 > AutoConnectViewController.kMinScanningTimeToAutoconnect else {
+            DLog("scanTime: \(bleManager.scanningElapsedTime ?? 0)")
             return
         }
         
-        infoAlertController?.dismiss(animated: true, completion: completion)
-        infoAlertController = nil
-    }
-    
-    private var wasWaitVisible = false
-    private func updateWaitView() {
-        let numPeripherals = peripheralList.filteredPeripherals(forceUpdate: false).count
-        let isWaitVisible = numPeripherals == 0
-        if wasWaitVisible != isWaitVisible {
-            self.wasWaitVisible = isWaitVisible
-            waitView.layer.removeAllAnimations()
-            if isWaitVisible {
-                UIView.animate(withDuration: 0.2, delay: ScannerViewController.kDelayToShowWait, options: [], animations: {
-                    self.waitView.alpha = 1
-                }, completion: nil)
-            }
-            else {
-                self.waitView.alpha = 0
-            }
+        // Sort by RSSI
+        let filteredPeripherals = peripheralList.filteredPeripherals(forceUpdate: true)     // Refresh the peripherals
+        
+        let sortedPeripherals = filteredPeripherals.sorted { (blePeripheral0, blePeripheral1) -> Bool in
+            return blePeripheral0.rssi ?? -127 < blePeripheral1.rssi ?? -127
         }
+        DLog("peripherals: \(sortedPeripherals.count)")
+        
+        // Connect to closest CPB
+        guard let peripheral = sortedPeripherals.first else { return }
+        connect(peripheral: peripheral)
     }
     
-    private func updateDetailsCellOpacity() {
-        guard let detailsCell = baseTableView.visibleCells.first(where: { $0 is TitleTableViewCell }) else { return }
-        
-        guard let customNavigationBar = navigationController?.navigationBar as? NavigationBarWithScrollAwareRightButton else { return }
-
-        let titleTableViewCell = detailsCell as! TitleTableViewCell
-        titleTableViewCell.alpha = max(0, 2 - customNavigationBar.navigationBarScrollViewProgress)
-    }
-}
-
-// MARK: - UITableViewDataSource
-extension ScannerViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Update wait prompt (wait 1 second to make it visible)
-        updateWaitView()
-
-        // Calculate num cells
-        // (1 detail cell + num peripherals) if at least 1 peripheral is found
-        let numPeripherals = peripheralList.filteredPeripherals(forceUpdate: false).count
-        return numPeripherals > 0 ? 1 + numPeripherals : 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let isDetails = indexPath.row == 0
-        
-        let reuseIdentifier = isDetails ? "DetailsCell" : "PeripheralCell"
-        return tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-    }
-}
-
-// MARK: UITableViewDelegate
-extension ScannerViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+    private func updateStatusLabel() {
         let localizationManager = LocalizationManager.shared
-        let isDetails = indexPath.row == 0
-        
-        if isDetails {
-            let detailsCell = cell as! TitleTableViewCell
+
+        let statusText: String
+        if let selectedPeripheral = selectedPeripheral {
+            statusText = "Device found:\n\(selectedPeripheral.name ?? localizationManager.localizedString("scanner_unnamed"))"
             
-            detailsCell.titleLabel.text = localizationManager.localizedString("scanner_subtitle")
+            // Animate found CPB
+            UIView.animate(withDuration: 0.1, animations: {
+                self.cpbContainerView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            }) { finished in
+                if finished {
+                    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: [.curveEaseOut], animations: {
+                        self.cpbContainerView.transform = .identity
+                    }, completion: nil)
+                    
+                    UIView.animate(withDuration: 0.3) {
+                        self.cpbImageView.alpha = 1
+                    }
+                }
+            }
+            
         }
         else {
-            let peripheralCell = cell as! CommonTableViewCell
-            let peripheralIndex = indexPath.row - 1
-            let peripheral = peripheralList.filteredPeripherals(forceUpdate: false)[peripheralIndex]
-            
-            // Fill peripheral data
-            peripheralCell.titleLabel.text = peripheral.name ?? localizationManager.localizedString("scanner_unnamed")
-            peripheralCell.iconImageView.image = RssiUI.signalImage(for: peripheral.rssi)
+            UIView.animate(withDuration: 0.3) {
+                self.cpbImageView.alpha = 0.2
+            }
+            statusText = localizationManager.localizedString("scanner_searching")
+            detailLabel.text = " "
         }
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let isDetails = indexPath.row == 0
-        guard !isDetails else { return }
         
-        let peripheralIndex = indexPath.row - 1
-        let peripheral = peripheralList.filteredPeripherals(forceUpdate: false)[peripheralIndex]
-        
-        connect(peripheral: peripheral)
+        statusLabel.text = statusText
     }
 }
 
 // MARK: UIScrollViewDelegate
-extension ScannerViewController {
+extension AutoConnectViewController {
 
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        isBaseTableScrolling = true
-    }
-
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        isBaseTableScrolling = false
-
-        if isScannerTableWaitingForReload {
-            reloadBaseTable()
-        }
-    }
-    
-    /*
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        isBaseTableScrolling = false
-
-        if isScannerTableWaitingForReload {
-            reloadBaseTable()
-        }
-    }*/
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // NavigationBar Button Custom Animation
         if let customNavigationBar = navigationController?.navigationBar as? NavigationBarWithScrollAwareRightButton {
             customNavigationBar.updateRightButtonPosition()
         }
+    }
+}
 
-        // Move Refresh control when a large title is used
-        if let height = navigationController?.navigationBar.frame.height {
-        refreshControl.bounds = CGRect(x: refreshControl.bounds.origin.x, y: NavigationBarWithScrollAwareRightButton.navBarHeightLargeState - height, width: refreshControl.bounds.size.width, height: refreshControl.bounds.size.height)
-        }
+
+// MARK: - Animations
+extension AutoConnectViewController {
+    
+    private func stopAnimating() {
+        isAnimating = false
         
-        // Hide details opacity when showing the refresh control
-        updateDetailsCellOpacity()
+        if isViewLoaded {
+            let waveImageViews = [wave0ImageView, wave1ImageView]//, wave2ImageView]
+            
+            for waveImageView in waveImageViews {
+                if let waveImageView = waveImageView {
+                    waveImageView.layer.removeAllAnimations()
+                    waveImageView.alpha = 0
+                }
+            }
+        }
+    }
+    
+    private func startAnimating() {
+        isAnimating = true
+        guard isViewLoaded else { return }
+        
+        let waveImageViews = [wave0ImageView, wave1ImageView]//, wave2ImageView]
+        
+        // Scanning animation
+        let duration: Double = 8
+        let initialScaleFactor: CGFloat = 0.60
+        let finalScaleFactor: CGFloat = 1.10
+        
+        let initialAlphaFactor: CGFloat = 0.80
+        let finalAlphaFactor: CGFloat = 0
+        
+        // -    Initial position
+        let introMaxValueFactor: CGFloat = 0.7
+        
+        for (i, waveImageView) in waveImageViews.enumerated() {
+            if let waveImageView = waveImageView {
+                //DLog("intro: \(i)")
+                
+                let factor: CGFloat = CGFloat(i) / CGFloat(waveImageViews.count-1) * introMaxValueFactor
+                let scaleFactor = (finalScaleFactor - initialScaleFactor) * factor + initialScaleFactor
+                waveImageView.transform = CGAffineTransform(scaleX: scaleFactor, y: scaleFactor);
+                
+                let alphaFactor = (finalAlphaFactor - initialAlphaFactor) * factor + initialAlphaFactor
+                waveImageView.alpha = alphaFactor
+                
+                // DLog("\(i): factor: \(factor) scale: \(scaleFactor)")
+                
+                let introDuration = (1 - Double(factor)) * duration
+                UIView.animate(withDuration: introDuration, delay: 0, options: [.curveEaseOut], animations: {
+                    waveImageView.transform = CGAffineTransform(scaleX: finalScaleFactor, y: finalScaleFactor)
+                    waveImageView.alpha = finalAlphaFactor
+                }, completion: { _ in
+                    // Ongoing
+                    waveImageView.transform = CGAffineTransform(scaleX: initialScaleFactor, y: initialScaleFactor);
+                    waveImageView.alpha = initialAlphaFactor
+                    
+                    UIView.animate(withDuration: duration, delay: 0, options: [.repeat, .curveEaseOut], animations: {
+                        waveImageView.transform = CGAffineTransform(scaleX: finalScaleFactor, y: finalScaleFactor)
+                        waveImageView.alpha = finalAlphaFactor
+                    }, completion: nil)
+                })
+            }
+        }
     }
 }

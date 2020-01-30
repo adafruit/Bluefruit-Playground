@@ -134,7 +134,7 @@ class TipsViewController: UIViewController {
     }
     
     @IBAction func skip(_ sender: Any) {
-        ScreenFlowManager.gotoScanner()
+        ScreenFlowManager.gotoAutoconnect()
     }
     
     @objc private func pageControlTapHandler(sender: UIPageControl) {
