@@ -160,6 +160,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 
 "lightsensor_panel_title" = "Luminance Reading";
 "lightsensor_panel_unit" = "Light level";
+"lightsensor_chartpanel_title" = "Luminance Chart";
 
 // Button Status
 "buttonstatus_title" = "Button Status";
@@ -211,7 +212,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "temperature_units_celsius" = "ºC";
 "temperature_units_farenheit" = "ºF";
 
-"temperature_panel_title" = "Temperature Reading";
+"temperature_panel_title" = "Temperature Chart";
 "temperature_chart_nodata" = "No chart data available";
 
 // Help

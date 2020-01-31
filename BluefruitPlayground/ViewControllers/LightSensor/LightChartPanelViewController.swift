@@ -1,17 +1,17 @@
 //
-//  TemperaturePanelViewController.swift
+//  LightPanelViewController.swift
 //  BluefruitPlayground
 //
-//  Created by Antonio García on 25/10/2019.
-//  Copyright © 2019 Adafruit. All rights reserved.
+//  Created by Antonio García on 31/01/2020.
+//  Copyright © 2020 Adafruit. All rights reserved.
 //
 
 import UIKit
 import Charts
 
-class TemperaturePanelViewController: ModulePanelViewController {
+class LightChartPanelViewController: ModulePanelViewController {
     // Constants
-    static let kIdentifier = "TemperaturePanelViewController"
+    static let kIdentifier = "LightPanelViewController"
     
     // UI
     @IBOutlet weak var chartView: LineChartView!
@@ -22,16 +22,6 @@ class TemperaturePanelViewController: ModulePanelViewController {
     private var dataSet: LineChartDataSet!
     private var originTimestamp: CFAbsoluteTime!
     
-    // Params
-    var isCelsius = true {
-        didSet {
-            if self.isViewLoaded {
-                reloadChartEntries()
-                notifyDataSetChanged()
-            }
-        }
-    }
-
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +30,8 @@ class TemperaturePanelViewController: ModulePanelViewController {
         
         // Localization
         let localizationManager = LocalizationManager.shared
-        titleLabel.text = localizationManager.localizedString("temperature_panel_title")
+        titleLabel.text = localizationManager.localizedString("lightsensor_chartpanel_title")
+        
     }
     
     // MARK: - Line Chart
@@ -54,27 +45,26 @@ class TemperaturePanelViewController: ModulePanelViewController {
         chartView.xAxis.granularityEnabled = true
         chartView.xAxis.granularity = 5
         chartView.rightAxis.enabled = false
-//        chartView.rightAxis.valueFormatter =
+        //        chartView.rightAxis.valueFormatter =
         //chartView.leftAxis.drawZeroLineEnabled = true
         //chartView.setExtraOffsets(left: 10, top: 10, right: 10, bottom: 0)
         chartView.legend.enabled = false
         chartView.noDataText = LocalizationManager.shared.localizedString("temperature_chart_nodata")
         
         // Timestamp
-        let temperatureDataSeries = CPBBle.shared.temperatureDataSeries()
-        originTimestamp = temperatureDataSeries.first?.timestamp ?? CFAbsoluteTimeGetCurrent()
+        let lightDataSeries = CPBBle.shared.lightDataSeries()
+        originTimestamp = lightDataSeries.first?.timestamp ?? CFAbsoluteTimeGetCurrent()
         
         // Load initial data
         reloadChartEntries()
     }
     
     private func reloadChartEntries() {
-        let temperatureDataSeries = CPBBle.shared.temperatureDataSeries()
+        let lightDataSeries = CPBBle.shared.lightDataSeries()
         
-        let chartEntries = temperatureDataSeries.map { entry -> ChartDataEntry in
-            let temperatureCelsius = Double(entry.value)
-            let temperature = isCelsius ? temperatureCelsius : (temperatureCelsius * 1.8 + 32)
-            return ChartDataEntry(x: entry.timestamp - originTimestamp, y: temperature)
+        let chartEntries = lightDataSeries.map { entry -> ChartDataEntry in
+            let lightReading = Double(entry.value)
+            return ChartDataEntry(x: entry.timestamp - originTimestamp, y: lightReading)
         }
         
         // Add Dataset
@@ -86,7 +76,7 @@ class TemperaturePanelViewController: ModulePanelViewController {
         dataSet.setColor(UIColor.blue)
         //dataSet.lineDashLengths = lineDashForPeripheral[identifier]!
         //DLog("color: \(color.hexString()!)")
-
+        
         // Set dataset
         chartView.data = LineChartData(dataSet: dataSet)
     }
@@ -107,14 +97,14 @@ class TemperaturePanelViewController: ModulePanelViewController {
     }
     
     // MARK: - Actions
-    func temperatureValueReceived() {
-        guard let lastTemperatureDataSeries = CPBBle.shared.temperatureDataSeries().last else { return }
+    func lightValueReceived() {
+        guard let lastLightDataSeries = CPBBle.shared.lightDataSeries().last else { return }
         
-        let temperatureCelsius = Double(lastTemperatureDataSeries.value)
-        let temperature = isCelsius ? temperatureCelsius : (temperatureCelsius * 1.8 + 32)
-        let entry = ChartDataEntry(x: lastTemperatureDataSeries.timestamp - originTimestamp, y: temperature)
+        let light = Double(lastLightDataSeries.value)
+        let entry = ChartDataEntry(x: lastLightDataSeries.timestamp - originTimestamp, y: light)
         let _ = dataSet.append(entry)
         
         notifyDataSetChanged()
     }
+    
 }

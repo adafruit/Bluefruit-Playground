@@ -14,6 +14,8 @@ extension BlePeripheral {
     static let kCPBTemperatureServiceUUID = CBUUID(string: "ADAF0100-C332-42A8-93BD-25E905756CB8")
     private static let kCPBTemperatureCharacteristicUUID = CBUUID(string: "ADAF0101-C332-42A8-93BD-25E905756CB8")
     
+    private static let kCPBTemperatureDefaultPeriod: TimeInterval = 0.1
+
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
         static var cpbTemperatureCharacteristic: CBCharacteristic?
@@ -31,7 +33,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func cpbTemperatureEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
         
-        self.cpbServiceEnable(serviceUuid: BlePeripheral.kCPBTemperatureServiceUUID, mainCharacteristicUuid: BlePeripheral.kCPBTemperatureCharacteristicUUID, timePeriod: 0.5, responseHandler: { response in
+        self.cpbServiceEnable(serviceUuid: BlePeripheral.kCPBTemperatureServiceUUID, mainCharacteristicUuid: BlePeripheral.kCPBTemperatureCharacteristicUUID, timePeriod: BlePeripheral.kCPBTemperatureDefaultPeriod, responseHandler: { response in
             
             switch response {
             case let .success((data, uuid)):

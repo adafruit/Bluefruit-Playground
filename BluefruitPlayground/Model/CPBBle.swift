@@ -192,7 +192,11 @@ class CPBBle {
     func accelerometerLastValue() -> BlePeripheral.AccelerometerValue? {
         return blePeripheral?.cpbAccelerometerLastValue()
     }
-    
+
+    func lightDataSeries() -> [CPBDataSeries<Float>.Entry] {
+        return lightData.values
+    }
+
     func temperatureDataSeries() -> [CPBDataSeries<Float>.Entry] {
         return temperatureData.values
     }

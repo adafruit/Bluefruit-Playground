@@ -178,6 +178,8 @@
 		A9BED77B234FBEAB002FFF53 /* LogHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED764234FBEAB002FFF53 /* LogHelper.swift */; };
 		A9BED77D234FBEAB002FFF53 /* Data+ScanValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */; };
 		A9D12E8423E3661800F3C259 /* UIColor+Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */; };
+		A9D12E8623E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */; };
+		A9D12E8723E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */; };
 		A9D5B21023E0985600178E1B /* AutoConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5B20F23E0985600178E1B /* AutoConnectViewController.swift */; };
 		A9D5B21123E0985600178E1B /* AutoConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5B20F23E0985600178E1B /* AutoConnectViewController.swift */; };
 		A9D5B21323E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5B21223E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift */; };
@@ -316,6 +318,7 @@
 		A9BED764234FBEAB002FFF53 /* LogHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogHelper.swift; sourceTree = "<group>"; };
 		A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+ScanValue.swift"; sourceTree = "<group>"; };
 		A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Interpolate.swift"; sourceTree = "<group>"; };
+		A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightChartPanelViewController.swift; sourceTree = "<group>"; };
 		A9D5B20F23E0985600178E1B /* AutoConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoConnectViewController.swift; sourceTree = "<group>"; };
 		A9D5B21223E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelIntrinsicSizeFix.swift; sourceTree = "<group>"; };
 		A9D5B21523E3024700178E1B /* BluetoothStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothStatusViewController.swift; sourceTree = "<group>"; };
@@ -487,6 +490,7 @@
 			children = (
 				A986AB92235942D600DF12C8 /* LightSensorViewController.swift */,
 				A98F1B8A23594BE400C5269E /* LightSensorPanelViewController.swift */,
+				A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */,
 			);
 			path = LightSensor;
 			sourceTree = "<group>";
@@ -952,6 +956,7 @@
 				A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */,
 				A96AA5C6236312CE004A06BA /* ToneGeneratorViewController.swift in Sources */,
 				A9BED77D234FBEAB002FFF53 /* Data+ScanValue.swift in Sources */,
+				A9D12E8623E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */,
 				A901EC48237C43C000687BE6 /* Data+LittleEndianTypes.swift in Sources */,
 				A980FE6D2357D14400E3A909 /* TipPowerUpViewController.swift in Sources */,
 				A94AC14E2364A82B0062AB11 /* CPBBle.swift in Sources */,
@@ -1041,6 +1046,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9D12E8723E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */,
 				A9A08B3923A523C900498069 /* Int+Bytes.swift in Sources */,
 				A9A08B3A23A523C900498069 /* UIView+AllSubviewsWithClass.swift in Sources */,
 				A9A08BAD23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift in Sources */,

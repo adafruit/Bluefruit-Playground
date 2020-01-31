@@ -14,7 +14,7 @@ extension BlePeripheral {
     static let kCPBLightServiceUUID = CBUUID(string: "ADAF0300-C332-42A8-93BD-25E905756CB8")
     private static let kCPBLightCharacteristicUUID = CBUUID(string: "ADAF0301-C332-42A8-93BD-25E905756CB8")
     
-    static let kCPBLightDefaultPeriod: TimeInterval = 0.1
+    private static let kCPBLightDefaultPeriod: TimeInterval = 0.1
 
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
