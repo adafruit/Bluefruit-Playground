@@ -103,7 +103,6 @@ class ToneGeneratorViewController: UIViewController {
             customNavigationBar.setRightButton(topViewController: self, image: UIImage(named: "help"), target: self, action: #selector(help(_:)))
         }
     }
-
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -111,6 +110,14 @@ class ToneGeneratorViewController: UIViewController {
         // Disable the pop recognizer to avoid problems with keys on the edges
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // Re-enable the pop recognizer
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
     override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
         // Remove the system gestures from left and right edges
         return [.top, .bottom]       // not left or right
@@ -156,13 +163,15 @@ class ToneGeneratorViewController: UIViewController {
     @objc private func redirectHalfKeyDown(_ sender: UIButton) {
         let targetButton =  sender === extraHalfKeyTop ? halfKeyTop : halfKeyBottom
         targetButton?.sendActions(for: .touchDown)
-        targetButton?.isHighlighted = true
+        halfKeyTop.isHighlighted = true
+        halfKeyBottom.isHighlighted = true
     }
 
     @objc private func redirectHalfKeyUp(_ sender: UIButton) {
         let targetButton =  sender === extraHalfKeyTop ? halfKeyTop : halfKeyBottom
         targetButton?.sendActions(for: .touchUpInside)
-        targetButton?.isHighlighted = false
+        halfKeyTop.isHighlighted = false
+        halfKeyBottom.isHighlighted = false
     }
     
     private func frequencyForKeyTag(_ tag: Int) -> Double? {
