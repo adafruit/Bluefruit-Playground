@@ -25,7 +25,7 @@ Circuit Playground Bluefruit is available at the Adafruit shop.";
 "tip1_link_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
 "tip1_action" = "Next";
 "tip2_title" = "Discover";
-"tip2_detail" = "Once Circuit Playground Bluefruit is powered, place it near your iPhone and tap the button below.";
+"tip2_detail" = "Once your Circuit Playground Bluefruit is powered, move your iPhone towards your Circuit Playground Bluefruit";
 "tip2_action" = "Begin pairing";
 
 

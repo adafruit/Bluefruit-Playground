@@ -258,19 +258,6 @@ class ScannerViewController: UIViewController {
         
         // Reload table
         reloadBaseTable()
-
-        /*
-        // If is not the topViewController, pop any other thing and come back to scanning
-        if self.navigationController?.topViewController !== self {
-            self.navigationController?.popToRootViewController(animated: false)
-            
-            // Show disconnection alert
-            let localizationManager = LocalizationManager.shared
-            let alertController = UIAlertController(title: nil, message: localizationManager.localizedString("scanner_peripheraldisconnected"), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: localizationManager.localizedString("dialog_ok"), style: .default, handler: nil)
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
-        }*/
     }
     
     private func peripheralDidUpdateName(notification: Notification) {
@@ -317,15 +304,7 @@ class ScannerViewController: UIViewController {
         // Save selected peripheral for autoconnect
         Settings.autoconnectPeripheralIdentifier = selectedPeripheral?.identifier
         
-        /*
         // Go to home screen
-        let backItem = UIBarButtonItem()
-        backItem.title = LocalizationManager.shared.localizedString("scanner_backbutton")
-        self.navigationItem.backBarButtonItem = backItem
-        
-        guard let modulesViewController = self.storyboard?.instantiateViewController(withIdentifier: HomeViewController.kIdentifier) else { return }
-        self.show(modulesViewController, sender: self)
- */
         ScreenFlowManager.gotoCPBModules()
     }
     
@@ -479,16 +458,7 @@ extension ScannerViewController {
             reloadBaseTable()
         }
     }
-    
-    /*
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-        isBaseTableScrolling = false
 
-        if isScannerTableWaitingForReload {
-            reloadBaseTable()
-        }
-    }*/
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // NavigationBar Button Custom Animation

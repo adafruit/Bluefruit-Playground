@@ -94,6 +94,10 @@ struct ScreenFlowManager {
             didDisconnectFromPeripheralObserver = notificationCenter.addObserver(forName: .didDisconnectFromPeripheral, object: nil, queue: .main, using: { _ in
                 guard let window = UIApplication.shared.keyWindow else { return }
                 
+                // Don't show on startup
+                let topViewController = (window.rootViewController as? UINavigationController)?.topViewController ?? window.rootViewController
+                guard !(topViewController is StartupViewController) else { return }
+                
                 // Show disconnection alert
                 let localizationManager = LocalizationManager.shared
                 let alertController = UIAlertController(title: nil, message: localizationManager.localizedString("scanner_peripheraldisconnected"), preferredStyle: .alert)

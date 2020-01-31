@@ -229,11 +229,6 @@ class AutoConnectViewController: UIViewController {
                 DLog("setupPeripheral success")
                 
                 // Finished setup
-                /*
-                 self.dismissInfoDialog {
-                 self.showPeripheralDetails()
-                 }*/
-                
                 self.showPeripheralDetails()
                 
             case .failure(let error):
@@ -266,19 +261,6 @@ class AutoConnectViewController: UIViewController {
 
         // UI
         updateStatusLabel()
-
-        /*
-        // If is not the topViewController, pop any other thing and come back to scanning
-        if self.navigationController?.topViewController !== self {
-            self.navigationController?.popToRootViewController(animated: false)
-            
-            // Show disconnection alert
-            let localizationManager = LocalizationManager.shared
-            let alertController = UIAlertController(title: nil, message: localizationManager.localizedString("scanner_peripheraldisconnected"), preferredStyle: .alert)
-            let okAction = UIAlertAction(title: localizationManager.localizedString("dialog_ok"), style: .default, handler: nil)
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
-        }*/
     }
     
     private func peripheralDidUpdateName(notification: Notification) {
@@ -329,7 +311,7 @@ class AutoConnectViewController: UIViewController {
         guard bleManager.connectedOrConnectingPeripherals().isEmpty else { return }
         
         guard bleManager.scanningElapsedTime ?? 0 > AutoConnectViewController.kMinScanningTimeToAutoconnect else {
-            DLog("scanTime: \(bleManager.scanningElapsedTime ?? 0)")
+            DLog("remaining scan time: \(AutoConnectViewController.kMinScanningTimeToAutoconnect - (bleManager.scanningElapsedTime ?? 0))")
             return
         }
         
@@ -339,7 +321,7 @@ class AutoConnectViewController: UIViewController {
         let sortedPeripherals = filteredPeripherals.sorted { (blePeripheral0, blePeripheral1) -> Bool in
             return blePeripheral0.rssi ?? -127 > blePeripheral1.rssi ?? -127
         }
-        DLog("peripherals: \(sortedPeripherals.count)")
+        //DLog("peripherals: \(sortedPeripherals.count)")
         
         // Connect to closest CPB
         guard let peripheral = sortedPeripherals.first else { return }
