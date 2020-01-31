@@ -180,6 +180,7 @@
 		A9D12E8423E3661800F3C259 /* UIColor+Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */; };
 		A9D12E8623E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */; };
 		A9D12E8723E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */; };
+		A9D12E8823E4434000F3C259 /* UIColor+Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */; };
 		A9D5B21023E0985600178E1B /* AutoConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5B20F23E0985600178E1B /* AutoConnectViewController.swift */; };
 		A9D5B21123E0985600178E1B /* AutoConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5B20F23E0985600178E1B /* AutoConnectViewController.swift */; };
 		A9D5B21323E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D5B21223E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift */; };
@@ -1062,6 +1063,7 @@
 				A9A08B4523A523C900498069 /* Data+ScanValue.swift in Sources */,
 				A9A08B4623A523C900498069 /* Data+LittleEndianTypes.swift in Sources */,
 				A9A08B4723A523C900498069 /* TipPowerUpViewController.swift in Sources */,
+				A9D12E8823E4434000F3C259 /* UIColor+Interpolate.swift in Sources */,
 				A9A08B4823A523C900498069 /* CPBBle.swift in Sources */,
 				A9A08B4923A523C900498069 /* NavigationBarWithScrollAwareRightButton.swift in Sources */,
 				A9A08B4B23A523C900498069 /* UartPacketManagerBase.swift in Sources */,

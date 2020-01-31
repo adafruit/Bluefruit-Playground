@@ -337,7 +337,7 @@ class AutoConnectViewController: UIViewController {
         let filteredPeripherals = peripheralList.filteredPeripherals(forceUpdate: true)     // Refresh the peripherals
         
         let sortedPeripherals = filteredPeripherals.sorted { (blePeripheral0, blePeripheral1) -> Bool in
-            return blePeripheral0.rssi ?? -127 < blePeripheral1.rssi ?? -127
+            return blePeripheral0.rssi ?? -127 > blePeripheral1.rssi ?? -127
         }
         DLog("peripherals: \(sortedPeripherals.count)")
         

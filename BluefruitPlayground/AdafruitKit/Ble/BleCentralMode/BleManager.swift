@@ -35,7 +35,7 @@ class BleManager: NSObject {
         return CACurrentMediaTime() - scanningStartTime
     }
     private var isScanningWaitingToStart = false
-    private var scanningStartTime: TimeInterval?        // Time when the scanning started. nil if stopped
+    internal var scanningStartTime: TimeInterval?        // Time when the scanning started. nil if stopped
     private var scanningServicesFilter: [CBUUID]?
     internal var peripheralsFound = [UUID: BlePeripheral]()
     private var peripheralsFoundLock = NSLock()
