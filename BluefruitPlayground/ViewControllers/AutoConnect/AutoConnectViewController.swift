@@ -87,9 +87,6 @@ class AutoConnectViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // Flush any pending state notifications
-        didUpdateBleState()
-        
         // Update UI
         updateScannedPeripherals()
         
@@ -128,7 +125,6 @@ class AutoConnectViewController: UIViewController {
     }
     
     // MARK: - BLE Notifications
-    private weak var didUpdateBleStateObserver: NSObjectProtocol?
     private weak var didDiscoverPeripheralObserver: NSObjectProtocol?
     private weak var willConnectToPeripheralObserver: NSObjectProtocol?
     private weak var didConnectToPeripheralObserver: NSObjectProtocol?
@@ -136,11 +132,9 @@ class AutoConnectViewController: UIViewController {
     private weak var peripheralDidUpdateNameObserver: NSObjectProtocol?
     private weak var willDiscoverServicesObserver: NSObjectProtocol?
     
-    
     private func registerNotifications(enabled: Bool) {
         let notificationCenter = NotificationCenter.default
         if enabled {
-            didUpdateBleStateObserver = notificationCenter.addObserver(forName: .didUpdateBleState, object: nil, queue: .main, using: {[weak self] _ in self?.didUpdateBleState()})
             didDiscoverPeripheralObserver = notificationCenter.addObserver(forName: .didDiscoverPeripheral, object: nil, queue: .main, using: {[weak self] _ in self?.didDiscoverPeripheral()})
             willConnectToPeripheralObserver = notificationCenter.addObserver(forName: .willConnectToPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.willConnectToPeripheral(notification: notification)})
             didConnectToPeripheralObserver = notificationCenter.addObserver(forName: .didConnectToPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.didConnectToPeripheral(notification: notification)})
@@ -149,7 +143,6 @@ class AutoConnectViewController: UIViewController {
             willDiscoverServicesObserver = notificationCenter.addObserver(forName: .willDiscoverServices, object: nil, queue: .main, using: {[weak self] notification in self?.willDiscoverServices(notification: notification)})
             
         } else {
-            if let didUpdateBleStateObserver = didUpdateBleStateObserver {notificationCenter.removeObserver(didUpdateBleStateObserver)}
             if let didDiscoverPeripheralObserver = didDiscoverPeripheralObserver {notificationCenter.removeObserver(didDiscoverPeripheralObserver)}
             if let willConnectToPeripheralObserver = willConnectToPeripheralObserver {notificationCenter.removeObserver(willConnectToPeripheralObserver)}
             if let didConnectToPeripheralObserver = didConnectToPeripheralObserver {notificationCenter.removeObserver(didConnectToPeripheralObserver)}
@@ -158,46 +151,7 @@ class AutoConnectViewController: UIViewController {
             if let willDiscoverServicesObserver = willDiscoverServicesObserver {notificationCenter.removeObserver(willDiscoverServicesObserver)}
         }
     }
-    
-    private func didUpdateBleState() {
-        guard Config.isBleUnsupportedWarningEnabled else { return }
-        guard let state = bleManager.centralManager?.state else { return }
-        
-        // Check if there is any error
-        var errorMessageId: String?
-        switch state {
-        case .unsupported:
-            errorMessageId = "bluetooth_unsupported"
-        case .unauthorized:
-            errorMessageId = "bluetooth_notauthorized"
-        case .poweredOff:
-            errorMessageId = "bluetooth_poweredoff"
-        default:
-            errorMessageId = nil
-        }
-        
-        // Show alert if error found
-        if let errorMessageId = errorMessageId {
-            let localizationManager = LocalizationManager.shared
-            let errorMessage = localizationManager.localizedString(errorMessageId)
-            DLog("Error: \(errorMessage)")
-            
-            // Reload peripherals
-            refreshPeripherals()
-            
-            // Show error
-            let alertController = UIAlertController(title: localizationManager.localizedString("dialog_error"), message: errorMessage, preferredStyle: .alert)
-            let okAction = UIAlertAction(title: localizationManager.localizedString("dialog_ok"), style: .default, handler: { (_) -> Void in
-                if let navController = self.splitViewController?.viewControllers[0] as? UINavigationController {
-                    navController.popViewController(animated: true)
-                }
-            })
-            
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
-        }
-    }
-    
+  
     private func didDiscoverPeripheral() {
         // Update current scanning state
         updateScannedPeripherals()
@@ -338,8 +292,8 @@ class AutoConnectViewController: UIViewController {
             // Animate found CPB
             UIView.animate(withDuration: 0.1, animations: {
                 self.cpbContainerView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
-            }) { finished in
-                if finished {
+            }) { didFinish in
+                if didFinish {
                     UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: [.curveEaseOut], animations: {
                         self.cpbContainerView.transform = .identity
                     }, completion: nil)

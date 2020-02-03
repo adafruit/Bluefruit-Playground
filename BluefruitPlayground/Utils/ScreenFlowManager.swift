@@ -102,11 +102,7 @@ struct ScreenFlowManager {
                 let localizationManager = LocalizationManager.shared
                 let alertController = UIAlertController(title: nil, message: localizationManager.localizedString("scanner_peripheraldisconnected"), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: localizationManager.localizedString("dialog_ok"), style: .default) { _ in
-                    /*
-                    let isInManualScan = (window.rootViewController as? UINavigationController)?.topViewController is ScannerViewController
-                    if !isInManualScan {    // If it is manual scanning, maintain that screen
-                        gotoAutoconnect()
-                    }*/
+               
                     if ScreenFlowManager.wasManualScanningLastUsed {
                         goToManualScan()
                     }
@@ -146,7 +142,7 @@ struct ScreenFlowManager {
         guard let window = UIApplication.shared.keyWindow else { return false }
         
         let bluetoothState = Config.bleManager.state
-        let shouldShowBluetoothDialog = bluetoothState == .poweredOff || bluetoothState == .unsupported || bluetoothState == .unauthorized
+        let shouldShowBluetoothDialog = bluetoothState == .poweredOff || bluetoothState == .unauthorized || (bluetoothState == .unsupported && Config.isBleUnsupportedWarningEnabled)
         
         let topViewController = (window.rootViewController as? UINavigationController)?.topViewController ?? window.rootViewController
         let isShowingEnableBluetoothDialog = topViewController is BluetoothStatusViewController
