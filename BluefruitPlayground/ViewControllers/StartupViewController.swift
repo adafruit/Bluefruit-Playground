@@ -190,7 +190,9 @@ class StartupViewController: UIViewController {
     
     // MARK: - Screen Flow
     private func gotoInitialScreen() {
-        let viewControllerIdentifier = StartupViewController.kForcedNavigationControllerIdentifier ?? (Settings.areTipsEnabled && Config.isTutorialEnabled ? TipsViewController.kIdentifier : AutoConnectViewController.kNavigationControllerIdentifier)
+        let defaultConnectViewControllerIdentifier = Config.isAutomaticConnectionEnabled ?  AutoConnectViewController.kNavigationControllerIdentifier : ScannerViewController.kNavigationControllerIdentifier
+        
+        let viewControllerIdentifier = StartupViewController.kForcedNavigationControllerIdentifier ?? (Settings.areTipsEnabled && Config.isTutorialEnabled ? TipsViewController.kIdentifier : defaultConnectViewControllerIdentifier)
         DLog("Start app with viewController: \(viewControllerIdentifier)")
         
         // Change splash screen to main screen

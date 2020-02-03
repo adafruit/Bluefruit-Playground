@@ -11,7 +11,7 @@ import UIKit
 struct ScreenFlowManager {
     
     // Data
-    private static var wasManualScanningLastUsed = false        // Last scanning method used
+    private static var wasManualScanningLastUsed = !Config.isAutomaticConnectionEnabled        // Last scanning method used
     
     // MARK: - Go to app areas
     public static func gotoAutoconnect() {
@@ -156,7 +156,9 @@ struct ScreenFlowManager {
             viewControllerIdentifier = BluetoothStatusViewController.kIdentifier
         }
         else if !shouldShowBluetoothDialog && isShowingEnableBluetoothDialog {
-            viewControllerIdentifier = AutoConnectViewController.kNavigationControllerIdentifier
+            let defaultConnectViewControllerIdentifier = Config.isAutomaticConnectionEnabled ?  AutoConnectViewController.kNavigationControllerIdentifier : ScannerViewController.kNavigationControllerIdentifier
+                   
+            viewControllerIdentifier = defaultConnectViewControllerIdentifier
         }
         
         if let viewControllerIdentifier = viewControllerIdentifier {

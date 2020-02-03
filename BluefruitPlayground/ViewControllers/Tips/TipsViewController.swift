@@ -134,7 +134,12 @@ class TipsViewController: UIViewController {
     }
     
     @IBAction func skip(_ sender: Any) {
-        ScreenFlowManager.gotoAutoconnect()
+        if Config.isAutomaticConnectionEnabled {
+            ScreenFlowManager.gotoAutoconnect()
+        }
+        else {
+            ScreenFlowManager.goToManualScan()
+        }
     }
     
     @objc private func pageControlTapHandler(sender: UIPageControl) {

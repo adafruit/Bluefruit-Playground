@@ -59,6 +59,9 @@ class ScannerViewController: UIViewController {
         baseTableView.addSubview(refreshControl)
         refreshControl.tintColor = waitLabel.textColor
 
+        // Hide automatic scanning if needed
+        scanAutomaticallyButton.isHidden = !Config.isAutomaticConnectionEnabled
+        
         // Ble Notifications
         registerNotifications(enabled: true)
         
