@@ -24,8 +24,6 @@ class AccelerometerPanelViewController: ModulePanelViewController {
     @IBOutlet weak var accelerometerEulerYLabel: UILabel!
     @IBOutlet weak var accelerometerEulerZLabel: UILabel!
 
-    
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,14 +31,11 @@ class AccelerometerPanelViewController: ModulePanelViewController {
         // Localization
         let localizationManager = LocalizationManager.shared
         titleLabel.text = localizationManager.localizedString("accelerometer_panel_title")
-        
         accelerometerTitleLabel.text = localizationManager.localizedString("accelerometer_panel_accelerometer_title")
-        
         accelerometerEulerAnglesTitleLabel.text = localizationManager.localizedString("accelerometer_panel_eulerangles_title")
     }
 
-    func accelerationReceived(
-        acceleration: BlePeripheral.AccelerometerValue, eulerAngles: SCNVector3) {
+    func accelerationReceived(acceleration: BlePeripheral.AccelerometerValue, eulerAngles: SCNVector3) {
         
         accelerometerXLabel.text = String(format: "%.1f", acceleration.x)
         accelerometerYLabel.text = String(format: "%.1f", acceleration.y)
@@ -53,6 +48,5 @@ class AccelerometerPanelViewController: ModulePanelViewController {
         accelerometerEulerXLabel.text = String(format: "%.0f", xDeg)
         accelerometerEulerYLabel.text = String(format: "%.0f", yDeg)
         accelerometerEulerZLabel.text = String(format: "%.0f", zDeg)
-        
     }
 }

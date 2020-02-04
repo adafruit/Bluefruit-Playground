@@ -15,7 +15,7 @@ extension BlePeripheral {
     static let kCPBAccelerometerServiceUUID = CBUUID(string: "ADAF0200-C332-42A8-93BD-25E905756CB8")
     private static let kCPBAccelerometerCharacteristicUUID = CBUUID(string: "ADAF0201-C332-42A8-93BD-25E905756CB8")
     
-    static let kCPBAcceleromterDefaultPeriod: TimeInterval = 0.1
+    static let kCPBAccelerometerDefaultPeriod: TimeInterval = 0.1
     
     struct AccelerometerValue {
         var x: Float
@@ -41,7 +41,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func cpbAccelerometerEnable(responseHandler: @escaping(Result<(AccelerometerValue, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
         
-        self.cpbServiceEnable(serviceUuid: BlePeripheral.kCPBAccelerometerServiceUUID, mainCharacteristicUuid: BlePeripheral.kCPBAccelerometerCharacteristicUUID, timePeriod: BlePeripheral.kCPBAcceleromterDefaultPeriod, responseHandler: { response in
+        self.cpbServiceEnable(serviceUuid: BlePeripheral.kCPBAccelerometerServiceUUID, mainCharacteristicUuid: BlePeripheral.kCPBAccelerometerCharacteristicUUID, timePeriod: BlePeripheral.kCPBAccelerometerDefaultPeriod, responseHandler: { response in
             
             switch response {
             case let .success((data, uuid)):

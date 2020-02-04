@@ -24,6 +24,7 @@ extension BlePeripheral {
     }
     
     func cpbLightLastValue() -> Float? {
-        return 523
+        let temperature = Float.random(in: 300 ..< 400)
+        return temperature
     }
  }

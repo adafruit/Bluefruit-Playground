@@ -1,5 +1,5 @@
 //
-//  Neopixel.swift
+//  LightSequenceAnimation.swift
 //  BluefruitPlayground
 //
 //  Created by Antonio García on 12/12/2019.

@@ -200,6 +200,16 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "accelerometer_panel_accelerometer_title" = "Accelerometer (m/s²):";
 "accelerometer_panel_eulerangles_title" = "Euler Angles (degrees):";
 
+// Puppet
+"puppet_title" = "Puppets";
+"puppet_help" = "TODO";
+"puppet_recording_error_title" = "Recording Error";
+"puppet_recording_error_description" = "Recording was cancelled. Please try again.";
+
+"puppet_panel_title" = "Camera Controls";
+
+
+
 // Temperature
 "temperature_title" = "Temperature";
 "temperature_help" = "Temperature mode displays continuous temperature readings from Circuit Playground Bluefruit’s built-in thermistor. 

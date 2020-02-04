@@ -101,7 +101,7 @@ class TipPowerUpViewController: TipAnimationViewController {
             }
             
         }, completion: nil)
-        
+
         // Power lights
         onHideView.layer.removeAllAnimations()
         d13HideView.layer.removeAllAnimations()
@@ -134,7 +134,7 @@ class TipPowerUpViewController: TipAnimationViewController {
         }, completion: nil)
         
     }
-    
+
     // MARK: - Actions
     override func setAnimationProgress(_ progress: CGFloat) {
         //DLog("powerup progress: \(progress)")

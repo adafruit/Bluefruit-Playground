@@ -55,7 +55,7 @@ class ButtonStatusViewController: ModuleViewController {
     }
 }
 
-// MARK: - CPBBleLightDelegate
+// MARK: - CPBBleButtonsDelegate
 extension ButtonStatusViewController: CPBBleButtonsDelegate {
     func cpbleButtonsReceived(_ buttonsState: BlePeripheral.ButtonsState) {
         self.buttonsState = buttonsState

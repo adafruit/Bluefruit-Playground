@@ -103,16 +103,28 @@ class ModuleViewController: UIViewController {
         pageControl?.currentPage = page
     }
     
-    func goToPage(_ page: Int) {
-        baseScrollView.scrollRectToVisible(CGRect(x: CGFloat(page) * baseScrollView.bounds.width, y: 0, width: baseScrollView.bounds.width, height: baseScrollView.bounds.height), animated: true)
+    func onFinishedScrollingToPage(_ page: Int) {
+        // implement on descentants if needed
+    }
+    
+    func goToPage(_ page: Int, animated: Bool) {
+        if animated {
+            baseScrollView.scrollRectToVisible(CGRect(x: CGFloat(page) * baseScrollView.bounds.width, y: 0, width: baseScrollView.bounds.width, height: baseScrollView.bounds.height), animated: true)
+        }
+        else {
+            baseScrollView.contentOffset = CGPoint(x: CGFloat(page) * baseScrollView.bounds.width, y: 0)
+        }
     }
     
     private func pageFromOffset(_ offset: CGFloat) -> Int {
-        return Int(round(offset / (baseScrollView.contentSize.width / CGFloat(panelViewControllers.count))))
+        guard panelViewControllers.count > 0 else { return -1 }
+        let contentWidth = baseScrollView.contentSize.width
+        guard contentWidth > 0 else { return -1 }
+        return Int(round(offset / (contentWidth / CGFloat(panelViewControllers.count))))
     }
     
     @objc private func pageControlTapHandler(sender: UIPageControl) {
-        goToPage(sender.currentPage)
+        goToPage(sender.currentPage, animated: true)
     }
     
     // MARK: - Actions
@@ -127,10 +139,11 @@ class ModuleViewController: UIViewController {
 // MARK: - UIScrollViewDelegate
 extension ModuleViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        /*
         // NavigationBar Button Custom Animation
         if let customNavigationBar = navigationController?.navigationBar as? NavigationBarWithScrollAwareRightButton {
             customNavigationBar.updateRightButtonPosition()
-        }
+        }*/
         
         // Calculate current page
         if currentPage != previousPage {
@@ -139,4 +152,12 @@ extension ModuleViewController: UIScrollViewDelegate {
         }
         // DLog("Page: \(currentPage) - offsetX: \(scrollView.contentOffset.x)")
     }
+    
+   func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+         onFinishedScrollingToPage(currentPage)
+     }
+     
+     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+         onFinishedScrollingToPage(currentPage)
+     }
 }

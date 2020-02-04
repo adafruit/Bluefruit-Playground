@@ -1,5 +1,5 @@
 //
-//  LightSequences.swift
+//  LightSequence.swift
 //  BluefruitPlayground
 //
 //  Created by Antonio García on 12/12/2019.
@@ -17,7 +17,6 @@ protocol LightSequenceGenerator {
 
 class LightSequence {
     // Constants
-   // static let kLightSequenceDefaultBrightness: CGFloat = 0.25
     static let kNumPixels = 10
     
     var numPixels: Int {
@@ -224,24 +223,6 @@ class FlashLightSequence: LightSequence, LightSequenceGenerator {
         var lightBytes = [[UInt8]](repeating: [0, 0, 0], count:numPixels)
         
         let factor = CGFloat(frame) / CGFloat(numFrames)
-        
-        /*
-        let originWhite: CGFloat
-        let endWhite: CGFloat
-        let fraction: CGFloat
-        if factor < 0.5 {
-            originWhite = 0
-            endWhite = 1
-            fraction = factor * 2
-        }
-        else {
-            originWhite = 1
-            endWhite = 0
-            fraction = (factor - 0.5) * 2
-        }
-         
-         let color = UIColor(white: originWhite + (endWhite - originWhite) * fraction, alpha: 1)
-         */
         
         let originColor: UIColor
         let endColor: UIColor

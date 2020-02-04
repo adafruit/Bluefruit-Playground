@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class AccelerometerViewController: ModuleViewController {
+class AccelerometerViewController: TransitioningModuleViewController {
     // Constants
     static let kIdentifier = "AccelerometerViewController"
     
@@ -17,17 +17,19 @@ class AccelerometerViewController: ModuleViewController {
     @IBOutlet weak var sceneView: SCNView!
     
     // Data
-    private var circuitNode: SCNNode!
-    private var valuesPanelViewController: AccelerometerPanelViewController!
     private var acceleration = BlePeripheral.AccelerometerValue(x: 0, y: 0, z: 0)
+    private var circuitNode: SCNNode?
+    private var valuesPanelViewController: AccelerometerPanelViewController!
+    private var puppetPanelViewController: PuppetPanelViewController!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add panels
+        // Add panels (simulate that we are into a viewController with 2 pages, and this is the first page)
         valuesPanelViewController = (addPanelViewController(storyboardIdentifier: AccelerometerPanelViewController.kIdentifier) as! AccelerometerPanelViewController)
-        
+        puppetPanelViewController = (addPanelViewController(storyboardIdentifier: PuppetPanelViewController.kIdentifier) as! PuppetPanelViewController)
+
         // Load base
         let scene = SCNScene(named: "cpb.scn")!
         scene.background.contents = UIColor.clear
@@ -37,7 +39,8 @@ class AccelerometerViewController: ModuleViewController {
         // Setup scene
         sceneView.scene = scene
         sceneView.autoenablesDefaultLighting = true
-        sceneView.isUserInteractionEnabled = true // false
+        sceneView.isUserInteractionEnabled = true
+        
         
         // Localization
         let localizationManager = LocalizationManager.shared
@@ -66,26 +69,35 @@ class AccelerometerViewController: ModuleViewController {
     }
     
     // MARK: - UI
-    private func updateValueUI() {
+    private func loadScene() {
         
+    }
+    
+    private func updateValueUI() {
         // Calculate Euler Angles
-        let eulerAngles = eulerAnglesFromAcceleration()
+        let eulerAngles = AccelerometerUtils.eulerAnglesFromAcceleration(acceleration)
         //DLog("Euler: pitch: \(eulerAngles.x) yaw: \(eulerAngles.y) roll: \(eulerAngles.z)")
         
         // Update circuit model orientation
-        SCNTransaction.animationDuration = BlePeripheral.kCPBAcceleromterDefaultPeriod
-        circuitNode.eulerAngles = eulerAngles
+        SCNTransaction.animationDuration = BlePeripheral.kCPBAccelerometerDefaultPeriod
+        circuitNode?.eulerAngles = eulerAngles
         
         // Update panel
         valuesPanelViewController.accelerationReceived(acceleration: self.acceleration, eulerAngles: eulerAngles)
     }
     
-    private func eulerAnglesFromAcceleration() -> SCNVector3 {
-        // https://robotics.stackexchange.com/questions/6953/how-to-calculate-euler-angles-from-gyroscope-output
-        let accelAngleX = atan2(acceleration.y, acceleration.z)
-        let accelAngleY = atan2(-acceleration.x, sqrt(acceleration.y*acceleration.y + acceleration.z*acceleration.z))
+    // MARK: - Page Management
+    override func onFinishedScrollingToPage(_ page: Int) {
+        guard page == 1 else { return }
+        guard var viewControllers = navigationController?.viewControllers else { return }
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: PuppetViewController.kIdentifier) as? TransitioningModuleViewController else { return }
+        viewController.isAnimatingTransition = true
         
-        return SCNVector3(accelAngleX, accelAngleY, 0)
+        self.startFadeOutAnimation {
+            // Change view controller
+            viewControllers[viewControllers.count - 1] = viewController
+            self.navigationController?.viewControllers = viewControllers
+        }
     }
 }
 
