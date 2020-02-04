@@ -37,6 +37,16 @@ class ButtonStatusPanelViewController: ModulePanelViewController {
         
         // Init
         switchImageView.tintColor = offColor
+        
+        // Read initial state
+        CPBBle.shared.buttonsReadState { [weak self] response in
+            switch response {
+            case let .success(buttonsStatus, _):
+                self?.buttonsStateReceived(buttonsStatus)
+            case .failure(let error):
+                DLog("Error receiving temperature data: \(error)")
+            }
+        }
             
         // Localization
         let localizationManager = LocalizationManager.shared
@@ -57,6 +67,8 @@ class ButtonStatusPanelViewController: ModulePanelViewController {
     }
     
     private func animateDown(view: UIView) {
+       
+        
         UIView.animate(withDuration: 0.2) {
             view.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
             view.tintColor = self.onColor
@@ -88,6 +100,7 @@ class ButtonStatusPanelViewController: ModulePanelViewController {
         
         if buttonsState.buttonA != currentState.buttonA {
             animateState(view: buttonAStatusView, isPressed: buttonsState.buttonA == .pressed)
+           // NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Command"), object: nil)
         }
         
         if buttonsState.buttonB != currentState.buttonB {

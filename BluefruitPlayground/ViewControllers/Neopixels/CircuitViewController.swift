@@ -44,14 +44,9 @@ class CircuitViewController: UIViewController {
         }
         
         // Init neopixels color
-        for (i, neopixelView) in self.neopixelsContainerView.subviews.enumerated() {
-            if i < self.isNeopixelSelected.count {
-                neopixelView.backgroundColor = .clear
-            }
-        }
-        //neopixelsReset(animated: false)
+        neopixelsReset(animated: false)
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
@@ -67,7 +62,7 @@ class CircuitViewController: UIViewController {
         // Notifications
         registerNotifications(enabled: true)
     }
-
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -102,7 +97,8 @@ class CircuitViewController: UIViewController {
             }
         }
     }
-
+    
+    
     // MARK: - Notifications
     private var didUpdateNeopixelLightSequenceObserver: NSObjectProtocol?
     
@@ -126,6 +122,7 @@ class CircuitViewController: UIViewController {
                         }
                     }
                 }
+                
             }
         } else {
             if let didUpdateNeopixelLightSequenceObserver = didUpdateNeopixelLightSequenceObserver {notificationCenter.removeObserver(didUpdateNeopixelLightSequenceObserver)}
@@ -171,6 +168,7 @@ class CircuitViewController: UIViewController {
             // Animate
             UIView.animate(withDuration: 0.2, animations: {
                 selectedView.transform = isSelected ? .identity:CGAffineTransform(scaleX: 1.2, y: 1.2)
+                //selectedView.layer.borderWidth = self.selectedWidth//  isSelected ? self.selectedWidth:0
                 selectedView.alpha = isSelected ? 1:CircuitViewController.kUnselectedButtonAlpha
             }) { (_) in
                 selectedView.transform = .identity
@@ -183,7 +181,7 @@ class CircuitViewController: UIViewController {
     }
     
     // MARK: - Actions
-    func setNeopixelsColor(_ color: UIColor, onlySelected: Bool, animated: Bool, baseColor: UIColor? = nil) {
+    func setNeopixelsColor(_ color: UIColor, onlySelected: Bool, animated: Bool) {
         
         if onlySelected {
             CPBBle.shared.neopixelSetPixelColor(color, pixelMask: isNeopixelSelected)
@@ -194,10 +192,9 @@ class CircuitViewController: UIViewController {
         
         // UI Animation
         UIView.animate(withDuration: animated ? 0.1: 0) {
-            // Base color is the color withouth the brightness. Used in the circuit representation to show the colors more vividly
             for (i, neopixelView) in self.neopixelsContainerView.subviews.enumerated() {
                 if i < self.isNeopixelSelected.count && (!onlySelected || self.isNeopixelSelected[i]) {
-                    neopixelView.backgroundColor = baseColor ?? color
+                    neopixelView.backgroundColor = color
                 }
             }
         }

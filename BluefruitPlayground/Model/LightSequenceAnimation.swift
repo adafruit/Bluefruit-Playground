@@ -21,67 +21,57 @@ class LightSequenceAnimation {
     
     private var displaylink: CADisplayLink?
     
+    //private var simulatedFrame = 0.0
     private var startingTimestamp: TimeInterval = 0
     private var frameHandler: (([[UInt8]])->())?
-    private var stopHandler: (()->())?
-    private var repeating: Bool
     
     // MARK: -
-    init(lightSequenceGenerator: LightSequenceGenerator, framesPerSecond: Int, repeating: Bool) {
+    init(lightSequenceGenerator: LightSequenceGenerator, framesPerSecond: Int) {
         self.lightSequenceGenerator = lightSequenceGenerator
         self.lightSequenceFramesPerSecond = framesPerSecond
-        self.repeating = repeating
     }
     
     deinit {
         stop()
     }
     
-    func start(stopHandler:(()->())? = nil, frameHandler: @escaping ([[UInt8]])->()) {
-        self.stopHandler = stopHandler
+    func start(frameHandler: @escaping ([[UInt8]])->()) {
         self.frameHandler = frameHandler
         
         // Create displayLink if needed
         if displaylink == nil {
             displaylink = CADisplayLink(target: self, selector: #selector(displayLinkStep))
-            displaylink!.add(to: .main, forMode: .default)
+            displaylink!.add(to: .current, forMode: .default)
         }
         
         guard let displaylink = displaylink else { return }
         displaylink.preferredFramesPerSecond = lightSequenceFramesPerSecond
-        startingTimestamp = CACurrentMediaTime()
+        startingTimestamp = displaylink.timestamp
     }
     
     func stop() {
         displaylink?.invalidate()
         displaylink = nil
-        displaylink?.remove(from: .main, forMode: .default)
-        stopHandler?()
     }
     
     @objc func displayLinkStep(displaylink: CADisplayLink) {
         
-        let currentTimestamp =  CACurrentMediaTime() - startingTimestamp
-        let numFrames = Double(lightSequenceGenerator.numFrames)
-
-        guard repeating || currentTimestamp * numFrames * speed < numFrames else {     // Stop if repeating == false and has displayed all frames
-            stop()
-            return
-        }
-        
+        //let fps = Double(currentLightSequenceFramesPerSecond)
+        let currentTimestamp = displaylink.timestamp - startingTimestamp
+        let numFrames = Double(lightSequenceGenerator.numFrames())
         let frame = (currentTimestamp * numFrames * speed).truncatingRemainder(dividingBy:numFrames)
+        //let frame = simulatedFrame.truncatingRemainder(dividingBy:numFrames)
+        //simulatedFrame += 0.4
         
         //DLog("frame: \(frame)")
         
         var pixelsBytes: [[UInt8]]
         if LightSequenceAnimation.kIsFrameInterpolationEnabled {
             let preFrame = Int(floor(frame))
-            let postFrame = lightSequenceGenerator.isCyclic ? Int(ceil(frame)) % lightSequenceGenerator.numFrames : min(Int(ceil(frame)), lightSequenceGenerator.numFrames)
+            let postFrame = Int(ceil(frame)) % lightSequenceGenerator.numFrames()
             let postFactor = frame - Double(preFrame)
             let preFactor = 1 - postFactor
-
-            //DLog("pre: \(preFrame), post: \(postFrame), frame: \(frame)")
-
+            
             let pixelsBytesPre = lightSequenceGenerator.colorsForFrame(preFrame)
             let pixelsBytesPost = lightSequenceGenerator.colorsForFrame(postFrame)
             

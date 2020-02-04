@@ -46,7 +46,7 @@ class TemperaturePanelViewController: ModulePanelViewController {
     // MARK: - Line Chart
     private func setupChart() {
         //chartView.delegate = self
-        chartView.backgroundColor = .clear      // Fix for Charts 3.0.3 (overrides the default background color)
+        chartView.backgroundColor = .white      // Fix for Charts 3.0.3 (overrides the default background color)
         
         chartView.dragEnabled = false
         chartView.isUserInteractionEnabled = false

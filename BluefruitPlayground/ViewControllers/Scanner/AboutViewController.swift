@@ -70,17 +70,6 @@ class AboutViewController: UIViewController {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
-            
-            label.configureLinkAttribute = { (type, attributes, isSelected) in
-                var atts = attributes
-                switch type {
-                case customType0, customType1:
-                    atts[.underlineStyle] = NSUnderlineStyle.single.rawValue
-                default: ()
-                }
-                
-                return atts
-            }
         }
     }
 

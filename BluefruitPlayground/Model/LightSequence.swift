@@ -9,9 +9,8 @@
 import UIKit
 
 protocol LightSequenceGenerator {
-    var numFrames: Int { get }
-    var numPixels: Int { get }
-    var isCyclic: Bool { get }
+    func numFrames() -> Int
+    func numPixels() -> Int
     func colorsForFrame(_ frame: Int) -> [[UInt8]]
 }
 
@@ -20,16 +19,12 @@ class LightSequence {
    // static let kLightSequenceDefaultBrightness: CGFloat = 0.25
     static let kNumPixels = 10
     
-    var numPixels: Int {
+    func numPixels() -> Int {
         return LightSequence.kNumPixels
     }
     
-    var isCyclic: Bool {
-        return true
-    }
-    
     // Utils
-    static func preprocessColorPalette(colors: [UIColor]) -> [[UInt8]] {
+    static func preprocessColorPalette(colors: [UIColor]/*, brightness: CGFloat*/) -> [[UInt8]] {
         let colorsBytes = colors.map({ color -> [UInt8] in
             let colorBytes = BlePeripheral.pixelUInt8FromColor(color)
             return colorBytes
@@ -51,16 +46,16 @@ class RotateLightSequence: LightSequence, LightSequenceGenerator {
     
     // MARK: -
     override init() {
-        colorsBytes = LightSequence.preprocessColorPalette(colors: RotateLightSequence.kColors)
+        colorsBytes = LightSequence.preprocessColorPalette(colors: RotateLightSequence.kColors/*, brightness: LightSequence.kLightSequenceDefaultBrightness*/)
         super.init()
     }
     
-    var numFrames: Int {
+    func numFrames() -> Int {
         return RotateLightSequence.kNumFrames
     }
     
     func colorsForFrame(_ frame: Int) -> [[UInt8]] {
-        return rotate(numPixels: numPixels, colors: colorsBytes, frame: frame)
+        return rotate(numPixels: numPixels(), colors: colorsBytes, frame: frame)
     }
     
     private func rotate(numPixels: Int, colors: [[UInt8]], frame: Int) -> [[UInt8]] {
@@ -88,22 +83,22 @@ class PulseLightSequence: LightSequence, LightSequenceGenerator {
     
     // MARK: -
     override init() {
-        colorsBytes = LightSequence.preprocessColorPalette(colors: PulseLightSequence.kColors)
+        colorsBytes = LightSequence.preprocessColorPalette(colors: PulseLightSequence.kColors/*, brightness: LightSequence.kLightSequenceDefaultBrightness*/)
         super.init()
     }
     
-    var numFrames: Int {
+    func numFrames() -> Int {
         return PulseLightSequence.kNumFrames
     }
     
     func colorsForFrame(_ frame: Int) -> [[UInt8]] {
-        return pulse(numPixels: numPixels, colors: colorsBytes, frame: frame)
+        return pulse(numPixels: numPixels(), colors: colorsBytes, frame: frame)
     }
     
     private func pulse(numPixels: Int, colors: [[UInt8]], frame: Int) -> [[UInt8]] {
         var lightBytes = [[UInt8]](repeating: [0, 0, 0], count:numPixels)
-        let reverse = frame >= numFrames / 2
-        let colorIndex = reverse ? (numFrames - 1) - frame : frame
+        let reverse = frame >= numFrames() / 2
+        let colorIndex = reverse ? (numFrames() - 1) - frame : frame
         for i in 0..<numPixels {
             //DLog("pixel: \(i) color: \(colorIndex)")
             let colorBytes = colors[colorIndex]
@@ -128,25 +123,25 @@ class SizzleLightSequence: LightSequence, LightSequenceGenerator {
     
     // MARK: -
     override init() {
-        colorsBytes = LightSequence.preprocessColorPalette(colors: SizzleLightSequence.kColors)
+        colorsBytes = LightSequence.preprocessColorPalette(colors: SizzleLightSequence.kColors/*, brightness: LightSequence.kLightSequenceDefaultBrightness*/)
         super.init()
     }
     
-    var numFrames:Int {
+    func numFrames() -> Int {
         return SizzleLightSequence.kNumFrames
     }
     
     func colorsForFrame(_ frame: Int) -> [[UInt8]] {
-        return sizzle(numPixels: numPixels, colors: colorsBytes, frame: frame)
+        return sizzle(numPixels: numPixels(), colors: colorsBytes, frame: frame)
     }
     
     private func sizzle(numPixels: Int, colors: [[UInt8]], frame: Int) -> [[UInt8]] {
         var lightBytes = [[UInt8]](repeating: [0, 0, 0], count:numPixels)
-        let forwardNumFrames = numFrames / 2
+        let forwardNumFrames = numFrames() / 2
         let reverse = frame >= forwardNumFrames
         
         let evenIndex = reverse ? (frame % forwardNumFrames) : (forwardNumFrames - 1) - frame
-        let oddIndex = reverse ? (numFrames - 1) - frame : frame
+        let oddIndex = reverse ? (numFrames() - 1) - frame : frame
         
         for i in 0..<numPixels {
             //DLog("pixel: \(i) color: \(colorIndex)")
@@ -169,16 +164,16 @@ class SweepLightSequence: LightSequence, LightSequenceGenerator {
     
     // MARK: -
     override init() {
-        colorsBytes = LightSequence.preprocessColorPalette(colors: SweepLightSequence.kColors)
+        colorsBytes = LightSequence.preprocessColorPalette(colors: SweepLightSequence.kColors/*, brightness: LightSequence.kLightSequenceDefaultBrightness*/)
         super.init()
     }
     
-    var numFrames: Int {
+    func numFrames() -> Int {
         return SweepLightSequence.kNumFrames
     }
     
     func colorsForFrame(_ frame: Int) -> [[UInt8]] {
-        return sweep(numPixels: numPixels, colors: colorsBytes, frame: frame)
+        return sweep(numPixels: numPixels(), colors: colorsBytes, frame: frame)
     }
     
     private func sweep(numPixels: Int, colors: [[UInt8]], frame: Int) -> [[UInt8]] {
@@ -188,81 +183,6 @@ class SweepLightSequence: LightSequence, LightSequenceGenerator {
             //DLog("pixel: \(i) color: \(colorIndex)")
             lightBytes[i] = colors[colorIndex]                      // left side
             lightBytes[numPixels - 1 - i] = colors[colorIndex]      // right side
-        }
-        
-        return lightBytes
-    }
-}
-
-// MARK: - Module Started Animation
-class FlashLightSequence: LightSequence, LightSequenceGenerator {
-    // Constants
-    private static let kNumFrames = 8      // Default frames per second is 10,
-        
-    // Data
-    private var baseColor: UIColor
-    
-    // MARK: -
-    init(baseColor: UIColor) {
-        self.baseColor = baseColor
-        super.init()
-    }
-    
-    var numFrames: Int {
-        return FlashLightSequence.kNumFrames
-    }
-    
-    override var isCyclic: Bool {
-        return false
-    }
-
-    func colorsForFrame(_ frame: Int) -> [[UInt8]] {
-        return flash(baseColor: baseColor, numPixels: numPixels, frame: frame)
-    }
-    
-    private func flash(baseColor: UIColor, numPixels: Int, frame: Int) -> [[UInt8]] {
-        var lightBytes = [[UInt8]](repeating: [0, 0, 0], count:numPixels)
-        
-        let factor = CGFloat(frame) / CGFloat(numFrames)
-        
-        /*
-        let originWhite: CGFloat
-        let endWhite: CGFloat
-        let fraction: CGFloat
-        if factor < 0.5 {
-            originWhite = 0
-            endWhite = 1
-            fraction = factor * 2
-        }
-        else {
-            originWhite = 1
-            endWhite = 0
-            fraction = (factor - 0.5) * 2
-        }
-         
-         let color = UIColor(white: originWhite + (endWhite - originWhite) * fraction, alpha: 1)
-         */
-        
-        let originColor: UIColor
-        let endColor: UIColor
-        let fraction: CGFloat
-        if factor < 0.5 {
-            originColor = .clear
-            endColor = baseColor
-            fraction = factor * 2
-        }
-        else {
-            originColor = baseColor
-            endColor = .clear
-            fraction = (factor - 0.5) * 2
-        }
-
-        let color = originColor.interpolateRGBColorTo(end: endColor, fraction: fraction)
-        //let color = originColor.interpolateHSVColorFrom(end: endColor, fraction: fraction)
-        let colorBytes = BlePeripheral.pixelUInt8FromColor(color)
-        
-        for i in 0..<numPixels {
-            lightBytes[i] = colorBytes
         }
         
         return lightBytes

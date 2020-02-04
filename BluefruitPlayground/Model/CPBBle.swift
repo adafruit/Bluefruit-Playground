@@ -30,7 +30,8 @@ class CPBBle {
     // Constants
     private static let kLightSequenceFramesPerSecond = 10
     private static let kLightSequenceDefaultBrightness: CGFloat = 0.25
-    public static let kLightSequenceDefaultSpeed: Double = 0.3
+    private static let kLightSequenceDefaultSpeed: Double = 0.3
+
     // Singleton
     static let shared = CPBBle()
     
@@ -51,30 +52,25 @@ class CPBBle {
     weak var buttonsDelegate: CPBBleButtonsDelegate?
     weak var accelerometerDelegate: CPBBleAccelerometerDelegate?
 
+    var neopixelLightSequenceAnimationBrightness: CGFloat = CPBBle.kLightSequenceDefaultBrightness
+    
+    var neopixelLightSequenceAnimationSpeed: Double = CPBBle.kLightSequenceDefaultSpeed {
+       
+        didSet {
+            lightSequenceAnimation?.speed = neopixelLightSequenceAnimationSpeed
+        }
+    }
+    
     // Data
     private var temperatureData = CPBDataSeries<Float>()
     private var lightData = CPBDataSeries<Float>()
     private var accelerometerData = CPBDataSeries<BlePeripheral.AccelerometerValue>()
     private weak var blePeripheral: BlePeripheral?
     
-    private var currentLightSequenceAnimation: LightSequenceAnimation?
-    public var neopixelCurrentLightSequenceAnimationSpeed: Double {
-        get {
-            return currentLightSequenceAnimation?.speed ?? 0
-        }
-        
-        set {
-            currentLightSequenceAnimation?.speed = newValue
-        }
-    }
+    private var lightSequenceAnimation: LightSequenceAnimation?
     
     // MARK: - Lifecycle
     private init() {
-        registerNotifications(enabled: true)
-    }
-    
-    deinit {
-        registerNotifications(enabled: false)
     }
     
     // MARK: - Setup
@@ -192,11 +188,7 @@ class CPBBle {
     func accelerometerLastValue() -> BlePeripheral.AccelerometerValue? {
         return blePeripheral?.cpbAccelerometerLastValue()
     }
-
-    func lightDataSeries() -> [CPBDataSeries<Float>.Entry] {
-        return lightData.values
-    }
-
+    
     func temperatureDataSeries() -> [CPBDataSeries<Float>.Entry] {
         return temperatureData.values
     }
@@ -257,8 +249,35 @@ class CPBBle {
     
     private func receiveButtonsData(response: Result<(BlePeripheral.ButtonsState, UUID), Error>) {
         switch response {
+        
+        
+        
         case let .success(buttonsState, uuid):
             DLog("Buttons: \(buttonsState.slideSwitch == .left ? "⬅️":"➡️") \(buttonsState.buttonA == .pressed ? "🔳":"🔲") \(buttonsState.buttonB == .pressed ? "🔳":"🔲") ")
+            
+          //  NotificationCenter.default.post(name:NSNotification.Name(rawValue: "Command"), object: nil)
+            
+            
+            
+          
+            
+           
+            if buttonsState.buttonA == .pressed{
+                NotificationCenter.default.post(name:NSNotification.Name(rawValue: "EmoteOne"), object: nil)
+            }
+            
+            if buttonsState.buttonB == .pressed{
+                NotificationCenter.default.post(name:NSNotification.Name(rawValue: "EmoteTwo"), object: nil)
+            }
+            
+            if buttonsState.slideSwitch == .right{
+                NotificationCenter.default.post(name:NSNotification.Name(rawValue: "EmoteFour"), object: nil)
+            }
+                       
+            if buttonsState.slideSwitch == .left{
+                NotificationCenter.default.post(name:NSNotification.Name(rawValue: "EmoteThree"), object: nil)
+            }
+            
             
             // Send to delegate
             if let buttonsDelegate = buttonsDelegate {
@@ -273,9 +292,15 @@ class CPBBle {
                 NotificationUserInfoKey.uuid.rawValue: uuid,
             ])
             
+            
+    
+            
         case .failure(let error):
             DLog("Error receiving light data: \(error)")
         }
+    
+    
+    
     }
     
     private func receiveAccelerometerData(response: Result<(BlePeripheral.AccelerometerValue, UUID), Error>) {
@@ -323,26 +348,19 @@ class CPBBle {
         blePeripheral?.cpbPixelSetColor(index: 0, color: color, pixelMask: pixelMask)
     }
     
-    func neopixelStartLightSequence(_ lightSequenceGenerator: LightSequenceGenerator,
-                                    framesPerSecond: Int = CPBBle.kLightSequenceFramesPerSecond,
-                                    speed: Double = CPBBle.kLightSequenceDefaultSpeed,
-                                    brightness: CGFloat = CPBBle.kLightSequenceDefaultBrightness,
-                                    repeating: Bool = true,
-                                    sendLightSequenceNotifications: Bool = true) {
+    func neopixelStartLightSequence(_ lightSequenceGenerator: LightSequenceGenerator) {
         neopixelStopLightSequence()
         
-        currentLightSequenceAnimation = LightSequenceAnimation(lightSequenceGenerator: lightSequenceGenerator, framesPerSecond: framesPerSecond, repeating: repeating)
-        currentLightSequenceAnimation!.speed = speed
-        currentLightSequenceAnimation!.start(stopHandler: { [weak self] in
-            self?.blePeripheral?.cpbPixelSetAllPixelsColor(.clear)
-        }) { [weak self] pixelsBytes in
+        lightSequenceAnimation = LightSequenceAnimation(lightSequenceGenerator: lightSequenceGenerator, framesPerSecond: CPBBle.kLightSequenceFramesPerSecond)
+        lightSequenceAnimation!.speed = neopixelLightSequenceAnimationSpeed
+        lightSequenceAnimation!.start() { [weak self] pixelsBytes in
             guard let self = self else { return }
             guard let blePeripheral = self.blePeripheral else { return }
 
             let pixelBytesAdjustingBrightness = pixelsBytes.map {[
-                UInt8(CGFloat($0[0]) * brightness),
-                UInt8(CGFloat($0[1]) * brightness),
-                UInt8(CGFloat($0[2]) * brightness),
+                UInt8(CGFloat($0[0]) * self.neopixelLightSequenceAnimationBrightness),
+                UInt8(CGFloat($0[1]) * self.neopixelLightSequenceAnimationBrightness),
+                UInt8(CGFloat($0[2]) * self.neopixelLightSequenceAnimationBrightness),
                 ]}
             
             let lightData = pixelBytesAdjustingBrightness.reduce(Data()) { (data, element) in
@@ -351,35 +369,16 @@ class CPBBle {
             blePeripheral.cpbPixelsWriteData(offset: 0, pixelData: lightData)
             
             // Send notification
-            if sendLightSequenceNotifications {
-                NotificationCenter.default.post(name: .didUpdateNeopixelLightSequence, object: nil, userInfo: [
-                    NotificationUserInfoKey.value.rawValue: pixelsBytes,
-                    NotificationUserInfoKey.uuid.rawValue: blePeripheral.identifier,
-                ])
-            }
+            NotificationCenter.default.post(name: .didUpdateNeopixelLightSequence, object: nil, userInfo: [
+                NotificationUserInfoKey.value.rawValue: pixelsBytes,
+                NotificationUserInfoKey.uuid.rawValue: blePeripheral.identifier,
+            ])
         }
     }
     
     func neopixelStopLightSequence() {
-        currentLightSequenceAnimation?.stop()
-        currentLightSequenceAnimation = nil
-    }
-    
-    // MARK: - BLE Notifications
-    private weak var willdDisconnectFromPeripheralObserver: NSObjectProtocol?
-    
-    private func registerNotifications(enabled: Bool) {
-        let notificationCenter = NotificationCenter.default
-        if enabled {
-            willdDisconnectFromPeripheralObserver = notificationCenter.addObserver(forName: .willDisconnectFromPeripheral, object: nil, queue: .main, using: {[weak self] notification in
-                
-                // Force clear neopixels on disconnect
-                self?.neopixelSetAllPixelsColor(.clear)
-            })
-            
-        } else {
-            if let willdDisconnectFromPeripheralObserver = willdDisconnectFromPeripheralObserver {notificationCenter.removeObserver(willdDisconnectFromPeripheralObserver)}
-        }
+        lightSequenceAnimation?.stop()
+        lightSequenceAnimation = nil
     }
     
 }

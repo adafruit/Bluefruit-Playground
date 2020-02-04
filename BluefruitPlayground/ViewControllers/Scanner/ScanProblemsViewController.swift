@@ -55,16 +55,6 @@ extension ScanProblemsViewController: UITableViewDataSource {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
-            
-            label.configureLinkAttribute = { (type, attributes, isSelected) in
-                var atts = attributes
-                switch type {
-                case customType:
-                    atts[.underlineStyle] = NSUnderlineStyle.single.rawValue
-                default: ()
-                }
-                return atts
-            }
         }
         
         

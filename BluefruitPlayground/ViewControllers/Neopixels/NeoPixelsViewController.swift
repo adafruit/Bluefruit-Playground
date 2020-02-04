@@ -80,9 +80,9 @@ class NeoPixelsViewController: ModuleViewController {
         circuitViewController.neopixelsReset(animated: true)
     }
     
-    private func selectColor(_ color: UIColor, baseColor: UIColor) {
+    private func selectColor(_ color: UIColor) {
         // Update circuit
-        circuitViewController.setNeopixelsColor(color, onlySelected: true, animated: true, baseColor: baseColor)
+        circuitViewController.setNeopixelsColor(color, onlySelected: true, animated: true)
     }
     
     // MARK: - Page Management
@@ -104,15 +104,14 @@ class NeoPixelsViewController: ModuleViewController {
 
 // MARK: - NeopixelsColorPaletteViewControllerDelegate
 extension NeoPixelsViewController: NeopixelsColorPaletteViewControllerDelegate {
-    func colorPaletteColorSelected(color: UIColor, baseColor: UIColor) {
-        selectColor(color, baseColor: baseColor)
+    func colorPaletteColorSelected(color: UIColor) {
+        selectColor(color)
     }
-
 }
 
-// MARK: - NeopixelColorWheelViewControllerDelegate
+// MARK: - NeopixelsColorPaletteViewControllerDelegate
 extension NeoPixelsViewController: NeopixelColorWheelViewControllerDelegate {
-    func colorWheelColorSelected(color: UIColor, baseColor: UIColor) {
-        selectColor(color, baseColor: baseColor)
+    func colorWheelColorSelected(color: UIColor) {
+        selectColor(color)
     }
 }

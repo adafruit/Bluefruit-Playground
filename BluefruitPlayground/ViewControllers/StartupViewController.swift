@@ -17,10 +17,6 @@ class StartupViewController: UIViewController {
     private static let kServicesToReconnect = [BlePeripheral.kUartServiceUUID]
     private static let kReconnectTimeout = 2.0
 
-    // UI
-    @IBOutlet weak var restoreConnectionLabel: UILabel!
-    
-    
     // Data
     private let bleSupportSemaphore = DispatchSemaphore(value: 0)
     private var startTime: CFAbsoluteTime!
@@ -28,12 +24,6 @@ class StartupViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // UI
-        restoreConnectionLabel.alpha = 0
-        
-        // Localization
-        restoreConnectionLabel.text = LocalizationManager.shared.localizedString("splash_restoringconnection")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -134,7 +124,6 @@ class StartupViewController: UIViewController {
     // MARK: - Reconnect previously connnected Ble Peripheral
     private func reconnecToPeripheral(withIdentifier identifier: UUID) {
         DLog("Reconnecting...")
-    
         // Reconnect
         let isTryingToReconnect = BleManager.shared.reconnecToPeripherals(withIdentifiers: [identifier], withServices: StartupViewController.kServicesToReconnect, timeout: StartupViewController.kReconnectTimeout)
         
@@ -156,22 +145,23 @@ class StartupViewController: UIViewController {
     }
     
     private func didDisconnectFromPeripheral() {
+        /*
+        // Clear selected peripheral
+        self.selectedPeripheral = nil
+        */
+        
+        
         // Autoconnect failed
         connected(peripheral: nil)
     }
     
     private func connected(peripheral: BlePeripheral?) {
         if let peripheral = peripheral {
-            // Show restoring connection label
-            UIView.animate(withDuration: 0.2) {
-                self.restoreConnectionLabel.alpha = 1
-            }
-            
             // Setup peripheral
             CPBBle.shared.setupPeripheral(blePeripheral: peripheral) { [weak self] result in
                 switch result {
                 case .success():
-                    ScreenFlowManager.restoreAndGoToCPBModules()
+                    ScreenFlowManager.restoreAndGoToHome()
                     
                 case .failure(let error):
                     DLog("Failed setup peripheral: \(error.localizedDescription)")
@@ -190,15 +180,12 @@ class StartupViewController: UIViewController {
     
     // MARK: - Screen Flow
     private func gotoInitialScreen() {
-        let viewControllerIdentifier = StartupViewController.kForcedNavigationControllerIdentifier ?? (Settings.areTipsEnabled && Config.isTutorialEnabled ? TipsViewController.kIdentifier : AutoConnectViewController.kNavigationControllerIdentifier)
+        let viewControllerIdentifier = StartupViewController.kForcedNavigationControllerIdentifier ?? (Settings.areTipsEnabled && Config.isTutorialEnabled ? TipsViewController.kIdentifier : ScannerViewController.kIdentifier)
         DLog("Start app with viewController: \(viewControllerIdentifier)")
         
         // Change splash screen to main screen
         if let rootViewController = self.storyboard?.instantiateViewController(withIdentifier: viewControllerIdentifier) {
-            ScreenFlowManager.changeRootViewController(rootViewController: rootViewController) {
-                // Start scannning
-                //Config.bleManager.startScan()
-            }
+            ScreenFlowManager.changeRootViewController(rootViewController: rootViewController, animated: false)
         }
         
     }

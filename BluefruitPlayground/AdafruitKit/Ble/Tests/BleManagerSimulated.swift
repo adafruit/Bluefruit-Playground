@@ -6,7 +6,7 @@
 //  Copyright © 2019 Adafruit. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import CoreBluetooth
 
 class BleManagerSimulated: BleManager {
@@ -20,7 +20,7 @@ class BleManagerSimulated: BleManager {
     }
     
     override func startScan(withServices services: [CBUUID]? = nil) {
-        scanningStartTime = CACurrentMediaTime()
+        isScanning = true
         
         // Add simulated peripheral
         let simulatedBlePeripheral = BlePeripheralSimulated()

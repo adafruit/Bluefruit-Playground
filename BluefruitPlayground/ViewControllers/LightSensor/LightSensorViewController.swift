@@ -16,7 +16,6 @@ class LightSensorViewController: ModuleViewController {
     private var circuitViewController: CircuitViewController!
     private var lightmeterPanelViewController: LightSensorPanelViewController!
     private var light: Float?
-    private var chartPanelViewController: LightChartPanelViewController!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -24,9 +23,6 @@ class LightSensorViewController: ModuleViewController {
         
         // Add panels
         lightmeterPanelViewController = (addPanelViewController(storyboardIdentifier: LightSensorPanelViewController.kIdentifier) as! LightSensorPanelViewController)
-
-        chartPanelViewController = (addPanelViewController(storyboardIdentifier: LightChartPanelViewController.kIdentifier) as! LightChartPanelViewController)
-
         
         // Localization
         let localizationManager = LocalizationManager.shared
@@ -65,9 +61,6 @@ class LightSensorViewController: ModuleViewController {
     private func updateValueUI() {
         if let light = self.light {
             lightmeterPanelViewController.lightValueReceived(light)
-            
-            // Update chart
-            chartPanelViewController.lightValueReceived()
         }
     }
 }

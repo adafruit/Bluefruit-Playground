@@ -24,7 +24,7 @@ class AccelerometerPanelViewController: ModulePanelViewController {
     @IBOutlet weak var accelerometerEulerYLabel: UILabel!
     @IBOutlet weak var accelerometerEulerZLabel: UILabel!
 
-    
+    private var currentState = BlePeripheral.ButtonsState(slideSwitch: .left, buttonA: .released, buttonB: .released)
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,6 +37,16 @@ class AccelerometerPanelViewController: ModulePanelViewController {
         accelerometerTitleLabel.text = localizationManager.localizedString("accelerometer_panel_accelerometer_title")
         
         accelerometerEulerAnglesTitleLabel.text = localizationManager.localizedString("accelerometer_panel_eulerangles_title")
+        
+        
+//        // Read initial state
+//               CPBBle.shared.buttonsReadState { [weak self] response in
+//                   switch response {
+//                   case let .success(buttonsStatus, _):
+//                       buttonsStateReceived(buttonsStatus)
+//                   case .failure(let error):
+//                       DLog("Error receiving temperature data: \(error)")
+//                   }
     }
 
     func accelerationReceived(
@@ -55,4 +65,22 @@ class AccelerometerPanelViewController: ModulePanelViewController {
         accelerometerEulerZLabel.text = String(format: "%.0f", zDeg)
         
     }
+
+//        // MARK: - Data
+//        func buttonsStateReceived(_ buttonsState: BlePeripheral.ButtonsState) {
+//
+//
+//
+//            if buttonsState.buttonA != currentState.buttonA {
+//               // animateState(view: buttonAStatusView, isPressed: buttonsState.buttonA == .pressed)
+//            }
+//
+//            if buttonsState.buttonB != currentState.buttonB {
+//               // animateState(view: buttonBStatusView, isPressed: buttonsState.buttonB == .pressed)
+//            }
+//
+//            currentState =  buttonsState
+//        }
+//
+//}
 }

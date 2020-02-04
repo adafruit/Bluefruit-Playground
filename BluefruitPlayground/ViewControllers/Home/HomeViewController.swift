@@ -10,9 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     // Constants
-    static let kNavigationControllerIdentifier = "ModulesNavigationController"
     static let kIdentifier = "HomeViewController"
-    
+
     // UI
     @IBOutlet weak var baseTableView: UITableView!
     
@@ -67,60 +66,18 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         // Setup UI
-        /*
         let topContentInsetForDetails: CGFloat = 20
         baseTableView.contentInset = UIEdgeInsets(top: topContentInsetForDetails, left: 0, bottom: 0, right: 0)
-        */
         
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("modules_title")
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        /*
-        if let customNavigationBar = navigationController?.navigationBar as? NavigationBarWithScrollAwareRightButton {
-            customNavigationBar.setRightButton(topViewController: self, image: UIImage(named: "info"), target: self, action: #selector(about(_:)))
-        }*/
-
-        /*
-        if let peripheral = Config.bleManager.connectedPeripherals().first {
-            peripheral.readRssi()
-        }*/
-    }
-    
-    /*
-    // MARK: - Actions
-    @IBAction func about(_ sender: Any) {
-        guard let viewController = storyboard?.instantiateViewController(withIdentifier: AboutViewController.kIdentifier) else { return }
-        
-        self.present(viewController, animated: true, completion: nil)
-    }*/
 }
 
 
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
-    enum CellType {
-        case details
-        case module
-        case disconnect
-        
-        var reuseIdentifier: String {
-            switch(self) {
-            case .details: return "DetailsCell"
-                case .module: return "ModuleCell"
-                case .disconnect: return "DisconnectCell"
-            }
-        }
-    }
-    
-    private func cellTypeFromIndexPath(_ indexPath: IndexPath) -> CellType {
-         return indexPath.section == 0 ? .details : indexPath.row == menuItems.count ? .disconnect : .module
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2        // Details + Modules
     }
@@ -130,31 +87,23 @@ extension HomeViewController: UITableViewDataSource {
             return 1
         }
         else {
-            return menuItems.count + 1 // + 1 disconnect
+            return menuItems.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cellType = cellTypeFromIndexPath(indexPath)
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath)
+        let reuseIdentifier = indexPath.section == 0 ? "DetailsCell" : "ModuleCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         
         // Add cell data here instead of using willDisplay to avoid problems with automatic dimension calculation
         let localizationManager = LocalizationManager.shared
+        let isDetails = indexPath.section == 0
         
-        switch(cellType) {
-        case .details:
+        if isDetails {
             let detailsCell = cell as! TitleTableViewCell
             detailsCell.titleLabel.text = localizationManager.localizedString("modules_subtitle")
-            /*
-             case .peripheral
-             let peripheralCell = cell as! CommonTableViewCell
-             if let peripheral = Config.bleManager.connectedPeripherals().first {
-             // Fill peripheral data
-             peripheralCell.titleLabel.text = peripheral.name ?? localizationManager.localizedString("scanner_unnamed")
-             peripheralCell.iconImageView.image = RssiUI.signalImage(for: peripheral.rssi)
-             }*/
-        case .module:
+        }
+        else {
             let moduleCell = cell as! CommonTableViewCell
             let menuItem = menuItems[indexPath.row]
             
@@ -164,18 +113,14 @@ extension HomeViewController: UITableViewDataSource {
             let subtitleStringId = menuItem.subtitleStringId
             moduleCell.subtitleLabel?.text = localizationManager.localizedString(subtitleStringId)
             
+            //moduleCell.setPanelBackgroundColor(menuItem.color)
             moduleCell.iconImageView.backgroundColor = menuItem.color
             moduleCell.iconImageView.layer.borderColor = UIColor(named: "text_default")?.cgColor
             moduleCell.iconImageView.layer.borderWidth = 1
             moduleCell.iconImageView.layer.cornerRadius = 7
             moduleCell.iconImageView.layer.masksToBounds = true
-            
-        case .disconnect:
-            let disconnectCell = cell as! CommonTableViewCell
-            disconnectCell.titleLabel.text = localizationManager.localizedString("modules_disconnect_title")
-            disconnectCell.subtitleLabel?.text = localizationManager.localizedString("modules_disconnect_subtitle")
         }
-      
+        
         return cell
     }
 }
@@ -184,64 +129,36 @@ extension HomeViewController: UITableViewDataSource {
 extension HomeViewController: UITableViewDelegate {
     
     /*
-     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-     }*/
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    }*/
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        let cellType = cellTypeFromIndexPath(indexPath)
-        switch(cellType) {
-        case .details:
-            break
-        case .module:
-            if let module = Modules(rawValue: indexPath.row) {
-                var storyboardId: String? = nil
-                switch module {
-                case .color:
-                    storyboardId = NeoPixelsViewController.kIdentifier
-                case .light:
-                    storyboardId = LightSensorViewController.kIdentifier
-                case .button:
-                    storyboardId = ButtonStatusViewController.kIdentifier
-                case .tone:
-                    storyboardId = ToneGeneratorViewController.kIdentifier
-                case .accelerometer:
-                    storyboardId = AccelerometerViewController.kIdentifier
-                case .temperature:
-                    storyboardId = TemperatureViewController.kIdentifier
-                }
-                
-                if let identifier = storyboardId, let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) {
-                    
-                    // Show viewController with completion block
-                    CATransaction.begin()
-                    self.show(viewController, sender: self)
-                    CATransaction.setCompletionBlock({
-                        // Flash neopixels with the module color
-                        CPBBle.shared.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
-                    })
-                    CATransaction.commit()
-                }
-            }
-            
-        case .disconnect:
-            if let peripheral = Config.bleManager.connectedPeripherals().first {
-                Config.bleManager.disconnect(from: peripheral, waitForQueuedCommands: true)
-            }
-        }
-    }
-}
 
-/*
-// MARK: UIScrollViewDelegate
-extension HomeViewController {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        // NavigationBar Button Custom Animation
-        if let customNavigationBar = navigationController?.navigationBar as? NavigationBarWithScrollAwareRightButton {
-            customNavigationBar.updateRightButtonPosition()
+        let isDetails = indexPath.section == 0
+        guard !isDetails else { return }
+        
+        guard let module = Modules(rawValue: indexPath.row) else { return }
+        var storyboardId: String? = nil
+        switch module {
+        case .color:
+            storyboardId = NeoPixelsViewController.kIdentifier
+        case .light:
+            storyboardId = LightSensorViewController.kIdentifier
+        case .button:
+            storyboardId = ButtonStatusViewController.kIdentifier
+        case .tone:
+            storyboardId = ToneGeneratorViewController.kIdentifier
+        case .accelerometer:
+            storyboardId = AccelerometerViewController.kIdentifier
+        case .temperature:
+            storyboardId = TemperatureViewController.kIdentifier
         }
+        
+        if let identifier = storyboardId, let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) {
+            
+            self.show(viewController, sender: self)
+        }
+
     }
 }
- */
- 

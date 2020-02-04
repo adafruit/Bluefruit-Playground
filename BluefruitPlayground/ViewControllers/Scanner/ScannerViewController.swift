@@ -11,9 +11,10 @@ import CoreBluetooth
 
 class ScannerViewController: UIViewController {
     // Constants
-    static let kNavigationControllerIdentifier = "ScannerNavigationController"
+    static let kIdentifier = "ScannerNavigationController" //"ScannerViewController"
     
     // Config
+    private static let kServicesToScan: [CBUUID]? = nil //[BlePeripheral.kUartServiceUUID]
     private static let kDelayToShowWait: TimeInterval = 1.0
     
     // UI
@@ -21,23 +22,13 @@ class ScannerViewController: UIViewController {
     @IBOutlet weak var waitView: UIView!
     @IBOutlet weak var waitLabel: UILabel!
     @IBOutlet weak var problemsButton: UIButton!
-    @IBOutlet weak var scanAutomaticallyButton: CornerShadowButton!
-    @IBOutlet weak var actionsContainerView: UIStackView!
     
     // Data
     private let refreshControl = UIRefreshControl()
     private let bleManager = Config.bleManager
     private var peripheralList = PeripheralList(bleManager: Config.bleManager)
     
-    private var selectedPeripheral: BlePeripheral? {
-        didSet {
-            if isViewLoaded {
-                UIView.animate(withDuration: 0.3) {
-                    self.actionsContainerView.alpha = self.selectedPeripheral == nil ? 1:0
-                }
-            }
-        }
-    }
+    private var selectedPeripheral: BlePeripheral?
     private var infoAlertController: UIAlertController?
     
     private var isBaseTableScrolling = false
@@ -68,7 +59,6 @@ class ScannerViewController: UIViewController {
         
         waitLabel.text = localizationManager.localizedString("scanner_searching")
         problemsButton.setTitle(localizationManager.localizedString("scanner_problems_action").uppercased(), for: .normal)
-        scanAutomaticallyButton.setTitle(localizationManager.localizedString("scanner_automatic_action").uppercased(), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,7 +75,7 @@ class ScannerViewController: UIViewController {
         if connectedPeripherals.count == 1, let peripheral = connectedPeripherals.first {
             DLog("Disconnect from previously connected peripheral")
             // Disconnect from peripheral
-            disconnect(peripheral: peripheral)
+            bleManager.disconnect(from: peripheral)
         }
     }
     
@@ -99,26 +89,21 @@ class ScannerViewController: UIViewController {
         updateScannedPeripherals()
 
         // Start scannning
-        //bleManager.startScan(withServices: ScannerViewController.kServicesToScan)
-        if !bleManager.isScanning {
-            bleManager.startScan()
-
-        }
-        // Remove saved peripheral for autoconnect
-        Settings.autoconnectPeripheralIdentifier = nil
+        bleManager.startScan(withServices: ScannerViewController.kServicesToScan)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
         // Stop scanning
         bleManager.stopScan()
-                
+        
         // Clear peripherals
         peripheralList.clear()
     }
     
     deinit {
+                
         // Ble Notifications
         registerNotifications(enabled: false)
     }
@@ -232,7 +217,7 @@ class ScannerViewController: UIViewController {
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)
                 
-                self.disconnect(peripheral: selectedPeripheral)
+                self.bleManager.disconnect(from: selectedPeripheral)
             }
         }
     }
@@ -258,6 +243,18 @@ class ScannerViewController: UIViewController {
         
         // Reload table
         reloadBaseTable()
+
+        // If is not the topViewController, pop any other thing and come back to scanning
+        if self.navigationController?.topViewController !== self {
+            self.navigationController?.popToRootViewController(animated: false)
+            
+            // Show disconnection alert
+            let localizationManager = LocalizationManager.shared
+            let alertController = UIAlertController(title: nil, message: localizationManager.localizedString("scanner_peripheraldisconnected"), preferredStyle: .alert)
+            let okAction = UIAlertAction(title: localizationManager.localizedString("dialog_ok"), style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
     }
     
     private func peripheralDidUpdateName(notification: Notification) {
@@ -296,16 +293,17 @@ class ScannerViewController: UIViewController {
         self.present(viewController, animated: true, completion: nil)
     }
     
-    @IBAction func scanAutomatically(_ sender: Any) {
-        ScreenFlowManager.gotoAutoconnect()
-    }
-    
     private func showPeripheralDetails() {
         // Save selected peripheral for autoconnect
         Settings.autoconnectPeripheralIdentifier = selectedPeripheral?.identifier
         
         // Go to home screen
-        ScreenFlowManager.gotoCPBModules()
+        let backItem = UIBarButtonItem()
+        backItem.title = LocalizationManager.shared.localizedString("scanner_backbutton")
+        self.navigationItem.backBarButtonItem = backItem
+        
+        guard let modulesViewController = self.storyboard?.instantiateViewController(withIdentifier: HomeViewController.kIdentifier) else { return }
+        self.show(modulesViewController, sender: self)
     }
     
     // MARK: - UI
@@ -458,7 +456,16 @@ extension ScannerViewController {
             reloadBaseTable()
         }
     }
+    
+    /*
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        isBaseTableScrolling = false
 
+        if isScannerTableWaitingForReload {
+            reloadBaseTable()
+        }
+    }*/
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         // NavigationBar Button Custom Animation
@@ -468,7 +475,7 @@ extension ScannerViewController {
 
         // Move Refresh control when a large title is used
         if let height = navigationController?.navigationBar.frame.height {
-        refreshControl.bounds = CGRect(x: refreshControl.bounds.origin.x, y: NavigationBarWithScrollAwareRightButton.navBarHeightLargeState - height, width: refreshControl.bounds.size.width, height: refreshControl.bounds.size.height)
+        refreshControl.bounds = CGRect(x: refreshControl.bounds.origin.x, y: NavigationBarWithScrollAwareRightButton.CustomButtonMetrics.navBarHeightLargeState - height, width: refreshControl.bounds.size.width, height: refreshControl.bounds.size.height)
         }
         
         // Hide details opacity when showing the refresh control

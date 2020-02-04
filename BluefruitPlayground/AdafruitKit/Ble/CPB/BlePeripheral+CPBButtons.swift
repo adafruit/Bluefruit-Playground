@@ -47,8 +47,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func cpbButtonsEnable(responseHandler: @escaping(Result<(ButtonsState, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
         
-        let timePeriod: TimeInterval = 0        // 0 means that the responseHandler will be called only when there is a change
-        self.cpbServiceEnable(serviceUuid: BlePeripheral.kCPBButtonsServiceUUID, mainCharacteristicUuid: BlePeripheral.kCPBButtonsCharacteristicUUID, timePeriod: timePeriod, responseHandler: { response in
+        self.cpbServiceEnable(serviceUuid: BlePeripheral.kCPBButtonsServiceUUID, mainCharacteristicUuid: BlePeripheral.kCPBButtonsCharacteristicUUID, timePeriod: 0, responseHandler: { response in
             
             switch response {
             case let .success((data, uuid)):
@@ -68,21 +67,7 @@ extension BlePeripheral {
                 }
                 
                 self.cpbButtonsCharacteristic = characteristic
-                
-                if timePeriod == 0 {    // Read initial state if the timePeriod is 0 (update only when changed)
-                    CPBBle.shared.buttonsReadState { response in
-                        switch response {
-                        case .success(_, _):
-                            completion?(.success(()))
-                        case .failure(let error):
-                            DLog("Error receiving initial button state data: \(error)")
-                            completion?(.failure(error))
-                        }
-                    }
-                }
-                else {
-                    completion?(.success(()))
-                }
+                completion?(.success(()))
                 
             case let .failure(error):
                 self.cpbButtonsCharacteristic = nil

@@ -52,7 +52,7 @@ class PixelsPreviewViewController: UIViewController {
         
         guard let lightSequenceGenerator = lightSequenceGeneratorForTag(self.tag) else { return }
         
-        lightSequenceAnimation = LightSequenceAnimation(lightSequenceGenerator: lightSequenceGenerator, framesPerSecond: 10, repeating: true)
+        lightSequenceAnimation = LightSequenceAnimation(lightSequenceGenerator: lightSequenceGenerator, framesPerSecond: 10)
         lightSequenceAnimation!.speed = speed
         lightSequenceAnimation!.start() { [weak self] pixelsBytes in
             guard let self = self else { return }
@@ -72,8 +72,6 @@ class PixelsPreviewViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        lightSequenceAnimation?.stop()
     }
     
     override func viewDidLayoutSubviews() {

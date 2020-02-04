@@ -6,11 +6,22 @@
 // Startup
 "startup_bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy which is needed to connect to the Circuit Playground Bluefruit device";
 
+// Bluetooth Management
 
-// Splash
-"splash_restoringconnection" = "Restoring connection...";
+"bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy";
+"bluetooth_notauthorized" = "This app is not authorized to use the Bluetooth Low Energy";
+"bluetooth_poweredoff" = "Bluetooth is currently powered off";
 
-
+"bluetooth_locationpermission_disabled_text" = "Location Services should be enabled to scan bluetooth peripherals.
+Please, go to settings and enable it to start scanning peripherals";
+"bluetooth_locationpermission_title" = "This app needs location access";
+"bluetooth_locationpermission_text" = "Please grant location access so this app can scan for Bluetooth peripherals";
+"bluetooth_locationpermission_notavailable_title" = "Bluetooth Scanning not available";
+"bluetooth_locationpermission_notavailable_text" = "Since location access has not been granted, the app will not be able to scan for Bluetooth peripherals";
+"bluetooth_scanner_errorregisteringapp" = "App cannot be registered for bluetooth scanning.
+Please reset bluetooth and try again.";
+"bluetooth_connecting_error" = "Error connecting to peripheral";
+"bluetooth_advertising_start_error" = "Error starting advertising";
 
 // Welcome
 "tip0_title" = "Welcome";
@@ -25,7 +36,7 @@ Circuit Playground Bluefruit is available at the Adafruit shop.";
 "tip1_link_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
 "tip1_action" = "Next";
 "tip2_title" = "Discover";
-"tip2_detail" = "Once your Circuit Playground Bluefruit is powered, move your iPhone towards your Circuit Playground Bluefruit";
+"tip2_detail" = "Once Circuit Playground Bluefruit is powered, place it near your iPhone and tap the button below.";
 "tip2_action" = "Begin pairing";
 
 
@@ -61,26 +72,9 @@ https://github.com/mindsnacks/MSWeakTimer";
 "about_ios_link1_text" = "uf2 firmware file";
 "about_ios_link1_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
 
-// Bluetooth Status
-
-"bluetooth_unsupported" = "This device doesn't support Bluetooth";
-"bluetooth_unsupported_detail" = "Bluetooth support and specifically Bluetooth Low Energy support is needed to communicate with a Circuit Playground Device";
-"bluetooth_unsupported_le" = "This device doesn't support Bluetooth Low Energy";
-"bluetooth_unsupported_le_detail" = "Bluetooth Low Energy support is needed to communicate with a Circuit Playground Device";
-"bluetooth_notauthorized" = "This app is not authorized to use the Bluetooth Low Energy";
-"bluetooth_notauthorized_detail" = "Bluetooth permission should be granted or Bluefruit Playground to connect to a Circuit Playground Device";
-"bluetooth_poweredoff" = "Bluetooth is currently powered off";
-"bluetooth_poweredoff_detail" = "Bluetooth should be enabled on your device for Bluefruit Playground to communicate with a Circuit Playground Device";
-
-"bluetooth_enable_action" = "Bluetooth permissions";
-
-// Autoconnect
-"autoconnect_title" = "Finding CPB";
-"autoconnect_manual_action" = "Select device manually";
-"autoconnect_backbutton" = "Autoconnect";
 
 // Scanner
-"scanner_title" = "Select CPB";
+"scanner_title" = "Finding CPB";
 
 "scanner_connecting" = "Connecting...";
 "scanner_discoveringservices" = "Discovering services...";
@@ -91,7 +85,6 @@ https://github.com/mindsnacks/MSWeakTimer";
 "scanner_subtitle" = "Select a Circuit Playground Bluefruit device to connect to:";
 "scanner_unnamed" = "<Unknown>";
 
-"scanner_automatic_action" = "Select device automatically";
 "scanner_problems_action" = "I can't find my device";
 "scanner_backbutton" = "Disconnect";
 
@@ -115,9 +108,9 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 
 // Modules
 "modules_title" = "Modules";
-"modules_subtitle" = "Each module interacts with a type of sensor on the Circuit Playground Bluefruit device";
+"modules_subtitle" = "Each module interacts with a specific type of sensor on the Circuit Playground Bluefruit device";
 
-"modules_color_title" = "NeoPixels";
+"modules_color_title" = "Neopixels";
 "modules_color_subtitle" = "Control LED color & animation";
 "modules_light_title" = "Light Sensor";
 "modules_light_subtitle" = "View continuous light sensor readings";
@@ -129,18 +122,16 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_accelerometer_subtitle" = "View orientation based on accelerometer data";
 "modules_temperature_title" = "Temperature";
 "modules_temperature_subtitle" = "View current temperature readings";
-"modules_disconnect_title" = "Disconnect";
-"modules_disconnect_subtitle" = "Close the current connection and scan for a new CPB device";
 
 // Neopixels
-"neopixels_title" = "NeoPixels";
-"neopixels_help" = "NeoPixels mode allows you to control the color of CPB’s built-in NeoPixel LEDs individually, as a group, or by playing preset animations.
+"neopixels_title" = "Neopixels";
+"neopixels_help" = "Neopixel mode allows you to control the color of CPB’s built-in neopixel LEDs individually, as a group, or by playing preset animations.
 
-• Select NeoPixels to control by tapping them in the Circuit Playground Bluefruit image.
+• Select neopixels to control by tapping them in the Circuit Playground Bluefruit image.
 
-• Set the color of selected NeoPixels by choosing a color from the Color Palette or Color Wheel at the bottom.
+• Set the color of selected neopixels by choosing a color from the Color Palette or Color Wheel at the bottom.
 
-• Tap a light sequence to trigger an animation using all of the NeoPixels.";
+• Tap a light sequence to trigger an animation using all of the neopixels.";
 
 "neopixels_sequence_title" = "Light Sequence";
 "neopixels_sequence_speed" = "Speed";
@@ -160,7 +151,6 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 
 "lightsensor_panel_title" = "Luminance Reading";
 "lightsensor_panel_unit" = "Light level";
-"lightsensor_chartpanel_title" = "Luminance Chart";
 
 // Button Status
 "buttonstatus_title" = "Button Status";
@@ -212,7 +202,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "temperature_units_celsius" = "ºC";
 "temperature_units_farenheit" = "ºF";
 
-"temperature_panel_title" = "Temperature Chart";
+"temperature_panel_title" = "Temperature Reading";
 "temperature_chart_nodata" = "No chart data available";
 
 // Help

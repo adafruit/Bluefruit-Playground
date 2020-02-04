@@ -27,15 +27,8 @@ class BleManager: NSObject {
     private var centralManagerPoweredOnSemaphore = DispatchSemaphore(value: 1)
 
     // Scanning
-    var isScanning: Bool {
-        return scanningStartTime != nil
-    }
-    var scanningElapsedTime: TimeInterval? {
-        guard let scanningStartTime = scanningStartTime else { return nil }
-        return CACurrentMediaTime() - scanningStartTime
-    }
+    var isScanning = false
     private var isScanningWaitingToStart = false
-    internal var scanningStartTime: TimeInterval?        // Time when the scanning started. nil if stopped
     private var scanningServicesFilter: [CBUUID]?
     internal var peripheralsFound = [UUID: BlePeripheral]()
     private var peripheralsFoundLock = NSLock()
@@ -121,7 +114,7 @@ class BleManager: NSObject {
         }
 
         // DLog("start scan")
-        scanningStartTime = CACurrentMediaTime()
+        isScanning = true
         NotificationCenter.default.post(name: .didStartScanning, object: nil)
 
         let options = BleManager.kAlwaysAllowDuplicateKeys ? [CBCentralManagerScanOptionAllowDuplicatesKey: true] : nil
@@ -132,7 +125,7 @@ class BleManager: NSObject {
     func stopScan() {
         // DLog("stop scan")
         centralManager?.stopScan()
-        scanningStartTime = nil
+        isScanning = false
         isScanningWaitingToStart = false
         NotificationCenter.default.post(name: .didStopScanning, object: nil)
     }
@@ -218,19 +211,11 @@ class BleManager: NSObject {
         }
     }
 
-    func disconnect(from peripheral: BlePeripheral, waitForQueuedCommands: Bool = false) {
-        guard let centralManager = centralManager else { return}
-        
+    func disconnect(from peripheral: BlePeripheral) {
+
         DLog("disconnect")
         NotificationCenter.default.post(name: .willDisconnectFromPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheral.identifier])
-
-        if waitForQueuedCommands {
-            // Send the disconnection to the command queue, so all the previous command are executed before disconnecting
-            peripheral.disconnect(centralManager: centralManager)
-        }
-        else {
-            centralManager.cancelPeripheralConnection(peripheral.peripheral)
-        }
+        centralManager?.cancelPeripheralConnection(peripheral.peripheral)
     }
 
     func reconnecToPeripherals(withIdentifiers identifiers: [UUID], withServices services: [CBUUID], timeout: Double? = nil) -> Bool {
@@ -314,10 +299,7 @@ extension BleManager: CBCentralManagerDelegate {
             if isScanning {
                 isScanningWaitingToStart = true
             }
-            scanningStartTime = nil
-            
-            // Remove all peripherals found (Important because the BlePeripheral queues could contain old commands that were processing when the bluetooth state changed)
-            peripheralsFound.removeAll()
+            isScanning = false
         }
 
         NotificationCenter.default.post(name: .didUpdateBleState, object: nil)
