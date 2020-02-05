@@ -38,9 +38,12 @@ struct ScreenFlowManager {
         let isAlreadyInManualScan = (window.rootViewController as? UINavigationController)?.topViewController is ScannerViewController
         guard !isAlreadyInManualScan else { return }
         
+        let isInAutoconnect = (window.rootViewController as? UINavigationController)?.topViewController is AutoConnectViewController
+        let transition: UIView.AnimationOptions = isInAutoconnect ? .transitionFlipFromRight : .transitionCrossDissolve
+        
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: ScannerViewController.kNavigationControllerIdentifier)
-        changeRootViewController(rootViewController: rootNavigationViewController, animationOptions: .transitionFlipFromRight)
+        changeRootViewController(rootViewController: rootNavigationViewController, animationOptions: transition)
     }
     
     public static func restoreAndGoToCPBModules() {
