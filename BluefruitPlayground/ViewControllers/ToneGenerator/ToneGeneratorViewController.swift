@@ -48,6 +48,8 @@ class ToneGeneratorViewController: UIViewController {
     @IBOutlet weak var speakerImageView: UIImageView!
     @IBOutlet weak var halfKeyTop: UIButton!
     @IBOutlet weak var halfKeyBottom: UIButton!
+    
+    //  Note: extraHalfKeyTop and extraHalfKeyBottom have been added to extend the touch area of the half keys outside keysContainerView. Currently keysContainerView takes the whole width of the screen and they are no longer useful. They have not been deleted in case the width is shrinked again in the future.
     @IBOutlet weak var extraHalfKeyTop: UIButton!
     @IBOutlet weak var extraHalfKeyBottom: UIButton!
     
