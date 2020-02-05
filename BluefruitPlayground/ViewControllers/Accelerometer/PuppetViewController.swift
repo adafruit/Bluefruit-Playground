@@ -98,6 +98,8 @@ class PuppetViewController: TransitioningModuleViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Setup UI for not fullscreen
+        cameraButtonsContainerView.superview?.layoutIfNeeded()      // Important before showFullScreen
         showFullScreen(enabled: false, animated: false)
         
         // Start on page 1
@@ -306,7 +308,6 @@ class PuppetViewController: TransitioningModuleViewController {
                 self.panelsParentView.transform = CGAffineTransform(translationX: 0, y: panelDistanceToBottom)
                 self.cameraButtonsContainerView.transform = .identity
             }
-                
             else {
                 let panelFrameY = self.cameraButtonsContainerView.convert(CGPoint.zero, to: self.view).y
                 let panelDistanceToBottom = window.bounds.height - panelFrameY
