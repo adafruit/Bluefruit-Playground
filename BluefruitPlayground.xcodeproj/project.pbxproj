@@ -596,8 +596,8 @@
 				A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */,
 				A9D5B21223E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift */,
 				A9D12EA123E8A80F00F3C259 /* AccelerometerUtils.swift */,
-				A9D12EA423E8F91300F3C259 /* LowPassFilterSignal.swift */,
 				A9D12EAA23E902BB00F3C259 /* Float+Clamped.swift */,
+				A9D12EA423E8F91300F3C259 /* LowPassFilterSignal.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";

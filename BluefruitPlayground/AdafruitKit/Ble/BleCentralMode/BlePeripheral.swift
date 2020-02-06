@@ -18,6 +18,9 @@ import CoreBluetooth
 class BlePeripheral: NSObject {
     // Config
     private static var kProfileCharacteristicUpdates = true
+    
+    // Constants
+    static var kUndefinedRssiValue = 127
 
     // Notifications
     enum NotificationUserInfoKey: String {
@@ -32,7 +35,26 @@ class BlePeripheral: NSObject {
 
     // Data
     var peripheral: CBPeripheral
-    var rssi: Int?      // rssi only is updated when a non undefined value is received from CoreBluetooth. Note: this is slighty different to the CoreBluetooth implementation, because it will not be updated with undefined values
+ 
+    static var runningRssiFactorFactor: Double = 1        /// Global Parameter that affects all rssi measurements. 1 means don't use a running average. The closer to 0 the more resistant the value it is to change
+    private var runningRssi: Int?
+    var rssi: Int? {
+        /// rssi only is updated when a non undefined value is received from CoreBluetooth. Note: this is slighty different to the CoreBluetooth implementation, because it will not be updated with undefined values.  If runningRssiFactorFactor == 1, the newer value replaces the old value and not average is calculated
+        get {
+            return runningRssi
+        }
+        set {
+            guard newValue != BlePeripheral.kUndefinedRssiValue else { return }     // Don't accept undefined values
+
+            // based on https://en.wikipedia.org/wiki/Exponential_smoothing
+            if newValue == nil || runningRssi == nil || runningRssi == BlePeripheral.kUndefinedRssiValue {
+                runningRssi = newValue
+            }
+            else {
+                runningRssi = Int(BlePeripheral.runningRssiFactorFactor * Double(newValue!) + (1-BlePeripheral.runningRssiFactorFactor) * Double(runningRssi!))
+            }
+        }
+    }
     var lastSeenTime: CFAbsoluteTime
 
     var identifier: UUID {
@@ -152,10 +174,10 @@ class BlePeripheral: NSObject {
     init(peripheral: CBPeripheral, advertisementData: [String: Any]?, rssi: Int?) {
         self.peripheral = peripheral
         self.advertisement = Advertisement(advertisementData: advertisementData)
-        self.rssi = rssi
         self.lastSeenTime = CFAbsoluteTimeGetCurrent()
 
         super.init()
+        self.rssi = rssi
         self.peripheral.delegate = self
         // DLog("create peripheral: \(peripheral.name ?? peripheral.identifier.uuidString)")
         commandQueue.executeHandler = executeCommand
@@ -625,7 +647,7 @@ extension BlePeripheral: CBPeripheralDelegate {
         guard error == nil else { DLog("didReadRSSI error: \(error!.localizedDescription)"); return }
         
         let rssi = RSSI.intValue
-        if rssi != 127 {  // only update rssi value if is defined ( 127 means undefined )
+        if rssi != BlePeripheral.kUndefinedRssiValue {  // only update rssi value if is defined ( 127 means undefined )
             self.rssi = rssi
         }
         

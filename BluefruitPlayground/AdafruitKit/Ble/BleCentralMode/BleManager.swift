@@ -267,7 +267,7 @@ class BleManager: NSObject {
         if let existingPeripheral = peripheralsFound[peripheral.identifier] {
             existingPeripheral.lastSeenTime = CFAbsoluteTimeGetCurrent()
 
-            if let rssi = rssi, rssi != 127 {     // only update rssi value if is defined ( 127 means undefined )
+            if let rssi = rssi, rssi != BlePeripheral.kUndefinedRssiValue {     // only update rssi value if is defined ( 127 means undefined )
                 existingPeripheral.rssi = rssi
             }
 

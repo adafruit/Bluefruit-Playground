@@ -91,6 +91,7 @@ class AutoConnectViewController: UIViewController {
         updateScannedPeripherals()
         
         // Start scannning
+        BlePeripheral.runningRssiFactorFactor = 0.4     // Use running average for rssi
         if !bleManager.isScanning {
             bleManager.startScan()
         }
@@ -104,7 +105,8 @@ class AutoConnectViewController: UIViewController {
         
         // Stop scanning
         bleManager.stopScan()
-        
+        BlePeripheral.runningRssiFactorFactor = 1       // Disable using running average for rssi
+
         // Clear peripherals
         peripheralList.clear()
         
@@ -265,7 +267,7 @@ class AutoConnectViewController: UIViewController {
         guard bleManager.connectedOrConnectingPeripherals().isEmpty else { return }
         
         guard bleManager.scanningElapsedTime ?? 0 > AutoConnectViewController.kMinScanningTimeToAutoconnect else {
-            DLog("remaining scan time: \(AutoConnectViewController.kMinScanningTimeToAutoconnect - (bleManager.scanningElapsedTime ?? 0))")
+            //DLog("remaining mandatory scan time: \(AutoConnectViewController.kMinScanningTimeToAutoconnect - (bleManager.scanningElapsedTime ?? 0))")
             return
         }
         
@@ -276,6 +278,11 @@ class AutoConnectViewController: UIViewController {
             return blePeripheral0.rssi ?? -127 > blePeripheral1.rssi ?? -127
         }
         //DLog("peripherals: \(sortedPeripherals.count)")
+        /*
+        if Config.isDebugEnabled {
+            let _ = sortedPeripherals.map{ DLog("\($0.identifier) - \($0.rssi == nil ? -127:$0.rssi!)") }
+            DLog("--")
+        }*/
         
         // Connect to closest CPB
         guard let peripheral = sortedPeripherals.first else { return }
