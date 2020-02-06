@@ -183,10 +183,6 @@
 		A9D12E8623E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */; };
 		A9D12E8723E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */; };
 		A9D12E8823E4434000F3C259 /* UIColor+Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */; };
-		A9D12E8A23E8677900F3C259 /* PuppetPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8923E8677900F3C259 /* PuppetPanelViewController.swift */; };
-		A9D12E8B23E8677900F3C259 /* PuppetPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8923E8677900F3C259 /* PuppetPanelViewController.swift */; };
-		A9D12E9023E86C2B00F3C259 /* Puppet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8F23E86C2B00F3C259 /* Puppet.swift */; };
-		A9D12E9123E86C2B00F3C259 /* Puppet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8F23E86C2B00F3C259 /* Puppet.swift */; };
 		A9D12E9323E874D000F3C259 /* PuppetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E9223E874D000F3C259 /* PuppetViewController.swift */; };
 		A9D12E9423E874D000F3C259 /* PuppetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E9223E874D000F3C259 /* PuppetViewController.swift */; };
 		A9D12E9F23E89D5200F3C259 /* TransitioningModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E9E23E89D5200F3C259 /* TransitioningModuleViewController.swift */; };
@@ -339,8 +335,6 @@
 		A9BED766234FBEAB002FFF53 /* Data+ScanValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+ScanValue.swift"; sourceTree = "<group>"; };
 		A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Interpolate.swift"; sourceTree = "<group>"; };
 		A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightChartPanelViewController.swift; sourceTree = "<group>"; };
-		A9D12E8923E8677900F3C259 /* PuppetPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuppetPanelViewController.swift; sourceTree = "<group>"; };
-		A9D12E8F23E86C2B00F3C259 /* Puppet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Puppet.swift; sourceTree = "<group>"; };
 		A9D12E9223E874D000F3C259 /* PuppetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuppetViewController.swift; sourceTree = "<group>"; };
 		A9D12E9E23E89D5200F3C259 /* TransitioningModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningModuleViewController.swift; sourceTree = "<group>"; };
 		A9D12EA123E8A80F00F3C259 /* AccelerometerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerUtils.swift; sourceTree = "<group>"; };
@@ -468,6 +462,15 @@
 			path = BluefruitPlayground;
 			sourceTree = "<group>";
 		};
+		A92EF90623ECEEB500191C36 /* Puppet */ = {
+			isa = PBXGroup;
+			children = (
+				A9D12E9223E874D000F3C259 /* PuppetViewController.swift */,
+				A96A9ED823E9C6B700E46743 /* PreviewView.swift */,
+			);
+			path = Puppet;
+			sourceTree = "<group>";
+		};
 		A9482988237B73B100B6FC13 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,10 +505,6 @@
 			children = (
 				A96AA5CC23634B45004A06BA /* AccelerometerViewController.swift */,
 				A96AA5CE23634BC3004A06BA /* AccelerometerPanelViewController.swift */,
-				A9D12E8923E8677900F3C259 /* PuppetPanelViewController.swift */,
-				A9D12E8F23E86C2B00F3C259 /* Puppet.swift */,
-				A9D12E9223E874D000F3C259 /* PuppetViewController.swift */,
-				A96A9ED823E9C6B700E46743 /* PreviewView.swift */,
 			);
 			path = Accelerometer;
 			sourceTree = "<group>";
@@ -740,6 +739,7 @@
 				A96AA5C4236312C1004A06BA /* ToneGenerator */,
 				A96AA5CB23634B37004A06BA /* Accelerometer */,
 				A94AC1442363A5750062AB11 /* Temperature */,
+				A92EF90623ECEEB500191C36 /* Puppet */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1014,7 +1014,6 @@
 				A9BED77A234FBEAB002FFF53 /* CommandQueue.swift in Sources */,
 				A9A08B2323A2841200498069 /* LightSequence.swift in Sources */,
 				A9D12E9323E874D000F3C259 /* PuppetViewController.swift in Sources */,
-				A9D12E9023E86C2B00F3C259 /* Puppet.swift in Sources */,
 				A96AA5D123634F03004A06BA /* GridView.swift in Sources */,
 				A9BED774234FBEAB002FFF53 /* BlePeripheral+Uart.swift in Sources */,
 				A9482994237B880000B6FC13 /* BlePeripheral+CPBCommon.swift in Sources */,
@@ -1034,7 +1033,6 @@
 				A9DF06122359B0600094327F /* ButtonStatusViewController.swift in Sources */,
 				A96AA5D3236358A8004A06BA /* UIView+RoundedCorners.swift in Sources */,
 				A9D5B21023E0985600178E1B /* AutoConnectViewController.swift in Sources */,
-				A9D12E8A23E8677900F3C259 /* PuppetPanelViewController.swift in Sources */,
 				A98E4D2823565B76005B166D /* TipWelcomeViewController.swift in Sources */,
 				A9BED70B234F7617002FFF53 /* Config.swift in Sources */,
 				A980FE6F2357D15400E3A909 /* TipDiscoverViewController.swift in Sources */,
@@ -1107,7 +1105,6 @@
 				A9A08B4123A523C900498069 /* HexUtils.swift in Sources */,
 				A9A08B4323A523C900498069 /* AppDelegate.swift in Sources */,
 				A9A08B4423A523C900498069 /* ToneGeneratorViewController.swift in Sources */,
-				A9D12E9123E86C2B00F3C259 /* Puppet.swift in Sources */,
 				A9A08B4523A523C900498069 /* Data+ScanValue.swift in Sources */,
 				A9A08B4623A523C900498069 /* Data+LittleEndianTypes.swift in Sources */,
 				A9A08B4723A523C900498069 /* TipPowerUpViewController.swift in Sources */,
@@ -1166,7 +1163,6 @@
 				A9A08B7423A523C900498069 /* LightSensorPanelViewController.swift in Sources */,
 				A9A08B7523A523C900498069 /* AboutViewController.swift in Sources */,
 				A9D5B21723E3024800178E1B /* BluetoothStatusViewController.swift in Sources */,
-				A9D12E8B23E8677900F3C259 /* PuppetPanelViewController.swift in Sources */,
 				A9A08BAA23A7891500498069 /* ObjectBuilder.m in Sources */,
 				A9A08B7623A523C900498069 /* ConfigUI.swift in Sources */,
 				A9A08B7723A523C900498069 /* UartPacketManager.swift in Sources */,
@@ -1286,7 +1282,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1340,7 +1336,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1357,7 +1353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = BluefruitPlayground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1382,7 +1378,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = BluefruitPlayground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1446,7 +1442,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1472,7 +1468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

@@ -2,6 +2,7 @@
 // General
 
 "NSBluetoothAlwaysUsageDescription" = "This app needs access to Bluetooth to connect to Circuit Playground Bluefruit devices";
+"NSCameraUsageDescription" = "Puppet module requires access to the camera";
 
 // Startup
 "startup_bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy which is needed to connect to the Circuit Playground Bluefruit device";
@@ -129,6 +130,8 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_accelerometer_subtitle" = "View orientation based on accelerometer data";
 "modules_temperature_title" = "Temperature";
 "modules_temperature_subtitle" = "View current temperature readings";
+"modules_puppet_title" = "Puppets";
+"modules_puppet_subtitle" = "Play with a 3D puppet using the accelerometer and buttons";
 "modules_disconnect_title" = "Disconnect";
 "modules_disconnect_subtitle" = "Close the current connection and scan for a new CPB device";
 
@@ -202,7 +205,13 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 
 // Puppet
 "puppet_title" = "Puppets";
-"puppet_help" = "TODO";
+"puppet_help" = "This Puppet module allows you to animate a 3D puppets in real time using the Circuit Playground Bluefruit board.
+
+• Tilt your board forward or backwards to open and close the mouth of the puppet(Sparky The Blue Smoke Monster).
+• Try turning your board to turn your puppet’s head left and right.
+• Press the A or B button on the board to trigger present animations.
+
+You can also screen record and share your interaction with the puppet.";
 "puppet_recording_error_title" = "Recording Error";
 "puppet_recording_error_description" = "Recording was cancelled. Please try again.";
 

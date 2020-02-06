@@ -18,18 +18,13 @@ class PuppetViewController: TransitioningModuleViewController {
     // UI
     @IBOutlet weak var sceneView: SCNView!
     @IBOutlet weak var cameraView: PreviewView!
-    @IBOutlet weak var panelsParentView: UIView!
     @IBOutlet weak var cameraButtonsContainerView: UIView!
     @IBOutlet weak var recordButton: UIButton!
-    @IBOutlet weak var puppet3DViewToFullScreenBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var puppet3DViewToPanelBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var fullscreenButton: UIButton!
 
     // Data
     private var acceleration = BlePeripheral.AccelerometerValue(x: 0, y: 0, z: 0)
     private var buttonsState: BlePeripheral.ButtonsState?
-    
-    private var valuesPanelViewController: AccelerometerPanelViewController!
-    private var puppetPanelViewController: PuppetPanelViewController!
     
     private var jawNode: SCNNode?
     private var headNode: SCNNode?
@@ -43,15 +38,11 @@ class PuppetViewController: TransitioningModuleViewController {
     // Camera Data
     private let captureSession = AVCaptureSession()
     private var isUsingFrontCamera = true
+    private var isFullScreen = false
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Add panels (simulate that we are into a viewController with 2 pages, and this is the second page)
-        valuesPanelViewController = (addPanelViewController(storyboardIdentifier: AccelerometerPanelViewController.kIdentifier) as! AccelerometerPanelViewController)
-        puppetPanelViewController = (addPanelViewController(storyboardIdentifier: PuppetPanelViewController.kIdentifier) as! PuppetPanelViewController)
-        puppetPanelViewController.delegate = self
         
         // Load base
         let scene = SCNScene(named: "Sparky_Gold1.scn")!
@@ -86,10 +77,16 @@ class PuppetViewController: TransitioningModuleViewController {
         updateValueUI()
         updateRecordButtonUI()
         
+        // Setup UI for not fullscreen
+        showFullScreen(enabled: false, animated: false)
+
         // Set delegates
         CPBBle.shared.accelerometerDelegate = self
         CPBBle.shared.buttonsDelegate = self
         RPScreenRecorder.shared().delegate = self
+        
+        // Start camera
+        enableCamera(isFrontCamera: isUsingFrontCamera, animated: false)
         
         // Intro Animation
         startSparkyIntroAnimation()
@@ -98,16 +95,9 @@ class PuppetViewController: TransitioningModuleViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        // Setup UI for not fullscreen
-        cameraButtonsContainerView.superview?.layoutIfNeeded()      // Important before showFullScreen
-        showFullScreen(enabled: false, animated: false)
-        
         // Start on page 1
         baseScrollView.layoutIfNeeded()     // Important
         goToPage(1, animated: false)
-        
-        // Start camera
-        enableCamera(isFrontCamera: isUsingFrontCamera, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -117,6 +107,10 @@ class PuppetViewController: TransitioningModuleViewController {
         CPBBle.shared.accelerometerDelegate = nil
         CPBBle.shared.buttonsDelegate = nil
         RPScreenRecorder.shared().delegate = nil
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
         // Stop camera
         disableCamera(animated: false)
@@ -233,17 +227,14 @@ class PuppetViewController: TransitioningModuleViewController {
     private func enableRecordingUI() {
         // Update buttons
         PuppetViewController.startButtonRecordAnimation(button: self.recordButton)
-        PuppetViewController.startButtonRecordAnimation(button: self.puppetPanelViewController.recordButton)
     }
     
     private func disableRecordingUI() {
         // Update UI
         PuppetViewController.stopButtonRecordAnimation(button: recordButton)
-        PuppetViewController.stopButtonRecordAnimation(button: self.puppetPanelViewController.recordButton)
     }
     
     private func processRecordingStopped(previewViewController: RPPreviewViewController?, error: Error?) {
-        
         // Check errors
         guard error == nil else {
             DLog("Error recording: \(error!)")
@@ -257,7 +248,6 @@ class PuppetViewController: TransitioningModuleViewController {
     }
     
     private func switchRecording() {
-        
         if RPScreenRecorder.shared().isRecording {
             stopRecording()
         }
@@ -277,46 +267,23 @@ class PuppetViewController: TransitioningModuleViewController {
             filteredAccelAngleX.update(newValue: accelAngleX)
             jawNode?.eulerAngles = SCNVector3(filteredAccelAngleX.value.clamped(min: 0.13, max: 0.8), 0, 0)
             
-            let accelAngleY = atan2(-acceleration.x, sqrt(acceleration.y*acceleration.y + acceleration.z*acceleration.z))
-            //filteredAccelAngleX.update(newValue: accelAngleX)       // this was duplicated on Trevor's code ¿?
+            let accelAngleY = atan2(-acceleration.x, sqrt(acceleration.y*acceleration.y) + acceleration.z*acceleration.z)
             filteredAccelAngleY.update(newValue: accelAngleY)
-            headNode?.eulerAngles = SCNVector3(-filteredAccelAngleX.value.clamped(min: 0.1, max: 0.7), filteredAccelAngleY.value, -filteredAccelAngleY.value)
+            headNode?.eulerAngles = SCNVector3(-filteredAccelAngleX.value.clamped(min: 0.1, max: 0.7), -filteredAccelAngleY.value, filteredAccelAngleY.value)
         }
-        
-        // Update values panel
-        let eulerAngles = AccelerometerUtils.eulerAnglesFromAcceleration(acceleration)
-        valuesPanelViewController.accelerationReceived(acceleration: self.acceleration, eulerAngles: eulerAngles)
     }
     
     private func updateRecordButtonUI() {
         recordButton.isEnabled = RPScreenRecorder.shared().isAvailable
-        puppetPanelViewController.updateRecordButtonUI()
     }
     
     private func showFullScreen(enabled: Bool, animated: Bool) {
         // Calculate changes
         let applyUIChanges = { [unowned self] in
-            guard let window = self.view.window else { return }
-            
-            self.puppet3DViewToFullScreenBottomConstraint.isActive = enabled
-            self.puppet3DViewToPanelBottomConstraint.isActive = !enabled
-
-            if enabled {
-                let panelFrameY = self.panelsParentView.convert(CGPoint.zero, to: nil).y
-                let panelDistanceToBottom = window.bounds.height - panelFrameY
-                
-                self.panelsParentView.transform = CGAffineTransform(translationX: 0, y: panelDistanceToBottom)
-                self.cameraButtonsContainerView.transform = .identity
-            }
-            else {
-                let panelFrameY = self.cameraButtonsContainerView.convert(CGPoint.zero, to: self.view).y
-                let panelDistanceToBottom = window.bounds.height - panelFrameY
-                
-                self.panelsParentView.transform = .identity
-                self.cameraButtonsContainerView.transform = CGAffineTransform(translationX: 0, y: panelDistanceToBottom)
-            }
+            self.cameraButtonsContainerView.alpha = enabled ? 0.3 : 1
+            self.fullscreenButton.setImage(UIImage(named: enabled ? "shrink":"expand"), for: .normal)
         }
-        
+
         // Apply changes
         self.navigationController?.setNavigationBarHidden(enabled, animated: animated)
         if animated {
@@ -327,6 +294,7 @@ class PuppetViewController: TransitioningModuleViewController {
         else {
             applyUIChanges()
         }
+        isFullScreen = enabled
     }
     
     // MARK: - Animations
@@ -434,41 +402,7 @@ class PuppetViewController: TransitioningModuleViewController {
     }
     
     @IBAction func fullScreenAction(_ sender: Any) {
-        self.showFullScreen(enabled: false, animated: true)
-    }
-    
-    // MARK: - Page Management
-    override func onFinishedScrollingToPage(_ page: Int) {
-        guard page == 0 else { return }
-        guard var viewControllers = navigationController?.viewControllers else { return }
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: AccelerometerViewController.kIdentifier) as? TransitioningModuleViewController else { return }
-        viewController.isAnimatingTransition = true
-        
-        self.startFadeOutAnimation {
-            // Change view controller
-            viewControllers[viewControllers.count - 1] = viewController
-            self.navigationController?.viewControllers = viewControllers
-        }
-    }
-}
-
-// MARK: - PuppetPanelViewControllerDelegate
-extension PuppetViewController: PuppetPanelViewControllerDelegate {
-    
-    internal func puppetPanelSwitchCamera() {
-        self.switchCamera()
-    }
-    
-    internal func puppetPanelSwitchRecording() {
-        self.switchRecording()
-    }
-    
-    internal func puppetPanelSwitchScreenMode() {
-        self.switchScreenMode()
-    }
-    
-    internal func puppetPanelFullScreen() {
-        self.showFullScreen(enabled: true, animated: true)
+        self.showFullScreen(enabled: !isFullScreen, animated: true)
     }
 }
 

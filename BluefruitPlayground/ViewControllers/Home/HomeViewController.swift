@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
         case tone
         case accelerometer
         case temperature
+        case puppet
         
         var titleStringId: String {
             switch self {
@@ -33,6 +34,7 @@ class HomeViewController: UIViewController {
             case .tone: return "modules_tone_title"
             case .accelerometer: return "modules_accelerometer_title"
             case .temperature: return "modules_temperature_title"
+            case .puppet: return "modules_puppet_title"
             }
         }
         
@@ -44,6 +46,7 @@ class HomeViewController: UIViewController {
             case .tone: return "modules_tone_subtitle"
             case .accelerometer: return "modules_accelerometer_subtitle"
             case .temperature: return "modules_temperature_subtitle"
+            case .puppet: return "modules_puppet_subtitle"
             }
         }
         
@@ -55,11 +58,12 @@ class HomeViewController: UIViewController {
             case .tone: return UIColor(named: "module_tone_color")!
             case .accelerometer: return UIColor(named: "module_accelerometer_color")!
             case .temperature: return UIColor(named: "module_temperature_color")!
+            case .puppet: return UIColor(named: "module_puppet_color")!
             }
         }
     }
     
-    private let menuItems: [Modules] = [.color, .light, .button, .tone, .accelerometer, .temperature]
+    private let menuItems: [Modules] = [.color, .light, .button, .tone, .accelerometer, .temperature, .puppet]
     
     
     // MARK: - Lifecycle
@@ -117,16 +121,20 @@ extension HomeViewController: UITableViewDataSource {
         }
     }
     
+    private func useDetailSection() -> Bool {
+        return false
+    }
+        
     private func cellTypeFromIndexPath(_ indexPath: IndexPath) -> CellType {
-         return indexPath.section == 0 ? .details : indexPath.row == menuItems.count ? .disconnect : .module
+         return useDetailSection() && indexPath.section == 0 ? .details : indexPath.row == menuItems.count ? .disconnect : .module
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2        // Details + Modules
+        return (useDetailSection() ? 1:0) + 1        // Details + Modules
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        if useDetailSection() && section == 0 {
             return 1
         }
         else {
@@ -210,6 +218,8 @@ extension HomeViewController: UITableViewDelegate {
                     storyboardId = AccelerometerViewController.kIdentifier
                 case .temperature:
                     storyboardId = TemperatureViewController.kIdentifier
+                case .puppet:
+                    storyboardId = PuppetViewController.kIdentifier
                 }
                 
                 if let identifier = storyboardId, let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) {

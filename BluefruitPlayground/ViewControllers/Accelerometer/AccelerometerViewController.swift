@@ -20,15 +20,13 @@ class AccelerometerViewController: TransitioningModuleViewController {
     private var acceleration = BlePeripheral.AccelerometerValue(x: 0, y: 0, z: 0)
     private var circuitNode: SCNNode?
     private var valuesPanelViewController: AccelerometerPanelViewController!
-    private var puppetPanelViewController: PuppetPanelViewController!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Add panels (simulate that we are into a viewController with 2 pages, and this is the first page)
+        // Add panels 
         valuesPanelViewController = (addPanelViewController(storyboardIdentifier: AccelerometerPanelViewController.kIdentifier) as! AccelerometerPanelViewController)
-        puppetPanelViewController = (addPanelViewController(storyboardIdentifier: PuppetPanelViewController.kIdentifier) as! PuppetPanelViewController)
 
         // Load base
         let scene = SCNScene(named: "cpb.scn")!
@@ -69,10 +67,6 @@ class AccelerometerViewController: TransitioningModuleViewController {
     }
     
     // MARK: - UI
-    private func loadScene() {
-        
-    }
-    
     private func updateValueUI() {
         // Calculate Euler Angles
         let eulerAngles = AccelerometerUtils.eulerAnglesFromAcceleration(acceleration)
@@ -84,20 +78,6 @@ class AccelerometerViewController: TransitioningModuleViewController {
         
         // Update panel
         valuesPanelViewController.accelerationReceived(acceleration: self.acceleration, eulerAngles: eulerAngles)
-    }
-    
-    // MARK: - Page Management
-    override func onFinishedScrollingToPage(_ page: Int) {
-        guard page == 1 else { return }
-        guard var viewControllers = navigationController?.viewControllers else { return }
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: PuppetViewController.kIdentifier) as? TransitioningModuleViewController else { return }
-        viewController.isAnimatingTransition = true
-        
-        self.startFadeOutAnimation {
-            // Change view controller
-            viewControllers[viewControllers.count - 1] = viewController
-            self.navigationController?.viewControllers = viewControllers
-        }
     }
 }
 
