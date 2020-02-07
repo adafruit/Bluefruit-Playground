@@ -11,7 +11,7 @@ import SceneKit
 import ReplayKit
 import AVFoundation
 
-class PuppetViewController: TransitioningModuleViewController {
+class PuppetViewController: UIViewController {
     // Constants
     static let kIdentifier = "PuppetViewController"
     
@@ -63,7 +63,6 @@ class PuppetViewController: TransitioningModuleViewController {
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("puppet_title")
-        moduleHelpMessage = localizationManager.localizedString("puppet_help")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -80,6 +79,11 @@ class PuppetViewController: TransitioningModuleViewController {
         // Setup UI for not fullscreen
         showFullScreen(enabled: false, animated: false)
 
+        // Navigationbar setup
+        if let customNavigationBar = navigationController?.navigationBar as? NavigationBarWithScrollAwareRightButton {
+            customNavigationBar.setRightButton(topViewController: self, image: UIImage(named: "help"), target: self, action: #selector(help(_:)))
+        }
+        
         // Set delegates
         CPBBle.shared.accelerometerDelegate = self
         CPBBle.shared.buttonsDelegate = self
@@ -90,14 +94,6 @@ class PuppetViewController: TransitioningModuleViewController {
         
         // Intro Animation
         startSparkyIntroAnimation()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        // Start on page 1
-        baseScrollView.layoutIfNeeded()     // Important
-        goToPage(1, animated: false)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -403,6 +399,13 @@ class PuppetViewController: TransitioningModuleViewController {
     
     @IBAction func fullScreenAction(_ sender: Any) {
         self.showFullScreen(enabled: !isFullScreen, animated: true)
+    }
+    
+    @IBAction func help(_ sender: Any) {
+        guard let navigationController = storyboard?.instantiateViewController(withIdentifier: HelpViewController.kIdentifier) as? UINavigationController, let helpViewController = navigationController.topViewController as? HelpViewController else { return }
+        helpViewController.message = LocalizationManager.shared.localizedString("puppet_help")
+        
+        self.present(navigationController, animated: true, completion: nil)
     }
 }
 

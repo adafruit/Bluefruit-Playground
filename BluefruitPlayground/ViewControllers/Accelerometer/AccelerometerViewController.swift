@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 
-class AccelerometerViewController: TransitioningModuleViewController {
+class AccelerometerViewController: ModuleViewController {
     // Constants
     static let kIdentifier = "AccelerometerViewController"
     
@@ -38,7 +38,6 @@ class AccelerometerViewController: TransitioningModuleViewController {
         sceneView.scene = scene
         sceneView.autoenablesDefaultLighting = true
         sceneView.isUserInteractionEnabled = true
-        
         
         // Localization
         let localizationManager = LocalizationManager.shared

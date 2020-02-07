@@ -82,11 +82,10 @@ class ToneGeneratorViewController: UIViewController {
         }
 
         // - Add 2 extra hidden buttons to extend the touch area of the black half-keys
-        
         for button in [extraHalfKeyTop!, extraHalfKeyBottom!] {
-         button.addTarget(self, action: #selector(redirectHalfKeyDown(_:)), for: .touchDown)
-         button.addTarget(self, action: #selector(redirectHalfKeyUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
-         }
+            button.addTarget(self, action: #selector(redirectHalfKeyDown(_:)), for: .touchDown)
+            button.addTarget(self, action: #selector(redirectHalfKeyUp(_:)), for: [.touchUpInside, .touchUpOutside, .touchCancel])
+        }
         
         // - Round the container so the half-keys that are clipped look rounded too
         keysContainerView.layer.cornerRadius = 4
@@ -201,4 +200,3 @@ class ToneGeneratorViewController: UIViewController {
         self.present(navigationController, animated: true, completion: nil)
     }
 }
-

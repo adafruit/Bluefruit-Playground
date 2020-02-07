@@ -185,8 +185,6 @@
 		A9D12E8823E4434000F3C259 /* UIColor+Interpolate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */; };
 		A9D12E9323E874D000F3C259 /* PuppetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E9223E874D000F3C259 /* PuppetViewController.swift */; };
 		A9D12E9423E874D000F3C259 /* PuppetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E9223E874D000F3C259 /* PuppetViewController.swift */; };
-		A9D12E9F23E89D5200F3C259 /* TransitioningModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E9E23E89D5200F3C259 /* TransitioningModuleViewController.swift */; };
-		A9D12EA023E89D5200F3C259 /* TransitioningModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12E9E23E89D5200F3C259 /* TransitioningModuleViewController.swift */; };
 		A9D12EA223E8A80F00F3C259 /* AccelerometerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12EA123E8A80F00F3C259 /* AccelerometerUtils.swift */; };
 		A9D12EA323E8A80F00F3C259 /* AccelerometerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12EA123E8A80F00F3C259 /* AccelerometerUtils.swift */; };
 		A9D12EA523E8F91300F3C259 /* LowPassFilterSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D12EA423E8F91300F3C259 /* LowPassFilterSignal.swift */; };
@@ -336,7 +334,6 @@
 		A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Interpolate.swift"; sourceTree = "<group>"; };
 		A9D12E8523E3C5CF00F3C259 /* LightChartPanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightChartPanelViewController.swift; sourceTree = "<group>"; };
 		A9D12E9223E874D000F3C259 /* PuppetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PuppetViewController.swift; sourceTree = "<group>"; };
-		A9D12E9E23E89D5200F3C259 /* TransitioningModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningModuleViewController.swift; sourceTree = "<group>"; };
 		A9D12EA123E8A80F00F3C259 /* AccelerometerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccelerometerUtils.swift; sourceTree = "<group>"; };
 		A9D12EA423E8F91300F3C259 /* LowPassFilterSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowPassFilterSignal.swift; sourceTree = "<group>"; };
 		A9D12EA723E8FC7000F3C259 /* Sparky_Gold1.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Sparky_Gold1.scn; sourceTree = "<group>"; };
@@ -478,7 +475,6 @@
 				A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */,
 				A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */,
 				A948298C237B73B100B6FC13 /* ModuleViewController.swift */,
-				A9D12E9E23E89D5200F3C259 /* TransitioningModuleViewController.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1006,7 +1002,6 @@
 				A9EAA19523514B2800FA615E /* CornerShadowButton.swift in Sources */,
 				A96AA5D523635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift in Sources */,
 				A96AA5C823633EB3004A06BA /* UIButton+BackgroundColorForState.swift in Sources */,
-				A9D12E9F23E89D5200F3C259 /* TransitioningModuleViewController.swift in Sources */,
 				A9A08B2523A2CBCF00498069 /* LightSequenceAnimation.swift in Sources */,
 				A9BED709234F75E4002FFF53 /* TipAnimationViewController.swift in Sources */,
 				A96AA5CF23634BC3004A06BA /* AccelerometerPanelViewController.swift in Sources */,
@@ -1166,7 +1161,6 @@
 				A9A08BAA23A7891500498069 /* ObjectBuilder.m in Sources */,
 				A9A08B7623A523C900498069 /* ConfigUI.swift in Sources */,
 				A9A08B7723A523C900498069 /* UartPacketManager.swift in Sources */,
-				A9D12EA023E89D5200F3C259 /* TransitioningModuleViewController.swift in Sources */,
 				A9A08B7823A523C900498069 /* LightSensorViewController.swift in Sources */,
 				A9A08B7923A523C900498069 /* TitleTableViewCell.swift in Sources */,
 				A9A08B7A23A523C900498069 /* HelpTableViewCell.swift in Sources */,
