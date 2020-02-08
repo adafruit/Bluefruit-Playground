@@ -15,20 +15,35 @@ class HelpViewController: UIViewController {
     // UI
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    
-    // Params
-    var message: String?
+    @IBOutlet weak var contentStackView: UIStackView!
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        messageLabel.text = message
-        
         // Text
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("help_title")
         doneButton.title = localizationManager.localizedString("dialog_done")
+    }
+        
+    // MARK: - Add Items
+    func addMessage(_ message: String) {
+        loadViewIfNeeded()
+        
+        let label = UILabel()
+        label.textColor = UIColor(named: "text_default")
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        label.text = message
+        contentStackView.addArrangedSubview(label)
+    }
+    
+    func addImage(_ image: UIImage) {
+        loadViewIfNeeded()
+
+        let imageView = UIImageView(image: image)
+        contentStackView.addArrangedSubview(imageView)
     }
     
     // MARK: - Actions

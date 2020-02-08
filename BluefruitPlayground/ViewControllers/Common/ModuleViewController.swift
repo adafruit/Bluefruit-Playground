@@ -129,8 +129,10 @@ class ModuleViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func help(_ sender: Any) {
+        guard let moduleHelpMessage = moduleHelpMessage else { return }
         guard let navigationController = storyboard?.instantiateViewController(withIdentifier: HelpViewController.kIdentifier) as? UINavigationController, let helpViewController = navigationController.topViewController as? HelpViewController else { return }
-        helpViewController.message = moduleHelpMessage
+        
+        helpViewController.addMessage(moduleHelpMessage)
         
         self.present(navigationController, animated: true, completion: nil)
     }

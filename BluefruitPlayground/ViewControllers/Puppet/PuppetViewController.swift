@@ -403,8 +403,12 @@ class PuppetViewController: UIViewController {
     
     @IBAction func help(_ sender: Any) {
         guard let navigationController = storyboard?.instantiateViewController(withIdentifier: HelpViewController.kIdentifier) as? UINavigationController, let helpViewController = navigationController.topViewController as? HelpViewController else { return }
-        helpViewController.message = LocalizationManager.shared.localizedString("puppet_help")
-        
+        helpViewController.addMessage(LocalizationManager.shared.localizedString("puppet_help_header"))
+        if let image = UIImage(named: "puppet_hand") {
+            helpViewController.addImage(image)
+        }
+        helpViewController.addMessage(LocalizationManager.shared.localizedString("puppet_help_details"))
+
         self.present(navigationController, animated: true, completion: nil)
     }
 }

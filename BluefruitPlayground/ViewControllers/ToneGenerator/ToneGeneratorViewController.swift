@@ -195,7 +195,7 @@ class ToneGeneratorViewController: UIViewController {
     
     @IBAction func help(_ sender: Any) {
         guard let navigationController = storyboard?.instantiateViewController(withIdentifier: HelpViewController.kIdentifier) as? UINavigationController, let helpViewController = navigationController.topViewController as? HelpViewController else { return }
-        helpViewController.message = LocalizationManager.shared.localizedString("tonegenerator_help")
+        helpViewController.addMessage(LocalizationManager.shared.localizedString("tonegenerator_help"))
         
         self.present(navigationController, animated: true, completion: nil)
     }
