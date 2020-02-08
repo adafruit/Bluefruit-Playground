@@ -62,8 +62,6 @@ class ScannerViewController: UIViewController {
         // Hide automatic scanning if needed
         scanAutomaticallyButton.isHidden = !Config.isAutomaticConnectionEnabled
         
-        // Ble Notifications
-        registerNotifications(enabled: true)
         
         // Localization
         let localizationManager = LocalizationManager.shared
@@ -82,7 +80,15 @@ class ScannerViewController: UIViewController {
         if let customNavigationBar = navigationController?.navigationBar as? NavigationBarWithScrollAwareRightButton {
             customNavigationBar.setRightButton(topViewController: self, image: UIImage(named: "info"), target: self, action: #selector(about(_:)))
         }
+        
+        // Ble Notifications
+        registerNotifications(enabled: true)
 
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+                
         // Disconnect if needed
         let connectedPeripherals = bleManager.connectedPeripherals()
         if connectedPeripherals.count == 1, let peripheral = connectedPeripherals.first {
@@ -90,10 +96,6 @@ class ScannerViewController: UIViewController {
             // Disconnect from peripheral
             disconnect(peripheral: peripheral)
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
         // Update UI
         updateScannedPeripherals()
@@ -111,16 +113,14 @@ class ScannerViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
+        // Ble Notifications
+        registerNotifications(enabled: false)
+        
         // Stop scanning
         bleManager.stopScan()
                 
         // Clear peripherals
         peripheralList.clear()
-    }
-    
-    deinit {
-        // Ble Notifications
-        registerNotifications(enabled: false)
     }
     
     // MARK: - BLE Notifications

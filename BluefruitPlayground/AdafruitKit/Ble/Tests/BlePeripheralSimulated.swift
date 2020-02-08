@@ -10,20 +10,19 @@ import Foundation
 import CoreBluetooth
 
 class BlePeripheralSimulated: BlePeripheral {
-    // Constants
-    private static let kSimulatedUUID = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
-    
     // Data
+    private var simulatedIdentifier = UUID()
     override var identifier: UUID {
-        return BlePeripheralSimulated.kSimulatedUUID
+        return simulatedIdentifier
     }
     
     override var name: String? {
         return "Simulated Peripheral"
     }
-    
+        
+    private var simulatedState: CBPeripheralState = .disconnected
     override var state: CBPeripheralState {
-        return .connected
+        return simulatedState
     }
     
      // MARK: - Lifecycle
@@ -45,6 +44,21 @@ class BlePeripheralSimulated: BlePeripheral {
     // MARK: - Discover
     override func discover(serviceUuids: [CBUUID]?, completion: ((Error?) -> Void)?) {
         completion?(nil)
+    }
+    
+    // MARK: - Connect
+    func simulateConnect() {
+        simulatedState = .connected
+    }
+    
+    // MARK: - Disconnect
+    override internal func disconnect(with command: BleCommand) {
+        // Simulate disconnection
+        simulatedState = .disconnected
+        BleManagerSimulated.simulated.didDisconnectPeripheral(blePeripheral: self)
+        
+        // Finished
+        finishedExecutingCommand(error: nil)
     }
 }
 

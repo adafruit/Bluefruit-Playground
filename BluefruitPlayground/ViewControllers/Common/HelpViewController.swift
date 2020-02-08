@@ -43,7 +43,32 @@ class HelpViewController: UIViewController {
         loadViewIfNeeded()
 
         let imageView = UIImageView(image: image)
-        contentStackView.addArrangedSubview(imageView)
+        imageView.tintColor = UIColor(named: "text_default")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .vertical)
+
+        // Add imageView inside container to adjust proportions
+        let containerView = UIView()
+        containerView.backgroundColor = .clear
+        containerView.addSubview(imageView)
+        
+        imageView.topAnchor.constraint(equalTo: containerView.topAnchor).isActive = true
+        imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+
+        imageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+        //imageView.leadingAnchor.constraint(greaterThanOrEqualTo: containerView.leadingAnchor).isActive = true
+        //imageView.trailingAnchor.constraint(greaterThanOrEqualTo: containerView.trailingAnchor).isActive = true
+
+        let proportionalWidthConstraint = imageView.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.75)
+        proportionalWidthConstraint.priority = UILayoutPriority(rawValue: 999)
+        proportionalWidthConstraint.isActive = true
+        imageView.widthAnchor.constraint(lessThanOrEqualToConstant: 350).isActive = true        // Limit image to 350 width
+        
+        imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor, multiplier: image.size.height / image.size.width).isActive = true
+        
+        
+        contentStackView.addArrangedSubview(containerView)
     }
     
     // MARK: - Actions

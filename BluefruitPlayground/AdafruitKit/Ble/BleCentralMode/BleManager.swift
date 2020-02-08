@@ -38,7 +38,7 @@ class BleManager: NSObject {
     internal var scanningStartTime: TimeInterval?        // Time when the scanning started. nil if stopped
     private var scanningServicesFilter: [CBUUID]?
     internal var peripheralsFound = [UUID: BlePeripheral]()
-    private var peripheralsFoundLock = NSLock()
+    internal var peripheralsFoundLock = NSLock()
 
     // Connecting
     private var connectionTimeoutTimers = [UUID: MSWeakTimer]()
@@ -353,6 +353,10 @@ extension BleManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         DLog("didFailToConnect")
 
+        // Clean
+        peripheralsFound[peripheral.identifier]?.reset()
+
+        // Notify
         NotificationCenter.default.post(name: .didDisconnectFromPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheral.identifier])
     }
 

@@ -28,6 +28,8 @@
 	<string>This app needs access to Bluetooth to connect to Circuit Playground Bluefruit devices</string>
 	<key>NSBluetoothPeripheralUsageDescription</key>
 	<string>This app needs access to Bluetooth to connect to Circuit Playground Bluefruit devices</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Puppet module requires access to the camera</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

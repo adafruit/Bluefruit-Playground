@@ -337,7 +337,7 @@ class BlePeripheral: NSObject {
     }
 
     // MARK: - Command Queue
-    private class BleCommand: Equatable {
+    internal class BleCommand: Equatable {
         enum CommandType {
             case discoverService
             case discoverCharacteristic
@@ -404,7 +404,7 @@ class BlePeripheral: NSObject {
         return "\(descriptor.characteristic.service.uuid.uuidString)-\(descriptor.characteristic.uuid.uuidString)-\(descriptor.uuid.uuidString)"
     }
 
-    private func finishedExecutingCommand(error: Error?) {
+    internal func finishedExecutingCommand(error: Error?) {
         //DLog("finishedExecutingCommand")
 
         // Result Callback
@@ -523,7 +523,7 @@ class BlePeripheral: NSObject {
         peripheral.readValue(for: descriptor)
     }
     
-    private func disconnect(with command: BleCommand) {
+    internal func disconnect(with command: BleCommand) {
         let centralManager = command.parameters!.first as! CBCentralManager
         centralManager.cancelPeripheralConnection(self.peripheral)
         finishedExecutingCommand(error: nil)

@@ -205,14 +205,13 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 
 // Puppet
 "puppet_title" = "Puppets";
-"puppet_help_header" = "This Puppet module allows you to animate a 3D puppets in real time using the Circuit Playground Bluefruit board.
+"puppet_help_header" = "The Puppets module allows you to animate a 3D puppet in real time using Circuit Playground Bluefruit. 
 
-To control the puppet, attach Circuit Playground Bluefruit to the back of your fingers using a rubber band as seen below:";
-"puppet_help_details" = "• Tilt your board forward or backwards to open and close the mouth of the puppet(Sparky The Blue Smoke Monster).
-• Try turning your board to turn your puppet’s head left and right.
-• Press the A or B button on the board to trigger present animations.
-
-You can also screen record and share your interaction with the puppet.";
+To control Sparky the Blue Smoke Monster, attach Circuit Playground Bluefruit to the back of your fingers using a rubber band as seen below:";
+"puppet_help_details" = "• Tilt your board forward or backwards to open and close the mouth of the puppet.
+• Try tilting your board to tilt the puppet’s head left or right.
+• Press the A or B button on Circuit Playground Bluefruit to trigger preset animations.
+• Use the buttons at the bottom to record the screen, change background, camera, & fullscreen mode. ";
 
 
 "puppet_recording_error_title" = "Recording Error";
