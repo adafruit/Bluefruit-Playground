@@ -63,15 +63,15 @@ class BluefruitPlaygroundUITests: XCTestCase {
         
         elementsQuery.staticTexts["Light Sequence"].swipeLeft()
         element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .button).element(boundBy: 2).tap()
-
+        
         snapshot("04a_Neopixels_ColorPalette")
-
+        
         elementsQuery.staticTexts["Color Palette"].swipeLeft()
         element.children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
         
         snapshot("04b_Neopixels_ColorWheel")
         
-        app.navigationBars["Neopixels"].buttons["Modules"].tap()
+        app.navigationBars["NeoPixels"].buttons["Modules"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["View continuous light sensor readings"]/*[[".cells.staticTexts[\"View continuous light sensor readings\"]",".staticTexts[\"View continuous light sensor readings\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         snapshot("05_LightSensor")
         app.navigationBars["Light Sensor"].buttons["Modules"].tap()
@@ -79,15 +79,18 @@ class BluefruitPlaygroundUITests: XCTestCase {
         snapshot("06_ButtonStatus")
         app.navigationBars["Button Status"].buttons["Modules"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Turn CPB into a musical instrument"]/*[[".cells.staticTexts[\"Turn CPB into a musical instrument\"]",".staticTexts[\"Turn CPB into a musical instrument\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-         snapshot("07_ToneGenerator")
+        snapshot("07_ToneGenerator")
         app.navigationBars["Tone Generator"].buttons["Modules"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Accelerometer"]/*[[".cells.staticTexts[\"Accelerometer\"]",".staticTexts[\"Accelerometer\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         snapshot("08_Accelerometer")
         app.navigationBars["Accelerometer"].buttons["Modules"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["View current temperature readings"]/*[[".cells.staticTexts[\"View current temperature readings\"]",".staticTexts[\"View current temperature readings\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-         snapshot("09_Temperature")
+        snapshot("09_Temperature")
         app.navigationBars["Temperature"].buttons["Modules"].tap()
-        
+        tablesQuery.staticTexts["Puppets"].tap()
+        snapshot("10_Puppets")
+
+                
     }
 
     func testLaunchPerformance() {

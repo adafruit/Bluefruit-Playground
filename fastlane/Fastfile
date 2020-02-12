@@ -20,4 +20,13 @@ platform :ios do
   lane :screenshots do
     capture_screenshots(workspace: "BluefruitPlayground.xcworkspace", scheme: "BluefruitPlaygroundUITests")
   end
+  
+  
+  lane :upload_screenshots do
+    deliver(
+      skip_screenshots: false,
+      skip_metadata: true,
+      submit_for_review: false,
+    )
+  end
 end
