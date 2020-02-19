@@ -9,7 +9,7 @@
 import UIKit
 
 struct ConfigUI {
-    
+
     static var prefersLargeTitles: Bool {
         UIScreen.main.bounds.height > 700
     }

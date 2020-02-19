@@ -21,7 +21,7 @@ struct UartPacket {      // A packet of data received or sent
     var mode: TransferMode
     var data: Data
     var peripheralId: UUID?
-    
+
     init(peripheralId: UUID?, timestamp: CFAbsoluteTime? = nil, mode: TransferMode, data: Data) {
         self.peripheralId = peripheralId
         self.timestamp = timestamp ?? CFAbsoluteTimeGetCurrent()
@@ -30,34 +30,32 @@ struct UartPacket {      // A packet of data received or sent
     }
 }
 
-
 class UartPacketManagerBase {
-    
+
     // Data
     internal weak var delegate: UartPacketManagerDelegate?
     internal var packets = [UartPacket]()
     internal var packetsSemaphore = DispatchSemaphore(value: 1)
     internal var isMqttEnabled: Bool
-    internal var isPacketCacheEnabled: Bool 
-    
+    internal var isPacketCacheEnabled: Bool
+
     var receivedBytes: Int64 = 0
     var sentBytes: Int64 = 0
-    
+
     init(delegate: UartPacketManagerDelegate?, isPacketCacheEnabled: Bool, isMqttEnabled: Bool) {
         self.isPacketCacheEnabled = isPacketCacheEnabled
         self.isMqttEnabled = isMqttEnabled
         self.delegate = delegate
     }
-    
-    
+
     // MARK: - Received data
     func rxPacketReceived(data: Data?, peripheralIdentifier: UUID?, error: Error?) {
-        
+
         guard error == nil else { DLog("uartRxPacketReceived error: \(error!)"); return }
         guard let data = data else { return }
-        
+
         let uartPacket = UartPacket(peripheralId: peripheralIdentifier, mode: .rx, data: data)
-        
+
         // Mqtt publish to RX. TODO: Remove the dependency with MqttSettings and pass parameters
         #if MQTT_ENABLED
         if isMqttEnabled {
@@ -72,31 +70,31 @@ class UartPacketManagerBase {
             }
         }
         #endif
-        
+
         packetsSemaphore.wait()            // don't append more data, till the delegate has finished processing it
         receivedBytes += Int64(data.count)
         if isPacketCacheEnabled {
             packets.append(uartPacket)
         }
-        
+
         // Send data to delegate
         DispatchQueue.main.async {
             self.delegate?.onUartPacket(uartPacket)
         }
-        
+
         //DLog("packetsData: \(packetsData.count)")
-        
+
         packetsSemaphore.signal()
     }
-    
+
     func clearPacketsCache() {
         packets.removeAll()
     }
-    
+
     func packetsCache() -> [UartPacket] {
         return packets
     }
-    
+
     // MARK: - Counters
     func resetCounters() {
         receivedBytes = 0

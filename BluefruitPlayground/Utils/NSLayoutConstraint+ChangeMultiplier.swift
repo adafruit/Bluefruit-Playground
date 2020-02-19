@@ -17,13 +17,13 @@ extension NSLayoutConstraint {
      - returns: NSLayoutConstraint
      */
     static func setMultiplier(multiplier: CGFloat, constraint: inout NSLayoutConstraint) {
-        
+
         if multiplier == 0 {
             DLog("Warning: multiplier 0 breaks this function")
         }
-        
+
         NSLayoutConstraint.deactivate([constraint])
-        
+
         let newConstraint = NSLayoutConstraint(
             item: constraint.firstItem as Any,
             attribute: constraint.firstAttribute,
@@ -32,11 +32,11 @@ extension NSLayoutConstraint {
             attribute: constraint.secondAttribute,
             multiplier: multiplier,
             constant: constraint.constant)
-        
+
         newConstraint.priority = constraint.priority
         newConstraint.shouldBeArchived = constraint.shouldBeArchived
         newConstraint.identifier = constraint.identifier
-        
+
         NSLayoutConstraint.activate([newConstraint])
         constraint = newConstraint
     }

@@ -17,11 +17,11 @@
 
 class RssiUI {
     static func signalImage(for rssi: Int?) -> Image {
-        
+
         let rssiValue = rssi ?? BlePeripheral.kUndefinedRssiValue
-        
+
         var index: Int
-        
+
         if rssiValue == BlePeripheral.kUndefinedRssiValue {     // value of 127 reserved for RSSI not available
             index = 0
         } else if rssiValue <= -84 {
@@ -35,7 +35,7 @@ class RssiUI {
         } else {
             index = 4
         }
-        
+
         return Image(named: "signalstrength\(index)")!
     }
 }

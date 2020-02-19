@@ -20,7 +20,7 @@ extension DataConvertible where Self: ExpressibleByIntegerLiteral {
     init?(data: Data) {
         var value: Self = 0
         guard data.count == MemoryLayout.size(ofValue: value) else { return nil }
-        _ = withUnsafeMutableBytes(of: &value, { data.copyBytes(to: $0)} )
+        _ = withUnsafeMutableBytes(of: &value, { data.copyBytes(to: $0)})
         self = value
     }
 
@@ -38,7 +38,6 @@ extension Int32: DataConvertible { }
 extension UInt32: DataConvertible { }
 extension Float: DataConvertible { }
 extension Double: DataConvertible { }
-
 
 // Convert from [UInt8] to Data and from Data to [UInt8]
 // from: https://stackoverflow.com/questions/31821709/nsdata-to-uint8-in-swift/31821838

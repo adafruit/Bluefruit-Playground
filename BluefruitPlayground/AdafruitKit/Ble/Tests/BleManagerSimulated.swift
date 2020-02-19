@@ -10,46 +10,46 @@ import UIKit
 import CoreBluetooth
 
 class BleManagerSimulated: BleManager {
-    
+
     // Singleton
     static let simulated = BleManagerSimulated()
 
     // MARK: - Lifecycle
     override init() {
-        
+
     }
-    
+
     // MARK: - Scanning
     override func startScan(withServices services: [CBUUID]? = nil) {
         scanningStartTime = CACurrentMediaTime()
-        
+
         // Add simulated peripheral
         let simulatedBlePeripheral = BlePeripheralSimulated()
         peripheralsFound[simulatedBlePeripheral.identifier] = simulatedBlePeripheral
         NotificationCenter.default.post(name: .didDiscoverPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: simulatedBlePeripheral.identifier])
     }
-    
+
     override func stopScan() {
     }
-    
+
     // MARK: - Connect
     override func connect(to peripheral: BlePeripheral, timeout: TimeInterval? = nil, shouldNotifyOnConnection: Bool = false, shouldNotifyOnDisconnection: Bool = false, shouldNotifyOnNotification: Bool = false) {
-        
+
         guard let blePeripheral = peripheral as? BlePeripheralSimulated else { return }
         blePeripheral.simulateConnect()
-        
+
         // Send notification
         NotificationCenter.default.post(name: .didConnectToPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheral.identifier])
     }
-    
+
     override func reconnecToPeripherals(withIdentifiers identifiers: [UUID], withServices services: [CBUUID], timeout: Double? = nil) -> Bool {
         return false
     }
-    
+
     // MARK: - Disconnect
     override func disconnect(from peripheral: BlePeripheral, waitForQueuedCommands: Bool = false) {
         guard let blePeripheral = peripheral as? BlePeripheralSimulated else { return }
-        
+
         DLog("disconnect")
         NotificationCenter.default.post(name: .willDisconnectFromPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheral.identifier])
 
@@ -58,12 +58,11 @@ class BleManagerSimulated: BleManager {
             if let centralManager = centralManager {
                 blePeripheral.disconnect(centralManager: centralManager)
             }
-        }
-        else {
+        } else {
             didDisconnectPeripheral(blePeripheral: blePeripheral)
         }
     }
-    
+
     func didDisconnectPeripheral(blePeripheral: BlePeripheralSimulated) {
         DLog("didDisconnectPeripheral")
 

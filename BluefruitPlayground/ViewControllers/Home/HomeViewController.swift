@@ -12,10 +12,10 @@ class HomeViewController: UIViewController {
     // Constants
     static let kNavigationControllerIdentifier = "ModulesNavigationController"
     static let kIdentifier = "HomeViewController"
-    
+
     // UI
     @IBOutlet weak var baseTableView: UITableView!
-    
+
     // Data
     private enum Modules: Int {
         case color = 0
@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
         case accelerometer
         case temperature
         case puppet
-        
+
         var titleStringId: String {
             switch self {
             case .color: return "modules_color_title"
@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
             case .puppet: return "modules_puppet_title"
             }
         }
-        
+
         var subtitleStringId: String {
             switch self {
             case .color: return "modules_color_subtitle"
@@ -49,7 +49,7 @@ class HomeViewController: UIViewController {
             case .puppet: return "modules_puppet_subtitle"
             }
         }
-        
+
         var color: UIColor {
             switch self {
             case .color: return UIColor(named: "module_neopixels_color")!
@@ -62,25 +62,24 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
+
     private let menuItems: [Modules] = [.color, .light, .button, .tone, .accelerometer, .temperature, .puppet]
-    
-    
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Setup UI
         /*
         let topContentInsetForDetails: CGFloat = 20
         baseTableView.contentInset = UIEdgeInsets(top: topContentInsetForDetails, left: 0, bottom: 0, right: 0)
         */
-        
+
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("modules_title")
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -94,7 +93,7 @@ class HomeViewController: UIViewController {
             peripheral.readRssi()
         }*/
     }
-    
+
     /*
     // MARK: - Actions
     @IBAction func about(_ sender: Any) {
@@ -104,53 +103,51 @@ class HomeViewController: UIViewController {
     }*/
 }
 
-
 // MARK: - UITableViewDataSource
 extension HomeViewController: UITableViewDataSource {
     enum CellType {
         case details
         case module
         case disconnect
-        
+
         var reuseIdentifier: String {
-            switch(self) {
+            switch self {
             case .details: return "DetailsCell"
-                case .module: return "ModuleCell"
-                case .disconnect: return "DisconnectCell"
+            case .module: return "ModuleCell"
+            case .disconnect: return "DisconnectCell"
             }
         }
     }
-    
+
     private func useDetailSection() -> Bool {
         return false
     }
-        
+
     private func cellTypeFromIndexPath(_ indexPath: IndexPath) -> CellType {
          return useDetailSection() && indexPath.section == 0 ? .details : indexPath.row == menuItems.count ? .disconnect : .module
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return (useDetailSection() ? 1:0) + 1        // Details + Modules
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if useDetailSection() && section == 0 {
             return 1
-        }
-        else {
+        } else {
             return menuItems.count + 1 // + 1 disconnect
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         let cellType = cellTypeFromIndexPath(indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath)
-        
+
         // Add cell data here instead of using willDisplay to avoid problems with automatic dimension calculation
         let localizationManager = LocalizationManager.shared
-        
-        switch(cellType) {
+
+        switch cellType {
         case .details:
             let detailsCell = cell as! TitleTableViewCell
             detailsCell.titleLabel.text = localizationManager.localizedString("modules_subtitle")
@@ -165,46 +162,46 @@ extension HomeViewController: UITableViewDataSource {
         case .module:
             let moduleCell = cell as! CommonTableViewCell
             let menuItem = menuItems[indexPath.row]
-            
+
             let titleStringId = menuItem.titleStringId
             moduleCell.titleLabel.text = localizationManager.localizedString(titleStringId)
-            
+
             let subtitleStringId = menuItem.subtitleStringId
             moduleCell.subtitleLabel?.text = localizationManager.localizedString(subtitleStringId)
-            
+
             moduleCell.iconImageView.backgroundColor = menuItem.color
             moduleCell.iconImageView.layer.borderColor = UIColor(named: "text_default")?.cgColor
             moduleCell.iconImageView.layer.borderWidth = 1
             moduleCell.iconImageView.layer.cornerRadius = 7
             moduleCell.iconImageView.layer.masksToBounds = true
-            
+
         case .disconnect:
             let disconnectCell = cell as! CommonTableViewCell
             disconnectCell.titleLabel.text = localizationManager.localizedString("modules_disconnect_title")
             disconnectCell.subtitleLabel?.text = localizationManager.localizedString("modules_disconnect_subtitle")
         }
-      
+
         return cell
     }
 }
 
 // MARK: UITableViewDelegate
 extension HomeViewController: UITableViewDelegate {
-    
+
     /*
      func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
      }*/
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+
         let cellType = cellTypeFromIndexPath(indexPath)
-        switch(cellType) {
+        switch cellType {
         case .details:
             break
         case .module:
             if let module = Modules(rawValue: indexPath.row) {
-                var storyboardId: String? = nil
+                var storyboardId: String?
                 switch module {
                 case .color:
                     storyboardId = NeoPixelsViewController.kIdentifier
@@ -221,9 +218,9 @@ extension HomeViewController: UITableViewDelegate {
                 case .puppet:
                     storyboardId = PuppetViewController.kIdentifier
                 }
-                
+
                 if let identifier = storyboardId, let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) {
-                    
+
                     // Show viewController with completion block
                     CATransaction.begin()
                     self.show(viewController, sender: self)
@@ -234,7 +231,7 @@ extension HomeViewController: UITableViewDelegate {
                     CATransaction.commit()
                 }
             }
-            
+
         case .disconnect:
             if let peripheral = Config.bleManager.connectedPeripherals().first {
                 Config.bleManager.disconnect(from: peripheral, waitForQueuedCommands: true)
@@ -254,4 +251,3 @@ extension HomeViewController {
     }
 }
  */
- 

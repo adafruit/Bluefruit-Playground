@@ -36,13 +36,13 @@ class LocalizationManager {
         localizationBundle = nil
 
         if let path = Bundle.main.path(forResource: languageCode, ofType: "lproj") {
-            localizationBundle = Bundle(path:path)
+            localizationBundle = Bundle(path: path)
         } else {
             if let range = languageCode.range(of: "-") {
 
                 let baseCode = String(languageCode[..<range.lowerBound])
                 if let path =  Bundle.main.path(forResource: baseCode, ofType: "lproj") {
-                    localizationBundle = Bundle(path:path)
+                    localizationBundle = Bundle(path: path)
                 }
             }
 

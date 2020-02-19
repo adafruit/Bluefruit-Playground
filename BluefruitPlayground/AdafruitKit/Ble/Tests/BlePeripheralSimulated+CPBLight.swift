@@ -12,17 +12,17 @@ import CoreBluetooth
 extension BlePeripheral {
     // MARK: - Actions
     func cpbLightEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
-        
+
         completion?(.success(()))
     }
-    
+
     func isCpbLightEnabled() -> Bool {
         return true
     }
-    
+
     func cpbLightDisable() {
     }
-    
+
     func cpbLightLastValue() -> Float? {
         let temperature = Float.random(in: 300 ..< 400)
         return temperature

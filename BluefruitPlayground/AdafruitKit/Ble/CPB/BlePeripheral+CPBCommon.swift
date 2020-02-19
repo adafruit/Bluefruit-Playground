@@ -13,9 +13,9 @@ extension BlePeripheral {
     // Costants
     private static let kCPBMeasurementPeriodCharacteristicUUID =  CBUUID(string: "ADAF0001-C332-42A8-93BD-25E905756CB8")
     private static let kCPBMeasurementVersionCharacteristicUUID =  CBUUID(string: "ADAF0002-C332-42A8-93BD-25E905756CB8")
-    
+
     private static let kCPBDefaultVersionValue = 1         // Used as default version value if version characteristic cannot be read
-    
+
     // MARK: - Errors
     enum PeripheralCPBError: Error {
         case invalidCharacteristic
@@ -23,7 +23,7 @@ extension BlePeripheral {
         case unknownVersion
         case invalidResponseData
     }
-    
+
     // MARK: - Custom properties
     /*
     private struct CustomPropertiesKeys {
@@ -48,31 +48,31 @@ extension BlePeripheral {
             objc_setAssociatedObject(self, &CustomPropertiesKeys.cpbVersionCharacteristic, newValue, .OBJC_ASSOCIATION_RETAIN)
         }
     }*/
-    
+
     // MARK: - Service Actions
     func cpbServiceEnable(serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, completion: ((Result<(Int, CBCharacteristic), Error>) -> Void)?) {
-        
+
         self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [unowned self] (characteristic, error) in
             guard let characteristic = characteristic, error == nil else {
                 completion?(.failure(error ?? PeripheralCPBError.invalidCharacteristic))
                 return
             }
-            
+
             // Check version
             self.cpbVersion(serviceUuid: serviceUuid) { version in
                 completion?(.success((version, characteristic)))
             }
         }
     }
-    
+
     func cpbServiceEnable(serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, timePeriod: TimeInterval?, responseHandler: @escaping(Result<(Data, UUID), Error>) -> Void, completion: ((Result<(Int, CBCharacteristic), Error>) -> Void)?) {
-        
+
         self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [unowned self] (characteristic, error) in
             guard let characteristic = characteristic, error == nil else {
                 completion?(.failure(error ?? PeripheralCPBError.invalidCharacteristic))
                 return
             }
-            
+
             // Check version
             self.cpbVersion(serviceUuid: serviceUuid) { version in
                 // Prepare notification handler
@@ -81,12 +81,12 @@ extension BlePeripheral {
                         responseHandler(.failure(error!))
                         return
                     }
-                    
+
                     if let data = characteristic.value {
                         responseHandler(.success((data, self.identifier)))
                     }
                 }
-                
+
                 // Refresh period handler
                 let enableNotificationsHandler = {
                     // Enable notifications
@@ -100,40 +100,39 @@ extension BlePeripheral {
                                 completion?(.failure(PeripheralCPBError.enableNotifyFailed))
                                 return
                             }
-                            
+
                             completion?(.success((version, characteristic)))
-                            
+
                         })
                     } else {
                         self.updateNotifyHandler(for: characteristic, handler: notifyHandler)
                         completion?(.success((version, characteristic)))
                     }
                 }
-                
+
                 // Set timePeriod if not nil
                 if let timePeriod = timePeriod {
-                    self.cpbSetPeriod(timePeriod, serviceUuid: serviceUuid) { result in
-                        
+                    self.cpbSetPeriod(timePeriod, serviceUuid: serviceUuid) { _ in
+
                         if Config.isDebugEnabled {
                             // Check period
                             self.cpbPeriod(serviceUuid: serviceUuid) { period in
                                 DLog("service period: \(String(describing: period))")
                             }
                         }
-                        
+
                         enableNotificationsHandler()
                     }
-                }
-                else {
+                } else {
                     enableNotificationsHandler()
                 }
             }
         }
     }
-    
+
     func cpbVersion(serviceUuid: CBUUID, completion: @escaping(Int) -> Void) {
         self.characteristic(uuid: BlePeripheral.kCPBMeasurementVersionCharacteristicUUID, serviceUuid: serviceUuid) { (characteristic, error) in
-            
+
             guard error == nil, let characteristic = characteristic, let data = characteristic.value else {
                 completion(BlePeripheral.kCPBDefaultVersionValue)
                 return
@@ -142,11 +141,10 @@ extension BlePeripheral {
             completion(version)
         }
     }
-    
-    
+
     func cpbPeriod(serviceUuid: CBUUID, completion: @escaping(TimeInterval?) -> Void) {
         self.characteristic(uuid: BlePeripheral.kCPBMeasurementPeriodCharacteristicUUID, serviceUuid: serviceUuid) { (characteristic, error) in
-            
+
             guard error == nil, let characteristic = characteristic else {
                 completion(nil)
                 return
@@ -163,12 +161,11 @@ extension BlePeripheral {
             }
         }
     }
-    
-    
+
     func cpbSetPeriod(_ period: TimeInterval, serviceUuid: CBUUID, completion: ((Result<Void, Error>) -> Void)?) {
-        
+
         self.characteristic(uuid: BlePeripheral.kCPBMeasurementPeriodCharacteristicUUID, serviceUuid: serviceUuid) { (characteristic, error) in
-            
+
             guard error == nil, let characteristic = characteristic else {
                 DLog("Error: cpbSetPeriod: \(String(describing: error))")
                 return
@@ -182,7 +179,7 @@ extension BlePeripheral {
                     completion?(.failure(error!))
                     return
                 }
-                
+
                 completion?(.success(()))
             }
         }

@@ -17,7 +17,7 @@ class BluefruitPlaygroundUITests: XCTestCase {
         continueAfterFailure = false
 
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-        
+
         let app = XCUIApplication()
         setupSnapshot(app)
         app.launch()
@@ -35,42 +35,42 @@ class BluefruitPlaygroundUITests: XCTestCase {
 */
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
+
         let app = XCUIApplication()
         let scrollViewsQuery = app.scrollViews
         let elementsQuery = scrollViewsQuery.otherElements
-        
+
         sleep(2)        // Wait for the intro animation
         snapshot("01a_Welcome")
-        
+
         elementsQuery.buttons["LET'S GET STARTED..."].tap()
         snapshot("01b_PowerUp")
 
         elementsQuery.buttons["NEXT"].tap()
         snapshot("01c_Discover")
         elementsQuery.buttons["BEGIN PAIRING"].tap()
-        
+
         let tablesQuery = app.tables
         tablesQuery.staticTexts["Simulated Peripheral"].tap()
 
         snapshot("02_Modules")
 
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Control LED color & animation"]/*[[".cells.staticTexts[\"Control LED color & animation\"]",".staticTexts[\"Control LED color & animation\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        
+
         let element = scrollViewsQuery.children(matching: .other).element
         element.children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .button).element.tap()
         snapshot("03_Neopixels_LightSequence")
-        
+
         elementsQuery.staticTexts["Light Sequence"].swipeLeft()
         element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .button).element(boundBy: 2).tap()
-        
+
         snapshot("04a_Neopixels_ColorPalette")
-        
+
         elementsQuery.staticTexts["Color Palette"].swipeLeft()
         element.children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
-        
+
         snapshot("04b_Neopixels_ColorWheel")
-        
+
         app.navigationBars["NeoPixels"].buttons["Modules"].tap()
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["View continuous light sensor readings"]/*[[".cells.staticTexts[\"View continuous light sensor readings\"]",".staticTexts[\"View continuous light sensor readings\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         snapshot("05_LightSensor")
@@ -90,7 +90,6 @@ class BluefruitPlaygroundUITests: XCTestCase {
         tablesQuery.staticTexts["Puppets"].tap()
         snapshot("10_Puppets")
 
-                
     }
 
     func testLaunchPerformance() {

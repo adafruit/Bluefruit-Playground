@@ -13,12 +13,12 @@ class PeripheralList {
     private(set) var bleManager: BleManager
     private var peripherals = [BlePeripheral]()
     private var cachedFilteredPeripherals: [BlePeripheral] = []
-    
+
     // MARK: - Lifecycle
     init(bleManager: BleManager) {
         self.bleManager = bleManager
     }
-    
+
     // MARK: - Actions
     func filteredPeripherals(forceUpdate: Bool) -> [BlePeripheral] {
         if forceUpdate {
@@ -34,7 +34,7 @@ class PeripheralList {
     private func calculateFilteredPeripherals() -> [BlePeripheral] {
         let peripherals = bleManager.peripherals().filter({$0.isManufacturerAdafruit()})
         return peripherals
-        
+
         //return peripherals.filter({$0.rssi ?? -127 > -55})
     }
 }

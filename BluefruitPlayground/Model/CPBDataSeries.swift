@@ -13,6 +13,6 @@ struct CPBDataSeries<T> {
         var value: T
         var timestamp: CFAbsoluteTime
     }
-    
+
     var values = [Entry]()
 }

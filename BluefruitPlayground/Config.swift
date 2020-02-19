@@ -12,13 +12,13 @@ struct Config {
 
     // Scanning
     static let isAutomaticConnectionEnabled = true
-    
+
     // Debug-----------------------------------------------------------------------------
     static let isDebugEnabled = _isDebugAssertConfiguration()
 
     // Fastlane snapshots
     private static let areFastlaneSnapshotsRunning = UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
-    
+
     // Bluetooth
     #if SIMULATEBLUETOOTH
     static let isTutorialEnabled = areFastlaneSnapshotsRunning || !isDebugEnabled

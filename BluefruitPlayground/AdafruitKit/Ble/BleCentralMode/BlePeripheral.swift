@@ -18,7 +18,7 @@ import CoreBluetooth
 class BlePeripheral: NSObject {
     // Config
     private static var kProfileCharacteristicUpdates = true
-    
+
     // Constants
     static var kUndefinedRssiValue = 127
 
@@ -35,7 +35,7 @@ class BlePeripheral: NSObject {
 
     // Data
     var peripheral: CBPeripheral
- 
+
     static var rssiRunningAverageFactor: Double = 1        /// Global Parameter that affects all rssi measurements. 1 means don't use a running average. The closer to 0 the more resistant the value it is to change
     private var runningRssi: Int?
     var rssi: Int? {
@@ -49,8 +49,7 @@ class BlePeripheral: NSObject {
             // based on https://en.wikipedia.org/wiki/Exponential_smoothing
             if newValue == nil || runningRssi == nil || runningRssi == BlePeripheral.kUndefinedRssiValue {
                 runningRssi = newValue
-            }
-            else {
+            } else {
                 runningRssi = Int(BlePeripheral.rssiRunningAverageFactor * Double(newValue!) + (1-BlePeripheral.rssiRunningAverageFactor) * Double(runningRssi!))
             }
         }
@@ -80,17 +79,17 @@ class BlePeripheral: NSObject {
         var localName: String? {
             return advertisementData[CBAdvertisementDataLocalNameKey] as? String
         }
-        
+
         var manufacturerData: Data? {
             return advertisementData[CBAdvertisementDataManufacturerDataKey] as? Data
         }
-        
+
         var manufacturerHexDescription: String? {
             guard let manufacturerData = manufacturerData else { return nil }
             return HexUtils.hexDescription(data: manufacturerData)
 //            return String(data: manufacturerData, encoding: .utf8)
         }
-        
+
         var manufacturerIdentifier: Data? {
             guard let manufacturerData = manufacturerData, manufacturerData.count >= 2 else { return nil }
             let manufacturerIdentifierData = manufacturerData[0..<2]
@@ -108,7 +107,7 @@ class BlePeripheral: NSObject {
         var servicesSolicited: [CBUUID]? {
             return advertisementData[CBAdvertisementDataSolicitedServiceUUIDsKey] as? [CBUUID]
         }
-        
+
         var serviceData: [CBUUID: Data]? {
             return advertisementData[CBAdvertisementDataServiceDataKey] as? [CBUUID: Data]
         }
@@ -131,10 +130,10 @@ class BlePeripheral: NSObject {
         var identifier: String
         var result: CapturedReadCompletionHandler
         var timeoutTimer: MSWeakTimer?
-        var timeoutAction: ((String)->())?
+        var timeoutAction: ((String) -> Void)?
         var isNotifyOmitted: Bool
 
-        init(identifier: String, result: @escaping CapturedReadCompletionHandler, timeout: Double?, timeoutAction:((String)->())?, isNotifyOmitted: Bool = false) {
+        init(identifier: String, result: @escaping CapturedReadCompletionHandler, timeout: Double?, timeoutAction: ((String) -> Void)?, isNotifyOmitted: Bool = false) {
             self.identifier = identifier
             self.result = result
             self.isNotifyOmitted = isNotifyOmitted
@@ -156,12 +155,12 @@ class BlePeripheral: NSObject {
     private func timeOutRemoveCaptureHandler(identifier: String) {   // Default behaviour for a capture handler timeout
         guard captureReadHandlers.count > 0, let index = captureReadHandlers.firstIndex(where: {$0.identifier == identifier}) else { return }
         // DLog("captureReadHandlers index: \(index) / \(captureReadHandlers.count)")
-        
+
         // Remove capture handler
         captureReadHandlers.remove(at: index)
         finishedExecutingCommand(error: PeripheralError.timeout)
     }
-    
+
     // Internal data
     private var notifyHandlers = [String: ((Error?) -> Void)]()                 // Nofify handlers for each service-characteristic
     private var captureReadHandlers = [CaptureReadHandler]()
@@ -228,7 +227,7 @@ class BlePeripheral: NSObject {
         let command = BleCommand(type: .discoverDescriptor, parameters: [characteristic], completion: completion)
         commandQueue.append(command)
     }
-    
+
     // MARK: - Connection
     func disconnect(centralManager: CBCentralManager) {
          let command = BleCommand(type: .disconnect, parameters: [centralManager], completion: nil)
@@ -276,7 +275,7 @@ class BlePeripheral: NSObject {
             })
         }
     }
-    
+
     func characteristic(uuid: CBUUID, serviceUuid: CBUUID, completion: ((CBCharacteristic?, Error?) -> Void)?) {
         if let discoveredService = discoveredService(uuid: serviceUuid) {                                              // Service was already discovered
             characteristic(uuid: uuid, service: discoveredService, completion: completion)
@@ -295,7 +294,7 @@ class BlePeripheral: NSObject {
         let command = BleCommand(type: .setNotify, parameters: [characteristic, true, handler as Any], completion: completion)
         commandQueue.append(command)
     }
-    
+
     func disableNotify(for characteristic: CBCharacteristic, completion: ((Error?) -> Void)? = nil) {
         let command = BleCommand(type: .setNotify, parameters: [characteristic, false], completion: completion)
         commandQueue.append(command)
@@ -330,7 +329,7 @@ class BlePeripheral: NSObject {
         let command = BleCommand(type: .readDescriptor, parameters: [descriptor, readCompletion as Any], completion: nil)
         commandQueue.append(command)
     }
-    
+
     // MARK: - Rssi
     func readRssi() {
         peripheral.readRSSI()
@@ -496,18 +495,18 @@ class BlePeripheral: NSObject {
         let data = command.parameters![2] as! Data
 
         peripheral.writeValue(data, for: characteristic, type: writeType)
-        
+
         if writeType == .withoutResponse {
             if !command.isCancelled, command.type == .writeCharacteristicAndWaitNofity {
                 let readCharacteristic = command.parameters![3] as! CBCharacteristic
                 let readCompletion = command.parameters![4] as! CapturedReadCompletionHandler
                 let timeout = command.parameters![5] as? Double
-                
+
                 let identifier = handlerIdentifier(from: readCharacteristic)
                 let captureReadHandler = CaptureReadHandler(identifier: identifier, result: readCompletion, timeout: timeout, timeoutAction: timeOutRemoveCaptureHandler)
                 captureReadHandlers.append(captureReadHandler)
             }
-            
+
             finishedExecutingCommand(error: nil)
         }
     }
@@ -522,7 +521,7 @@ class BlePeripheral: NSObject {
 
         peripheral.readValue(for: descriptor)
     }
-    
+
     internal func disconnect(with command: BleCommand) {
         let centralManager = command.parameters!.first as! CBCentralManager
         centralManager.cancelPeripheralConnection(self.peripheral)
@@ -608,7 +607,7 @@ extension BlePeripheral: CBPeripheralDelegate {
             finishedExecutingCommand(error: error)
         }
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
         if let command = commandQueue.first(), !command.isCancelled, command.type == .writeCharacteristicAndWaitNofity {
             let characteristic = command.parameters![3] as! CBCharacteristic
@@ -642,15 +641,15 @@ extension BlePeripheral: CBPeripheralDelegate {
             finishedExecutingCommand(error: error)
         }
     }
-    
+
     func peripheral(_ peripheral: CBPeripheral, didReadRSSI RSSI: NSNumber, error: Error?) {
         guard error == nil else { DLog("didReadRSSI error: \(error!.localizedDescription)"); return }
-        
+
         let rssi = RSSI.intValue
         if rssi != BlePeripheral.kUndefinedRssiValue {  // only update rssi value if is defined ( 127 means undefined )
             self.rssi = rssi
         }
-        
+
         NotificationCenter.default.post(name: .peripheralDidUpdateRssi, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheral.identifier])
     }
 }

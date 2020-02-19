@@ -15,7 +15,7 @@ class TipAnimationViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+
     func setAnimationProgress(_ progress: CGFloat) {
     }
 }

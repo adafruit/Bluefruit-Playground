@@ -13,29 +13,29 @@ class BluetoothStatusViewController: UIViewController {
     // Constants
     //static let kNavigationControllerIdentifier = "BluetoothStatusNavigationController"
     static let kIdentifier = "BluetoothStatusViewController"
-    
+
     // UI
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var actionView: UIView!
     @IBOutlet weak var actionButton: UIButton!
-    
+
     // MARK: - Lifecycle
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Localization
         actionButton.setTitle(LocalizationManager.shared.localizedString("bluetooth_enable_action").uppercased(), for: .normal)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+
         // Set text messages depending on current state
         let messageTitle: String
         let message: String
-        
+
         let bluetoothState = Config.bleManager.state
         var isActionHidden: Bool
         switch bluetoothState {
@@ -56,26 +56,23 @@ class BluetoothStatusViewController: UIViewController {
             messageTitle = "bluetooth_unsupported"
             message = "bluetooth_unsupported_detail"
             isActionHidden = true
-            break
         }
-        
+
         let localizationManager = LocalizationManager.shared
         titleLabel.text = localizationManager.localizedString(messageTitle)
         subtitleLabel.text = localizationManager.localizedString(message)
         let settingsUrl = URL(string: UIApplication.openSettingsURLString)
         actionView.isHidden = isActionHidden || settingsUrl == nil || !UIApplication.shared.canOpenURL(settingsUrl!)
     }
-    
-    
+
     // MARK: - Actions
     @IBAction func enableBluetooth(_ sender: Any) {
         let bluetoothState = Config.bleManager.state
-        
+
         if bluetoothState == .poweredOff {
             // Force iOS to show the "Turn on bluetooth" alert
-            let _ = CBCentralManager(delegate: nil, queue: .main, options: [CBCentralManagerOptionShowPowerAlertKey: true])
-        }
-        else {
+            _ = CBCentralManager(delegate: nil, queue: .main, options: [CBCentralManagerOptionShowPowerAlertKey: true])
+        } else {
             // Go to settings
             if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(settingsUrl)

@@ -60,11 +60,11 @@ class BleManager: NSObject {
         scanningServicesFilter?.removeAll()
         peripheralsFound.removeAll()
     }
-    
+
     public var state: CBManagerState {
         return centralManager?.state ?? .unknown
     }
-    
+
     func restoreCentralManager() {
         DLog("Restoring central manager")
         /*
@@ -101,7 +101,7 @@ class BleManager: NSObject {
             startScan()
         }
     }
-    
+
     // MARK: - Scan
     func startScan(withServices services: [CBUUID]? = nil) {
         centralManagerPoweredOnSemaphore.wait()
@@ -149,7 +149,7 @@ class BleManager: NSObject {
     func connectingPeripherals() -> [BlePeripheral] {
         return peripherals().filter {$0.state == .connecting}
     }
-    
+
     func connectedOrConnectingPeripherals() -> [BlePeripheral] {
         return peripherals().filter {$0.state == .connected || $0.state == .connecting}
     }
@@ -220,15 +220,14 @@ class BleManager: NSObject {
 
     func disconnect(from peripheral: BlePeripheral, waitForQueuedCommands: Bool = false) {
         guard let centralManager = centralManager else { return}
-        
+
         DLog("disconnect")
         NotificationCenter.default.post(name: .willDisconnectFromPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheral.identifier])
 
         if waitForQueuedCommands {
             // Send the disconnection to the command queue, so all the previous command are executed before disconnecting
             peripheral.disconnect(centralManager: centralManager)
-        }
-        else {
+        } else {
             centralManager.cancelPeripheralConnection(peripheral.peripheral)
         }
     }
@@ -263,7 +262,7 @@ class BleManager: NSObject {
 
     private func discovered(peripheral: CBPeripheral, advertisementData: [String: Any]? = nil, rssi: Int? = nil) {
         peripheralsFoundLock.lock(); defer { peripheralsFoundLock.unlock() }
-        
+
         if let existingPeripheral = peripheralsFound[peripheral.identifier] {
             existingPeripheral.lastSeenTime = CFAbsoluteTimeGetCurrent()
 
@@ -315,7 +314,7 @@ extension BleManager: CBCentralManagerDelegate {
                 isScanningWaitingToStart = true
             }
             scanningStartTime = nil
-            
+
             // Remove all peripherals found (Important because the BlePeripheral queues could contain old commands that were processing when the bluetooth state changed)
             peripheralsFound.removeAll()
         }
@@ -327,19 +326,19 @@ extension BleManager: CBCentralManagerDelegate {
     func centralManager(_ central: CBCentralManager, willRestoreState dict: [String : Any]) {
      
      }*/
-    
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String: Any], rssi RSSI: NSNumber) {
         // DLog("didDiscover: \(peripheral.name ?? peripheral.identifier.uuidString)")
         let rssi = RSSI.intValue
         DispatchQueue.main.async {      // This Fixes iOS12 race condition on cached filtered peripherals. TODO: investigate
             self.discovered(peripheral: peripheral, advertisementData: advertisementData, rssi: rssi)
             NotificationCenter.default.post(name: .didDiscoverPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheral.identifier])
-        }        
+        }
     }
-    
+
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         DLog("didConnect: \(peripheral.identifier)")
-        
+
         // Remove connection timeout if exists
         if let timer = connectionTimeoutTimers[peripheral.identifier] {
             timer.invalidate()

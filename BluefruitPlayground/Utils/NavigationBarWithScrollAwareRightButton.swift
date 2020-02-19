@@ -13,7 +13,7 @@ import UIKit
 // Use setRightButton on willAppear to set the button and call updateRightButtonPosition on scroll
 // Warning: this class changes the UINavigationController delegate!
 
-class NavigationBarWithScrollAwareRightButton : UINavigationBar {
+class NavigationBarWithScrollAwareRightButton: UINavigationBar {
     // Constants
     private static let kButtonTag = 100
 
@@ -29,44 +29,42 @@ class NavigationBarWithScrollAwareRightButton : UINavigationBar {
     // Data
     private var navigationButton: UIButton?// = UIButton(type: .custom)
     private var topViewController: UIViewController?
-    
-    
-    
+
     // MARK: -
     public func setRightButton(topViewController: UIViewController, image: UIImage?, target: Any?, action: Selector) {
         navigationButton?.removeFromSuperview()
-        
+
         guard let image = image else { return }
         let button = UIButton(type: .custom)
-        
+
         button.setImage(image, for: .normal)
         button.tag = NavigationBarWithScrollAwareRightButton.kButtonTag
         button.tintColor = UIColor.white
         button.addTarget(target, action: action, for: .touchUpInside)
-        
+
         // Initial setup for image for Large NavBar state since the the screen always has Large NavBar once it gets opened
         self.addSubview(button)
         button.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            
+
             button.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -NavigationBarWithScrollAwareRightButton.rightMargin),
-            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -NavigationBarWithScrollAwareRightButton.bottomMarginForLargeState),
+            button.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -NavigationBarWithScrollAwareRightButton.bottomMarginForLargeState)
         ])
-        
+
         self.layoutIfNeeded()       // Force layout to remove adding animation
-        
+
         self.navigationButton = button
-        
+
         // Detect topViewControllerChange
         self.topViewController = topViewController
         topViewController.navigationController?.delegate = self
 
     }
-    
+
     public var navigationBarScrollViewProgress: CGFloat {
         return (self.frame.height  - NavigationBarWithScrollAwareRightButton.navBarHeightSmallState) / (NavigationBarWithScrollAwareRightButton.navBarHeightLargeState - NavigationBarWithScrollAwareRightButton.navBarHeightSmallState)
     }
-    
+
     public func updateRightButtonPosition() {
           let yDelta = NavigationBarWithScrollAwareRightButton.bottomMarginForLargeState - NavigationBarWithScrollAwareRightButton.bottomMarginForSmallState
 
@@ -78,7 +76,7 @@ class NavigationBarWithScrollAwareRightButton : UINavigationBar {
 // MARK: UINavigationControllerDelegate
 extension NavigationBarWithScrollAwareRightButton: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        
+
         // When pushing a new item remove the old button and wait for setup
         if viewController !== topViewController {
             UIView.animate(withDuration: 0.2, animations: {

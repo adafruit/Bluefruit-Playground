@@ -12,7 +12,7 @@ class PanelInsetView: UIView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         self.layer.borderColor = UIColor.lightGray.withAlphaComponent(0.5).cgColor
         self.layer.borderWidth = 1 / UIScreen.main.scale
     }

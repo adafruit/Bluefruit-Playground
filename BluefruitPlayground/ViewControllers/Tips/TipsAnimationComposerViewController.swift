@@ -12,44 +12,44 @@ class TipsAnimationComposerViewController: UIViewController {
 
     // Data
     private var tipAnimationViewControllers = [TipAnimationViewController]()
-    
+
     private var isFirstTime = true
-    
+
     private var previousPage = 0
-    
+
         // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
      override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         // Order based on tag
         tipAnimationViewControllers.sort(by: {$0.view.tag < $1.view.tag})
-        
+
         //
         if isFirstTime {
             setOffset(0, pageWidth: self.view.bounds.width)     // Force first step
             isFirstTime = false
         }
     }
-    
+
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? TipAnimationViewController {
             tipAnimationViewControllers.append(viewController)
         }
     }
-    
+
     // MARK: - Actions
     func setOffset(_ offset: CGFloat, pageWidth: CGFloat) {
         let page = Int(floor(offset / pageWidth))
         let offsetInPage = offset.truncatingRemainder(dividingBy: pageWidth)
         let progress = offsetInPage / pageWidth
-        
+
         let viewControllers = tipAnimationViewControllers
-        
+
         // Visibility
         for (i, viewController) in viewControllers.enumerated() {
             let isShown = i==page
@@ -59,7 +59,7 @@ class TipsAnimationComposerViewController: UIViewController {
                 || i==page+1
             viewController.view.isHidden = !isShown
         }
-        
+
         //DLog("page: \(page) offset: \(offsetInPage)/\(pageWidth) progress: \(progress)")
         guard page >= 0, page < viewControllers.count else { return }
 

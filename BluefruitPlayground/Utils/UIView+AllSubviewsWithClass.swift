@@ -20,7 +20,7 @@ extension UIView {
             return result
         }
     }
-    
+
     // If the tag parameter is specified, the subviews have to match the tag
     func getAllSubviewsWithClass<T: UIView>(tag: Int? = nil) -> [T] {
         return UIView.getAllSubviewsWithClass(view: self, tag: tag) as [T]

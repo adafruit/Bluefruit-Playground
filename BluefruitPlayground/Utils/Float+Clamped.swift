@@ -11,14 +11,12 @@ import Foundation
 // MARK: - Float + Clamped
 extension Float {
     func clamped( min: Float, max: Float) -> Float {
-        
+
         if self < min {
             return min
-        }
-        else if self > max {
+        } else if self > max {
             return max
-        }
-        else {
+        } else {
             return self
         }
     }

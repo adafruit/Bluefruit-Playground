@@ -30,23 +30,23 @@ class UartPacketManager: UartPacketManagerBase {
             if let didConnectToPeripheralObserver = didConnectToPeripheralObserver {notificationCenter.removeObserver(didConnectToPeripheralObserver)}
         }
     }
-    
+
     // MARK: - Send data
-    func send(blePeripheral: BlePeripheral, data: Data?, progress: ((Float)->Void)? = nil, completion: ((Error?) -> Void)? = nil) {
+    func send(blePeripheral: BlePeripheral, data: Data?, progress: ((Float) -> Void)? = nil, completion: ((Error?) -> Void)? = nil) {
         sentBytes += Int64(data?.count ?? 0)
         blePeripheral.uartSend(data: data, progress: progress, completion: completion)
     }
 
-    func sendEachPacketSequentially(blePeripheral: BlePeripheral, data: Data?, withResponseEveryPacketCount: Int, progress: ((Float)->Void)? = nil, completion: ((Error?) -> Void)? = nil) {
+    func sendEachPacketSequentially(blePeripheral: BlePeripheral, data: Data?, withResponseEveryPacketCount: Int, progress: ((Float) -> Void)? = nil, completion: ((Error?) -> Void)? = nil) {
         sentBytes += Int64(data?.count ?? 0)
         blePeripheral.uartSendEachPacketSequentially(data: data, withResponseEveryPacketCount: withResponseEveryPacketCount, progress: progress, completion: completion)
     }
-    
+
     func cancelOngoingSendPacketSequentiallyInMainThread(blePeripheral: BlePeripheral) {
         blePeripheral.uartCancelOngoingSendPacketSequentiallyInMainThread()
     }
-    
-    func sendAndWaitReply(blePeripheral: BlePeripheral, data: Data?, writeProgress: ((Float)->Void)? = nil, writeCompletion: ((Error?) -> Void)? = nil, readTimeout: Double? = BlePeripheral.kUartReplyDefaultTimeout, readCompletion: @escaping BlePeripheral.CapturedReadCompletionHandler) {
+
+    func sendAndWaitReply(blePeripheral: BlePeripheral, data: Data?, writeProgress: ((Float) -> Void)? = nil, writeCompletion: ((Error?) -> Void)? = nil, readTimeout: Double? = BlePeripheral.kUartReplyDefaultTimeout, readCompletion: @escaping BlePeripheral.CapturedReadCompletionHandler) {
         sentBytes += Int64(data?.count ?? 0)
         blePeripheral.uartSendAndWaitReply(data: data, writeProgress: writeProgress, writeCompletion: writeCompletion, readTimeout: readTimeout, readCompletion: readCompletion)
     }
@@ -74,23 +74,23 @@ class UartPacketManager: UartPacketManagerBase {
             packetsSemaphore.wait()
             packets.append(uartPacket)
             packetsSemaphore.signal()
-            
+
             DispatchQueue.main.async {
                 self.delegate?.onUartPacket(uartPacket)
             }
-            
+
             #if MQTT_ENABLED
             let shouldBeSent = !wasReceivedFromMqtt || (isMqttEnabled && MqttSettings.shared.subscribeBehaviour == .transmit)
             #else
             let shouldBeSent = true
             #endif
-            
+
             if shouldBeSent {
                 send(blePeripheral: blePeripheral, data: data)
             }
         }
     }
-    
+
     // MARK: - Force reset
     func reset(blePeripheral: BlePeripheral) {
         blePeripheral.reset()

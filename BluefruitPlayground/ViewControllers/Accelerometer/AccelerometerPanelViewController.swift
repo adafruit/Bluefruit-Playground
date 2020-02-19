@@ -12,7 +12,7 @@ import SceneKit
 class AccelerometerPanelViewController: ModulePanelViewController {
     // Constants
     static let kIdentifier = "AccelerometerPanelViewController"
-    
+
     // UI
     @IBOutlet weak var accelerometerTitleLabel: UILabel!
     @IBOutlet weak var accelerometerXLabel: UILabel!
@@ -27,7 +27,7 @@ class AccelerometerPanelViewController: ModulePanelViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Localization
         let localizationManager = LocalizationManager.shared
         titleLabel.text = localizationManager.localizedString("accelerometer_panel_title")
@@ -36,7 +36,7 @@ class AccelerometerPanelViewController: ModulePanelViewController {
     }
 
     func accelerationReceived(acceleration: BlePeripheral.AccelerometerValue, eulerAngles: SCNVector3) {
-        
+
         accelerometerXLabel.text = String(format: "%.1f", acceleration.x)
         accelerometerYLabel.text = String(format: "%.1f", acceleration.y)
         accelerometerZLabel.text = String(format: "%.1f", acceleration.z)

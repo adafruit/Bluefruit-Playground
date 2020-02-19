@@ -34,7 +34,7 @@ extension UInt16: UIntToBytesConvertable {
 
 extension UInt32: UIntToBytesConvertable {
     var toBytes: [UInt8] {
-        return toByteArr(endian: self.littleEndian,  count: MemoryLayout<UInt32>.size)
+        return toByteArr(endian: self.littleEndian, count: MemoryLayout<UInt32>.size)
     }
 }
 

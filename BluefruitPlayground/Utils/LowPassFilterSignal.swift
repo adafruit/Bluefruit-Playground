@@ -11,7 +11,7 @@ import Foundation
 struct LowPassFilterSignal {
     /// Current signal value
     var value: Float
-    
+
     /// A scaling factor in the range 0.0..<1.0 that determines
     /// how resistant the value is to change
     let filterFactor: Float

@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     // based on: https://stackoverflow.com/questions/22868182/uicolor-transition-based-on-progress-value
-    func interpolateRGBColorTo(end:UIColor, fraction:CGFloat) -> UIColor {
+    func interpolateRGBColorTo(end: UIColor, fraction: CGFloat) -> UIColor {
         var f = max(0, fraction)
         f = min(1, fraction)
         guard var c1 = self.cgColor.components, var c2 = end.cgColor.components else { return self }
@@ -25,13 +25,13 @@ extension UIColor {
             let alphaComponent = c2[1]
             c2 = [whiteComponent, whiteComponent, whiteComponent, alphaComponent]
         }
-        
+
         // Interpolate
         let r = c1[0] + (c2[0] - c1[0]) * f
         let g = c1[1] + (c2[1] - c1[1]) * f
         let b = c1[2] + (c2[2] - c1[2]) * f
         let a = c1[3] + (c2[3] - c1[3]) * f
-        return UIColor.init(red:r, green:g, blue:b, alpha:a)
+        return UIColor.init(red: r, green: g, blue: b, alpha: a)
     }
 
      // Note:  getHue can be negative from iOS 10
