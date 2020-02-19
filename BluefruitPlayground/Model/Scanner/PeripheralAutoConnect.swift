@@ -9,18 +9,18 @@
 import Foundation
 
 /**
- Manages the logic for autoconnecting to a perpheral
+ Manages the logic for autoconnecting to a peripheral
  Usage:
-    call isAutoconnectAvailable whenever a periphral is discovered or updated.
+    call isAutoconnectAvailable whenever a peripheral is discovered or updated.
  
  How it works:
- It waits at least kMinScanningTimeToAutoconnect since scanning started, and needs that the peripheral RSSI is less than  kMaxRssiToAutoConnect during kMinTimeDetectingPeripheralForAutoconnect seconds.
- If more than one peripheral matches the conditions, it will connect to the one with smaller RSSI (meaning that is closer)
+ It waits at least kMinScanningTimeToAutoconnect since scanning started, and needs that the peripheral RSSI is bigger than kMaxRssiToAutoConnect during kMinTimeDetectingPeripheralForAutoconnect seconds.
+ If more than one peripheral matches the conditions, it will connect to the one with bigger RSSI (meaning that is closer)
  */
 class PeripheralAutoConnect {
     // Config
     private static let kMinScanningTimeToAutoconnect: TimeInterval = 5
-    private static let kMaxRssiToAutoConnect = -56      // in dBM
+    private static let kMinRssiToAutoConnect = -56      // in dBM
     private static let kMinTimeDetectingPeripheralForAutoconnect: TimeInterval = 1
 
     // Data
@@ -45,7 +45,7 @@ class PeripheralAutoConnect {
         let filteredPeripherals = peripheralList.filteredPeripherals(forceUpdate: true)     // Refresh the peripherals
 
         // Filter by RSSI
-        let nearbyPeripherals = filteredPeripherals.filter({$0.rssi ?? -127 > PeripheralAutoConnect.kMaxRssiToAutoConnect})
+        let nearbyPeripherals = filteredPeripherals.filter({$0.rssi ?? -127 > PeripheralAutoConnect.kMinRssiToAutoConnect})
 
         // Update matching peripherals
         let nearbyIdentifiers = nearbyPeripherals.map({$0.identifier})      // List of nearby identifiers
