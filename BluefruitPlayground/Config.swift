@@ -11,8 +11,7 @@ import Foundation
 struct Config {
 
     // Scanning
-    static let isAutomaticConnectionEnabled = false
-    
+    static let isAutomaticConnectionEnabled = true
     
     // Debug-----------------------------------------------------------------------------
     static let isDebugEnabled = _isDebugAssertConfiguration()

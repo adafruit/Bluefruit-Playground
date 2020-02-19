@@ -1624,14 +1624,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HelpCell" id="U5T-Rn-JoM" customClass="HelpTableViewCell" customModule="BluefruitPlayground_SimulateBluetooth" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="213.33332824707031"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="215"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U5T-Rn-JoM" id="luQ-sf-H0h">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="213.33332824707031"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="215"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6j-6k-zao">
-                                                    <rect key="frame" x="20" y="19" width="374" height="183.33333333333334"/>
+                                                    <rect key="frame" x="20" y="19" width="374" height="185"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NeJ-ep-YDO">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="40.666666666666664"/>
@@ -1681,10 +1681,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="lX3-kv-DYx">
-                                                            <rect key="frame" x="0.0" y="101.33333333333331" width="374" height="82"/>
+                                                            <rect key="frame" x="0.0" y="101.33333333333331" width="374" height="83.666666666666686"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" image="scanproblems_powerup" translatesAutoresizingMaskIntoConstraints="NO" id="UAb-G3-y7N">
-                                                                    <rect key="frame" x="0.0" y="10.000000000000014" width="374" height="72"/>
+                                                                    <rect key="frame" x="0.0" y="10.000000000000014" width="374" height="73.666666666666671"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" name="cell_light"/>
@@ -4503,7 +4503,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="xK7-kc-7e1"/>
         <segue reference="iVx-kJ-OsS"/>
-        <segue reference="hgu-MQ-4aK"/>
+        <segue reference="KoA-I2-yK2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="text_default"/>
 </document>

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A90086DF23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */; };
+		A90086E023FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */; };
 		A901EC48237C43C000687BE6 /* Data+LittleEndianTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */; };
 		A901EC4D237C47D800687BE6 /* CPBDataSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC4C237C47D800687BE6 /* CPBDataSeries.swift */; };
 		A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */; };
@@ -237,6 +239,7 @@
 		3348DDE33D89A5959702CAC9 /* Pods-BluefruitPlayground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluefruitPlayground.debug.xcconfig"; path = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.debug.xcconfig"; sourceTree = "<group>"; };
 		41FC984EE1CDB9B54C5084ED /* Pods-CPX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPX.release.xcconfig"; path = "Target Support Files/Pods-CPX/Pods-CPX.release.xcconfig"; sourceTree = "<group>"; };
 		8BFE7B5A63DA548F17D0945D /* Pods_BluefruitPlayground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BluefruitPlayground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralAutoConnect.swift; sourceTree = "<group>"; };
 		A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+LittleEndianTypes.swift"; sourceTree = "<group>"; };
 		A901EC4C237C47D800687BE6 /* CPBDataSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPBDataSeries.swift; sourceTree = "<group>"; };
 		A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluefruit Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -509,6 +512,7 @@
 			isa = PBXGroup;
 			children = (
 				A9716BA82350128100CB174D /* PeripheralList.swift */,
+				A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */,
 			);
 			path = Scanner;
 			sourceTree = "<group>";
@@ -1032,6 +1036,7 @@
 				A9BED70B234F7617002FFF53 /* Config.swift in Sources */,
 				A980FE6F2357D15400E3A909 /* TipDiscoverViewController.swift in Sources */,
 				A948298F237B73B100B6FC13 /* ModulePanelViewController.swift in Sources */,
+				A90086DF23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */,
 				A9BED707234F75E4002FFF53 /* TipsViewController.swift in Sources */,
 				A958E780238B75D9006A225A /* NormalBrightnessColorPickerController.swift in Sources */,
 				A9B3569F2365D420002093EE /* PanelInsetView.swift in Sources */,
@@ -1168,6 +1173,7 @@
 				A9A08B7C23A523C900498069 /* UIColor+LightAndDark.swift in Sources */,
 				A9A08B7D23A523C900498069 /* AccelerometerViewController.swift in Sources */,
 				A9A08B7E23A523C900498069 /* NormalBrightnessSliderControl.swift in Sources */,
+				A90086E023FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */,
 				A9A08B7F23A523C900498069 /* CircuitViewController.swift in Sources */,
 				A9A08B8023A523C900498069 /* BlePeripheral+ManufacturerAdafruit.swift in Sources */,
 				A9A08B8123A523C900498069 /* UartDataManager.swift in Sources */,
@@ -1347,7 +1353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = BluefruitPlayground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1355,7 +1361,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlayground;
 				PRODUCT_NAME = "Bluefruit Playground";
 				SWIFT_OBJC_BRIDGING_HEADER = "BluefruitPlayground/BluefruitPlayground-Bridging-Header.h";
@@ -1372,7 +1378,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = BluefruitPlayground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1380,7 +1386,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlayground;
 				PRODUCT_NAME = "Bluefruit Playground";
 				SWIFT_OBJC_BRIDGING_HEADER = "BluefruitPlayground/BluefruitPlayground-Bridging-Header.h";
@@ -1436,7 +1442,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1444,7 +1450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D SIMULATEBLUETOOTH";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlayground.simulated;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1462,7 +1468,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1470,7 +1476,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -D SIMULATEBLUETOOTH";
 				PRODUCT_BUNDLE_IDENTIFIER = com.adafruit.BluefruitPlayground.simulated;
 				PRODUCT_NAME = "$(TARGET_NAME)";

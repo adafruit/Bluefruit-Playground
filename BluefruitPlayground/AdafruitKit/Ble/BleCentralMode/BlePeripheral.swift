@@ -36,7 +36,7 @@ class BlePeripheral: NSObject {
     // Data
     var peripheral: CBPeripheral
  
-    static var runningRssiFactorFactor: Double = 1        /// Global Parameter that affects all rssi measurements. 1 means don't use a running average. The closer to 0 the more resistant the value it is to change
+    static var rssiRunningAverageFactor: Double = 1        /// Global Parameter that affects all rssi measurements. 1 means don't use a running average. The closer to 0 the more resistant the value it is to change
     private var runningRssi: Int?
     var rssi: Int? {
         /// rssi only is updated when a non undefined value is received from CoreBluetooth. Note: this is slighty different to the CoreBluetooth implementation, because it will not be updated with undefined values.  If runningRssiFactorFactor == 1, the newer value replaces the old value and not average is calculated
@@ -51,7 +51,7 @@ class BlePeripheral: NSObject {
                 runningRssi = newValue
             }
             else {
-                runningRssi = Int(BlePeripheral.runningRssiFactorFactor * Double(newValue!) + (1-BlePeripheral.runningRssiFactorFactor) * Double(runningRssi!))
+                runningRssi = Int(BlePeripheral.rssiRunningAverageFactor * Double(newValue!) + (1-BlePeripheral.rssiRunningAverageFactor) * Double(runningRssi!))
             }
         }
     }

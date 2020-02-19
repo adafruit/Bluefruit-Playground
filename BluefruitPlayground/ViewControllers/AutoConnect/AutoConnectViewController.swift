@@ -13,7 +13,7 @@ class AutoConnectViewController: UIViewController {
     static let kNavigationControllerIdentifier = "AutoConnectNavigationController"
     
     // Config
-    private static let kMinScanningTimeToAutoconnect: TimeInterval = 5
+    private static let kRssiRunningAverageFactor = 0.2
     
     // UI
     @IBOutlet weak var statusLabel: UILabel!
@@ -30,6 +30,7 @@ class AutoConnectViewController: UIViewController {
     // Data
     private let bleManager = Config.bleManager
     private var peripheralList = PeripheralList(bleManager: Config.bleManager)
+    private var peripheralAutoConnect = PeripheralAutoConnect()
     private var selectedPeripheral: BlePeripheral? {
         didSet {
             if isViewLoaded {
@@ -39,10 +40,11 @@ class AutoConnectViewController: UIViewController {
             }
         }
     }
+  
     private let navigationButton = UIButton(type: .custom)
     private var isAnimating = false
     
-    
+
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +84,9 @@ class AutoConnectViewController: UIViewController {
         
         // Ble Notifications
         registerNotifications(enabled: true)
+        
+        // Autoconnect
+        peripheralAutoConnect.reset()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -91,7 +96,7 @@ class AutoConnectViewController: UIViewController {
         updateScannedPeripherals()
         
         // Start scannning
-        BlePeripheral.runningRssiFactorFactor = 0.4     // Use running average for rssi
+        BlePeripheral.rssiRunningAverageFactor = AutoConnectViewController.kRssiRunningAverageFactor     // Use running average for rssi
         if !bleManager.isScanning {
             bleManager.startScan()
         }
@@ -105,7 +110,7 @@ class AutoConnectViewController: UIViewController {
         
         // Stop scanning
         bleManager.stopScan()
-        BlePeripheral.runningRssiFactorFactor = 1       // Disable using running average for rssi
+        BlePeripheral.rssiRunningAverageFactor = 1       // Disable using running average for rssi
 
         // Clear peripherals
         peripheralList.clear()
@@ -128,6 +133,7 @@ class AutoConnectViewController: UIViewController {
     
     // MARK: - BLE Notifications
     private weak var didDiscoverPeripheralObserver: NSObjectProtocol?
+    private weak var didUnDiscoverPeripheralObserver: NSObjectProtocol?
     private weak var willConnectToPeripheralObserver: NSObjectProtocol?
     private weak var didConnectToPeripheralObserver: NSObjectProtocol?
     private weak var didDisconnectFromPeripheralObserver: NSObjectProtocol?
@@ -137,7 +143,8 @@ class AutoConnectViewController: UIViewController {
     private func registerNotifications(enabled: Bool) {
         let notificationCenter = NotificationCenter.default
         if enabled {
-            didDiscoverPeripheralObserver = notificationCenter.addObserver(forName: .didDiscoverPeripheral, object: nil, queue: .main, using: {[weak self] _ in self?.didDiscoverPeripheral()})
+            didDiscoverPeripheralObserver = notificationCenter.addObserver(forName: .didDiscoverPeripheral, object: nil, queue: .main, using: {[weak self] _ in self?.updateScannedPeripherals()})
+               didUnDiscoverPeripheralObserver = notificationCenter.addObserver(forName: .didUnDiscoverPeripheral, object: nil, queue: .main, using: {[weak self] _ in self?.updateScannedPeripherals()})
             willConnectToPeripheralObserver = notificationCenter.addObserver(forName: .willConnectToPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.willConnectToPeripheral(notification: notification)})
             didConnectToPeripheralObserver = notificationCenter.addObserver(forName: .didConnectToPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.didConnectToPeripheral(notification: notification)})
             didDisconnectFromPeripheralObserver = notificationCenter.addObserver(forName: .didDisconnectFromPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.didDisconnectFromPeripheral(notification: notification)})
@@ -146,6 +153,7 @@ class AutoConnectViewController: UIViewController {
             
         } else {
             if let didDiscoverPeripheralObserver = didDiscoverPeripheralObserver {notificationCenter.removeObserver(didDiscoverPeripheralObserver)}
+            if let didUnDiscoverPeripheralObserver = didUnDiscoverPeripheralObserver {notificationCenter.removeObserver(didUnDiscoverPeripheralObserver)}
             if let willConnectToPeripheralObserver = willConnectToPeripheralObserver {notificationCenter.removeObserver(willConnectToPeripheralObserver)}
             if let didConnectToPeripheralObserver = didConnectToPeripheralObserver {notificationCenter.removeObserver(didConnectToPeripheralObserver)}
             if let didDisconnectFromPeripheralObserver = didDisconnectFromPeripheralObserver {notificationCenter.removeObserver(didDisconnectFromPeripheralObserver)}
@@ -153,12 +161,7 @@ class AutoConnectViewController: UIViewController {
             if let willDiscoverServicesObserver = willDiscoverServicesObserver {notificationCenter.removeObserver(willDiscoverServicesObserver)}
         }
     }
-  
-    private func didDiscoverPeripheral() {
-        // Update current scanning state
-        updateScannedPeripherals()
-    }
-    
+ 
     private func willConnectToPeripheral(notification: Notification) {
         guard let selectedPeripheral = selectedPeripheral, let identifier = notification.userInfo?[BleManager.NotificationUserInfoKey.uuid.rawValue] as? UUID, selectedPeripheral.identifier == identifier else {
                  DLog("willConnect to an unexpected peripheral")
@@ -262,31 +265,13 @@ class AutoConnectViewController: UIViewController {
         //   reloadBaseTable()
     }
     
+    
     private func updateScannedPeripherals() {
-        // Only update autoconnect if we are not already connecting to a peripheral
-        guard bleManager.connectedOrConnectingPeripherals().isEmpty else { return }
-        
-        guard bleManager.scanningElapsedTime ?? 0 > AutoConnectViewController.kMinScanningTimeToAutoconnect else {
-            //DLog("remaining mandatory scan time: \(AutoConnectViewController.kMinScanningTimeToAutoconnect - (bleManager.scanningElapsedTime ?? 0))")
-            return
+        // Update peripheralAutoconnect
+        if let peripheral = peripheralAutoConnect.update(peripheralList: peripheralList) {
+            // Connect to closest CPB
+            connect(peripheral: peripheral)
         }
-        
-        // Sort by RSSI
-        let filteredPeripherals = peripheralList.filteredPeripherals(forceUpdate: true)     // Refresh the peripherals
-        
-        let sortedPeripherals = filteredPeripherals.sorted { (blePeripheral0, blePeripheral1) -> Bool in
-            return blePeripheral0.rssi ?? -127 > blePeripheral1.rssi ?? -127
-        }
-        //DLog("peripherals: \(sortedPeripherals.count)")
-        /*
-        if Config.isDebugEnabled {
-            let _ = sortedPeripherals.map{ DLog("\($0.identifier) - \($0.rssi == nil ? -127:$0.rssi!)") }
-            DLog("--")
-        }*/
-        
-        // Connect to closest CPB
-        guard let peripheral = sortedPeripherals.first else { return }
-        connect(peripheral: peripheral)
     }
     
     private func updateStatusLabel() {

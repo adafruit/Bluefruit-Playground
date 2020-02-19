@@ -15,6 +15,7 @@ class ScannerViewController: UIViewController {
     
     // Config
     private static let kDelayToShowWait: TimeInterval = 1.0
+    private static let kShowRssiValue = Config.isDebugEnabled && true
     
     // UI
     @IBOutlet weak var baseTableView: UITableView!
@@ -125,6 +126,7 @@ class ScannerViewController: UIViewController {
     
     // MARK: - BLE Notifications
     private weak var didDiscoverPeripheralObserver: NSObjectProtocol?
+    private weak var didUnDiscoverPeripheralObserver: NSObjectProtocol?
     private weak var willConnectToPeripheralObserver: NSObjectProtocol?
     private weak var didConnectToPeripheralObserver: NSObjectProtocol?
     private weak var didDisconnectFromPeripheralObserver: NSObjectProtocol?
@@ -135,7 +137,8 @@ class ScannerViewController: UIViewController {
     private func registerNotifications(enabled: Bool) {
         let notificationCenter = NotificationCenter.default
         if enabled {
-            didDiscoverPeripheralObserver = notificationCenter.addObserver(forName: .didDiscoverPeripheral, object: nil, queue: .main, using: {[weak self] _ in self?.didDiscoverPeripheral()})
+            didDiscoverPeripheralObserver = notificationCenter.addObserver(forName: .didDiscoverPeripheral, object: nil, queue: .main, using: {[weak self] _ in self?.updateScannedPeripherals()})
+            didUnDiscoverPeripheralObserver = notificationCenter.addObserver(forName: .didUnDiscoverPeripheral, object: nil, queue: .main, using: {[weak self] _ in self?.updateScannedPeripherals()})
             willConnectToPeripheralObserver = notificationCenter.addObserver(forName: .willConnectToPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.willConnectToPeripheral(notification: notification)})
             didConnectToPeripheralObserver = notificationCenter.addObserver(forName: .didConnectToPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.didConnectToPeripheral(notification: notification)})
             didDisconnectFromPeripheralObserver = notificationCenter.addObserver(forName: .didDisconnectFromPeripheral, object: nil, queue: .main, using: {[weak self] notification in self?.didDisconnectFromPeripheral(notification: notification)})
@@ -144,17 +147,13 @@ class ScannerViewController: UIViewController {
 
         } else {
             if let didDiscoverPeripheralObserver = didDiscoverPeripheralObserver {notificationCenter.removeObserver(didDiscoverPeripheralObserver)}
+            if let didUnDiscoverPeripheralObserver = didUnDiscoverPeripheralObserver {notificationCenter.removeObserver(didUnDiscoverPeripheralObserver)}
             if let willConnectToPeripheralObserver = willConnectToPeripheralObserver {notificationCenter.removeObserver(willConnectToPeripheralObserver)}
             if let didConnectToPeripheralObserver = didConnectToPeripheralObserver {notificationCenter.removeObserver(didConnectToPeripheralObserver)}
             if let didDisconnectFromPeripheralObserver = didDisconnectFromPeripheralObserver {notificationCenter.removeObserver(didDisconnectFromPeripheralObserver)}
             if let peripheralDidUpdateNameObserver = peripheralDidUpdateNameObserver {notificationCenter.removeObserver(peripheralDidUpdateNameObserver)}
             if let willDiscoverServicesObserver = willDiscoverServicesObserver {notificationCenter.removeObserver(willDiscoverServicesObserver)}
         }
-    }
-    
-    private func didDiscoverPeripheral() {
-        // Update current scanning state
-        updateScannedPeripherals()
     }
     
     private func willConnectToPeripheral(notification: Notification) {
@@ -386,7 +385,8 @@ extension ScannerViewController: UITableViewDelegate {
             let peripheral = peripheralList.filteredPeripherals(forceUpdate: false)[peripheralIndex]
             
             // Fill peripheral data
-            peripheralCell.titleLabel.text = peripheral.name ?? localizationManager.localizedString("scanner_unnamed")
+            let name = peripheral.name ?? localizationManager.localizedString("scanner_unnamed")
+            peripheralCell.titleLabel.text = ScannerViewController.kShowRssiValue ? "\(peripheral.rssi ?? -127)dBm \(name)" : name
             peripheralCell.iconImageView.image = RssiUI.signalImage(for: peripheral.rssi)
         }
     }
