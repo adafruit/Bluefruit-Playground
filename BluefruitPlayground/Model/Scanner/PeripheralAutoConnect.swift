@@ -19,8 +19,8 @@ import Foundation
  */
 class PeripheralAutoConnect {
     // Config
-    private static let kMinScanningTimeToAutoconnect: TimeInterval = 5
-    private static let kMinRssiToAutoConnect = -56      // in dBM
+    private static let kMinScanningTimeToAutoconnect: TimeInterval = 1.5 // 5
+    private static let kMinRssiToAutoConnect = -47//-56      // in dBM
     private static let kMinTimeDetectingPeripheralForAutoconnect: TimeInterval = 1
 
     // Data
@@ -58,10 +58,10 @@ class PeripheralAutoConnect {
         }
 
         if Config.isDebugEnabled {
-            DLog("peripherals: \(matchingPeripherals.count)")
+            //DLog("peripherals: \(matchingPeripherals.count)")
             let currentTime = CFAbsoluteTimeGetCurrent()
             _ = matchingPeripherals.map { DLog("\($0.blePeripheral.identifier) rssi: \($0.blePeripheral.rssi == nil ? -127:$0.blePeripheral.rssi!) - elapsed: \(Int((currentTime - $0.discoverTime)*1000))") }
-            DLog("--")
+            //DLog("--")
         }
 
         // Wait for the minimum time since scanning started

@@ -13,7 +13,7 @@ struct Config {
     // Scanning
     static let isAutomaticConnectionEnabled = true
 
-    // Debug-----------------------------------------------------------------------------
+    // Debug
     static let isDebugEnabled = _isDebugAssertConfiguration()
 
     // Fastlane snapshots

@@ -80,6 +80,9 @@ https://github.com/mindsnacks/MSWeakTimer";
 "autoconnect_manual_action" = "Select device manually";
 "autoconnect_backbutton" = "Autoconnect";
 
+"autoconnect_searching" = "Hold Bluefruit board close to your iPhone...";
+"autoconnect_startscanning_action" = "Connect";
+
 // Scanner
 "scanner_title" = "Select CPB";
 
