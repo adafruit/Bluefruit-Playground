@@ -163,7 +163,7 @@ class StartupViewController: UIViewController {
             }
 
             // Setup peripheral
-            CPBBle.shared.setupPeripheral(blePeripheral: peripheral) { [weak self] result in
+            AdafruitBoard.shared.setupPeripheral(blePeripheral: peripheral) { [weak self] result in
                 switch result {
                 case .success:
                     ScreenFlowManager.restoreAndGoToCPBModules()

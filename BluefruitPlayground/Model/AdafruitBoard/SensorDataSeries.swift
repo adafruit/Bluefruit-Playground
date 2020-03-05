@@ -1,5 +1,5 @@
 //
-//  PeripheralDataEntries.swift
+//  SensorDataSeries.swift
 //  BluefruitPlayground
 //
 //  Created by Antonio García on 13/11/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CPBDataSeries<T> {
+struct SensorDataSeries<T> {
     struct Entry {
         var value: T
         var timestamp: CFAbsoluteTime

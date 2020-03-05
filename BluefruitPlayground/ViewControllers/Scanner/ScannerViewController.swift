@@ -166,7 +166,7 @@ class ScannerViewController: UIViewController {
         }
 
         // Setup peripheral
-        CPBBle.shared.setupPeripheral(blePeripheral: selectedPeripheral) { [weak self] result in
+        AdafruitBoard.shared.setupPeripheral(blePeripheral: selectedPeripheral) { [weak self] result in
             guard let self = self else { return }
 
             switch result {

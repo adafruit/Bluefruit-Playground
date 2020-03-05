@@ -110,7 +110,7 @@ class PixelsPreviewViewController: UIViewController {
     @IBAction func setLightSequence(_ sender: UIButton) {
         //DLog("neopixelSetLightSequence: \(tag)")
         if let lightSequenceGenerator = lightSequenceGeneratorForTag(tag) {
-            CPBBle.shared.neopixelStartLightSequence(lightSequenceGenerator)
+            AdafruitBoard.shared.neopixelStartLightSequence(lightSequenceGenerator)
         }
     }
 

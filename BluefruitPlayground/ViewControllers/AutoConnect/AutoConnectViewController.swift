@@ -179,7 +179,7 @@ class AutoConnectViewController: UIViewController {
         }
 
         // Setup peripheral
-        CPBBle.shared.setupPeripheral(blePeripheral: selectedPeripheral) { [weak self] result in
+        AdafruitBoard.shared.setupPeripheral(blePeripheral: selectedPeripheral) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
@@ -296,9 +296,9 @@ class AutoConnectViewController: UIViewController {
 
         } else {
             UIView.animate(withDuration: 0.3) {
-                self.cpbImageView.alpha = 0.2
+                self.cpbImageView.alpha = 0.1
             }
-            statusText = localizationManager.localizedString("scanner_searching")
+            statusText = localizationManager.localizedString("autoconnect_searching")
             detailLabel.text = " "
         }
 

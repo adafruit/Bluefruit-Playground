@@ -1477,7 +1477,7 @@
                                                     <constraint firstAttribute="width" constant="210" id="LGq-WC-QNU"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.20000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="cpb_circuit" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-62-yA2">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.10000000000000001" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="cpb_circuit" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-62-yA2">
                                                 <rect key="frame" x="82" y="0.0" width="210" height="210"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="210" id="Y5Z-c5-1Dc"/>
@@ -1624,14 +1624,14 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HelpCell" id="U5T-Rn-JoM" customClass="HelpTableViewCell" customModule="BluefruitPlayground_SimulateBluetooth" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="215"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="216.66667175292969"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="U5T-Rn-JoM" id="luQ-sf-H0h">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="215"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="216.66667175292969"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="W6j-6k-zao">
-                                                    <rect key="frame" x="20" y="19" width="374" height="185"/>
+                                                    <rect key="frame" x="20" y="19" width="374" height="186.66666666666666"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" verticalCompressionResistancePriority="1000" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NeJ-ep-YDO">
                                                             <rect key="frame" x="0.0" y="0.0" width="374" height="40.666666666666664"/>
@@ -1681,10 +1681,10 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <view contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="lX3-kv-DYx">
-                                                            <rect key="frame" x="0.0" y="101.33333333333331" width="374" height="83.666666666666686"/>
+                                                            <rect key="frame" x="0.0" y="101.33333333333334" width="374" height="85.333333333333343"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" image="scanproblems_powerup" translatesAutoresizingMaskIntoConstraints="NO" id="UAb-G3-y7N">
-                                                                    <rect key="frame" x="0.0" y="10.000000000000014" width="374" height="73.666666666666671"/>
+                                                                    <rect key="frame" x="0.0" y="10.000000000000014" width="374" height="75.333333333333329"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" name="cell_light"/>
@@ -2223,19 +2223,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1EM-zG-od1">
-                                <rect key="frame" x="27" y="122" width="360" height="400"/>
+                                <rect key="frame" x="27" y="-78" width="360" height="800"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mCj-Gb-k6T">
-                                        <rect key="frame" x="0.0" y="0.0" width="360" height="400"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="360" height="800"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip_datacable" translatesAutoresizingMaskIntoConstraints="NO" id="eyT-6W-nB8">
-                                                <rect key="frame" x="159" y="-87.333333333333343" width="42" height="124"/>
+                                                <rect key="frame" x="138" y="50.333333333333343" width="84" height="248.33333333333337"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip_powercable" translatesAutoresizingMaskIntoConstraints="NO" id="5s4-fh-H68">
-                                                <rect key="frame" x="153" y="334" width="54" height="175"/>
+                                                <rect key="frame" x="126" y="446.66666666666674" width="108" height="350"/>
                                             </imageView>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cpb_circuit" translatesAutoresizingMaskIntoConstraints="NO" id="i3T-Db-EAx">
-                                                <rect key="frame" x="0.0" y="0.0" width="360" height="400"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="360" height="800"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="360" id="twB-P9-kif"/>
                                                 </constraints>
@@ -4503,7 +4503,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="xK7-kc-7e1"/>
         <segue reference="iVx-kJ-OsS"/>
-        <segue reference="KoA-I2-yK2"/>
+        <segue reference="hgu-MQ-4aK"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="text_default"/>
 </document>

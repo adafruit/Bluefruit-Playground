@@ -226,7 +226,7 @@ extension HomeViewController: UITableViewDelegate {
                     self.show(viewController, sender: self)
                     CATransaction.setCompletionBlock({
                         // Flash neopixels with the module color
-                        CPBBle.shared.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+                        AdafruitBoard.shared.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
                     })
                     CATransaction.commit()
                 }

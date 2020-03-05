@@ -136,7 +136,7 @@ class ToneGeneratorViewController: UIViewController {
 
         // Play
         if let frequency = frequencyForKeyTag(tag) {
-            CPBBle.shared.toneGeneratorStartPlaying(frequency: UInt16(round(frequency)))
+            AdafruitBoard.shared.toneGeneratorStartPlaying(frequency: UInt16(round(frequency)))
         }
     }
 
@@ -153,9 +153,9 @@ class ToneGeneratorViewController: UIViewController {
 
         // Play
         if let existingKeyTag = tonesPlaying.first, let frequency = frequencyForKeyTag(existingKeyTag) {
-            CPBBle.shared.toneGeneratorStartPlaying(frequency: UInt16(round(frequency)))
+            AdafruitBoard.shared.toneGeneratorStartPlaying(frequency: UInt16(round(frequency)))
         } else {
-            CPBBle.shared.toneGeneratorStopPlaying()
+            AdafruitBoard.shared.toneGeneratorStopPlaying()
         }
     }
 

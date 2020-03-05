@@ -33,18 +33,18 @@ class ButtonStatusViewController: ModuleViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        self.buttonsState = CPBBle.shared.buttonsLastValue()
+        self.buttonsState = AdafruitBoard.shared.buttonsLastValue()
         updateValueUI()
 
         // Set delegate
-        CPBBle.shared.buttonsDelegate = self
+        AdafruitBoard.shared.buttonsDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Remove delegate
-        CPBBle.shared.buttonsDelegate = nil
+        AdafruitBoard.shared.buttonsDelegate = nil
     }
 
     // MARK: - UI
@@ -56,7 +56,7 @@ class ButtonStatusViewController: ModuleViewController {
 }
 
 // MARK: - CPBBleButtonsDelegate
-extension ButtonStatusViewController: CPBBleButtonsDelegate {
+extension ButtonStatusViewController: AdafruitButtonsDelegate {
     func cpbleButtonsReceived(_ buttonsState: BlePeripheral.ButtonsState) {
         self.buttonsState = buttonsState
         updateValueUI()

@@ -542,12 +542,12 @@ extension BlePeripheral: CBPeripheralDelegate {
     }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        DLog("didDiscoverServices for: \(peripheral.name ?? peripheral.identifier.uuidString)")
+        //DLog("didDiscoverServices for: \(peripheral.name ?? peripheral.identifier.uuidString)")
         finishedExecutingCommand(error: error)
     }
 
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        DLog("didDiscoverCharacteristicsFor: \(service.uuid.uuidString)")
+        ///DLog("didDiscoverCharacteristicsFor: \(service.uuid.uuidString)")
         finishedExecutingCommand(error: error)
     }
 

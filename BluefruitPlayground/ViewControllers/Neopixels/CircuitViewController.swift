@@ -109,7 +109,7 @@ class CircuitViewController: UIViewController {
                 guard let self = self else { return }
 
                 // Get current colors
-                guard let pixelsBytes = notification.userInfo?[CPBBle.NotificationUserInfoKey.value.rawValue] as? [[UInt8]] else { return }
+                guard let pixelsBytes = notification.userInfo?[AdafruitBoard.NotificationUserInfoKey.value.rawValue] as? [[UInt8]] else { return }
 
                     // Pixel Bytes are GRB
                 let pixelColors = pixelsBytes.map { UIColor(red: CGFloat($0[1])/255.0, green: CGFloat($0[0])/255.0, blue: CGFloat($0[2])/255.0, alpha: 1.0) }
@@ -179,9 +179,9 @@ class CircuitViewController: UIViewController {
     func setNeopixelsColor(_ color: UIColor, onlySelected: Bool, animated: Bool, baseColor: UIColor? = nil) {
 
         if onlySelected {
-            CPBBle.shared.neopixelSetPixelColor(color, pixelMask: isNeopixelSelected)
+            AdafruitBoard.shared.neopixelSetPixelColor(color, pixelMask: isNeopixelSelected)
         } else {
-            CPBBle.shared.neopixelSetAllPixelsColor(color)
+            AdafruitBoard.shared.neopixelSetAllPixelsColor(color)
         }
 
         // UI Animation

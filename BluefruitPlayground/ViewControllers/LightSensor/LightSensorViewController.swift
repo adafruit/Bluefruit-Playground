@@ -37,18 +37,18 @@ class LightSensorViewController: ModuleViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        self.light = CPBBle.shared.lightLastValue()
+        self.light = AdafruitBoard.shared.lightLastValue()
         updateValueUI()
 
         // Set delegate
-        CPBBle.shared.lightDelegate = self
+        AdafruitBoard.shared.lightDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Remove delegate
-        CPBBle.shared.lightDelegate = nil
+        AdafruitBoard.shared.lightDelegate = nil
     }
 
     // MARK: - Navigation
@@ -70,7 +70,7 @@ class LightSensorViewController: ModuleViewController {
 }
 
 // MARK: - CPBBleLightDelegate
-extension LightSensorViewController: CPBBleLightDelegate {
+extension LightSensorViewController: AdafruitLightDelegate {
     func cpbleLightReceived(_ light: Float) {
         self.light = light
         updateValueUI()

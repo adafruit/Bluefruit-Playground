@@ -69,7 +69,7 @@ class PuppetViewController: UIViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        if let acceleration = CPBBle.shared.accelerometerLastValue() {
+        if let acceleration = AdafruitBoard.shared.accelerometerLastValue() {
             self.acceleration = acceleration
         }
 
@@ -85,8 +85,8 @@ class PuppetViewController: UIViewController {
         }
 
         // Set delegates
-        CPBBle.shared.accelerometerDelegate = self
-        CPBBle.shared.buttonsDelegate = self
+        AdafruitBoard.shared.accelerometerDelegate = self
+        AdafruitBoard.shared.buttonsDelegate = self
         RPScreenRecorder.shared().delegate = self
 
         // Start camera
@@ -100,8 +100,8 @@ class PuppetViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         // Remove delegates
-        CPBBle.shared.accelerometerDelegate = nil
-        CPBBle.shared.buttonsDelegate = nil
+        AdafruitBoard.shared.accelerometerDelegate = nil
+        AdafruitBoard.shared.buttonsDelegate = nil
         RPScreenRecorder.shared().delegate = nil
     }
 
@@ -251,7 +251,7 @@ class PuppetViewController: UIViewController {
 
         // Update sparky rotation (only if the intro animation is not currently playing)
         if !isPlayingIntroAnimation {
-            SCNTransaction.animationDuration = BlePeripheral.kCPBAccelerometerDefaultPeriod
+            SCNTransaction.animationDuration = BlePeripheral.kAdafruitAccelerometerDefaultPeriod
 
             let accelAngleX = atan2(acceleration.y, acceleration.z)
             filteredAccelAngleX.update(newValue: accelAngleX)
@@ -407,7 +407,7 @@ class PuppetViewController: UIViewController {
 }
 
 // MARK: - CPBBleAccelerometerDelegate
-extension PuppetViewController: CPBBleAccelerometerDelegate {
+extension PuppetViewController: AdafruitAccelerometerDelegate {
     func cpbleAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue) {
         self.acceleration = acceleration
         updateValueUI()
@@ -415,7 +415,7 @@ extension PuppetViewController: CPBBleAccelerometerDelegate {
 }
 
 // MARK: - CPBBleButtonsDelegate
-extension PuppetViewController: CPBBleButtonsDelegate {
+extension PuppetViewController: AdafruitButtonsDelegate {
     func cpbleButtonsReceived(_ newButtonsState: BlePeripheral.ButtonsState) {
         // Check if A became pressed
         if newButtonsState.buttonA == .pressed && newButtonsState.buttonA != buttonsState?.buttonA {

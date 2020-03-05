@@ -59,7 +59,7 @@ class LightSequenceAnimation {
         stopHandler?()
     }
 
-    @objc func displayLinkStep(displaylink: CADisplayLink) {
+    @objc private func displayLinkStep(displaylink: CADisplayLink) {
 
         let currentTimestamp =  CACurrentMediaTime() - startingTimestamp
         let numFrames = Double(lightSequenceGenerator.numFrames)

@@ -47,18 +47,18 @@ class TemperatureViewController: ModuleViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        temperatureCelsius = CPBBle.shared.temperatureLastValue()
+        temperatureCelsius = AdafruitBoard.shared.temperatureLastValue()
         updateValueUI()
 
         // Set delegate
-        CPBBle.shared.temperatureDelegate = self
+        AdafruitBoard.shared.temperatureDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Remove delegate
-        CPBBle.shared.temperatureDelegate = nil
+        AdafruitBoard.shared.temperatureDelegate = nil
     }
 
     // MARK: - UI
@@ -101,7 +101,7 @@ class TemperatureViewController: ModuleViewController {
 }
 
 // MARK: - CPBBleTemperatureDelegate
-extension TemperatureViewController: CPBBleTemperatureDelegate {
+extension TemperatureViewController: AdafruitTemperatureDelegate {
     func cpbleTemperatureReceived(_ temperature: Float) {
         temperatureCelsius = temperature
         updateValueUI()

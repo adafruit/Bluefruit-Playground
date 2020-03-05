@@ -29,7 +29,7 @@ class NeopixelsLightSequenceViewController: ModulePanelViewController {
         _ = previewViewControllers.map {$0.tag = $0.view.superview?.tag ?? 0}
 
         // Set initial speed
-        let speed = CPBBle.kLightSequenceDefaultSpeed
+        let speed = AdafruitBoard.kLightSequenceDefaultSpeed
         speedSlider.value = Float(speed)
         //speedChanged(speedSlider)
         _ = previewViewControllers.map {$0.speed = speed}
@@ -51,7 +51,7 @@ class NeopixelsLightSequenceViewController: ModulePanelViewController {
         let speed = Double(sender.value)
         DLog("speed: \(speed)")
 
-        CPBBle.shared.neopixelCurrentLightSequenceAnimationSpeed = speed
+        AdafruitBoard.shared.neopixelCurrentLightSequenceAnimationSpeed = speed
         _ = previewViewControllers.map {$0.speed = speed}
     }
 }

@@ -49,20 +49,20 @@ class AccelerometerViewController: ModuleViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        if let acceleration = CPBBle.shared.accelerometerLastValue() {
+        if let acceleration = AdafruitBoard.shared.accelerometerLastValue() {
             self.acceleration = acceleration
         }
         updateValueUI()
 
         // Set delegate
-        CPBBle.shared.accelerometerDelegate = self
+        AdafruitBoard.shared.accelerometerDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Remove delegate
-        CPBBle.shared.accelerometerDelegate = nil
+        AdafruitBoard.shared.accelerometerDelegate = nil
     }
 
     // MARK: - UI
@@ -72,7 +72,7 @@ class AccelerometerViewController: ModuleViewController {
         //DLog("Euler: pitch: \(eulerAngles.x) yaw: \(eulerAngles.y) roll: \(eulerAngles.z)")
 
         // Update circuit model orientation
-        SCNTransaction.animationDuration = BlePeripheral.kCPBAccelerometerDefaultPeriod
+        SCNTransaction.animationDuration = BlePeripheral.kAdafruitAccelerometerDefaultPeriod
         circuitNode?.eulerAngles = eulerAngles
 
         // Update panel
@@ -81,7 +81,7 @@ class AccelerometerViewController: ModuleViewController {
 }
 
 // MARK: - CPBBleAccelerometerDelegate
-extension AccelerometerViewController: CPBBleAccelerometerDelegate {
+extension AccelerometerViewController: AdafruitAccelerometerDelegate {
     func cpbleAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue) {
         self.acceleration = acceleration
         updateValueUI()
