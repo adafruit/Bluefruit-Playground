@@ -15,7 +15,8 @@ class CommonTableViewCell: UITableViewCell {
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel?
-
+    @IBOutlet weak var rightIconImageView: UIImageView?
+    
     // Data
     private var originalPanelBackgroundColor: UIColor!
 
@@ -39,6 +40,7 @@ class CommonTableViewCell: UITableViewCell {
         super.prepareForReuse()
 
         subtitleLabel?.text = nil
+        rightIconImageView?.image = nil
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

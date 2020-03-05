@@ -57,7 +57,7 @@ class PeripheralAutoConnect {
             }
         }
 
-        if Config.isDebugEnabled {
+        if Config.isDebugEnabled && false {
             //DLog("peripherals: \(matchingPeripherals.count)")
             let currentTime = CFAbsoluteTimeGetCurrent()
             _ = matchingPeripherals.map { DLog("\($0.blePeripheral.identifier) rssi: \($0.blePeripheral.rssi == nil ? -127:$0.blePeripheral.rssi!) - elapsed: \(Int((currentTime - $0.discoverTime)*1000))") }

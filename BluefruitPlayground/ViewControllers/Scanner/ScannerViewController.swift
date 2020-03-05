@@ -15,7 +15,7 @@ class ScannerViewController: UIViewController {
 
     // Config
     private static let kDelayToShowWait: TimeInterval = 1.0
-    private static let kShowRssiValue = Config.isDebugEnabled && true
+    private static let kShowRssiValue = Config.isDebugEnabled && false
 
     // UI
     @IBOutlet weak var baseTableView: UITableView!
@@ -283,6 +283,7 @@ class ScannerViewController: UIViewController {
         isBaseTableScrolling = false
         isScannerTableWaitingForReload = false
         let filteredPeripherals = peripheralList.filteredPeripherals(forceUpdate: true)     // Refresh the peripherals
+        
         baseTableView.reloadData()
 
         // Select the previously selected row
@@ -375,15 +376,26 @@ extension ScannerViewController: UITableViewDelegate {
             let detailsCell = cell as! TitleTableViewCell
 
             detailsCell.titleLabel.text = localizationManager.localizedString("scanner_subtitle")
-        } else {
+        } else {        // Is a peripheral
             let peripheralCell = cell as! CommonTableViewCell
             let peripheralIndex = indexPath.row - 1
             let peripheral = peripheralList.filteredPeripherals(forceUpdate: false)[peripheralIndex]
 
+            //
+            var boardImage: UIImage?
+            if let specs = peripheral.adafruitManufacturerData(), let board = specs.board {
+                switch board {
+                case .circuitPlaygroundBluefruit: boardImage = UIImage(named: "scan_cpb")
+                case .clue_nRF52840: boardImage = UIImage(named: "scan_clue")
+                default: break
+                }
+            }
+            
             // Fill peripheral data
             let name = peripheral.name ?? localizationManager.localizedString("scanner_unnamed")
             peripheralCell.titleLabel.text = ScannerViewController.kShowRssiValue ? "\(peripheral.rssi ?? -127)dBm \(name)" : name
             peripheralCell.iconImageView.image = RssiUI.signalImage(for: peripheral.rssi)
+            peripheralCell.rightIconImageView?.image = boardImage
         }
     }
 
