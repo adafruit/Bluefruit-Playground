@@ -127,25 +127,27 @@ class HomeViewController: UIViewController {
     private func menuItemItemsForBlePeripheral(_ blePeripheral: BlePeripheral) -> [Modules] {
         var result: [Modules] = []
         
-        if AdafruitBoard.shared.isNeopixelsAvailable {
+        guard let board = AdafruitBoardsManager.shared.currentBoard else { return result }
+        
+        if board.isNeopixelsAvailable {
             result.append(.color)
         }
-        if AdafruitBoard.shared.isLightAvailable {
+        if board.isLightAvailable {
             result.append(.light)
         }
-        if AdafruitBoard.shared.isButtonsAvailable {
+        if board.isButtonsAvailable {
             result.append(.button)
         }
-        if AdafruitBoard.shared.isToneGeneratorAvailable {
+        if board.isToneGeneratorAvailable {
             result.append(.tone)
         }
-        if AdafruitBoard.shared.isAcceleromterAvailable {
+        if board.isAccelerometerAvailable {
             result.append(.accelerometer)
         }
-        if AdafruitBoard.shared.isTemperatureAvailable {
+        if board.isTemperatureAvailable {
             result.append(.temperature)
         }
-        if  AdafruitBoard.shared.isAcceleromterAvailable && AdafruitBoard.shared.isButtonsAvailable {
+        if board.isAccelerometerAvailable && board.isButtonsAvailable {
             result.append(.puppet)
         }
         return result
@@ -257,7 +259,9 @@ extension HomeViewController: UITableViewDelegate {
                 self.show(viewController, sender: self)
                 CATransaction.setCompletionBlock({
                     // Flash neopixels with the module color
-                    AdafruitBoard.shared.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+                    let board = AdafruitBoardsManager.shared.currentBoard
+
+                    board?.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
                 })
                 CATransaction.commit()
             }

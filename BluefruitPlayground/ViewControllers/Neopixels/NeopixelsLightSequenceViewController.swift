@@ -51,7 +51,8 @@ class NeopixelsLightSequenceViewController: ModulePanelViewController {
         let speed = Double(sender.value)
         DLog("speed: \(speed)")
 
-        AdafruitBoard.shared.neopixelCurrentLightSequenceAnimationSpeed = speed
+        let board = AdafruitBoardsManager.shared.currentBoard
+        board?.neopixelCurrentLightSequenceAnimationSpeed = speed
         _ = previewViewControllers.map {$0.speed = speed}
     }
 }

@@ -18,6 +18,7 @@ extension BlePeripheral {
     static let kAdafruitAccelerometerDefaultPeriod: TimeInterval = 0.1
 
     // Structs
+    /// Acceleration in m/s^2
     struct AccelerometerValue {
         var x: Float
         var y: Float
@@ -29,7 +30,7 @@ extension BlePeripheral {
         static var adafruitAccelerometerCharacteristic: CBCharacteristic?
     }
 
-    private var adafruitToneGeneratorEnableAccelerometerCharacteristic: CBCharacteristic? {
+    private var adafruitAccelerometerCharacteristic: CBCharacteristic? {
         get {
             return objc_getAssociatedObject(self, &CustomPropertiesKeys.adafruitAccelerometerCharacteristic) as? CBCharacteristic
         }
@@ -63,33 +64,33 @@ extension BlePeripheral {
                     return
                 }
 
-                self.adafruitToneGeneratorEnableAccelerometerCharacteristic = characteristic
+                self.adafruitAccelerometerCharacteristic = characteristic
                 completion?(.success(()))
 
             case let .failure(error):
-                self.adafruitToneGeneratorEnableAccelerometerCharacteristic = nil
+                self.adafruitAccelerometerCharacteristic = nil
                 completion?(.failure(error))
             }
         })
     }
 
     func adafruitAccelerometerIsEnabled() -> Bool {
-        return adafruitToneGeneratorEnableAccelerometerCharacteristic != nil && adafruitToneGeneratorEnableAccelerometerCharacteristic!.isNotifying
+        return adafruitAccelerometerCharacteristic != nil && adafruitAccelerometerCharacteristic!.isNotifying
     }
 
     func adafruitAccelerometerDisable() {
         // Clear all specific data
         defer {
-            adafruitToneGeneratorEnableAccelerometerCharacteristic = nil
+            adafruitAccelerometerCharacteristic = nil
         }
 
         // Disable notify
-        guard let characteristic = adafruitToneGeneratorEnableAccelerometerCharacteristic, characteristic.isNotifying else { return }
+        guard let characteristic = adafruitAccelerometerCharacteristic, characteristic.isNotifying else { return }
         disableNotify(for: characteristic)
     }
 
     func adafruitAccelerometerLastValue() -> AccelerometerValue? {
-        guard let data = adafruitToneGeneratorEnableAccelerometerCharacteristic?.value else { return nil }
+        guard let data = adafruitAccelerometerCharacteristic?.value else { return nil }
         return adafruitAccelerometerDataToFloatVector(data)
     }
 

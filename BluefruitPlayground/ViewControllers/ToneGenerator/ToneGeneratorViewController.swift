@@ -135,8 +135,9 @@ class ToneGeneratorViewController: UIViewController {
         }
 
         // Play
+        let board = AdafruitBoardsManager.shared.currentBoard
         if let frequency = frequencyForKeyTag(tag) {
-            AdafruitBoard.shared.toneGeneratorStartPlaying(frequency: UInt16(round(frequency)))
+            board?.toneGeneratorStartPlaying(frequency: UInt16(round(frequency)))
         }
     }
 
@@ -150,15 +151,18 @@ class ToneGeneratorViewController: UIViewController {
                 self.speakerImageView.transform = .identity
             }
         }
-
+        
         // Play
-        if let existingKeyTag = tonesPlaying.first, let frequency = frequencyForKeyTag(existingKeyTag) {
-            AdafruitBoard.shared.toneGeneratorStartPlaying(frequency: UInt16(round(frequency)))
-        } else {
-            AdafruitBoard.shared.toneGeneratorStopPlaying()
+        if let board = AdafruitBoardsManager.shared.currentBoard {
+            if let existingKeyTag = tonesPlaying.first, let frequency = frequencyForKeyTag(existingKeyTag) {
+                
+                board.toneGeneratorStartPlaying(frequency: UInt16(round(frequency)))
+            } else {
+                board.toneGeneratorStopPlaying()
+            }
         }
     }
-
+    
     @objc private func redirectHalfKeyDown(_ sender: UIButton) {
         let targetButton =  sender === extraHalfKeyTop ? halfKeyTop : halfKeyBottom
         targetButton?.sendActions(for: .touchDown)

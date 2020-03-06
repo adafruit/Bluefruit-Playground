@@ -38,8 +38,6 @@ protocol AdafruitAccelerometerDelegate: class {
     - accelerometer
     - temperature
 
- - Note: It only supports a single connected board (cannot be used on multiple connected boards simultaneously)
-
  */
 class AdafruitBoard {
     // Constants
@@ -47,11 +45,9 @@ class AdafruitBoard {
     private static let kLightSequenceDefaultBrightness: CGFloat = 0.25
     public static let kLightSequenceDefaultSpeed: Double = 0.3
     
-    // Singleton
-    static let shared = AdafruitBoard()
-
     // Data structs
     enum BoardError: Error {
+        case errorBoardNotConnected
         case errorDiscoveringServices
     }
 
@@ -80,7 +76,7 @@ class AdafruitBoard {
     private var temperatureData = SensorDataSeries<Float>()
     private var lightData = SensorDataSeries<Float>()
     private var accelerometerData = SensorDataSeries<BlePeripheral.AccelerometerValue>()
-    private weak var blePeripheral: BlePeripheral?
+    private(set) weak var blePeripheral: BlePeripheral?
 
     private var currentLightSequenceAnimation: LightSequenceAnimation?
     public var neopixelCurrentLightSequenceAnimationSpeed: Double {
@@ -93,16 +89,7 @@ class AdafruitBoard {
         }
     }
 
-    // MARK: - Lifecycle
-    private init() {
-        registerNotifications(enabled: true)
-    }
-
-    deinit {
-        registerNotifications(enabled: false)
-    }
-
-    // MARK: - Setup
+   // MARK: - Setup
     
     /**
      Setup the singleton to use a BlePeripheral
@@ -112,7 +99,7 @@ class AdafruitBoard {
             - services: list of BoardServices that will be started. Use nil to select all the supported services
             - completion: completion handler
     */
-    func setupPeripheral(blePeripheral: BlePeripheral, services: [BoardService]? = nil, completion: @escaping (Result<Void, Error>) -> Void) {
+     func setupPeripheral(blePeripheral: BlePeripheral, services: [BoardService]? = nil, completion: @escaping (Result<Void, Error>) -> Void) {
 
         DLog("Discovering services")
         let peripheralIdentifier = blePeripheral.identifier
@@ -146,9 +133,9 @@ class AdafruitBoard {
             servicesGroup.enter()
             blePeripheral.adafruitNeoPixelsEnable { result in
                 if case .success = result {
-                    DLog("Pixels enabled")
+                    DLog("NeoPixels enabled")
                 } else {
-                    DLog("Warning: Pixels enable failed")
+                    DLog("Warning: NeoPixels enable failed")
                 }
                 servicesGroup.leave()
             }
@@ -247,14 +234,13 @@ class AdafruitBoard {
         return blePeripheral?.adafruitToneGeneratorIsEnabled() ?? false
     }
     
-    var isAcceleromterAvailable: Bool {
+    var isAccelerometerAvailable: Bool {
         return blePeripheral?.adafruitAccelerometerIsEnabled() ?? false
     }
 
     var isTemperatureAvailable: Bool {
         return blePeripheral?.adafruitTemperatureIsEnabled() ?? false
     }
-
     
     // MARK: - Read Data
     func lightLastValue() -> Float? {
@@ -266,11 +252,11 @@ class AdafruitBoard {
     }
 
     func buttonsReadState(completion: @escaping(Result<(BlePeripheral.ButtonsState, UUID), Error>) -> Void) {
-        blePeripheral?.adafruitButtonsReadState(completion: { result in
+        blePeripheral?.adafruitButtonsReadState() { result in
             DispatchQueue.main.async {      // Send response in main thread
                 completion(result)
             }
-        })
+        }
     }
 
     func buttonsLastValue() -> BlePeripheral.ButtonsState? {
@@ -452,23 +438,7 @@ class AdafruitBoard {
         currentLightSequenceAnimation = nil
     }
 
-    // MARK: - BLE Notifications
-    private weak var willdDisconnectFromPeripheralObserver: NSObjectProtocol?
-
-    private func registerNotifications(enabled: Bool) {
-        let notificationCenter = NotificationCenter.default
-        if enabled {
-            willdDisconnectFromPeripheralObserver = notificationCenter.addObserver(forName: .willDisconnectFromPeripheral, object: nil, queue: .main, using: {[weak self] _ in
-
-                // Force clear neopixels on disconnect
-                self?.neopixelSetAllPixelsColor(.clear)
-            })
-
-        } else {
-            if let willdDisconnectFromPeripheralObserver = willdDisconnectFromPeripheralObserver {notificationCenter.removeObserver(willdDisconnectFromPeripheralObserver)}
-        }
-    }
-
+   
 }
 
 // MARK: - Custom Notifications

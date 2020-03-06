@@ -12,6 +12,7 @@ struct Config {
 
     // Scanning
     static let isAutomaticConnectionEnabled = true
+    static let useAutomaticConnectionAsDefaultMode = false
 
     // Debug
     static let isDebugEnabled = _isDebugAssertConfiguration()

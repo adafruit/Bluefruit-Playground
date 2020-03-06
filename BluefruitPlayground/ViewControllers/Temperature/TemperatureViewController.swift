@@ -47,18 +47,20 @@ class TemperatureViewController: ModuleViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        temperatureCelsius = AdafruitBoard.shared.temperatureLastValue()
+        let board = AdafruitBoardsManager.shared.currentBoard
+        temperatureCelsius = board?.temperatureLastValue()
         updateValueUI()
 
         // Set delegate
-        AdafruitBoard.shared.temperatureDelegate = self
+        board?.temperatureDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Remove delegate
-        AdafruitBoard.shared.temperatureDelegate = nil
+        let board = AdafruitBoardsManager.shared.currentBoard
+        board?.temperatureDelegate = nil
     }
 
     // MARK: - UI

@@ -163,7 +163,7 @@ class StartupViewController: UIViewController {
             }
 
             // Setup peripheral
-            AdafruitBoard.shared.setupPeripheral(blePeripheral: peripheral) { [weak self] result in
+            AdafruitBoardsManager.shared.startBoard(connectedBlePeripheral: peripheral) { [weak self] result in
                 switch result {
                 case .success:
                     ScreenFlowManager.restoreAndGoToCPBModules()
@@ -184,7 +184,7 @@ class StartupViewController: UIViewController {
 
     // MARK: - Screen Flow
     private func gotoInitialScreen() {
-        let defaultConnectViewControllerIdentifier = Config.isAutomaticConnectionEnabled ?  AutoConnectViewController.kNavigationControllerIdentifier : ScannerViewController.kNavigationControllerIdentifier
+        let defaultConnectViewControllerIdentifier = Config.isAutomaticConnectionEnabled && Config.useAutomaticConnectionAsDefaultMode ?  AutoConnectViewController.kNavigationControllerIdentifier : ScannerViewController.kNavigationControllerIdentifier
 
         let viewControllerIdentifier = StartupViewController.kForcedNavigationControllerIdentifier ?? (Settings.areTipsEnabled && Config.isTutorialEnabled ? TipsViewController.kIdentifier : defaultConnectViewControllerIdentifier)
         DLog("Start app with viewController: \(viewControllerIdentifier)")

@@ -37,18 +37,20 @@ class LightSensorViewController: ModuleViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        self.light = AdafruitBoard.shared.lightLastValue()
+        let board = AdafruitBoardsManager.shared.currentBoard
+        self.light = board?.lightLastValue()
         updateValueUI()
 
         // Set delegate
-        AdafruitBoard.shared.lightDelegate = self
+        board?.lightDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Remove delegate
-        AdafruitBoard.shared.lightDelegate = nil
+        let board = AdafruitBoardsManager.shared.currentBoard
+        board?.lightDelegate = nil
     }
 
     // MARK: - Navigation

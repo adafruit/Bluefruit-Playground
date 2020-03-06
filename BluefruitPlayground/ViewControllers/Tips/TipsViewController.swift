@@ -133,7 +133,7 @@ class TipsViewController: UIViewController {
     }
 
     @IBAction func skip(_ sender: Any) {
-        if Config.isAutomaticConnectionEnabled {
+        if Config.isAutomaticConnectionEnabled && Config.useAutomaticConnectionAsDefaultMode {
             ScreenFlowManager.gotoAutoconnect()
         } else {
             ScreenFlowManager.goToManualScan()

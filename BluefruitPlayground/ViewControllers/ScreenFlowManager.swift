@@ -11,7 +11,7 @@ import UIKit
 struct ScreenFlowManager {
 
     // Data
-    private static var wasManualScanningLastUsed = !Config.isAutomaticConnectionEnabled        // Last scanning method used
+    private static var wasManualScanningLastUsed = !Config.isAutomaticConnectionEnabled || !Config.useAutomaticConnectionAsDefaultMode        // Last scanning method used
 
     // MARK: - Go to app areas
     public static func gotoAutoconnect() {
@@ -52,7 +52,9 @@ struct ScreenFlowManager {
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: HomeViewController.kNavigationControllerIdentifier)
 
         changeRootViewController(rootViewController: rootNavigationViewController) {
-            AdafruitBoard.shared.neopixelStartLightSequence(FlashLightSequence(baseColor: .lightGray), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+           
+            let board = AdafruitBoardsManager.shared.currentBoard
+            board?.neopixelStartLightSequence(FlashLightSequence(baseColor: .lightGray), speed: 1, repeating: false, sendLightSequenceNotifications: false)
         }
     }
 
@@ -63,7 +65,10 @@ struct ScreenFlowManager {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: HomeViewController.kNavigationControllerIdentifier)
         changeRootViewController(rootViewController: rootNavigationViewController) {
-            AdafruitBoard.shared.neopixelStartLightSequence(FlashLightSequence(baseColor: .white), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+           
+           
+            let board = AdafruitBoardsManager.shared.currentBoard
+            board?.neopixelStartLightSequence(FlashLightSequence(baseColor: .white), speed: 1, repeating: false, sendLightSequenceNotifications: false)
         }
     }
 
@@ -152,7 +157,7 @@ struct ScreenFlowManager {
         if shouldShowBluetoothDialog && !isShowingEnableBluetoothDialog {
             viewControllerIdentifier = BluetoothStatusViewController.kIdentifier
         } else if !shouldShowBluetoothDialog && isShowingEnableBluetoothDialog {
-            let defaultConnectViewControllerIdentifier = Config.isAutomaticConnectionEnabled ?  AutoConnectViewController.kNavigationControllerIdentifier : ScannerViewController.kNavigationControllerIdentifier
+            let defaultConnectViewControllerIdentifier = Config.isAutomaticConnectionEnabled && Config.useAutomaticConnectionAsDefaultMode ?  AutoConnectViewController.kNavigationControllerIdentifier : ScannerViewController.kNavigationControllerIdentifier
 
             viewControllerIdentifier = defaultConnectViewControllerIdentifier
         }

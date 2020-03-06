@@ -20,6 +20,7 @@ extension BlePeripheral {
     enum PeripheralAdafruitError: Error {
         case invalidCharacteristic
         case enableNotifyFailed
+        case disableNotifyFailed
         case unknownVersion
         case invalidResponseData
     }
@@ -40,6 +41,11 @@ extension BlePeripheral {
         }
     }
 
+    /**
+            - parameters:
+                - timePeriod: seconds between measurements. -1 to disable measurements
+
+     */
     func adafruitServiceEnable(serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, timePeriod: TimeInterval?, responseHandler: @escaping(Result<(Data, UUID), Error>) -> Void, completion: ((Result<(Int, CBCharacteristic), Error>) -> Void)?) {
 
         self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [unowned self] (characteristic, error) in
@@ -85,8 +91,8 @@ extension BlePeripheral {
                     }
                 }
 
-                // Set timePeriod if not nil
-                if let timePeriod = timePeriod {
+                // Time period
+                if let timePeriod = timePeriod {    // Set timePeriod if not nil
                     self.adafruitSetPeriod(timePeriod, serviceUuid: serviceUuid) { _ in
 
                         if Config.isDebugEnabled {
@@ -99,8 +105,39 @@ extension BlePeripheral {
 
                         enableNotificationsHandler()
                     }
-                } else {
+                } else {        // Use default timePeriod
                     enableNotificationsHandler()
+                }
+            }
+        }
+    }
+    
+    func adafruitServiceDisable(serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, completion: ((Result<Void, Error>) -> Void)?) {
+        self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [unowned self] (characteristic, error) in
+            guard let characteristic = characteristic, error == nil else {
+                completion?(.failure(error ?? PeripheralAdafruitError.invalidCharacteristic))
+                return
+            }
+            
+            let kDisablePeriod: TimeInterval = -1       // -1 means taht the updates will be disabled
+            self.adafruitSetPeriod(kDisablePeriod, serviceUuid: serviceUuid) { result in
+                // Disable notifications
+                if characteristic.isNotifying {
+                    self.disableNotify(for: characteristic) { error in
+                        guard error == nil else {
+                            completion?(.failure(error!))
+                            return
+                        }
+                        guard !characteristic.isNotifying else {
+                            completion?(.failure(PeripheralAdafruitError.disableNotifyFailed))
+                            return
+                        }
+                        
+                        completion?(.success(()))
+                    }
+                }
+                else {
+                    completion?(result)
                 }
             }
         }
@@ -138,6 +175,13 @@ extension BlePeripheral {
         }
     }
 
+    /**
+        Set measurement period
+             
+        - parameters:
+            - period: seconds between measurements. -1 to disable measurements
+
+      */
     func adafruitSetPeriod(_ period: TimeInterval, serviceUuid: CBUUID, completion: ((Result<Void, Error>) -> Void)?) {
 
         self.characteristic(uuid: BlePeripheral.kAdafruitMeasurementPeriodCharacteristicUUID, serviceUuid: serviceUuid) { (characteristic, error) in
@@ -147,7 +191,7 @@ extension BlePeripheral {
                 return
             }
 
-            let periodMillis = Int32(period * 1000)
+            let periodMillis = period == -1 ? -1 : Int32(period * 1000)     // -1 means disable measurements. It is a special value
             let data = periodMillis.littleEndian.data
             self.write(data: data, for: characteristic, type: .withResponse) { error in
                 guard error == nil else {

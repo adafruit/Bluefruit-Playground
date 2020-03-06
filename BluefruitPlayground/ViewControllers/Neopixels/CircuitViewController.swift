@@ -178,10 +178,11 @@ class CircuitViewController: UIViewController {
     // MARK: - Actions
     func setNeopixelsColor(_ color: UIColor, onlySelected: Bool, animated: Bool, baseColor: UIColor? = nil) {
 
+        let board = AdafruitBoardsManager.shared.currentBoard
         if onlySelected {
-            AdafruitBoard.shared.neopixelSetPixelColor(color, pixelMask: isNeopixelSelected)
+            board?.neopixelSetPixelColor(color, pixelMask: isNeopixelSelected)
         } else {
-            AdafruitBoard.shared.neopixelSetAllPixelsColor(color)
+            board?.neopixelSetAllPixelsColor(color)
         }
 
         // UI Animation

@@ -166,7 +166,7 @@ class ScannerViewController: UIViewController {
         }
 
         // Setup peripheral
-        AdafruitBoard.shared.setupPeripheral(blePeripheral: selectedPeripheral) { [weak self] result in
+        AdafruitBoardsManager.shared.startBoard(connectedBlePeripheral: selectedPeripheral) { [weak self] result in
             guard let self = self else { return }
 
             switch result {
@@ -182,7 +182,7 @@ class ScannerViewController: UIViewController {
                 DLog("setupPeripheral error: \(error.localizedDescription)")
                 let localizationManager = LocalizationManager.shared
 
-                let alertController = UIAlertController(title: localizationManager.localizedString("dialog_error"), message: localizationManager.localizedString("uart_error_peripheralinit"), preferredStyle: .alert)
+                let alertController = UIAlertController(title: localizationManager.localizedString("dialog_error"), message: localizationManager.localizedString("scanner_error_startboard"), preferredStyle: .alert)
                 let okAction = UIAlertAction(title: localizationManager.localizedString("dialog_ok"), style: .default, handler: nil)
                 alertController.addAction(okAction)
                 self.present(alertController, animated: true, completion: nil)

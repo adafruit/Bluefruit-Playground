@@ -59,17 +59,21 @@ class TemperaturePanelViewController: ModulePanelViewController {
         //chartView.setExtraOffsets(left: 10, top: 10, right: 10, bottom: 0)
         chartView.legend.enabled = false
         chartView.noDataText = LocalizationManager.shared.localizedString("temperature_chart_nodata")
-
+        
         // Timestamp
-        let temperatureDataSeries = AdafruitBoard.shared.temperatureDataSeries()
-        originTimestamp = temperatureDataSeries.first?.timestamp ?? CFAbsoluteTimeGetCurrent()
-
+        if let board = AdafruitBoardsManager.shared.currentBoard {
+            let temperatureDataSeries = board.temperatureDataSeries()
+            originTimestamp = temperatureDataSeries.first?.timestamp ?? CFAbsoluteTimeGetCurrent()
+        }
+        
         // Load initial data
         reloadChartEntries()
     }
 
     private func reloadChartEntries() {
-        let temperatureDataSeries = AdafruitBoard.shared.temperatureDataSeries()
+        guard let board = AdafruitBoardsManager.shared.currentBoard else { return }
+
+        let temperatureDataSeries = board.temperatureDataSeries()
 
         let chartEntries = temperatureDataSeries.map { entry -> ChartDataEntry in
             let temperatureCelsius = Double(entry.value)
@@ -108,7 +112,8 @@ class TemperaturePanelViewController: ModulePanelViewController {
 
     // MARK: - Actions
     func temperatureValueReceived() {
-        guard let lastTemperatureDataSeries = AdafruitBoard.shared.temperatureDataSeries().last else { return }
+        let board = AdafruitBoardsManager.shared.currentBoard
+        guard let lastTemperatureDataSeries = board?.temperatureDataSeries().last else { return }
 
         let temperatureCelsius = Double(lastTemperatureDataSeries.value)
         let temperature = isCelsius ? temperatureCelsius : (temperatureCelsius * 1.8 + 32)

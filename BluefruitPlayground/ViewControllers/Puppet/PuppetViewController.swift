@@ -69,7 +69,8 @@ class PuppetViewController: UIViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        if let acceleration = AdafruitBoard.shared.accelerometerLastValue() {
+        let board = AdafruitBoardsManager.shared.currentBoard
+        if let acceleration = board?.accelerometerLastValue() {
             self.acceleration = acceleration
         }
 
@@ -85,8 +86,8 @@ class PuppetViewController: UIViewController {
         }
 
         // Set delegates
-        AdafruitBoard.shared.accelerometerDelegate = self
-        AdafruitBoard.shared.buttonsDelegate = self
+        board?.accelerometerDelegate = self
+        board?.buttonsDelegate = self
         RPScreenRecorder.shared().delegate = self
 
         // Start camera
@@ -100,8 +101,9 @@ class PuppetViewController: UIViewController {
         super.viewWillDisappear(animated)
 
         // Remove delegates
-        AdafruitBoard.shared.accelerometerDelegate = nil
-        AdafruitBoard.shared.buttonsDelegate = nil
+        let board = AdafruitBoardsManager.shared.currentBoard
+        board?.accelerometerDelegate = nil
+        board?.buttonsDelegate = nil
         RPScreenRecorder.shared().delegate = nil
     }
 

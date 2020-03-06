@@ -15,6 +15,8 @@
 		A92256902411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922568F2411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift */; };
 		A92256912411CEEA00B8AB57 /* BlePeripheral+AdafruitToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77923821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift */; };
 		A92256932411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */; };
+		A92256952411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */; };
+		A92256962411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */; };
 		A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */; };
 		A92B9F14234DE4A2002374F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F12234DE4A2002374F0 /* Main.storyboard */; };
 		A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
@@ -245,6 +247,7 @@
 		A922568D2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitNeoPixels.swift"; sourceTree = "<group>"; };
 		A922568F2411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitToneGenerator.swift"; sourceTree = "<group>"; };
 		A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitAccelerometer.swift"; sourceTree = "<group>"; };
+		A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdafruitBoardsManager.swift; sourceTree = "<group>"; };
 		A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluefruit Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A92B9F13234DE4A2002374F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -425,6 +428,7 @@
 		A919A6E024108D4600F98D5A /* AdafruitBoard */ = {
 			isa = PBXGroup;
 			children = (
+				A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */,
 				A94AC14D2364A82A0062AB11 /* AdafruitBoard.swift */,
 				A901EC4C237C47D800687BE6 /* SensorDataSeries.swift */,
 				A9A08B2223A2841200498069 /* LightSequence.swift */,
@@ -1047,6 +1051,7 @@
 				A92256912411CEEA00B8AB57 /* BlePeripheral+AdafruitToneGenerator.swift in Sources */,
 				A9A08B2523A2CBCF00498069 /* LightSequenceAnimation.swift in Sources */,
 				A9BED709234F75E4002FFF53 /* TipAnimationViewController.swift in Sources */,
+				A92256952411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */,
 				A96AA5CF23634BC3004A06BA /* AccelerometerPanelViewController.swift in Sources */,
 				A9BED770234FBEAB002FFF53 /* UartLogManager.swift in Sources */,
 				A9BED77A234FBEAB002FFF53 /* CommandQueue.swift in Sources */,
@@ -1221,6 +1226,7 @@
 				A9A08B8623A523C900498069 /* SensorDataSeries.swift in Sources */,
 				A9A08B8723A523C900498069 /* Settings.swift in Sources */,
 				A9A08B8823A523C900498069 /* BlePeripheral+Battery.swift in Sources */,
+				A92256962411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */,
 				A9A08B8923A523C900498069 /* TemperaturePanelViewController.swift in Sources */,
 				A9A08B8B23A523C900498069 /* ScannerViewController.swift in Sources */,
 				A9A08B8C23A523C900498069 /* ScanProblemsViewController.swift in Sources */,

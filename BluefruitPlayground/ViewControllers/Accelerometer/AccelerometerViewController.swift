@@ -49,20 +49,22 @@ class AccelerometerViewController: ModuleViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        if let acceleration = AdafruitBoard.shared.accelerometerLastValue() {
+        let board = AdafruitBoardsManager.shared.currentBoard
+        if let acceleration = board?.accelerometerLastValue() {
             self.acceleration = acceleration
         }
         updateValueUI()
 
         // Set delegate
-        AdafruitBoard.shared.accelerometerDelegate = self
+        board?.accelerometerDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Remove delegate
-        AdafruitBoard.shared.accelerometerDelegate = nil
+        let board = AdafruitBoardsManager.shared.currentBoard
+        board?.accelerometerDelegate = nil
     }
 
     // MARK: - UI

@@ -52,15 +52,18 @@ class LightChartPanelViewController: ModulePanelViewController {
         chartView.noDataText = LocalizationManager.shared.localizedString("temperature_chart_nodata")
 
         // Timestamp
-        let lightDataSeries = AdafruitBoard.shared.lightDataSeries()
-        originTimestamp = lightDataSeries.first?.timestamp ?? CFAbsoluteTimeGetCurrent()
-
+        if let board = AdafruitBoardsManager.shared.currentBoard {
+            let lightDataSeries = board.lightDataSeries()
+            originTimestamp = lightDataSeries.first?.timestamp ?? CFAbsoluteTimeGetCurrent()
+        }
+        
         // Load initial data
         reloadChartEntries()
     }
 
     private func reloadChartEntries() {
-        let lightDataSeries = AdafruitBoard.shared.lightDataSeries()
+        guard let board = AdafruitBoardsManager.shared.currentBoard else { return }
+        let lightDataSeries = board.lightDataSeries()
 
         let chartEntries = lightDataSeries.map { entry -> ChartDataEntry in
             let lightReading = Double(entry.value)
@@ -98,7 +101,8 @@ class LightChartPanelViewController: ModulePanelViewController {
 
     // MARK: - Actions
     func lightValueReceived() {
-        guard let lastLightDataSeries = AdafruitBoard.shared.lightDataSeries().last else { return }
+        let board = AdafruitBoardsManager.shared.currentBoard
+        guard let lastLightDataSeries = board?.lightDataSeries().last else { return }
 
         let light = Double(lastLightDataSeries.value)
         let entry = ChartDataEntry(x: lastLightDataSeries.timestamp - originTimestamp, y: light)

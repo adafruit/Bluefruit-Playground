@@ -33,18 +33,20 @@ class ButtonStatusViewController: ModuleViewController {
         super.viewWillAppear(animated)
 
         // Initial value
-        self.buttonsState = AdafruitBoard.shared.buttonsLastValue()
+        let board = AdafruitBoardsManager.shared.currentBoard
+        self.buttonsState = board?.buttonsLastValue()
         updateValueUI()
 
         // Set delegate
-        AdafruitBoard.shared.buttonsDelegate = self
+        board?.buttonsDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         // Remove delegate
-        AdafruitBoard.shared.buttonsDelegate = nil
+        let board = AdafruitBoardsManager.shared.currentBoard
+        board?.buttonsDelegate = nil
     }
 
     // MARK: - UI

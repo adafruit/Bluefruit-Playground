@@ -70,7 +70,7 @@ extension BlePeripheral {
                 self.adafruitButtonsCharacteristic = characteristic
 
                 if timePeriod == 0 {    // Read initial state if the timePeriod is 0 (update only when changed)
-                    AdafruitBoard.shared.buttonsReadState { response in
+                    self.adafruitButtonsReadState { response in
                         switch response {
                         case .success:
                             completion?(.success(()))
