@@ -13,7 +13,8 @@ extension BlePeripheral {
     // Constants
     static let kAdafruitLightServiceUUID = CBUUID(string: "ADAF0300-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitLightCharacteristicUUID = CBUUID(string: "ADAF0301-C332-42A8-93BD-25E905756CB8")
-
+    private static let kAdafruitLightVersion = 1
+    
     private static let kAdafruitLightDefaultPeriod: TimeInterval = 0.1
 
     // MARK: - Custom properties
@@ -33,25 +34,19 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitLightEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnable(serviceUuid: BlePeripheral.kAdafruitLightServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitLightCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitLightDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitLightVersion, serviceUuid: BlePeripheral.kAdafruitLightServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitLightCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitLightDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):
-                let light = self.adafruitLightDataToFloat(data)
-                responseHandler(.success((light, uuid)))
+                let value = self.adafruitLightDataToFloat(data)
+                responseHandler(.success((value, uuid)))
             case let .failure(error):
                 responseHandler(.failure(error))
             }
 
         }, completion: { result in
             switch result {
-            case let .success((version, characteristic)):
-                guard version == 1 else {
-                    DLog("Warning: adafruitLightEnable unknown version: \(version)")
-                    completion?(.failure(PeripheralAdafruitError.unknownVersion))
-                    return
-                }
-
+            case let .success(characteristic):
                 self.adafruitLightCharacteristic = characteristic
                 completion?(.success(()))
 

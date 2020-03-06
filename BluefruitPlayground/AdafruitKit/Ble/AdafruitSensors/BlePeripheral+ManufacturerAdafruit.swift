@@ -13,6 +13,7 @@ extension BlePeripheral {
     // Constants
     private static let kManufacturerAdafruitIdentifier: [UInt8] = [0x22, 0x08]
 
+    // MARK: - Check Manufacturer
     func isManufacturerAdafruit() -> Bool {
         guard let manufacturerIdentifier = advertisement.manufacturerIdentifier else { return false }
 
@@ -21,6 +22,8 @@ extension BlePeripheral {
         return manufacturerIdentifierBytes == BlePeripheral.kManufacturerAdafruitIdentifier
     }
     
+    
+    // MARK: - Adafruit Specific Data
     struct AdafruitManufacturerData {
         // Types
         enum Board: CaseIterable {

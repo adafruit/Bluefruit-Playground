@@ -13,7 +13,8 @@ extension BlePeripheral {
     // Config
     private static let kAdafruitNeoPixelsServiceNumberOfBitsPerPixel = 3
     private static let kAdafruitNeoPixelsServicePixelsCount = 10
-
+    private static let kAdafruitNeoPixelsVersion = 1
+    
     // Constants
     static let kAdafruitNeoPixelsServiceUUID = CBUUID(string: "ADAF0900-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitNeoPixelsDataCharacteristicUUID = CBUUID(string: "ADAF0903-C332-42A8-93BD-25E905756CB8")
@@ -49,15 +50,9 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitNeoPixelsEnable(completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnable(serviceUuid: BlePeripheral.kAdafruitNeoPixelsServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitNeoPixelsDataCharacteristicUUID) { result in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitNeoPixelsVersion, serviceUuid: BlePeripheral.kAdafruitNeoPixelsServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitNeoPixelsDataCharacteristicUUID) { result in
             switch result {
-            case let .success((version, characteristic)):
-                guard version == 1 else {
-                    DLog("Warning: adafruitNeoPixelsEnable unknown version: \(version)")
-                    completion?(.failure(PeripheralAdafruitError.unknownVersion))
-                    return
-                }
-
+            case let .success(characteristic):
                 self.adafruitNeoPixelsDataCharacteristic = characteristic
                 completion?(.success(()))
 

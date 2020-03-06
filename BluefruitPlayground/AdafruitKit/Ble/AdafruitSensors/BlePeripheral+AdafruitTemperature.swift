@@ -13,7 +13,8 @@ extension BlePeripheral {
     // Constants
     static let kAdafruitTemperatureServiceUUID = CBUUID(string: "ADAF0100-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitTemperatureCharacteristicUUID = CBUUID(string: "ADAF0101-C332-42A8-93BD-25E905756CB8")
-
+    private static let kAdafruitTemperatureVersion = 1
+    
     private static let kAdafruitTemperatureDefaultPeriod: TimeInterval = 0.1
 
     // MARK: - Custom properties
@@ -33,7 +34,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitTemperatureEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnable(serviceUuid: BlePeripheral.kAdafruitTemperatureServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitTemperatureCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitTemperatureDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitTemperatureVersion, serviceUuid: BlePeripheral.kAdafruitTemperatureServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitTemperatureCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitTemperatureDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):
@@ -45,13 +46,7 @@ extension BlePeripheral {
 
         }, completion: { result in
             switch result {
-            case let .success((version, characteristic)):
-                guard version == 1 else {
-                    DLog("Warning: adafruitTemperatureEnable unknown version: \(version)")
-                    completion?(.failure(PeripheralAdafruitError.unknownVersion))
-                    return
-                }
-
+            case let .success(characteristic):
                 self.adafruitTemperatureCharacteristic = characteristic
                 completion?(.success(()))
 

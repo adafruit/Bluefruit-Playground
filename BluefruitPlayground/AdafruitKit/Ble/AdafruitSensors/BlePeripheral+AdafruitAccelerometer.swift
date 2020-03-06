@@ -14,11 +14,12 @@ extension BlePeripheral {
     // Constants
     static let kAdafruitAccelerometerServiceUUID = CBUUID(string: "ADAF0200-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitAccelerometerCharacteristicUUID = CBUUID(string: "ADAF0201-C332-42A8-93BD-25E905756CB8")
+    private static let kAdafruitAccelerometerVersion = 1
 
     static let kAdafruitAccelerometerDefaultPeriod: TimeInterval = 0.1
 
     // Structs
-    /// Acceleration in m/s^2
+    /// Acceleration in m/s²
     struct AccelerometerValue {
         var x: Float
         var y: Float
@@ -42,12 +43,12 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitAccelerometerEnable(responseHandler: @escaping(Result<(AccelerometerValue, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnable(serviceUuid: BlePeripheral.kAdafruitAccelerometerServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitAccelerometerCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitAccelerometerDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitAccelerometerVersion, serviceUuid: BlePeripheral.kAdafruitAccelerometerServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitAccelerometerCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitAccelerometerDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):
-                if let acceleration = self.adafruitAccelerometerDataToFloatVector(data) {
-                    responseHandler(.success((acceleration, uuid)))
+                if let value = self.adafruitAccelerometerDataToAcceleromterValue(data) {
+                    responseHandler(.success((value, uuid)))
                 } else {
                     responseHandler(.failure(PeripheralAdafruitError.invalidResponseData))
                 }
@@ -57,13 +58,7 @@ extension BlePeripheral {
 
         }, completion: { result in
             switch result {
-            case let .success((version, characteristic)):
-                guard version == 1 else {
-                    DLog("Warning: adafruitAccelerometerEnable unknown version: \(version)")
-                    completion?(.failure(PeripheralAdafruitError.unknownVersion))
-                    return
-                }
-
+            case let .success(characteristic):
                 self.adafruitAccelerometerCharacteristic = characteristic
                 completion?(.success(()))
 
@@ -91,18 +86,14 @@ extension BlePeripheral {
 
     func adafruitAccelerometerLastValue() -> AccelerometerValue? {
         guard let data = adafruitAccelerometerCharacteristic?.value else { return nil }
-        return adafruitAccelerometerDataToFloatVector(data)
+        return adafruitAccelerometerDataToAcceleromterValue(data)
     }
 
     // MARK: - Utils
-    private func adafruitAccelerometerDataToFloatVector(_ data: Data) -> AccelerometerValue? {
-
-        let unitSize = MemoryLayout<Float32>.stride
-        var bytes = [Float32](repeating: 0, count: data.count / unitSize)
-        (data as NSData).getBytes(&bytes, length: data.count * unitSize)
-
+    private func adafruitAccelerometerDataToAcceleromterValue(_ data: Data) -> AccelerometerValue? {
+        
+        guard let bytes = adafruitDataToFloatArray(data) else { return nil }
         guard bytes.count >= 3 else { return nil }
-
         return AccelerometerValue(x: bytes[0], y: bytes[1], z: bytes[2])
     }
 }

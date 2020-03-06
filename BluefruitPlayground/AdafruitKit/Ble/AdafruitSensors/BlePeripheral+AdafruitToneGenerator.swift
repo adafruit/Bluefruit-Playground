@@ -13,6 +13,8 @@ extension BlePeripheral {
     // Constants
     static let kAdafruitToneGeneratorServiceUUID = CBUUID(string: "ADAF0C00-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitToneGeneratorCharacteristicUUID = CBUUID(string: "ADAF0C01-C332-42A8-93BD-25E905756CB8")
+    private static let kAdafruitToneGeneratorVersion = 1
+
 
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
@@ -31,15 +33,9 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitToneGeneratorEnable(completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnable(serviceUuid: BlePeripheral.kAdafruitToneGeneratorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitToneGeneratorCharacteristicUUID) { result in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitToneGeneratorVersion, serviceUuid: BlePeripheral.kAdafruitToneGeneratorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitToneGeneratorCharacteristicUUID) { result in
             switch result {
-            case let .success((version, characteristic)):
-                guard version == 1 else {
-                    DLog("Warning: adafruitToneGeneratorEnable unknown version: \(version)")
-                    completion?(.failure(PeripheralAdafruitError.unknownVersion))
-                    return
-                }
-
+            case let .success(characteristic):
                 self.adafruitToneGeneratorCharacteristic = characteristic
                 completion?(.success(()))
 

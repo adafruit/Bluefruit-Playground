@@ -13,7 +13,8 @@ extension BlePeripheral {
     // Constants
     static let kAdafruitButtonsServiceUUID = CBUUID(string: "ADAF0600-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitButtonsCharacteristicUUID = CBUUID(string: "ADAF0601-C332-42A8-93BD-25E905756CB8")
-
+    private static let kAdafruitButtonsVersion = 1
+    
     enum SlideSwitchState: Int32 {
         case right = 0
         case left = 1
@@ -48,7 +49,7 @@ extension BlePeripheral {
     func adafruitButtonsEnable(responseHandler: @escaping(Result<(ButtonsState, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
         let timePeriod: TimeInterval = 0        // 0 means that the responseHandler will be called only when there is a change
-        self.adafruitServiceEnable(serviceUuid: BlePeripheral.kAdafruitButtonsServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitButtonsCharacteristicUUID, timePeriod: timePeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitButtonsVersion, serviceUuid: BlePeripheral.kAdafruitButtonsServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitButtonsCharacteristicUUID, timePeriod: timePeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):
@@ -60,13 +61,7 @@ extension BlePeripheral {
 
         }, completion: { result in
             switch result {
-            case let .success((version, characteristic)):
-                guard version == 1 else {
-                    DLog("Warning: adafruitButtonsEnable unknown version: \(version)")
-                    completion?(.failure(PeripheralAdafruitError.unknownVersion))
-                    return
-                }
-
+            case let .success(characteristic):
                 self.adafruitButtonsCharacteristic = characteristic
 
                 if timePeriod == 0 {    // Read initial state if the timePeriod is 0 (update only when changed)

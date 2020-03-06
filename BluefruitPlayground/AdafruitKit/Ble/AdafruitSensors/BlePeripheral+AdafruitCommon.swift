@@ -112,6 +112,36 @@ extension BlePeripheral {
         }
     }
     
+    func adafruitServiceEnableIfVersion(version expectedVersion: Int, serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID,  completion: ((Result<CBCharacteristic, Error>) -> Void)?) {
+        
+        self.adafruitServiceEnable(serviceUuid: serviceUuid, mainCharacteristicUuid: mainCharacteristicUuid) { [weak self] result in
+            self?.checkVersionResult(expectedVersion: expectedVersion, result: result, completion: completion)
+        }
+    }
+    
+    func adafruitServiceEnableIfVersion(version expectedVersion: Int, serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, timePeriod: TimeInterval?, responseHandler: @escaping(Result<(Data, UUID), Error>) -> Void, completion: ((Result<CBCharacteristic, Error>) -> Void)?) {
+        
+        self.adafruitServiceEnable(serviceUuid: serviceUuid, mainCharacteristicUuid: mainCharacteristicUuid, timePeriod: timePeriod, responseHandler: responseHandler) { [weak self] result in
+            self?.checkVersionResult(expectedVersion: expectedVersion, result: result, completion: completion)
+        }
+
+    }
+    
+    private func checkVersionResult(expectedVersion: Int, result: Result<(Int, CBCharacteristic), Error>, completion: ((Result<CBCharacteristic, Error>) -> Void)?) {
+        switch result {
+        case let .success((version, characteristic)):
+            guard version == expectedVersion else {
+                DLog("Warning: adafruitServiceEnableIfVersion unknown version: \(version). Expected: \(expectedVersion)")
+                completion?(.failure(PeripheralAdafruitError.unknownVersion))
+                return
+            }
+            
+            completion?(.success(characteristic))
+        case let .failure(error):
+            completion?(.failure(error))
+        }
+    }
+    
     func adafruitServiceDisable(serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, completion: ((Result<Void, Error>) -> Void)?) {
         self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [unowned self] (characteristic, error) in
             guard let characteristic = characteristic, error == nil else {
@@ -203,5 +233,21 @@ extension BlePeripheral {
                 completion?(.success(()))
             }
         }
+    }
+    
+    // MARK: - Utils
+    func adafruitDataToFloatArray(_ data: Data) -> [Float]? {
+        let unitSize = MemoryLayout<Float32>.stride
+        var bytes = [Float32](repeating: 0, count: data.count / unitSize)
+        (data as NSData).getBytes(&bytes, length: data.count * unitSize)
+        
+        return bytes
+    }
+    
+    func adafruitDataToUInt16Array(_ data: Data) -> [UInt16]? {
+        let unitSize = MemoryLayout<Int16>.stride
+        var words = [UInt16](repeating: 0, count: data.count / unitSize)
+        (data as NSData).getBytes(&words, length: data.count * unitSize)
+        return words
     }
 }

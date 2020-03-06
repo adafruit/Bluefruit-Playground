@@ -17,6 +17,11 @@
 		A92256932411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */; };
 		A92256952411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */; };
 		A92256962411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */; };
+		A92256982412E0AE00B8AB57 /* BlePeripheral+AdafruitGyroscope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256972412E0AE00B8AB57 /* BlePeripheral+AdafruitGyroscope.swift */; };
+		A922569A2412EC1500B8AB57 /* BlePeripheral+AdafruitMagnetometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256992412EC1500B8AB57 /* BlePeripheral+AdafruitMagnetometer.swift */; };
+		A922569D2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922569B2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift */; };
+		A922569E2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922569C2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift */; };
+		A92256A02412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922569F2412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift */; };
 		A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */; };
 		A92B9F14234DE4A2002374F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F12234DE4A2002374F0 /* Main.storyboard */; };
 		A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
@@ -248,6 +253,11 @@
 		A922568F2411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitToneGenerator.swift"; sourceTree = "<group>"; };
 		A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitAccelerometer.swift"; sourceTree = "<group>"; };
 		A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdafruitBoardsManager.swift; sourceTree = "<group>"; };
+		A92256972412E0AE00B8AB57 /* BlePeripheral+AdafruitGyroscope.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitGyroscope.swift"; sourceTree = "<group>"; };
+		A92256992412EC1500B8AB57 /* BlePeripheral+AdafruitMagnetometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitMagnetometer.swift"; sourceTree = "<group>"; };
+		A922569B2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitHumidity.swift"; sourceTree = "<group>"; };
+		A922569C2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitBarometricPressure.swift"; sourceTree = "<group>"; };
+		A922569F2412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitColorSensor.swift"; sourceTree = "<group>"; };
 		A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluefruit Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A92B9F13234DE4A2002374F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -419,7 +429,12 @@
 				A9A08BAE23A7956C00498069 /* BlePeripheral+AdafruitButtons.swift */,
 				A958E77923821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift */,
 				A958E781238B7936006A225A /* BlePeripheral+AdafruitAccelerometer.swift */,
+				A92256972412E0AE00B8AB57 /* BlePeripheral+AdafruitGyroscope.swift */,
+				A92256992412EC1500B8AB57 /* BlePeripheral+AdafruitMagnetometer.swift */,
 				A9482991237B86C600B6FC13 /* BlePeripheral+AdafruitTemperature.swift */,
+				A922569B2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift */,
+				A922569C2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift */,
+				A922569F2412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift */,
 				A98B0D1C239FBE9300BF3696 /* BlePeripheral+ManufacturerAdafruit.swift */,
 			);
 			path = AdafruitSensors;
@@ -1042,6 +1057,7 @@
 				A980FE6D2357D14400E3A909 /* TipPowerUpViewController.swift in Sources */,
 				A94AC14E2364A82B0062AB11 /* AdafruitBoard.swift in Sources */,
 				A96AA5C1236050E4004A06BA /* NavigationBarWithScrollAwareRightButton.swift in Sources */,
+				A92256982412E0AE00B8AB57 /* BlePeripheral+AdafruitGyroscope.swift in Sources */,
 				A9BED767234FBEAB002FFF53 /* UartPacketManagerBase.swift in Sources */,
 				A9482990237B73B100B6FC13 /* ModuleViewController.swift in Sources */,
 				A9ADE5F923533D5400777535 /* NeopixelsColorPaletteViewController.swift in Sources */,
@@ -1052,6 +1068,7 @@
 				A9A08B2523A2CBCF00498069 /* LightSequenceAnimation.swift in Sources */,
 				A9BED709234F75E4002FFF53 /* TipAnimationViewController.swift in Sources */,
 				A92256952411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */,
+				A922569A2412EC1500B8AB57 /* BlePeripheral+AdafruitMagnetometer.swift in Sources */,
 				A96AA5CF23634BC3004A06BA /* AccelerometerPanelViewController.swift in Sources */,
 				A9BED770234FBEAB002FFF53 /* UartLogManager.swift in Sources */,
 				A9BED77A234FBEAB002FFF53 /* CommandQueue.swift in Sources */,
@@ -1077,6 +1094,7 @@
 				A9D5B21023E0985600178E1B /* AutoConnectViewController.swift in Sources */,
 				A98E4D2823565B76005B166D /* TipWelcomeViewController.swift in Sources */,
 				A9BED70B234F7617002FFF53 /* Config.swift in Sources */,
+				A922569E2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift in Sources */,
 				A980FE6F2357D15400E3A909 /* TipDiscoverViewController.swift in Sources */,
 				A948298F237B73B100B6FC13 /* ModulePanelViewController.swift in Sources */,
 				A90086DF23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */,
@@ -1093,6 +1111,8 @@
 				A96AA5C32362F488004A06BA /* AboutViewController.swift in Sources */,
 				A9A08BAF23A7957700498069 /* BlePeripheral+AdafruitButtons.swift in Sources */,
 				A9D12E8423E3661800F3C259 /* UIColor+Interpolate.swift in Sources */,
+				A92256A02412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift in Sources */,
+				A922569D2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift in Sources */,
 				A98F1B892359494500C5269E /* ConfigUI.swift in Sources */,
 				A9BED773234FBEAB002FFF53 /* UartPacketManager.swift in Sources */,
 				A986AB93235942D600DF12C8 /* LightSensorViewController.swift in Sources */,
