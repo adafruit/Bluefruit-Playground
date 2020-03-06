@@ -11,6 +11,10 @@
 		A90086E023FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */; };
 		A901EC48237C43C000687BE6 /* Data+LittleEndianTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */; };
 		A901EC4D237C47D800687BE6 /* SensorDataSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC4C237C47D800687BE6 /* SensorDataSeries.swift */; };
+		A922568E2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922568D2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift */; };
+		A92256902411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922568F2411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift */; };
+		A92256912411CEEA00B8AB57 /* BlePeripheral+AdafruitToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77923821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift */; };
+		A92256932411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */; };
 		A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */; };
 		A92B9F14234DE4A2002374F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F12234DE4A2002374F0 /* Main.storyboard */; };
 		A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
@@ -24,7 +28,6 @@
 		A94AC1462363A59B0062AB11 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC1452363A59B0062AB11 /* TemperatureViewController.swift */; };
 		A94AC1482363A7BD0062AB11 /* TemperaturePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC1472363A7BD0062AB11 /* TemperaturePanelViewController.swift */; };
 		A94AC14E2364A82B0062AB11 /* AdafruitBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC14D2364A82A0062AB11 /* AdafruitBoard.swift */; };
-		A958E77A23821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77923821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift */; };
 		A958E77C238AFA4E006A225A /* BlePeripheral+AdafruitNeoPixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77B238AFA4E006A225A /* BlePeripheral+AdafruitNeoPixels.swift */; };
 		A958E77E238B7457006A225A /* NormalBrightnessSliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77D238B7457006A225A /* NormalBrightnessSliderControl.swift */; };
 		A958E780238B75D9006A225A /* NormalBrightnessColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77F238B75D9006A225A /* NormalBrightnessColorPickerController.swift */; };
@@ -91,17 +94,14 @@
 		A9A08B5723A523C900498069 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5D023634F03004A06BA /* GridView.swift */; };
 		A9A08B5823A523C900498069 /* BlePeripheral+Uart.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED75C234FBEAB002FFF53 /* BlePeripheral+Uart.swift */; };
 		A9A08B5923A523C900498069 /* BlePeripheral+AdafruitCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482993237B880000B6FC13 /* BlePeripheral+AdafruitCommon.swift */; };
-		A9A08B5A23A523C900498069 /* BlePeripheral+AdafruitToneGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77923821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift */; };
 		A9A08B5B23A523C900498069 /* RssiUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9716BA92350128100CB174D /* RssiUI.swift */; };
 		A9A08B5C23A523C900498069 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482989237B73B100B6FC13 /* HelpViewController.swift */; };
 		A9A08B5D23A523C900498069 /* NeoPixelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9EAA1A02352973400FA615E /* NeoPixelsViewController.swift */; };
 		A9A08B5E23A523C900498069 /* StartupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED716234FBDBA002FFF53 /* StartupViewController.swift */; };
 		A9A08B5F23A523C900498069 /* ScreenFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99BA722235000520080D03F /* ScreenFlowManager.swift */; };
 		A9A08B6123A523C900498069 /* TipsAnimationComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED710234F7753002FFF53 /* TipsAnimationComposerViewController.swift */; };
-		A9A08B6223A523C900498069 /* BlePeripheral+AdafruitNeoPixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77B238AFA4E006A225A /* BlePeripheral+AdafruitNeoPixels.swift */; };
 		A9A08B6323A523C900498069 /* PixelsPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B2623A2E4B900498069 /* PixelsPreviewViewController.swift */; };
-		A9A08B6423A523C900498069 /* BlePeripheralSimulated+CPBButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+CPBButtons.swift */; };
-		A9A08B6523A523C900498069 /* BlePeripheral+AdafruitAccelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E781238B7936006A225A /* BlePeripheral+AdafruitAccelerometer.swift */; };
+		A9A08B6423A523C900498069 /* BlePeripheralSimulated+AdafruitButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+AdafruitButtons.swift */; };
 		A9A08B6623A523C900498069 /* ButtonStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9DF06112359B0600094327F /* ButtonStatusViewController.swift */; };
 		A9A08B6723A523C900498069 /* UIView+RoundedCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96AA5D2236358A8004A06BA /* UIView+RoundedCorners.swift */; };
 		A9A08B6823A523C900498069 /* TipWelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98E4D2723565B76005B166D /* TipWelcomeViewController.swift */; };
@@ -150,9 +150,9 @@
 		A9A08BA123A5260300498069 /* BleManagerSimulated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08B9F23A5260300498069 /* BleManagerSimulated.swift */; };
 		A9A08BA423A5286700498069 /* BlePeripheralSimulated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BA223A5286700498069 /* BlePeripheralSimulated.swift */; };
 		A9A08BAA23A7891500498069 /* ObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BA823A7891500498069 /* ObjectBuilder.m */; };
-		A9A08BAD23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BAC23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift */; };
+		A9A08BAD23A794F500498069 /* BlePeripheralSimulated+AdafruitLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BAC23A794F500498069 /* BlePeripheralSimulated+AdafruitLight.swift */; };
 		A9A08BAF23A7957700498069 /* BlePeripheral+AdafruitButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BAE23A7956C00498069 /* BlePeripheral+AdafruitButtons.swift */; };
-		A9A08BB123A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BB023A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift */; };
+		A9A08BB123A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A08BB023A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift */; };
 		A9ADE5F923533D5400777535 /* NeopixelsColorPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */; };
 		A9ADE5FB23533FA000777535 /* UIView+AllSubviewsWithClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5FA23533FA000777535 /* UIView+AllSubviewsWithClass.swift */; };
 		A9B3569F2365D420002093EE /* PanelInsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B3569E2365D420002093EE /* PanelInsetView.swift */; };
@@ -242,6 +242,9 @@
 		A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralAutoConnect.swift; sourceTree = "<group>"; };
 		A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+LittleEndianTypes.swift"; sourceTree = "<group>"; };
 		A901EC4C237C47D800687BE6 /* SensorDataSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataSeries.swift; sourceTree = "<group>"; };
+		A922568D2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitNeoPixels.swift"; sourceTree = "<group>"; };
+		A922568F2411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitToneGenerator.swift"; sourceTree = "<group>"; };
+		A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitAccelerometer.swift"; sourceTree = "<group>"; };
 		A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluefruit Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A92B9F13234DE4A2002374F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -277,7 +280,7 @@
 		A96AA5D423635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+ChangeMultiplier.swift"; sourceTree = "<group>"; };
 		A9716BA82350128100CB174D /* PeripheralList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralList.swift; sourceTree = "<group>"; };
 		A9716BA92350128100CB174D /* RssiUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RssiUI.swift; sourceTree = "<group>"; };
-		A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+CPBButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+CPBButtons.swift"; sourceTree = "<group>"; };
+		A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+AdafruitButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitButtons.swift"; sourceTree = "<group>"; };
 		A980FE6C2357D14400E3A909 /* TipPowerUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipPowerUpViewController.swift; sourceTree = "<group>"; };
 		A980FE6E2357D15400E3A909 /* TipDiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipDiscoverViewController.swift; sourceTree = "<group>"; };
 		A986AB92235942D600DF12C8 /* LightSensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightSensorViewController.swift; sourceTree = "<group>"; };
@@ -303,9 +306,9 @@
 		A9A08BA723A7891500498069 /* BluefruitPlayground-SimulateBluetooth-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BluefruitPlayground-SimulateBluetooth-Bridging-Header.h"; sourceTree = "<group>"; };
 		A9A08BA823A7891500498069 /* ObjectBuilder.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjectBuilder.m; sourceTree = "<group>"; };
 		A9A08BAB23A789E100498069 /* ObjectBuilder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjectBuilder.h; sourceTree = "<group>"; };
-		A9A08BAC23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+CPBLight.swift"; sourceTree = "<group>"; };
+		A9A08BAC23A794F500498069 /* BlePeripheralSimulated+AdafruitLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitLight.swift"; sourceTree = "<group>"; };
 		A9A08BAE23A7956C00498069 /* BlePeripheral+AdafruitButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitButtons.swift"; sourceTree = "<group>"; };
-		A9A08BB023A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+CPBTemperature.swift"; sourceTree = "<group>"; };
+		A9A08BB023A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitTemperature.swift"; sourceTree = "<group>"; };
 		A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeopixelsColorPaletteViewController.swift; sourceTree = "<group>"; };
 		A9ADE5FA23533FA000777535 /* UIView+AllSubviewsWithClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AllSubviewsWithClass.swift"; sourceTree = "<group>"; };
 		A9B3569E2365D420002093EE /* PanelInsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelInsetView.swift; sourceTree = "<group>"; };
@@ -597,9 +600,12 @@
 			children = (
 				A9A08B9F23A5260300498069 /* BleManagerSimulated.swift */,
 				A9A08BA223A5286700498069 /* BlePeripheralSimulated.swift */,
-				A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+CPBButtons.swift */,
-				A9A08BAC23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift */,
-				A9A08BB023A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift */,
+				A922568D2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift */,
+				A9A08BAC23A794F500498069 /* BlePeripheralSimulated+AdafruitLight.swift */,
+				A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+AdafruitButtons.swift */,
+				A922568F2411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift */,
+				A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */,
+				A9A08BB023A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift */,
 				A9A08BAB23A789E100498069 /* ObjectBuilder.h */,
 				A9A08BA823A7891500498069 /* ObjectBuilder.m */,
 			);
@@ -1038,6 +1044,7 @@
 				A9EAA19523514B2800FA615E /* CornerShadowButton.swift in Sources */,
 				A96AA5D523635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift in Sources */,
 				A96AA5C823633EB3004A06BA /* UIButton+BackgroundColorForState.swift in Sources */,
+				A92256912411CEEA00B8AB57 /* BlePeripheral+AdafruitToneGenerator.swift in Sources */,
 				A9A08B2523A2CBCF00498069 /* LightSequenceAnimation.swift in Sources */,
 				A9BED709234F75E4002FFF53 /* TipAnimationViewController.swift in Sources */,
 				A96AA5CF23634BC3004A06BA /* AccelerometerPanelViewController.swift in Sources */,
@@ -1049,7 +1056,6 @@
 				A9BED774234FBEAB002FFF53 /* BlePeripheral+Uart.swift in Sources */,
 				A9482994237B880000B6FC13 /* BlePeripheral+AdafruitCommon.swift in Sources */,
 				A9D12EAB23E902BB00F3C259 /* Float+Clamped.swift in Sources */,
-				A958E77A23821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift in Sources */,
 				A9D12EA223E8A80F00F3C259 /* AccelerometerUtils.swift in Sources */,
 				A9716BAB2350128100CB174D /* RssiUI.swift in Sources */,
 				A948298D237B73B100B6FC13 /* HelpViewController.swift in Sources */,
@@ -1126,7 +1132,7 @@
 				A9D12E8723E3C5CF00F3C259 /* LightChartPanelViewController.swift in Sources */,
 				A9A08B3923A523C900498069 /* Int+Bytes.swift in Sources */,
 				A9A08B3A23A523C900498069 /* UIView+AllSubviewsWithClass.swift in Sources */,
-				A9A08BAD23A794F500498069 /* BlePeripheralSimulated+CPBLight.swift in Sources */,
+				A9A08BAD23A794F500498069 /* BlePeripheralSimulated+AdafruitLight.swift in Sources */,
 				A9A08B3B23A523C900498069 /* PeripheralList.swift in Sources */,
 				A9D12EAC23E902BB00F3C259 /* Float+Clamped.swift in Sources */,
 				A9A08B3C23A523C900498069 /* ButtonStatusPanelViewController.swift in Sources */,
@@ -1157,21 +1163,19 @@
 				A9A08B5523A523C900498069 /* CommandQueue.swift in Sources */,
 				A9A08B5623A523C900498069 /* LightSequence.swift in Sources */,
 				A9A08B5723A523C900498069 /* GridView.swift in Sources */,
+				A922568E2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift in Sources */,
 				A96A9EDA23E9C6B700E46743 /* PreviewView.swift in Sources */,
 				A9A08B5823A523C900498069 /* BlePeripheral+Uart.swift in Sources */,
 				A9A08B5923A523C900498069 /* BlePeripheral+AdafruitCommon.swift in Sources */,
 				A9D5B21123E0985600178E1B /* AutoConnectViewController.swift in Sources */,
-				A9A08B5A23A523C900498069 /* BlePeripheral+AdafruitToneGenerator.swift in Sources */,
 				A9A08B5B23A523C900498069 /* RssiUI.swift in Sources */,
 				A9A08B5C23A523C900498069 /* HelpViewController.swift in Sources */,
 				A9A08B5D23A523C900498069 /* NeoPixelsViewController.swift in Sources */,
 				A9A08B5E23A523C900498069 /* StartupViewController.swift in Sources */,
 				A9A08B5F23A523C900498069 /* ScreenFlowManager.swift in Sources */,
 				A9A08B6123A523C900498069 /* TipsAnimationComposerViewController.swift in Sources */,
-				A9A08B6223A523C900498069 /* BlePeripheral+AdafruitNeoPixels.swift in Sources */,
 				A9A08B6323A523C900498069 /* PixelsPreviewViewController.swift in Sources */,
-				A9A08B6423A523C900498069 /* BlePeripheralSimulated+CPBButtons.swift in Sources */,
-				A9A08B6523A523C900498069 /* BlePeripheral+AdafruitAccelerometer.swift in Sources */,
+				A9A08B6423A523C900498069 /* BlePeripheralSimulated+AdafruitButtons.swift in Sources */,
 				A9A08B6623A523C900498069 /* ButtonStatusViewController.swift in Sources */,
 				A9A08B6723A523C900498069 /* UIView+RoundedCorners.swift in Sources */,
 				A9A08B6823A523C900498069 /* TipWelcomeViewController.swift in Sources */,
@@ -1186,7 +1190,7 @@
 				A9A08B6D23A523C900498069 /* NormalBrightnessColorPickerController.swift in Sources */,
 				A9A08B6E23A523C900498069 /* PanelInsetView.swift in Sources */,
 				A9A08B6F23A523C900498069 /* LogHelper.swift in Sources */,
-				A9A08BB123A7966300498069 /* BlePeripheralSimulated+CPBTemperature.swift in Sources */,
+				A9A08BB123A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift in Sources */,
 				A9A08B7023A523C900498069 /* CommonTableViewCell.swift in Sources */,
 				A9A08BA123A5260300498069 /* BleManagerSimulated.swift in Sources */,
 				A9A08B7123A523C900498069 /* HomeViewController.swift in Sources */,
@@ -1198,7 +1202,9 @@
 				A9A08BAA23A7891500498069 /* ObjectBuilder.m in Sources */,
 				A9A08B7623A523C900498069 /* ConfigUI.swift in Sources */,
 				A9A08B7723A523C900498069 /* UartPacketManager.swift in Sources */,
+				A92256932411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift in Sources */,
 				A9A08B7823A523C900498069 /* LightSensorViewController.swift in Sources */,
+				A92256902411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift in Sources */,
 				A9A08B7923A523C900498069 /* TitleTableViewCell.swift in Sources */,
 				A9A08B7A23A523C900498069 /* HelpTableViewCell.swift in Sources */,
 				A9A08B7B23A523C900498069 /* TipViewController.swift in Sources */,

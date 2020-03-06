@@ -17,8 +17,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var baseTableView: UITableView!
 
     // Data
-    private enum Modules: Int {
-        case color = 0
+    private enum Modules {
+        case color
         case light
         case button
         case tone
@@ -61,9 +61,28 @@ class HomeViewController: UIViewController {
             case .puppet: return UIColor(named: "module_puppet_color")!
             }
         }
+        
+        var storyboardId: String {
+            switch self {
+            case .color:
+                return NeoPixelsViewController.kIdentifier
+            case .light:
+                return LightSensorViewController.kIdentifier
+            case .button:
+                return ButtonStatusViewController.kIdentifier
+            case .tone:
+                return ToneGeneratorViewController.kIdentifier
+            case .accelerometer:
+                return AccelerometerViewController.kIdentifier
+            case .temperature:
+                return TemperatureViewController.kIdentifier
+            case .puppet:
+                return PuppetViewController.kIdentifier
+            }
+        }
     }
 
-    private let menuItems: [Modules] = [.color, .light, .button, .tone, .accelerometer, .temperature, .puppet]
+    private var menuItems: [Modules] = [] //[.color, .light, .button, .tone, .accelerometer, .temperature, .puppet]
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -74,6 +93,11 @@ class HomeViewController: UIViewController {
         let topContentInsetForDetails: CGFloat = 20
         baseTableView.contentInset = UIEdgeInsets(top: topContentInsetForDetails, left: 0, bottom: 0, right: 0)
         */
+        
+        // Setup modules
+        if let blePeripheral = blePeripheralConnected() {
+            menuItems = menuItemItemsForBlePeripheral(blePeripheral)
+        }
 
         // Localization
         let localizationManager = LocalizationManager.shared
@@ -89,18 +113,43 @@ class HomeViewController: UIViewController {
         }*/
 
         /*
-        if let peripheral = Config.bleManager.connectedPeripherals().first {
+        if let peripheral = blePeripheralConnected() {
             peripheral.readRssi()
         }*/
     }
 
-    /*
-    // MARK: - Actions
-    @IBAction func about(_ sender: Any) {
-        guard let viewController = storyboard?.instantiateViewController(withIdentifier: AboutViewController.kIdentifier) else { return }
+
+    // MARK: - Utils
+    private func blePeripheralConnected() -> BlePeripheral? {
+        return Config.bleManager.connectedPeripherals().first
+    }
+    
+    private func menuItemItemsForBlePeripheral(_ blePeripheral: BlePeripheral) -> [Modules] {
+        var result: [Modules] = []
         
-        self.present(viewController, animated: true, completion: nil)
-    }*/
+        if AdafruitBoard.shared.isNeopixelsAvailable {
+            result.append(.color)
+        }
+        if AdafruitBoard.shared.isLightAvailable {
+            result.append(.light)
+        }
+        if AdafruitBoard.shared.isButtonsAvailable {
+            result.append(.button)
+        }
+        if AdafruitBoard.shared.isToneGeneratorAvailable {
+            result.append(.tone)
+        }
+        if AdafruitBoard.shared.isAcceleromterAvailable {
+            result.append(.accelerometer)
+        }
+        if AdafruitBoard.shared.isTemperatureAvailable {
+            result.append(.temperature)
+        }
+        if  AdafruitBoard.shared.isAcceleromterAvailable && AdafruitBoard.shared.isButtonsAvailable {
+            result.append(.puppet)
+        }
+        return result
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -154,7 +203,7 @@ extension HomeViewController: UITableViewDataSource {
             /*
              case .peripheral
              let peripheralCell = cell as! CommonTableViewCell
-             if let peripheral = Config.bleManager.connectedPeripherals().first {
+             if let peripheral = blePeripheralConnected() {
              // Fill peripheral data
              peripheralCell.titleLabel.text = peripheral.name ?? localizationManager.localizedString("scanner_unnamed")
              peripheralCell.iconImageView.image = RssiUI.signalImage(for: peripheral.rssi)
@@ -200,41 +249,22 @@ extension HomeViewController: UITableViewDelegate {
         case .details:
             break
         case .module:
-            if let module = Modules(rawValue: indexPath.row) {
-                var storyboardId: String?
-                switch module {
-                case .color:
-                    storyboardId = NeoPixelsViewController.kIdentifier
-                case .light:
-                    storyboardId = LightSensorViewController.kIdentifier
-                case .button:
-                    storyboardId = ButtonStatusViewController.kIdentifier
-                case .tone:
-                    storyboardId = ToneGeneratorViewController.kIdentifier
-                case .accelerometer:
-                    storyboardId = AccelerometerViewController.kIdentifier
-                case .temperature:
-                    storyboardId = TemperatureViewController.kIdentifier
-                case .puppet:
-                    storyboardId = PuppetViewController.kIdentifier
-                }
-
-                if let identifier = storyboardId, let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) {
-
-                    // Show viewController with completion block
-                    CATransaction.begin()
-                    self.show(viewController, sender: self)
-                    CATransaction.setCompletionBlock({
-                        // Flash neopixels with the module color
-                        AdafruitBoard.shared.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
-                    })
-                    CATransaction.commit()
-                }
+            let module = menuItems[indexPath.row]
+            if let viewController = storyboard?.instantiateViewController(withIdentifier: module.storyboardId) {
+                
+                // Show viewController with completion block
+                CATransaction.begin()
+                self.show(viewController, sender: self)
+                CATransaction.setCompletionBlock({
+                    // Flash neopixels with the module color
+                    AdafruitBoard.shared.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+                })
+                CATransaction.commit()
             }
 
         case .disconnect:
-            if let peripheral = Config.bleManager.connectedPeripherals().first {
-                Config.bleManager.disconnect(from: peripheral, waitForQueuedCommands: true)
+            if let blePeripheral = blePeripheralConnected() {
+                Config.bleManager.disconnect(from: blePeripheral, waitForQueuedCommands: true)
             }
         }
     }

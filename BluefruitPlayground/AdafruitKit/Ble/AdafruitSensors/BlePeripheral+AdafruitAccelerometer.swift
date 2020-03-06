@@ -17,6 +17,7 @@ extension BlePeripheral {
 
     static let kAdafruitAccelerometerDefaultPeriod: TimeInterval = 0.1
 
+    // Structs
     struct AccelerometerValue {
         var x: Float
         var y: Float

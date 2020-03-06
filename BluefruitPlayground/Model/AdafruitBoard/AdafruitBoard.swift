@@ -230,6 +230,32 @@ class AdafruitBoard {
         }
     }
 
+    // MARK: - Sensor availability
+    var isNeopixelsAvailable: Bool {
+        return blePeripheral?.adafruitNeoPixelsIsEnabled() ?? false
+    }
+    
+    var isLightAvailable: Bool {
+        return blePeripheral?.adafruitLightIsEnabled() ?? false
+    }
+    
+    var isButtonsAvailable: Bool {
+        return blePeripheral?.adafruitButtonsIsEnabled() ?? false
+    }
+
+    var isToneGeneratorAvailable: Bool {
+        return blePeripheral?.adafruitToneGeneratorIsEnabled() ?? false
+    }
+    
+    var isAcceleromterAvailable: Bool {
+        return blePeripheral?.adafruitAccelerometerIsEnabled() ?? false
+    }
+
+    var isTemperatureAvailable: Bool {
+        return blePeripheral?.adafruitTemperatureIsEnabled() ?? false
+    }
+
+    
     // MARK: - Read Data
     func lightLastValue() -> Float? {
         return blePeripheral?.adafruitLightLastValue()
