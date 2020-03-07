@@ -32,7 +32,7 @@ class AccelerometerViewController: ModuleViewController {
         let scene = SCNScene(named: "cpb.scn")!
         scene.background.contents = UIColor.clear
 
-        circuitNode = scene.rootNode.childNode(withName: "Circuit_Playground_Bluefruit", recursively: false)!
+        circuitNode = scene.rootNode.childNode(withName: "root", recursively: false)!
 
         // Setup scene
         sceneView.scene = scene
