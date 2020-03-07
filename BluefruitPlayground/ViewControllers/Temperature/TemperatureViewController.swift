@@ -104,7 +104,7 @@ class TemperatureViewController: ModuleViewController {
 
 // MARK: - CPBBleTemperatureDelegate
 extension TemperatureViewController: AdafruitTemperatureDelegate {
-    func cpbleTemperatureReceived(_ temperature: Float) {
+    func adafruitTemperatureReceived(_ temperature: Float) {
         temperatureCelsius = temperature
         updateValueUI()
     }

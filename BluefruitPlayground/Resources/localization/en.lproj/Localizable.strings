@@ -76,7 +76,7 @@ https://github.com/mindsnacks/MSWeakTimer";
 "bluetooth_enable_action" = "Bluetooth permissions";
 
 // Autoconnect
-"autoconnect_title" = "Finding CPB";
+"autoconnect_title" = "Finding Device";
 "autoconnect_manual_action" = "Select device manually";
 "autoconnect_backbutton" = "Autoconnect";
 
@@ -84,7 +84,7 @@ https://github.com/mindsnacks/MSWeakTimer";
 "autoconnect_startscanning_action" = "Connect";
 
 // Scanner
-"scanner_title" = "Select CPB";
+"scanner_title" = "Select Device";
 
 "scanner_connecting" = "Connecting...";
 "scanner_discoveringservices" = "Discovering services...";
@@ -99,8 +99,7 @@ https://github.com/mindsnacks/MSWeakTimer";
 "scanner_problems_action" = "I can't find my device";
 "scanner_backbutton" = "Disconnect";
 
-"scanner_setupuart" = "Starting UART protocol";
-"uart_error_peripheralinit" = "Uart protocol can not be initialized";
+"scanner_error_startboard" = "Error communicating with device";
 
 // Scanner Problems
 "scannerproblems_title" = "Troubleshooting";
@@ -135,8 +134,13 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_temperature_subtitle" = "View current temperature readings";
 "modules_puppet_title" = "Puppets";
 "modules_puppet_subtitle" = "Play with a 3D puppet using the accelerometer and buttons";
+"modules_humidity_title" = "Humidity";
+"modules_humidity_subtitle" = "View relative humidity percentage";
+
+
 "modules_disconnect_title" = "Disconnect";
-"modules_disconnect_subtitle" = "Close the current connection and scan for a new CPB device";
+"modules_disconnect_subtitle" = "Close the current connection and scan for a new device";
+
 
 // Neopixels
 "neopixels_title" = "NeoPixels";
@@ -206,6 +210,22 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "accelerometer_panel_accelerometer_title" = "Accelerometer (m/s²):";
 "accelerometer_panel_eulerangles_title" = "Euler Angles (degrees):";
 
+// Temperature
+"temperature_title" = "Temperature";
+"temperature_help" = "Temperature mode displays continuous temperature readings from Circuit Playground Bluefruit’s built-in thermistor. 
+
+• Switch between Fahrenheit and Celsius units by tapping the °F/°C button in the lower right corner.
+
+• Previous temperature values are recorded and displayed in the graph at the bottom.
+
+• Try breathing hot air on the CPB and watch the values change in realtime";
+"temperature_units_celsius" = "ºC";
+"temperature_units_farenheit" = "ºF";
+
+"temperature_panel_title" = "Temperature Chart";
+"temperature_chart_nodata" = "No chart data available";
+
+
 // Puppet
 "puppet_title" = "Puppets";
 "puppet_help_header" = "The Puppets module allows you to animate a 3D puppet in real time using Circuit Playground Bluefruit. 
@@ -222,22 +242,19 @@ To control Sparky the Blue Smoke Monster, attach Circuit Playground Bluefruit to
 
 "puppet_panel_title" = "Camera Controls";
 
+// Humidity
+"humidity_title" = "Humidity";
+"humidity_help" = "The Humidity module displays relative humidity values sent from your Bluefruit device. Values are visually represented as a raindrop container as well as a graph showing changes in relative humidity over time.";
+
+"humidity_panel_title" = "Relative Humidity";
+"humidity_chart_nodata" = "No chart data available";
 
 
-// Temperature
-"temperature_title" = "Temperature";
-"temperature_help" = "Temperature mode displays continuous temperature readings from Circuit Playground Bluefruit’s built-in thermistor. 
 
-• Switch between Fahrenheit and Celsius units by tapping the °F/°C button in the lower right corner.
 
-• Previous temperature values are recorded and displayed in the graph at the bottom.
 
-• Try breathing hot air on the CPB and watch the values change in realtime";
-"temperature_units_celsius" = "ºC";
-"temperature_units_farenheit" = "ºF";
 
-"temperature_panel_title" = "Temperature Chart";
-"temperature_chart_nodata" = "No chart data available";
+
 
 // Help
 "help_title" = "Help";

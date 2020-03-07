@@ -28,6 +28,10 @@
 		A92256AF24131FF600B8AB57 /* clue.scn in Resources */ = {isa = PBXBuildFile; fileRef = A92256AD24131FF600B8AB57 /* clue.scn */; };
 		A92256B92413263100B8AB57 /* Modules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92256B72413263000B8AB57 /* Modules.storyboard */; };
 		A92256BA2413263100B8AB57 /* Modules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92256B72413263000B8AB57 /* Modules.storyboard */; };
+		A92256C52413307900B8AB57 /* HumidityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256C32413307900B8AB57 /* HumidityViewController.swift */; };
+		A92256C62413307900B8AB57 /* HumidityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256C32413307900B8AB57 /* HumidityViewController.swift */; };
+		A92256C72413307900B8AB57 /* HumidityPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256C42413307900B8AB57 /* HumidityPanelViewController.swift */; };
+		A92256C82413307900B8AB57 /* HumidityPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256C42413307900B8AB57 /* HumidityPanelViewController.swift */; };
 		A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */; };
 		A92B9F14234DE4A2002374F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F12234DE4A2002374F0 /* Main.storyboard */; };
 		A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
@@ -267,6 +271,8 @@
 		A92256A824131FC300B8AB57 /* CLUETextureSurface_Color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CLUETextureSurface_Color.png; sourceTree = "<group>"; };
 		A92256AD24131FF600B8AB57 /* clue.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = clue.scn; sourceTree = "<group>"; };
 		A92256B82413263000B8AB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Modules.storyboard; sourceTree = "<group>"; };
+		A92256C32413307900B8AB57 /* HumidityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityViewController.swift; sourceTree = "<group>"; };
+		A92256C42413307900B8AB57 /* HumidityPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityPanelViewController.swift; sourceTree = "<group>"; };
 		A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluefruit Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A92B9F13234DE4A2002374F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -485,6 +491,15 @@
 				A92256A824131FC300B8AB57 /* CLUETextureSurface_Color.png */,
 			);
 			path = CLUE;
+			sourceTree = "<group>";
+		};
+		A92256C22413307900B8AB57 /* Humidity */ = {
+			isa = PBXGroup;
+			children = (
+				A92256C32413307900B8AB57 /* HumidityViewController.swift */,
+				A92256C42413307900B8AB57 /* HumidityPanelViewController.swift */,
+			);
+			path = Humidity;
 			sourceTree = "<group>";
 		};
 		A92B9F00234DE4A2002374F0 = {
@@ -808,6 +823,7 @@
 				A96AA5C4236312C1004A06BA /* ToneGenerator */,
 				A96AA5CB23634B37004A06BA /* Accelerometer */,
 				A94AC1442363A5750062AB11 /* Temperature */,
+				A92256C22413307900B8AB57 /* Humidity */,
 				A92EF90623ECEEB500191C36 /* Puppet */,
 			);
 			path = ViewControllers;
@@ -1114,10 +1130,12 @@
 				A9BED70B234F7617002FFF53 /* Config.swift in Sources */,
 				A922569E2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift in Sources */,
 				A980FE6F2357D15400E3A909 /* TipDiscoverViewController.swift in Sources */,
+				A92256C72413307900B8AB57 /* HumidityPanelViewController.swift in Sources */,
 				A948298F237B73B100B6FC13 /* ModulePanelViewController.swift in Sources */,
 				A90086DF23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */,
 				A9BED707234F75E4002FFF53 /* TipsViewController.swift in Sources */,
 				A958E780238B75D9006A225A /* NormalBrightnessColorPickerController.swift in Sources */,
+				A92256C52413307900B8AB57 /* HumidityViewController.swift in Sources */,
 				A9B3569F2365D420002093EE /* PanelInsetView.swift in Sources */,
 				A9BED77B234FBEAB002FFF53 /* LogHelper.swift in Sources */,
 				A948298E237B73B100B6FC13 /* CommonTableViewCell.swift in Sources */,
@@ -1188,6 +1206,7 @@
 				A9A08B4423A523C900498069 /* ToneGeneratorViewController.swift in Sources */,
 				A9A08B4523A523C900498069 /* Data+ScanValue.swift in Sources */,
 				A9A08B4623A523C900498069 /* Data+LittleEndianTypes.swift in Sources */,
+				A92256C62413307900B8AB57 /* HumidityViewController.swift in Sources */,
 				A9A08B4723A523C900498069 /* TipPowerUpViewController.swift in Sources */,
 				A9D12E8823E4434000F3C259 /* UIColor+Interpolate.swift in Sources */,
 				A9A08B4823A523C900498069 /* AdafruitBoard.swift in Sources */,
@@ -1263,6 +1282,7 @@
 				A9A08B8523A523C900498069 /* NeopixelsLightSequenceViewController.swift in Sources */,
 				A9A08B8623A523C900498069 /* SensorDataSeries.swift in Sources */,
 				A9A08B8723A523C900498069 /* Settings.swift in Sources */,
+				A92256C82413307900B8AB57 /* HumidityPanelViewController.swift in Sources */,
 				A9A08B8823A523C900498069 /* BlePeripheral+Battery.swift in Sources */,
 				A92256962411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */,
 				A9A08B8923A523C900498069 /* TemperaturePanelViewController.swift in Sources */,

@@ -14,7 +14,7 @@ class LightSensorPanelViewController: ModulePanelViewController {
 
     // Config
     private static let kScaleMinLux: Float = 0
-    private static let kScaleMaxLux: Float = 800//256        // Note: What is a sensible value here??
+    private static let kScaleMaxLux: Float = 800        // Note: What is a sensible value here??
 
     // UI
     @IBOutlet weak var valueLabel: UILabel!
@@ -27,24 +27,24 @@ class LightSensorPanelViewController: ModulePanelViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // UI
         scaleImageView.mask = maskView
         setScaleProgress(0)     // Initial value
 
         // Localization
         let localizationManager = LocalizationManager.shared
         titleLabel.text = localizationManager.localizedString("lightsensor_panel_title")
-
         unitsLabel.text = localizationManager.localizedString("lightsensor_panel_unit")
     }
 
     private func setScaleProgress(_ value: Float) {
-        var adjustedValue = max(LightSensorPanelViewController.kScaleMinLux,
-                                min(LightSensorPanelViewController.kScaleMaxLux, value))
-        if adjustedValue == 0 {
-            adjustedValue = 0.001       // 0 breaks the setMultiplier function
-        }
+        let minValue: Float = 0.001       // 0 breaks the setMultiplier function
+        let maxValue: Float = 1
+        let adjustedValue = max(minValue, min(maxValue, value))
+
+        DLog("progress: \(adjustedValue)")
+        NSLayoutConstraint.setMultiplier(multiplier: CGFloat(adjustedValue), constraint: &self.maskViewWidthConstraint)
         //UIView.animate(withDuration: BlePeripheral.kCPBLightDefaultPeriod) {
-            NSLayoutConstraint.setMultiplier(multiplier: CGFloat(adjustedValue), constraint: &self.maskViewWidthConstraint)
         //}
     }
 

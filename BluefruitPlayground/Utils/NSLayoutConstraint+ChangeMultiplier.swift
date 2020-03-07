@@ -18,8 +18,9 @@ extension NSLayoutConstraint {
      */
     static func setMultiplier(multiplier: CGFloat, constraint: inout NSLayoutConstraint) {
 
-        if multiplier == 0 {
+        guard multiplier != 0 else {
             DLog("Warning: multiplier 0 breaks this function")
+            return
         }
 
         NSLayoutConstraint.deactivate([constraint])

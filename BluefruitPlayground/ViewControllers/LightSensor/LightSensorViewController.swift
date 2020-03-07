@@ -73,7 +73,7 @@ class LightSensorViewController: ModuleViewController {
 
 // MARK: - CPBBleLightDelegate
 extension LightSensorViewController: AdafruitLightDelegate {
-    func cpbleLightReceived(_ light: Float) {
+    func adafruitLightReceived(_ light: Float) {
         self.light = light
         updateValueUI()
     }

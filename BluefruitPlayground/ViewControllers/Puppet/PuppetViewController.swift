@@ -410,7 +410,7 @@ class PuppetViewController: UIViewController {
 
 // MARK: - CPBBleAccelerometerDelegate
 extension PuppetViewController: AdafruitAccelerometerDelegate {
-    func cpbleAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue) {
+    func adafruitAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue) {
         self.acceleration = acceleration
         updateValueUI()
     }
@@ -418,7 +418,7 @@ extension PuppetViewController: AdafruitAccelerometerDelegate {
 
 // MARK: - CPBBleButtonsDelegate
 extension PuppetViewController: AdafruitButtonsDelegate {
-    func cpbleButtonsReceived(_ newButtonsState: BlePeripheral.ButtonsState) {
+    func adafruitButtonsReceived(_ newButtonsState: BlePeripheral.ButtonsState) {
         // Check if A became pressed
         if newButtonsState.buttonA == .pressed && newButtonsState.buttonA != buttonsState?.buttonA {
             startSparkyEyesAnimation()

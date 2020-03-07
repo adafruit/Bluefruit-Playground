@@ -24,8 +24,9 @@ class HomeViewController: UIViewController {
         case tone
         case accelerometer
         case temperature
+        case humidity
         case puppet
-
+        
         var titleStringId: String {
             switch self {
             case .color: return "modules_color_title"
@@ -35,9 +36,10 @@ class HomeViewController: UIViewController {
             case .accelerometer: return "modules_accelerometer_title"
             case .temperature: return "modules_temperature_title"
             case .puppet: return "modules_puppet_title"
+            case .humidity: return "modules_humidity_title"
             }
         }
-
+        
         var subtitleStringId: String {
             switch self {
             case .color: return "modules_color_subtitle"
@@ -47,9 +49,10 @@ class HomeViewController: UIViewController {
             case .accelerometer: return "modules_accelerometer_subtitle"
             case .temperature: return "modules_temperature_subtitle"
             case .puppet: return "modules_puppet_subtitle"
+            case .humidity: return "modules_humidity_subtitle"
             }
         }
-
+        
         var color: UIColor {
             switch self {
             case .color: return UIColor(named: "module_neopixels_color")!
@@ -59,6 +62,7 @@ class HomeViewController: UIViewController {
             case .accelerometer: return UIColor(named: "module_accelerometer_color")!
             case .temperature: return UIColor(named: "module_temperature_color")!
             case .puppet: return UIColor(named: "module_puppet_color")!
+            case .humidity: return UIColor(named: "module_humidity_color")!
             }
         }
         
@@ -78,21 +82,21 @@ class HomeViewController: UIViewController {
                 return TemperatureViewController.kIdentifier
             case .puppet:
                 return PuppetViewController.kIdentifier
+            case .humidity:
+                return HumidityViewController.kIdentifier
             }
         }
     }
 
-    private var menuItems: [Modules] = [] //[.color, .light, .button, .tone, .accelerometer, .temperature, .puppet]
+    private var menuItems: [Modules] = []
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Setup UI
-        /*
-        let topContentInsetForDetails: CGFloat = 20
+        let topContentInsetForDetails: CGFloat = 10// 20
         baseTableView.contentInset = UIEdgeInsets(top: topContentInsetForDetails, left: 0, bottom: 0, right: 0)
-        */
         
         // Setup modules
         if let blePeripheral = blePeripheralConnected() {
@@ -146,6 +150,9 @@ class HomeViewController: UIViewController {
         }
         if board.isTemperatureAvailable {
             result.append(.temperature)
+        }
+        if board.isHumidityAvailable {
+            result.append(.humidity)
         }
         if board.model == .clue_nRF52840 && board.isAccelerometerAvailable && board.isButtonsAvailable {
             result.append(.puppet)

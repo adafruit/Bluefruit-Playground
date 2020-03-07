@@ -59,7 +59,7 @@ class ButtonStatusViewController: ModuleViewController {
 
 // MARK: - CPBBleButtonsDelegate
 extension ButtonStatusViewController: AdafruitButtonsDelegate {
-    func cpbleButtonsReceived(_ buttonsState: BlePeripheral.ButtonsState) {
+    func adafruitButtonsReceived(_ buttonsState: BlePeripheral.ButtonsState) {
         self.buttonsState = buttonsState
         updateValueUI()
     }

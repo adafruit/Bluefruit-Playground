@@ -10,20 +10,25 @@ import UIKit
 import FlexColorPicker
 
 protocol AdafruitTemperatureDelegate: class {
-    func cpbleTemperatureReceived(_ temperature: Float)
+    func adafruitTemperatureReceived(_ temperature: Float)
 }
 
 protocol AdafruitLightDelegate: class {
-    func cpbleLightReceived(_ light: Float)
+    func adafruitLightReceived(_ light: Float)
 }
 
 protocol AdafruitButtonsDelegate: class {
-    func cpbleButtonsReceived(_ buttonsState: BlePeripheral.ButtonsState)
+    func adafruitButtonsReceived(_ buttonsState: BlePeripheral.ButtonsState)
 }
 
 protocol AdafruitAccelerometerDelegate: class {
-    func cpbleAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue)
+    func adafruitAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue)
 }
+
+protocol AdafruitHumidityDelegate: class {
+    func adafruitHumidityReceived(_ humidity: Float)
+}
+
 
 /**
  Manages the sensors for a connected Adafruit Board
@@ -37,6 +42,7 @@ protocol AdafruitAccelerometerDelegate: class {
     - tone generator
     - accelerometer
     - temperature
+    - humidity
 
  */
 class AdafruitBoard {
@@ -58,6 +64,7 @@ class AdafruitBoard {
         case toneGenerator
         case accelerometer
         case temperature
+        case humidity
     }
     
     // Notifications
@@ -71,6 +78,7 @@ class AdafruitBoard {
     weak var lightDelegate: AdafruitLightDelegate?
     weak var buttonsDelegate: AdafruitButtonsDelegate?
     weak var accelerometerDelegate: AdafruitAccelerometerDelegate?
+    weak var humidityDelegate: AdafruitHumidityDelegate?
 
     // Data
     private(set) weak var blePeripheral: BlePeripheral?
@@ -81,6 +89,7 @@ class AdafruitBoard {
     private var temperatureData = SensorDataSeries<Float>()
     private var lightData = SensorDataSeries<Float>()
     private var accelerometerData = SensorDataSeries<BlePeripheral.AccelerometerValue>()
+    private var humidityData = SensorDataSeries<Float>()
 
     private var currentLightSequenceAnimation: LightSequenceAnimation?
     public var neopixelCurrentLightSequenceAnimationSpeed: Double {
@@ -215,6 +224,21 @@ class AdafruitBoard {
             }
         }
         
+        // Temperature Service: Enable receiving data
+        if services.contains(.humidity) {
+            servicesGroup.enter()
+            blePeripheral.adafruitHumidityEnable(responseHandler: self.receiveHumidityData) { result in
+                
+                if case .success = result {
+                    DLog("Humidity reading enabled")
+                } else {
+                    DLog("Warning: Humidity reading enable failed")
+                }
+                servicesGroup.leave()
+            }
+        }
+        
+        // Wait for all finished
         servicesGroup.notify(queue: DispatchQueue.main) {
             DLog("setupServices finished")
             completion(.success(()))
@@ -246,6 +270,10 @@ class AdafruitBoard {
         return blePeripheral?.adafruitTemperatureIsEnabled() ?? false
     }
     
+    var isHumidityAvailable: Bool {
+        return blePeripheral?.adafruitHumidityIsEnabled() ?? false
+    }
+    
     // MARK: - Read Data
     func lightLastValue() -> Float? {
         return blePeripheral?.adafruitLightLastValue()
@@ -253,6 +281,10 @@ class AdafruitBoard {
 
     func temperatureLastValue() -> Float? {
         return blePeripheral?.adafruitTemperatureLastValue()
+    }
+    
+    func temperatureDataSeries() -> [SensorDataSeries<Float>.Entry] {
+        return temperatureData.values
     }
 
     func buttonsReadState(completion: @escaping(Result<(BlePeripheral.ButtonsState, UUID), Error>) -> Void) {
@@ -275,11 +307,41 @@ class AdafruitBoard {
         return lightData.values
     }
 
-    func temperatureDataSeries() -> [SensorDataSeries<Float>.Entry] {
-        return temperatureData.values
+    func humidityLastValue() -> Float? {
+        return blePeripheral?.adafruitHumidityLastValue()
     }
+    
+    func humidityDataSeries() -> [SensorDataSeries<Float>.Entry] {
+           return humidityData.values
+       }
 
     // MARK: - Receive Data
+    private func receiveHumidityData(response: Result<(Float, UUID), Error>) {
+        switch response {
+        case let .success(humidity, uuid):
+            // Save value
+            let entry = SensorDataSeries.Entry(value: humidity, timestamp: CFAbsoluteTimeGetCurrent())
+            humidityData.values.append(entry)
+            //DLog("Humidity: \(humidity)%")
+            
+            // Send to delegate
+            if let humidityDelegate = humidityDelegate {
+                DispatchQueue.main.async {      // Delegates are called in the main thread
+                    humidityDelegate.adafruitHumidityReceived(humidity)
+                }
+            }
+            
+            // Send notification
+            NotificationCenter.default.post(name: .didReceiveHumidityData, object: nil, userInfo: [
+                NotificationUserInfoKey.value.rawValue: humidity,
+                NotificationUserInfoKey.uuid.rawValue: uuid
+            ])
+            
+        case .failure(let error):
+            DLog("Error receiving humidity data: \(error)")
+        }
+    }
+    
     private func receiveTemperatureData(response: Result<(Float, UUID), Error>) {
         switch response {
         case let .success(temperature, uuid):
@@ -291,7 +353,7 @@ class AdafruitBoard {
             // Send to delegate
             if let temperatureDelegate = temperatureDelegate {
                 DispatchQueue.main.async {      // Delegates are called in the main thread
-                    temperatureDelegate.cpbleTemperatureReceived(temperature)
+                    temperatureDelegate.adafruitTemperatureReceived(temperature)
                 }
             }
 
@@ -317,7 +379,7 @@ class AdafruitBoard {
             // Send to delegate
             if let lightDelegate = lightDelegate {
                 DispatchQueue.main.async {      // Delegates are called in the main thread
-                    lightDelegate.cpbleLightReceived(light)
+                    lightDelegate.adafruitLightReceived(light)
                 }
             }
 
@@ -340,7 +402,7 @@ class AdafruitBoard {
             // Send to delegate
             if let buttonsDelegate = buttonsDelegate {
                 DispatchQueue.main.async {      // Delegates are called in the main thread
-                    buttonsDelegate.cpbleButtonsReceived(buttonsState)
+                    buttonsDelegate.adafruitButtonsReceived(buttonsState)
                 }
             }
 
@@ -366,7 +428,7 @@ class AdafruitBoard {
                // Send to delegate
                if let accelerometerDelegate = accelerometerDelegate {
                    DispatchQueue.main.async {      // Delegates are called in the main thread
-                       accelerometerDelegate.cpbleAccelerationReceived(acceleration)
+                       accelerometerDelegate.adafruitAccelerationReceived(acceleration)
                    }
                }
 
@@ -449,6 +511,7 @@ class AdafruitBoard {
 extension Notification.Name {
     private static let kNotificationsPrefix = Bundle.main.bundleIdentifier!
     static let willDiscoverServices = Notification.Name(kNotificationsPrefix+".willDiscoverServices")
+    static let didReceiveHumidityData = Notification.Name(kNotificationsPrefix+".didReceiveHumidityData")
     static let didReceiveTemperatureData = Notification.Name(kNotificationsPrefix+".didReceiveTemperatureData")
     static let didReceiveLightData = Notification.Name(kNotificationsPrefix+".didReceiveLightData")
     static let didReceiveButtonsData = Notification.Name(kNotificationsPrefix+".didReceiveButtonsData")

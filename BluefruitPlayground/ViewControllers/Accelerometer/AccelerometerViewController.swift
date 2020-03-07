@@ -84,7 +84,7 @@ class AccelerometerViewController: ModuleViewController {
 
 // MARK: - CPBBleAccelerometerDelegate
 extension AccelerometerViewController: AdafruitAccelerometerDelegate {
-    func cpbleAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue) {
+    func adafruitAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue) {
         self.acceleration = acceleration
         updateValueUI()
     }
