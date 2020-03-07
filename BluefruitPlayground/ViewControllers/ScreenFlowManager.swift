@@ -9,6 +9,14 @@
 import UIKit
 
 struct ScreenFlowManager {
+    // Storyboards
+    static var mainStoryboard: UIStoryboard {
+        return UIStoryboard(name: "Main", bundle: nil)
+    }
+    
+    static var modulesStoryboard: UIStoryboard {
+        return UIStoryboard(name: "Modules", bundle: nil)
+    }
 
     // Data
     private static var wasManualScanningLastUsed = !Config.isAutomaticConnectionEnabled || !Config.useAutomaticConnectionAsDefaultMode        // Last scanning method used
@@ -25,7 +33,6 @@ struct ScreenFlowManager {
         let isInManualScan = (window.rootViewController as? UINavigationController)?.topViewController is ScannerViewController
         let transition: UIView.AnimationOptions = isInManualScan ? .transitionFlipFromLeft : .transitionCrossDissolve
 
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: AutoConnectViewController.kNavigationControllerIdentifier)
         changeRootViewController(rootViewController: rootNavigationViewController, animationOptions: transition)
     }
@@ -41,28 +48,24 @@ struct ScreenFlowManager {
         let isInAutoconnect = (window.rootViewController as? UINavigationController)?.topViewController is AutoConnectViewController
         let transition: UIView.AnimationOptions = isInAutoconnect ? .transitionFlipFromRight : .transitionCrossDissolve
 
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: ScannerViewController.kNavigationControllerIdentifier)
         changeRootViewController(rootViewController: rootNavigationViewController, animationOptions: transition)
     }
-
+    
     public static func restoreAndGoToCPBModules() {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: HomeViewController.kNavigationControllerIdentifier)
-
+        
         changeRootViewController(rootViewController: rootNavigationViewController) {
-           
+            
             let board = AdafruitBoardsManager.shared.currentBoard
             board?.neopixelStartLightSequence(FlashLightSequence(baseColor: .lightGray), speed: 1, repeating: false, sendLightSequenceNotifications: false)
         }
     }
-
+    
     public static func gotoCPBModules() {
         guard let window = UIApplication.shared.keyWindow else { return }
         ScreenFlowManager.wasManualScanningLastUsed = (window.rootViewController as? UINavigationController)?.topViewController is ScannerViewController
-
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: HomeViewController.kNavigationControllerIdentifier)
         changeRootViewController(rootViewController: rootNavigationViewController) {
            
@@ -163,7 +166,6 @@ struct ScreenFlowManager {
         }
 
         if let viewControllerIdentifier = viewControllerIdentifier {
-            let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: viewControllerIdentifier)
             changeRootViewController(rootViewController: rootNavigationViewController)
             return true

@@ -381,10 +381,10 @@ extension ScannerViewController: UITableViewDelegate {
             let peripheralIndex = indexPath.row - 1
             let peripheral = peripheralList.filteredPeripherals(forceUpdate: false)[peripheralIndex]
 
-            //
+            // Board Image
             var boardImage: UIImage?
-            if let specs = peripheral.adafruitManufacturerData(), let board = specs.board {
-                switch board {
+            if let adafruitData = peripheral.adafruitManufacturerData(), let boardModel = adafruitData.boardModel {
+                switch boardModel {
                 case .circuitPlaygroundBluefruit: boardImage = UIImage(named: "scan_cpb")
                 case .clue_nRF52840: boardImage = UIImage(named: "scan_clue")
                 default: break

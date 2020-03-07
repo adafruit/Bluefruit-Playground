@@ -26,7 +26,7 @@ extension BlePeripheral {
     // MARK: - Adafruit Specific Data
     struct AdafruitManufacturerData {
         // Types
-        enum Board: CaseIterable {
+        enum BoardModel: CaseIterable {
             case circuitPlaygroundBluefruit
             case clue_nRF52840
             case feather_nRF52840_express
@@ -44,13 +44,13 @@ extension BlePeripheral {
         
         // Data
         var color: UIColor?
-        var board: Board?
+        var boardModel: BoardModel?
         
         // Utils
-        static func board(withBoardTypeData data: Data) -> Board? {
+        static func board(withBoardTypeData data: Data) -> BoardModel? {
             let bytes = [UInt8](data)
             
-            let board = Board.allCases.first(where: {
+            let board = BoardModel.allCases.first(where: {
                 $0.identifier.contains(bytes)
             })
 
@@ -91,7 +91,7 @@ extension BlePeripheral {
                 let boardTypeData = fieldData[0..<2]
                 
                 if let board = AdafruitManufacturerData.board(withBoardTypeData: boardTypeData) {
-                    adafruitManufacturerData.board = board
+                    adafruitManufacturerData.boardModel = board
                 }
                 else {
                     DLog("Warning: unknown board type found: \([UInt8](boardTypeData))")

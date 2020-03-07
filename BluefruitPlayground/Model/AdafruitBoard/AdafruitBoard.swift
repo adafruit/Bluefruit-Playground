@@ -73,10 +73,14 @@ class AdafruitBoard {
     weak var accelerometerDelegate: AdafruitAccelerometerDelegate?
 
     // Data
+    private(set) weak var blePeripheral: BlePeripheral?
+    var model: BlePeripheral.AdafruitManufacturerData.BoardModel? {
+        return blePeripheral?.adafruitManufacturerData()?.boardModel
+    }
+
     private var temperatureData = SensorDataSeries<Float>()
     private var lightData = SensorDataSeries<Float>()
     private var accelerometerData = SensorDataSeries<BlePeripheral.AccelerometerValue>()
-    private(set) weak var blePeripheral: BlePeripheral?
 
     private var currentLightSequenceAnimation: LightSequenceAnimation?
     public var neopixelCurrentLightSequenceAnimationSpeed: Double {
@@ -123,7 +127,7 @@ class AdafruitBoard {
     private func setupServices(blePeripheral: BlePeripheral, services: [BoardService], completion: @escaping (Result<Void, Error>) -> Void) {
         
         // Set current peripheral
-        self.blePeripheral  = blePeripheral
+        self.blePeripheral = blePeripheral
         
         // Setup services
         let servicesGroup = DispatchGroup()

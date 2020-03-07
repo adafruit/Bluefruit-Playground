@@ -26,6 +26,8 @@
 		A92256AC24131FC300B8AB57 /* CLUETextureSurface_Color.png in Resources */ = {isa = PBXBuildFile; fileRef = A92256A824131FC300B8AB57 /* CLUETextureSurface_Color.png */; };
 		A92256AE24131FF600B8AB57 /* clue.scn in Resources */ = {isa = PBXBuildFile; fileRef = A92256AD24131FF600B8AB57 /* clue.scn */; };
 		A92256AF24131FF600B8AB57 /* clue.scn in Resources */ = {isa = PBXBuildFile; fileRef = A92256AD24131FF600B8AB57 /* clue.scn */; };
+		A92256B92413263100B8AB57 /* Modules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92256B72413263000B8AB57 /* Modules.storyboard */; };
+		A92256BA2413263100B8AB57 /* Modules.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92256B72413263000B8AB57 /* Modules.storyboard */; };
 		A92B9F0D234DE4A2002374F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */; };
 		A92B9F14234DE4A2002374F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F12234DE4A2002374F0 /* Main.storyboard */; };
 		A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
@@ -264,6 +266,7 @@
 		A922569F2412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitColorSensor.swift"; sourceTree = "<group>"; };
 		A92256A824131FC300B8AB57 /* CLUETextureSurface_Color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CLUETextureSurface_Color.png; sourceTree = "<group>"; };
 		A92256AD24131FF600B8AB57 /* clue.scn */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = clue.scn; sourceTree = "<group>"; };
+		A92256B82413263000B8AB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Modules.storyboard; sourceTree = "<group>"; };
 		A92B9F09234DE4A2002374F0 /* Bluefruit Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bluefruit Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A92B9F13234DE4A2002374F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -512,6 +515,7 @@
 				A98F1B882359494500C5269E /* ConfigUI.swift */,
 				A92B9F0C234DE4A2002374F0 /* AppDelegate.swift */,
 				A92B9F12234DE4A2002374F0 /* Main.storyboard */,
+				A92256B72413263000B8AB57 /* Modules.storyboard */,
 				A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */,
 				A9F2F1E0234E45FD00D85E6C /* Assets.xcassets */,
 				A9A08BA623A7891500498069 /* BluefruitPlayground-Bridging-Header.h */,
@@ -931,6 +935,7 @@
 				A98E4D3223566785005B166D /* cpb.scn in Resources */,
 				A92256AB24131FC300B8AB57 /* CLUETextureSurface_Color.png in Resources */,
 				A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */,
+				A92256B92413263100B8AB57 /* Modules.storyboard in Resources */,
 				A92256AE24131FF600B8AB57 /* clue.scn in Resources */,
 				A99BA71F234FFECF0080D03F /* DefaultPreferences.plist in Resources */,
 				A9BED715234FBD2E002FFF53 /* Localizable.strings in Resources */,
@@ -955,6 +960,7 @@
 				A9A08B9023A523C900498069 /* cpb.scn in Resources */,
 				A92256AC24131FC300B8AB57 /* CLUETextureSurface_Color.png in Resources */,
 				A9A08B9123A523C900498069 /* LaunchScreen.storyboard in Resources */,
+				A92256BA2413263100B8AB57 /* Modules.storyboard in Resources */,
 				A92256AF24131FF600B8AB57 /* clue.scn in Resources */,
 				A9A08B9223A523C900498069 /* DefaultPreferences.plist in Resources */,
 				A9A08B9323A523C900498069 /* Localizable.strings in Resources */,
@@ -1281,6 +1287,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		A92256B72413263000B8AB57 /* Modules.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A92256B82413263000B8AB57 /* Base */,
+			);
+			name = Modules.storyboard;
+			sourceTree = "<group>";
+		};
 		A92B9F12234DE4A2002374F0 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

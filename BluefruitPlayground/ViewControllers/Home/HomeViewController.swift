@@ -147,7 +147,7 @@ class HomeViewController: UIViewController {
         if board.isTemperatureAvailable {
             result.append(.temperature)
         }
-        if board.isAccelerometerAvailable && board.isButtonsAvailable {
+        if board.model == .clue_nRF52840 && board.isAccelerometerAvailable && board.isButtonsAvailable {
             result.append(.puppet)
         }
         return result
@@ -252,19 +252,18 @@ extension HomeViewController: UITableViewDelegate {
             break
         case .module:
             let module = menuItems[indexPath.row]
-            if let viewController = storyboard?.instantiateViewController(withIdentifier: module.storyboardId) {
+            let viewController = ScreenFlowManager.modulesStoryboard.instantiateViewController(withIdentifier: module.storyboardId)
+            
+            // Show viewController with completion block
+            CATransaction.begin()
+            self.show(viewController, sender: self)
+            CATransaction.setCompletionBlock({
+                // Flash neopixels with the module color
+                let board = AdafruitBoardsManager.shared.currentBoard
                 
-                // Show viewController with completion block
-                CATransaction.begin()
-                self.show(viewController, sender: self)
-                CATransaction.setCompletionBlock({
-                    // Flash neopixels with the module color
-                    let board = AdafruitBoardsManager.shared.currentBoard
-
-                    board?.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
-                })
-                CATransaction.commit()
-            }
+                board?.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+            })
+            CATransaction.commit()
 
         case .disconnect:
             if let blePeripheral = blePeripheralConnected() {
