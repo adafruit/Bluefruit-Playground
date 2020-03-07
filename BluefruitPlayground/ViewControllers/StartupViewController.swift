@@ -104,8 +104,8 @@ class StartupViewController: UIViewController {
         alertIfBleNotSupported { [weak self] in
             guard let self = self else { return }
 
-            if let autoconnectPeripheralIdentifier = Settings.autoconnectPeripheralIdentifier {
-                self.reconnecToPeripheral(withIdentifier: autoconnectPeripheralIdentifier)
+            if let (identifier, advertisementData) = Settings.autoconnectPeripheral {
+                self.reconnecToPeripheral(withIdentifier: identifier, advertisementData: advertisementData )
             } else {
                 self.gotoInitialScreen()
             }
@@ -127,11 +127,11 @@ class StartupViewController: UIViewController {
     }
 
     // MARK: - Reconnect previously connnected Ble Peripheral
-    private func reconnecToPeripheral(withIdentifier identifier: UUID) {
+    private func reconnecToPeripheral(withIdentifier identifier: UUID, advertisementData: [String: Any]) {
         DLog("Reconnecting...")
 
         // Reconnect
-        let isTryingToReconnect = BleManager.shared.reconnecToPeripherals(withIdentifiers: [identifier], withServices: StartupViewController.kServicesToReconnect, timeout: StartupViewController.kReconnectTimeout)
+        let isTryingToReconnect = BleManager.shared.reconnecToPeripherals(peripheralsData: [(identifier, advertisementData)], withServices: StartupViewController.kServicesToReconnect, timeout: StartupViewController.kReconnectTimeout)
 
         if !isTryingToReconnect {
             DLog("isTryingToReconnect false. Go to next")

@@ -12,6 +12,7 @@ class Settings {
     // Constants
     private static let settingAreTipsEnabled = "tipsEnabled"
     private static let autoconnectPeripheralIdentifierKey = "autoconnectPeripheralIdentifier"
+    private static let autoconnectPeripheralAdvertisementDataKey = "autoconnectPeripheralAdvertisementData"
 
     // MARK: - Tips
     static var areTipsEnabled: Bool {
@@ -24,19 +25,23 @@ class Settings {
     }
 
     // MARK: - AutoConnect
-    static var autoconnectPeripheralIdentifier: UUID? {
+    static var autoconnectPeripheral: (identifier: UUID, advertisementData: [String: Any])? {
         get {
-            let uuidString = UserDefaults.standard.string(forKey: Settings.autoconnectPeripheralIdentifierKey)
-            return uuidString != nil ? UUID(uuidString: uuidString!):nil
+            guard let uuidString = UserDefaults.standard.string(forKey: Settings.autoconnectPeripheralIdentifierKey), let uuid = UUID(uuidString: uuidString), let advertisementData = UserDefaults.standard.dictionary(forKey: Settings.autoconnectPeripheralAdvertisementDataKey) else { return nil}
+                        
+            return (uuid, advertisementData)
         }
         set {
-            UserDefaults.standard.set(newValue?.uuidString, forKey: Settings.autoconnectPeripheralIdentifierKey)
-            DLog("Set autoconnect peripheral: \(newValue?.uuidString ?? "<nil>")")
+            let uuidString = newValue?.identifier.uuidString
+            UserDefaults.standard.set(uuidString, forKey: Settings.autoconnectPeripheralIdentifierKey)
+            UserDefaults.standard.set(newValue?.advertisementData, forKey: Settings.autoconnectPeripheralAdvertisementDataKey)
+            
+            DLog("Set autoconnect peripheral: \(uuidString ?? "<nil>")")
         }
     }
-
+    
     static func clearAutoconnectPeripheral() {
-        autoconnectPeripheralIdentifier = nil
+        autoconnectPeripheral = nil
     }
 
     // Common load and save

@@ -107,7 +107,7 @@ class ScannerViewController: UIViewController {
 
         }
         // Remove saved peripheral for autoconnect
-        Settings.autoconnectPeripheralIdentifier = nil
+        Settings.clearAutoconnectPeripheral()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -257,8 +257,10 @@ class ScannerViewController: UIViewController {
 
     private func showPeripheralDetails() {
         // Save selected peripheral for autoconnect
-        Settings.autoconnectPeripheralIdentifier = selectedPeripheral?.identifier
-
+        if let autoconnectPeripheral = selectedPeripheral {
+            Settings.autoconnectPeripheral = (autoconnectPeripheral.identifier, autoconnectPeripheral.advertisement.advertisementData)
+        }
+        
         // Go to home screen
         ScreenFlowManager.gotoCPBModules()
     }
