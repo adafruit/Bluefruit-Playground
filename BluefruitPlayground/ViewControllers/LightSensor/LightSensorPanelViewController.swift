@@ -42,7 +42,7 @@ class LightSensorPanelViewController: ModulePanelViewController {
         let maxValue: Float = 1
         let adjustedValue = max(minValue, min(maxValue, value))
 
-        DLog("progress: \(adjustedValue)")
+        //DLog("progress: \(adjustedValue)")
         NSLayoutConstraint.setMultiplier(multiplier: CGFloat(adjustedValue), constraint: &self.maskViewWidthConstraint)
         //UIView.animate(withDuration: BlePeripheral.kCPBLightDefaultPeriod) {
         //}

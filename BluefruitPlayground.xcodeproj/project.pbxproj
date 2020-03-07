@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A90086DF23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */; };
 		A90086E023FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */; };
+		A900DCAF241440E400DAE5C9 /* ModuleChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A900DCAE241440E400DAE5C9 /* ModuleChartPanelViewController.swift */; };
+		A900DCB0241440E400DAE5C9 /* ModuleChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A900DCAE241440E400DAE5C9 /* ModuleChartPanelViewController.swift */; };
 		A901EC48237C43C000687BE6 /* Data+LittleEndianTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */; };
 		A901EC4D237C47D800687BE6 /* SensorDataSeries.swift in Sources */ = {isa = PBXBuildFile; fileRef = A901EC4C237C47D800687BE6 /* SensorDataSeries.swift */; };
 		A922568E2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922568D2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift */; };
@@ -257,6 +259,7 @@
 		41FC984EE1CDB9B54C5084ED /* Pods-CPX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPX.release.xcconfig"; path = "Target Support Files/Pods-CPX/Pods-CPX.release.xcconfig"; sourceTree = "<group>"; };
 		8BFE7B5A63DA548F17D0945D /* Pods_BluefruitPlayground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BluefruitPlayground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralAutoConnect.swift; sourceTree = "<group>"; };
+		A900DCAE241440E400DAE5C9 /* ModuleChartPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleChartPanelViewController.swift; sourceTree = "<group>"; };
 		A901EC47237C43C000687BE6 /* Data+LittleEndianTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+LittleEndianTypes.swift"; sourceTree = "<group>"; };
 		A901EC4C237C47D800687BE6 /* SensorDataSeries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorDataSeries.swift; sourceTree = "<group>"; };
 		A922568D2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitNeoPixels.swift"; sourceTree = "<group>"; };
@@ -561,6 +564,7 @@
 				A9482989237B73B100B6FC13 /* HelpViewController.swift */,
 				A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */,
 				A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */,
+				A900DCAE241440E400DAE5C9 /* ModuleChartPanelViewController.swift */,
 				A948298C237B73B100B6FC13 /* ModuleViewController.swift */,
 			);
 			path = Common;
@@ -1075,6 +1079,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9BED779234FBEAB002FFF53 /* Int+Bytes.swift in Sources */,
+				A900DCAF241440E400DAE5C9 /* ModuleChartPanelViewController.swift in Sources */,
 				A9ADE5FB23533FA000777535 /* UIView+AllSubviewsWithClass.swift in Sources */,
 				A9716BAA2350128100CB174D /* PeripheralList.swift in Sources */,
 				A9DF06142359B31C0094327F /* ButtonStatusPanelViewController.swift in Sources */,
@@ -1247,6 +1252,7 @@
 				A9A08B6923A523C900498069 /* Config.swift in Sources */,
 				A9D5B21423E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift in Sources */,
 				A9A08B6A23A523C900498069 /* TipDiscoverViewController.swift in Sources */,
+				A900DCB0241440E400DAE5C9 /* ModuleChartPanelViewController.swift in Sources */,
 				A9A08B6B23A523C900498069 /* ModulePanelViewController.swift in Sources */,
 				A9A08B6C23A523C900498069 /* TipsViewController.swift in Sources */,
 				A9A08B6D23A523C900498069 /* NormalBrightnessColorPickerController.swift in Sources */,

@@ -77,10 +77,6 @@ class TemperatureViewController: ModuleViewController {
         if let temperatureCelsius = temperatureCelsius {
             let temperature = isCelsius ? temperatureCelsius : (temperatureCelsius * 1.8 + 32)
             text = String(format: "%.1f%@", temperature, units)
-
-            // Update chart
-            chartPanelViewController.temperatureValueReceived()
-
         } else {  // Undefined
             text = String(format: "--%@", units)
         }
@@ -107,5 +103,8 @@ extension TemperatureViewController: AdafruitTemperatureDelegate {
     func adafruitTemperatureReceived(_ temperature: Float) {
         temperatureCelsius = temperature
         updateValueUI()
+
+        // Update chart
+        chartPanelViewController.updateLastEntryAddedToDataSeries()
     }
 }

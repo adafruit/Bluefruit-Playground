@@ -64,9 +64,6 @@ class LightSensorViewController: ModuleViewController {
     private func updateValueUI() {
         if let light = self.light {
             lightmeterPanelViewController.lightValueReceived(light)
-
-            // Update chart
-            chartPanelViewController.lightValueReceived()
         }
     }
 }
@@ -76,5 +73,8 @@ extension LightSensorViewController: AdafruitLightDelegate {
     func adafruitLightReceived(_ light: Float) {
         self.light = light
         updateValueUI()
+
+        // Update chart
+        chartPanelViewController.updateLastEntryAddedToDataSeries()
     }
 }

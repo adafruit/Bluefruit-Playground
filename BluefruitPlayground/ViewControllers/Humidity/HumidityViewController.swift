@@ -69,10 +69,6 @@ class HumidityViewController: ModuleViewController {
         let text: String
         if let humidity = humidity {
             text = String(format: "%.1f%%", humidity)
-            
-            // Update chart
-            chartPanelViewController.humidityValueReceived()
-            
         } else {  // Undefined
             text = String(format: "--%%")
         }
@@ -100,5 +96,8 @@ extension HumidityViewController: AdafruitHumidityDelegate {
     func adafruitHumidityReceived(_ humidity: Float) {
         self.humidity = humidity
         updateValueUI()
+
+        // Update chart
+        chartPanelViewController.updateLastEntryAddedToDataSeries()
     }
 }
