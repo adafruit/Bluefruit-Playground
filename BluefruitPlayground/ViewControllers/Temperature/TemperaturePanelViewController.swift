@@ -36,7 +36,7 @@ class TemperaturePanelViewController: ChartPanelViewController {
     }
     
     
-    override func dataSeriesValueToCharValue(_ value: Float) -> Double {
+    override func dataSeriesValueToChartValue(_ value: Float) -> Double {
         let temperatureCelsius = Double(value)
         let temperature = isCelsius ? temperatureCelsius : (temperatureCelsius * 1.8 + 32)
         return temperature
@@ -44,17 +44,15 @@ class TemperaturePanelViewController: ChartPanelViewController {
     
     private func reloadChartEntries() {
         guard let board = AdafruitBoardsManager.shared.currentBoard else { return }
-        let dataSeries = board.temperatureDataSeries()
         
         // Load initial data
-        reloadChartEntries(dataSeries: dataSeries)
+        reloadChartEntries(dataSeries: board.temperatureDataSeries)
     }
     
     
     // MARK: - Actions
     func updateLastEntryAddedToDataSeries() {
-        guard let entry = AdafruitBoardsManager.shared.currentBoard?.temperatureDataSeries().last else { return }
-        
+        guard let entry = AdafruitBoardsManager.shared.currentBoard?.temperatureDataSeries.last else { return }
         addEntry(entry)
     }
 }

@@ -1,5 +1,5 @@
 //
-//  HumidityPanelViewController.swift
+//  BarometricPressurePanelViewController.swift
 //  BluefruitPlayground
 //
 //  Created by Antonio García on 25/10/2019.
@@ -9,9 +9,9 @@
 import UIKit
 import Charts
 
-class HumidityPanelViewController: ChartPanelViewController {
+class BarometricPressurePanelViewController: ChartPanelViewController {
     // Constants
-    static let kIdentifier = "HumidityPanelViewController"
+    static let kIdentifier = "BarometricPressurePanelViewController"
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -19,20 +19,18 @@ class HumidityPanelViewController: ChartPanelViewController {
         
         // Init data
         if let board = AdafruitBoardsManager.shared.currentBoard {
-            let dataSeries = board.humidityDataSeries
-            
             // Load initial data
-            reloadChartEntries(dataSeries: dataSeries)
+            reloadChartEntries(dataSeries: board.barometricPressureDataSeries)
         }
         
         // Localization
         let localizationManager = LocalizationManager.shared
-        titleLabel.text = localizationManager.localizedString("humidity_panel_title")
+        titleLabel.text = localizationManager.localizedString("pressure_panel_title")
     }
 
     // MARK: - Actions
     func updateLastEntryAddedToDataSeries() {
-        guard let entry = AdafruitBoardsManager.shared.currentBoard?.humidityDataSeries.last else { return }
+        guard let entry = AdafruitBoardsManager.shared.currentBoard?.barometricPressureDataSeries.last else { return }
         addEntry(entry)
     }
 }

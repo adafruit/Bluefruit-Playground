@@ -18,10 +18,8 @@ class LightChartPanelViewController: ChartPanelViewController {
         
         // Init data
         if let board = AdafruitBoardsManager.shared.currentBoard {
-            let dataSeries = board.lightDataSeries()
-            
             // Load initial data
-            reloadChartEntries(dataSeries: dataSeries)
+            reloadChartEntries(dataSeries: board.lightDataSeries)
         }
         
         // Localization
@@ -31,7 +29,7 @@ class LightChartPanelViewController: ChartPanelViewController {
     
     // MARK: - Actions
     func updateLastEntryAddedToDataSeries() {
-        guard let entry = AdafruitBoardsManager.shared.currentBoard?.lightDataSeries().last else { return }
+        guard let entry = AdafruitBoardsManager.shared.currentBoard?.lightDataSeries.last else { return }
         addEntry(entry)
     }
 }

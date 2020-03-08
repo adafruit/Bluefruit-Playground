@@ -25,6 +25,7 @@ class HomeViewController: UIViewController {
         case accelerometer
         case temperature
         case humidity
+        case pressure
         case puppet
         
         var titleStringId: String {
@@ -35,8 +36,9 @@ class HomeViewController: UIViewController {
             case .tone: return "modules_tone_title"
             case .accelerometer: return "modules_accelerometer_title"
             case .temperature: return "modules_temperature_title"
-            case .puppet: return "modules_puppet_title"
             case .humidity: return "modules_humidity_title"
+            case .pressure: return "modules_pressure_title"
+            case .puppet: return "modules_puppet_title"
             }
         }
         
@@ -48,8 +50,9 @@ class HomeViewController: UIViewController {
             case .tone: return "modules_tone_subtitle"
             case .accelerometer: return "modules_accelerometer_subtitle"
             case .temperature: return "modules_temperature_subtitle"
-            case .puppet: return "modules_puppet_subtitle"
             case .humidity: return "modules_humidity_subtitle"
+            case .pressure: return "modules_pressure_subtitle"
+            case .puppet: return "modules_puppet_subtitle"
             }
         }
         
@@ -61,8 +64,9 @@ class HomeViewController: UIViewController {
             case .tone: return UIColor(named: "module_tone_color")!
             case .accelerometer: return UIColor(named: "module_accelerometer_color")!
             case .temperature: return UIColor(named: "module_temperature_color")!
-            case .puppet: return UIColor(named: "module_puppet_color")!
             case .humidity: return UIColor(named: "module_humidity_color")!
+            case .puppet: return UIColor(named: "module_puppet_color")!
+            case .pressure: return UIColor(named: "module_pressure_color")!
             }
         }
         
@@ -80,10 +84,12 @@ class HomeViewController: UIViewController {
                 return AccelerometerViewController.kIdentifier
             case .temperature:
                 return TemperatureViewController.kIdentifier
-            case .puppet:
-                return PuppetViewController.kIdentifier
             case .humidity:
                 return HumidityViewController.kIdentifier
+            case .pressure:
+                return BarometricPressureViewController.kIdentifier
+            case .puppet:
+                return PuppetViewController.kIdentifier
             }
         }
     }
@@ -153,6 +159,9 @@ class HomeViewController: UIViewController {
         }
         if board.isHumidityAvailable {
             result.append(.humidity)
+        }
+        if board.isBarometricPressureAvailable {
+            result.append(.pressure)
         }
         if board.model == .clue_nRF52840 && board.isAccelerometerAvailable && board.isButtonsAvailable {
             result.append(.puppet)
@@ -260,14 +269,13 @@ extension HomeViewController: UITableViewDelegate {
         case .module:
             let module = menuItems[indexPath.row]
             let viewController = ScreenFlowManager.modulesStoryboard.instantiateViewController(withIdentifier: module.storyboardId)
-            
+
             // Show viewController with completion block
             CATransaction.begin()
             self.show(viewController, sender: self)
             CATransaction.setCompletionBlock({
                 // Flash neopixels with the module color
                 let board = AdafruitBoardsManager.shared.currentBoard
-                
                 board?.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
             })
             CATransaction.commit()

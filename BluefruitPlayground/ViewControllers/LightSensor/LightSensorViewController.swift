@@ -13,7 +13,7 @@ class LightSensorViewController: ModuleViewController {
     static let kIdentifier = "LightSensorViewController"
 
     // Data
-    private var circuitViewController: CircuitViewController!
+    private var circuitViewController: CPBBoardViewController!
     private var lightmeterPanelViewController: LightSensorPanelViewController!
     private var light: Float?
     private var chartPanelViewController: LightChartPanelViewController!
@@ -55,7 +55,7 @@ class LightSensorViewController: ModuleViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? CircuitViewController {
+        if let viewController = segue.destination as? CPBBoardViewController {
             circuitViewController = viewController
         }
     }

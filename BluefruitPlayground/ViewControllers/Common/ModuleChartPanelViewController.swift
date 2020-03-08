@@ -27,7 +27,7 @@ class ChartPanelViewController: ModulePanelViewController {
     }
     
     // MARK: - Data
-    internal func dataSeriesValueToCharValue(_ value: Float) -> Double {
+    internal func dataSeriesValueToChartValue(_ value: Float) -> Double {
         return Double(value)
     }
     
@@ -49,7 +49,7 @@ class ChartPanelViewController: ModulePanelViewController {
         chartView.noDataText = LocalizationManager.shared.localizedString("temperature_chart_nodata")
     }
     
-    internal func reloadChartEntries(dataSeries: [SensorDataSeries<Float>.Entry]) {
+    internal func reloadChartEntries(dataSeries: SensorDataSeries<Float>) {
         
         originTimestamp = dataSeries.first?.timestamp ?? CFAbsoluteTimeGetCurrent()
         let entries = chartEntries(dataSeries: dataSeries)
@@ -85,9 +85,9 @@ class ChartPanelViewController: ModulePanelViewController {
     }
     
     // MARK:- Utils
-    private func chartEntries(dataSeries: [SensorDataSeries<Float>.Entry]) -> [ChartDataEntry] {
+    private func chartEntries(dataSeries: SensorDataSeries<Float>) -> [ChartDataEntry] {
         let chartEntries = dataSeries.map { entry -> ChartDataEntry in
-            let value = dataSeriesValueToCharValue(entry.value)
+            let value = dataSeriesValueToChartValue(entry.value)
             return ChartDataEntry(x: entry.timestamp - originTimestamp, y: value)
         }
         return chartEntries
@@ -97,7 +97,7 @@ class ChartPanelViewController: ModulePanelViewController {
     func addEntry(_ entry: SensorDataSeries<Float>.Entry) {
         guard let dataSet = dataSet else { return }
         
-        let value = dataSeriesValueToCharValue(entry.value)
+        let value = dataSeriesValueToChartValue(entry.value)
         let newElement = ChartDataEntry(x: entry.timestamp - originTimestamp, y: value)
         _ = dataSet.append(newElement)
         

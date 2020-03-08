@@ -12,6 +12,9 @@ class ButtonStatusViewController: ModuleViewController {
     // Constants
     static let kIdentifier = "ButtonStatusViewController"
 
+    // UI
+    @IBOutlet weak var boardContainerView: UIView!
+
     // Data
     private var buttonsStatePanelViewController: ButtonStatusPanelViewController!
     private var buttonsState: BlePeripheral.ButtonsState?
@@ -20,6 +23,9 @@ class ButtonStatusViewController: ModuleViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Add main view
+        addBoardView()
+        
         // Add panels
         buttonsStatePanelViewController = (addPanelViewController(storyboardIdentifier: ButtonStatusPanelViewController.kIdentifier) as! ButtonStatusPanelViewController)
 
@@ -49,12 +55,32 @@ class ButtonStatusViewController: ModuleViewController {
         board?.buttonsDelegate = nil
     }
 
+
     // MARK: - UI
+    private func addBoardView() {
+        guard let model = AdafruitBoardsManager.shared.currentBoard?.model else { return }
+        
+        let storyboardIdentifier: String?
+        switch model {
+        case .circuitPlaygroundBluefruit:
+            storyboardIdentifier = CPBBoardViewController.kIdentifier
+        case .clue_nRF52840:
+            storyboardIdentifier = ClueFrontBoardViewController.kIdentifier
+        default:
+            storyboardIdentifier = nil
+        }
+        
+        guard let identifier = storyboardIdentifier, let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) else { return }
+
+        ChildViewControllersManagement.addChildViewController(viewController, contentView: boardContainerView, parentViewController: self)
+    }
+    
     private func updateValueUI() {
         if let buttonsState = self.buttonsState {
             buttonsStatePanelViewController.buttonsStateReceived(buttonsState)
         }
     }
+
 }
 
 // MARK: - CPBBleButtonsDelegate

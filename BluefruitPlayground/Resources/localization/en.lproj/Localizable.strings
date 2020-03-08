@@ -91,7 +91,7 @@ https://github.com/mindsnacks/MSWeakTimer";
 "scanner_errordiscoveringservices" = "Error discovering peripheral services";
 "scanner_peripheraldisconnected" = "Peripheral disconnected";
 
-"scanner_searching" = "Finding Circuit Playground Bluefruit devices...";
+"scanner_searching" = "Finding devices...";
 "scanner_subtitle" = "Select a Circuit Playground Bluefruit device to connect to:";
 "scanner_unnamed" = "<Unknown>";
 
@@ -136,6 +136,8 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_puppet_subtitle" = "Play with a 3D puppet using the accelerometer and buttons";
 "modules_humidity_title" = "Humidity";
 "modules_humidity_subtitle" = "View relative humidity percentage";
+"modules_pressure_title" = "Pressure";
+"modules_pressure_subtitle" = "View barometric pressure values";
 
 
 "modules_disconnect_title" = "Disconnect";
@@ -249,12 +251,12 @@ To control Sparky the Blue Smoke Monster, attach Circuit Playground Bluefruit to
 "humidity_panel_title" = "Relative Humidity";
 "humidity_chart_nodata" = "No chart data available";
 
+// Pressure
+"pressure_title" = "Pressure";
+"pressure_help" = "The Pressure module displays barometric pressure values sent from your Bluefruit device, measured in hectoPascals. Values are shown visually in a traditional barometer graphic as well as a graph showing changes in barometric pressure over time.";
 
-
-
-
-
-
+"pressure_panel_title" = "Barometric Pressure";
+"pressure_chart_nodata" = "No chart data available";
 
 // Help
 "help_title" = "Help";

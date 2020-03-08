@@ -15,7 +15,7 @@ extension BlePeripheral {
     private static let kAdafruitBarometricPressureCharacteristicUUID = CBUUID(string: "ADAF0801-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitBarometricPressureVersion = 1
     
-    private static let kAdafruitBarometricPressureDefaultPeriod: TimeInterval = 0.1
+    static let kAdafruitBarometricPressureDefaultPeriod: TimeInterval = 0.1
 
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {

@@ -19,7 +19,7 @@ class NeoPixelsViewController: ModuleViewController {
     @IBOutlet weak var resetButton: UIButton!
 
     // Data
-    private var circuitViewController: CircuitViewController!
+    private var circuitViewController: CPBBoardViewController!
     private var isNeopixelSelected: [Bool] {
         return circuitViewController.isNeopixelSelected
     }
@@ -62,7 +62,7 @@ class NeoPixelsViewController: ModuleViewController {
 
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? CircuitViewController {
+        if let viewController = segue.destination as? CPBBoardViewController {
             circuitViewController = viewController
         }
     }

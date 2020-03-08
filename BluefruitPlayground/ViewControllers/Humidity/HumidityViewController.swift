@@ -11,7 +11,6 @@ import UIKit
 class HumidityViewController: ModuleViewController {
     // Constants
     static let kIdentifier = "HumidityViewController"
-    private static let kHumidityUnitSettingsKey = "kHumidityUnitSettingsKey"
 
     // UI
     @IBOutlet weak var humidityLabel: UILabel!

@@ -21,6 +21,8 @@ class ButtonStatusPanelViewController: ModulePanelViewController {
     @IBOutlet weak var buttonAStatusView: UIView!
     @IBOutlet weak var buttonBStatusView: UIView!
 
+    @IBOutlet weak var switchView: UIStackView!
+    
     // Data
     private var onColor: UIColor!
     private var offColor: UIColor!
@@ -38,6 +40,13 @@ class ButtonStatusPanelViewController: ModulePanelViewController {
         // Init
         switchImageView.tintColor = offColor
 
+        // Setup UI depending on the board model
+        if let model = AdafruitBoardsManager.shared.currentBoard?.model {
+            if model == .clue_nRF52840 {
+                switchView.isHidden = true
+            }
+        }
+        
         // Localization
         let localizationManager = LocalizationManager.shared
         titleLabel.text = localizationManager.localizedString("buttonstatus_panel_title")

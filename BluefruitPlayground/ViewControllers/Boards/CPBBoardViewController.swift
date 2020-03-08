@@ -1,5 +1,5 @@
 //
-//  CircuitViewController.swift
+//  CPBBoardViewController.swift
 //  BluefruitPlayground
 //
 //  Created by Antonio García on 13/10/2019.
@@ -8,12 +8,14 @@
 
 import UIKit
 
-protocol CircuitViewControllerDelegate: class {
-    func circuitViewNeopixelSelectionChanged()
+protocol CPBBoardViewControllerDelegate: class {
+    func cpbNeopixelSelectionChanged()
 }
 
-class CircuitViewController: UIViewController {
-    // Constant
+class CPBBoardViewController: UIViewController {
+    // Constants
+    static let kIdentifier = "CPBBoardViewController"
+
     private static let kNumNeopixels = 10
     private static let kSelectedBorderWidth: CGFloat = 3
     private static let kUnselectedButtonAlpha: CGFloat = 0.02       // Not 0 because it is automatically hidden by the OS and breaks interaction
@@ -25,8 +27,8 @@ class CircuitViewController: UIViewController {
     @IBOutlet weak var neopixelViewWidthConstraint: NSLayoutConstraint!
 
     // Params
-    weak var delegate: CircuitViewControllerDelegate?
-    var isNeopixelSelected = [Bool](repeating: false, count: CircuitViewController.kNumNeopixels)
+    weak var delegate: CPBBoardViewControllerDelegate?
+    var isNeopixelSelected = [Bool](repeating: false, count: CPBBoardViewController.kNumNeopixels)
 
     // Data
     private var currentScale: CGFloat = 0
@@ -92,7 +94,7 @@ class CircuitViewController: UIViewController {
 
         // Update buttons position. Buttons should be position over the neopixel but they should have at least 44points size to be touchable
         buttonsContainerView.transform = transform
-        let selectedWidth = CircuitViewController.kSelectedBorderWidth / scale
+        let selectedWidth = CPBBoardViewController.kSelectedBorderWidth / scale
         for (i, button) in buttonsContainerView.subviews.enumerated() where neopixelsContainerView.subviews.count > i {
             button.center = neopixelsContainerView.subviews[i].center
             button.layer.borderWidth = selectedWidth
@@ -141,14 +143,14 @@ class CircuitViewController: UIViewController {
 
             button.layer.borderColor = UIColor.yellow.cgColor
             //button.backgroundColor = UIColor.green
-            button.alpha = CircuitViewController.kUnselectedButtonAlpha     // Start unselected
+            button.alpha = CPBBoardViewController.kUnselectedButtonAlpha     // Start unselected
 
             buttonsContainerView.addSubview(button)
         }
     }
 
     private func animateCurrentNeopixelSelection() {
-        for i in 0..<CircuitViewController.kNumNeopixels {
+        for i in 0..<CPBBoardViewController.kNumNeopixels {
             updateNeopixelSelection(neopixelId: i, isSelected: isNeopixelSelected[i], animated: true)
         }
     }
@@ -165,12 +167,12 @@ class CircuitViewController: UIViewController {
             // Animate
             UIView.animate(withDuration: 0.2, animations: {
                 selectedView.transform = isSelected ? .identity:CGAffineTransform(scaleX: 1.2, y: 1.2)
-                selectedView.alpha = isSelected ? 1:CircuitViewController.kUnselectedButtonAlpha
+                selectedView.alpha = isSelected ? 1:CPBBoardViewController.kUnselectedButtonAlpha
             }) { (_) in
                 selectedView.transform = .identity
             }
         } else {
-            selectedView.alpha = isSelected ? 1:CircuitViewController.kUnselectedButtonAlpha
+            selectedView.alpha = isSelected ? 1:CPBBoardViewController.kUnselectedButtonAlpha
         }
 
     }
@@ -197,14 +199,14 @@ class CircuitViewController: UIViewController {
     }
 
     func neopixelSelectAll(animated: Bool) {
-        for i in 0..<CircuitViewController.kNumNeopixels {
+        for i in 0..<CPBBoardViewController.kNumNeopixels {
             isNeopixelSelected[i] = true
             updateNeopixelSelection(neopixelId: i, isSelected: true, animated: animated)
         }
     }
 
     func neopixelClear() {
-       for i in 0..<CircuitViewController.kNumNeopixels {
+       for i in 0..<CPBBoardViewController.kNumNeopixels {
             isNeopixelSelected[i] = false
             updateNeopixelSelection(neopixelId: i, isSelected: false, animated: true)
         }
@@ -228,7 +230,7 @@ class CircuitViewController: UIViewController {
 
         isNeopixelSelected[sender.tag] = !isNeopixelSelected[sender.tag]
         updateNeopixelSelection(neopixelId: sender.tag, isSelected: isNeopixelSelected[sender.tag], animated: true)
-        delegate?.circuitViewNeopixelSelectionChanged()
+        delegate?.cpbNeopixelSelectionChanged()
     }
 
     /*
@@ -242,7 +244,7 @@ class CircuitViewController: UIViewController {
             isNeopixelSelected[i] = i == sender.tag
         }
         animateCurrentNeopixelSelection()
-        delegate?.circuitViewNeopixelSelectionChanged()
+        delegate?.cpbNeopixelSelectionChanged()
     }*/
 
 }
