@@ -86,7 +86,9 @@ class HumidityViewController: ModuleViewController {
 
         //DLog("progress: \(adjustedValue)")
         let height = humidityFillImageView.bounds.height * CGFloat(adjustedValue)
-        fillMaskView.frame = CGRect(x: 0, y: humidityFillImageView.bounds.height - height, width: humidityFillImageView.bounds.width, height: height)
+        UIView.animate(withDuration: BlePeripheral.kAdafruitHumidityDefaultPeriod, delay: 0, options: .curveLinear, animations: {
+            self.fillMaskView.frame = CGRect(x: 0, y: self.humidityFillImageView.bounds.height - height, width: self.humidityFillImageView.bounds.width, height: height)
+        })
     }
 }
 

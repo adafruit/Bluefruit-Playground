@@ -15,7 +15,7 @@ extension BlePeripheral {
     private static let kAdafruitHumidityCharacteristicUUID = CBUUID(string: "ADAF0701-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitHumidityVersion = 1
     
-    private static let kAdafruitHumidityDefaultPeriod: TimeInterval = 0.1
+    static let kAdafruitHumidityDefaultPeriod: TimeInterval = 0.1
 
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {

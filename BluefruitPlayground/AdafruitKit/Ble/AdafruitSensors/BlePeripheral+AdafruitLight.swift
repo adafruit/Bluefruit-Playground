@@ -15,7 +15,7 @@ extension BlePeripheral {
     private static let kAdafruitLightCharacteristicUUID = CBUUID(string: "ADAF0301-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitLightVersion = 1
     
-    private static let kAdafruitLightDefaultPeriod: TimeInterval = 0.1
+    static let kAdafruitLightDefaultPeriod: TimeInterval = 0.1
 
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {

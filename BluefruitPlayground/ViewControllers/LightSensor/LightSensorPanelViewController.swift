@@ -44,8 +44,9 @@ class LightSensorPanelViewController: ModulePanelViewController {
 
         //DLog("progress: \(adjustedValue)")
         NSLayoutConstraint.setMultiplier(multiplier: CGFloat(adjustedValue), constraint: &self.maskViewWidthConstraint)
-        //UIView.animate(withDuration: BlePeripheral.kCPBLightDefaultPeriod) {
-        //}
+        UIView.animate(withDuration: BlePeripheral.kAdafruitLightDefaultPeriod, delay: 0, options: .curveLinear, animations: {
+            self.scaleImageView.layoutIfNeeded()
+        })
     }
 
     // MARK: - Data
