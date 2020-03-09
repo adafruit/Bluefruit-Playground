@@ -200,11 +200,17 @@ Currently active buttons are displayed in orange at the bottom.";
 
 // Tone Generator
 "tonegenerator_title" = "Tone Generator";
-"tonegenerator_help" = "Tone Generator mode allows you to use Circuit Playground Bluefruit as a simple music synthesizer.
+"tonegenerator_help_cpb" = "Tone Generator mode allows you to use Circuit Playground Bluefruit as a simple music synthesizer.
 
 • Press a key on the piano keyboard to play a corresponding tone on the built-in piezo buzzer.
 
 • Press keys in sequence to perform a song";
+"tonegenerator_help_clue" = "Tone Generator mode allows you to use CLUE as a simple music synthesizer.
+
+• Press a key on the piano keyboard to play a corresponding tone on the built-in piezo buzzer.
+
+• Press keys in sequence to perform a song";
+
 
 // Accelerometer
 "accelerometer_title" = "Accelerometer";

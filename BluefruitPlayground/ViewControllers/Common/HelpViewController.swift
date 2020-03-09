@@ -13,7 +13,6 @@ class HelpViewController: UIViewController {
     static let kIdentifier = "HelpNavigationController"//"HelpViewController"
 
     // UI
-    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var doneButton: UIBarButtonItem!
     @IBOutlet weak var contentStackView: UIStackView!
 
@@ -28,7 +27,7 @@ class HelpViewController: UIViewController {
     }
 
     // MARK: - Add Items
-    func addMessage(_ message: String) {
+    func addMessage(_ message: String?) {
         loadViewIfNeeded()
 
         let label = UILabel()

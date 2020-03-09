@@ -193,11 +193,24 @@ class ToneGeneratorViewController: UIViewController {
 
         return frequency
     }
-
+    
     @IBAction func help(_ sender: Any) {
         guard let navigationController = storyboard?.instantiateViewController(withIdentifier: HelpViewController.kIdentifier) as? UINavigationController, let helpViewController = navigationController.topViewController as? HelpViewController else { return }
-        helpViewController.addMessage(LocalizationManager.shared.localizedString("tonegenerator_help"))
-
+                
+        var textStringId: String?
+        if let model = AdafruitBoardsManager.shared.currentBoard?.model {
+            switch model {
+            case .circuitPlaygroundBluefruit:
+                textStringId = "tonegenerator_help_cpb"
+            case .clue_nRF52840:
+                textStringId = "tonegenerator_help_clue"
+            default:
+                textStringId = nil
+            }
+        }
+        
+        helpViewController.addMessage(textStringId == nil ? nil : LocalizationManager.shared.localizedString(textStringId!))
+        
         self.present(navigationController, animated: true, completion: nil)
     }
 }
