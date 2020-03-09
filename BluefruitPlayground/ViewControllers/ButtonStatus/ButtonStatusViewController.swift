@@ -24,7 +24,7 @@ class ButtonStatusViewController: ModuleViewController {
         super.viewDidLoad()
 
         // Add main view
-        addBoardView()
+        addBoardViewController()
         
         // Add panels
         buttonsStatePanelViewController = (addPanelViewController(storyboardIdentifier: ButtonStatusPanelViewController.kIdentifier) as! ButtonStatusPanelViewController)
@@ -57,7 +57,7 @@ class ButtonStatusViewController: ModuleViewController {
 
 
     // MARK: - UI
-    private func addBoardView() {
+    private func addBoardViewController() {
         guard let model = AdafruitBoardsManager.shared.currentBoard?.model else { return }
         
         let storyboardIdentifier: String?

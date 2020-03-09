@@ -146,13 +146,16 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 
 // Neopixels
 "neopixels_title" = "NeoPixels";
-"neopixels_help" = "NeoPixels mode allows you to control the color of CPB’s built-in NeoPixel LEDs individually, as a group, or by playing preset animations.
+"neopixels_help_cpb" = "NeoPixels mode allows you to control the color of CPB’s built-in NeoPixel LEDs individually, as a group, or by playing preset animations.
 
 • Select NeoPixels to control by tapping them in the Circuit Playground Bluefruit image.
 
 • Set the color of selected NeoPixels by choosing a color from the Color Palette or Color Wheel at the bottom.
 
 • Tap a light sequence to trigger an animation using all of the NeoPixels.";
+"neopixels_help_clue" = "NeoPixel mode allows you to control the color of CLUE's built-in NeoPixel LED. 
+Set the color of the NeoPixel by choosing a color from the Color Palette or Color Wheel at the bottom.";
+
 
 "neopixels_sequence_title" = "Light Sequence";
 "neopixels_sequence_speed" = "Speed";

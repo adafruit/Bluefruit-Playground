@@ -8,9 +8,13 @@
 
 import UIKit
 
+/*
+protocol PixelsPreviewViewControllerDelegate: class {
+    func pixelsPreviewStartLightSequence(tag: Int)
+}
+*/
 class PixelsPreviewViewController: UIViewController {
     // Constant
-    private static let kNumNeopixels = 10
     private static let kButtonStartTag = 100
 
     // UI
@@ -108,11 +112,12 @@ class PixelsPreviewViewController: UIViewController {
 
     // MARK: - Actions
     @IBAction func setLightSequence(_ sender: UIButton) {
+        guard let lightSequenceAnimation = lightSequenceAnimation else { return }
+        
         //DLog("neopixelSetLightSequence: \(tag)")
         if let lightSequenceGenerator = lightSequenceGeneratorForTag(tag), let board = AdafruitBoardsManager.shared.currentBoard {
             
-            board.neopixelStartLightSequence(lightSequenceGenerator)
+            board.neopixelStartLightSequence(lightSequenceGenerator, speed: lightSequenceAnimation.speed)
         }
     }
-
 }

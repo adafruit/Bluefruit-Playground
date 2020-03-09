@@ -40,6 +40,15 @@ extension BlePeripheral {
                 case .feather_nRF52832: return [[0x60, 0xEA]]
                 }
             }
+            
+            var neoPixelsNumPixels: Int {
+                switch self {
+                case .circuitPlaygroundBluefruit: return 10
+                case .clue_nRF52840: return 1
+                case .feather_nRF52840_express: return 0
+                case .feather_nRF52832: return 0
+                }
+            }
         }
         
         // Data
@@ -56,6 +65,7 @@ extension BlePeripheral {
 
             return board
         }
+       
     }
     
     func adafruitManufacturerData() -> AdafruitManufacturerData? {

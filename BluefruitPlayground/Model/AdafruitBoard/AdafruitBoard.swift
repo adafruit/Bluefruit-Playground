@@ -149,9 +149,10 @@ class AdafruitBoard {
         let servicesGroup = DispatchGroup()
         
         // Pixel Service
-        if services.contains(.neopixels) {
+        if services.contains(.neopixels), let numPixels = blePeripheral.adafruitManufacturerData()?.boardModel?.neoPixelsNumPixels, numPixels > 0 {
+            
             servicesGroup.enter()
-            blePeripheral.adafruitNeoPixelsEnable { result in
+            blePeripheral.adafruitNeoPixelsEnable(numPixels: numPixels) { result in
                 if case .success = result {
                     DLog("NeoPixels enabled")
                 } else {
@@ -159,6 +160,7 @@ class AdafruitBoard {
                 }
                 servicesGroup.leave()
             }
+            
         }
         
         // Light Service: Enable receiving data

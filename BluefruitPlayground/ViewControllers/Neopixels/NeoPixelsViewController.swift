@@ -14,20 +14,21 @@ class NeoPixelsViewController: ModuleViewController {
     static let kIdentifier = "NeoPixelsViewController"
 
     // UI
+    @IBOutlet weak var boardContainerView: UIView!
     @IBOutlet weak var selectAllButton: UIButton!
     @IBOutlet weak var unselectAllButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
 
     // Data
-    private var circuitViewController: CPBBoardViewController!
-    private var isNeopixelSelected: [Bool] {
-        return circuitViewController.isNeopixelSelected
-    }
+    private var neopixelBoardViewController: NeopixelsBoardViewController?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Add main view
+        self.neopixelBoardViewController = addBoardViewController()
+        
         // Add panels
         _ = addPanelViewController(storyboardIdentifier: NeopixelsLightSequenceViewController.kIdentifier)
 
@@ -39,14 +40,26 @@ class NeoPixelsViewController: ModuleViewController {
 
         // UI Initial state
         showSelectionButtons(false)
-        circuitViewController.showSelectionAnimated(false)
-        circuitViewController.neopixelSelectAll(animated: false)
+        neopixelBoardViewController?.showSelectionAnimated(false)
+        neopixelBoardViewController?.neopixelSelectAll(animated: false)
 
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("neopixels_title")
 
-        moduleHelpMessage = localizationManager.localizedString("neopixels_help")
+        var textStringId: String? 
+        if let model = AdafruitBoardsManager.shared.currentBoard?.model {
+            switch model {
+            case .circuitPlaygroundBluefruit:
+                textStringId = "neopixels_help_cpb"
+            case .clue_nRF52840:
+                textStringId = "neopixels_help_clue"
+            default:
+                textStringId = nil
+            }
+        }
+        
+        moduleHelpMessage = textStringId == nil ? nil : localizationManager.localizedString(textStringId!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -57,32 +70,46 @@ class NeoPixelsViewController: ModuleViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
-        circuitViewController.neopixelsReset(animated: false)
+        neopixelBoardViewController?.neopixelsReset(animated: false)
     }
 
-    // MARK: - Navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let viewController = segue.destination as? CPBBoardViewController {
-            circuitViewController = viewController
+    // MARK: - UI
+    private func addBoardViewController() -> NeopixelsBoardViewController? {
+        guard let model = AdafruitBoardsManager.shared.currentBoard?.model else { return nil }
+        
+        let storyboardIdentifier: String?
+        switch model {
+        case .circuitPlaygroundBluefruit:
+            storyboardIdentifier = CPBBoardViewController.kIdentifier
+        case .clue_nRF52840:
+            storyboardIdentifier = ClueBackBoardViewController.kIdentifier
+        default:
+            storyboardIdentifier = nil
         }
+        
+        guard let identifier = storyboardIdentifier, let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) as? NeopixelsBoardViewController else { return nil }
+        
+        ChildViewControllersManagement.addChildViewController(viewController, contentView: boardContainerView, parentViewController: self)
+        
+        return viewController
     }
-
+    
     // MARK: - Actions
     @IBAction func neopixelsSelectAll(_ sender: Any) {
-        circuitViewController.neopixelSelectAll(animated: true)
+        neopixelBoardViewController?.neopixelSelectAll(animated: true)
     }
 
     @IBAction func neopixelsClear(_ sender: Any) {
-        circuitViewController.neopixelClear()
+        neopixelBoardViewController?.neopixelClear()
     }
 
     @IBAction func neopixelsReset(_ sender: Any) {
-        circuitViewController.neopixelsReset(animated: true)
+        neopixelBoardViewController?.neopixelsReset(animated: true)
     }
 
     private func selectColor(_ color: UIColor, baseColor: UIColor) {
-        // Update circuit
-        circuitViewController.setNeopixelsColor(color, onlySelected: true, animated: true, baseColor: baseColor)
+        // Update board
+        neopixelBoardViewController?.setNeopixelsColor(color, onlySelected: true, animated: true, baseColor: baseColor)
     }
 
     // MARK: - Page Management
@@ -93,10 +120,12 @@ class NeoPixelsViewController: ModuleViewController {
         UIView.animate(withDuration: 0.2) {
             self.showSelectionButtons(areNeopixelsVisible)
         }
-        self.circuitViewController.showSelectionAnimated(areNeopixelsVisible)
+        self.neopixelBoardViewController?.showSelectionAnimated(areNeopixelsVisible)
     }
 
     private func showSelectionButtons(_ show: Bool) {
+        guard !show || neopixelBoardViewController?.isSelectionEnabled ?? false else { return }     // Don't show if isSelectionEnabled is false
+        
         selectAllButton.alpha = show ? 1:0
         unselectAllButton.alpha = show ? 1:0
     }
@@ -107,7 +136,6 @@ extension NeoPixelsViewController: NeopixelsColorPaletteViewControllerDelegate {
     func colorPaletteColorSelected(color: UIColor, baseColor: UIColor) {
         selectColor(color, baseColor: baseColor)
     }
-
 }
 
 // MARK: - NeopixelColorWheelViewControllerDelegate

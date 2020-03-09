@@ -25,6 +25,9 @@ class NeopixelsLightSequenceViewController: ModulePanelViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Add previewViewControllers
+        addPreviewViewControllers()
+        
         // Set previewViewControllers tags
         _ = previewViewControllers.map {$0.tag = $0.view.superview?.tag ?? 0}
 
@@ -40,13 +43,43 @@ class NeopixelsLightSequenceViewController: ModulePanelViewController {
         speedLabel.text = localizationManager.localizedString("neopixels_sequence_speed")
     }
 
+    /*
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewController = segue.destination as? PixelsPreviewViewController {
             previewViewControllers.append(viewController)
         }
-    }
+    }*/
 
+    // MARK: - UI
+    private func addPreviewViewControllers() {
+        guard let model = AdafruitBoardsManager.shared.currentBoard?.model else { return }
+        
+        
+        let storyboardIdentifier: String?
+        switch model {
+        case .circuitPlaygroundBluefruit:
+            storyboardIdentifier = "CPBPixelsPreviewViewController"
+        case .clue_nRF52840:
+            storyboardIdentifier = "CluePixelsPreviewViewController"
+        default:
+            storyboardIdentifier = nil
+        }
+        
+        guard let identifier = storyboardIdentifier else { return }
+        
+        // Add previewViewControllers to designated views (views that tags >= 100)
+        for i in 100..<104 {
+            if let containerView = sequencesStackView.viewWithTag(i), let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) as? PixelsPreviewViewController {
+                
+                ChildViewControllersManagement.addChildViewController(viewController, contentView: containerView, parentViewController: self)
+                
+                previewViewControllers.append(viewController)
+            }
+        }
+    }
+    
+    // MARK: - Actions
     @IBAction func speedChanged(_ sender: UISlider) {
         let speed = Double(sender.value)
         DLog("speed: \(speed)")
