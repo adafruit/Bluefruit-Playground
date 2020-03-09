@@ -33,6 +33,10 @@ protocol AdafruitBarometricPressureDelegate: class {
     func adafruitBarometricPressureReceived(_ pressure: Float)
 }
 
+protocol AdafruitSoundDelegate: class {
+    func adafruitSoundReceived(_ samples: [UInt16])
+}
+
 /**
  Manages the sensors for a connected Adafruit Board
  
@@ -47,6 +51,7 @@ protocol AdafruitBarometricPressureDelegate: class {
  - temperature
  - humidity
  - barometric pressure
+ - sound
  
  */
 class AdafruitBoard {
@@ -70,6 +75,7 @@ class AdafruitBoard {
         case temperature
         case humidity
         case barometricPressure
+        case sound
     }
     
     // Notifications
@@ -85,6 +91,7 @@ class AdafruitBoard {
     weak var accelerometerDelegate: AdafruitAccelerometerDelegate?
     weak var humidityDelegate: AdafruitHumidityDelegate?
     weak var barometricPressureDelegate: AdafruitBarometricPressureDelegate?
+    weak var soundDelegate: AdafruitSoundDelegate?
     
     // Data
     private(set) weak var blePeripheral: BlePeripheral?
@@ -97,7 +104,8 @@ class AdafruitBoard {
     private(set) var temperatureDataSeries = SensorDataSeries<Float>()
     private(set) var humidityDataSeries = SensorDataSeries<Float>()
     private(set) var barometricPressureDataSeries = SensorDataSeries<Float>()
-    
+    private(set) var soundDataSeries = SensorDataSeries<Float>()
+
     private var currentLightSequenceAnimation: LightSequenceAnimation?
     public var neopixelCurrentLightSequenceAnimationSpeed: Double {
         get {
@@ -261,6 +269,20 @@ class AdafruitBoard {
             }
         }
         
+        // Sound Service: Enable receiving data
+         if services.contains(.sound) {
+             servicesGroup.enter()
+             blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { result in
+                 
+                 if case .success = result {
+                     DLog("Sound reading enabled")
+                 } else {
+                     DLog("Warning: Sound reading enable failed")
+                 }
+                 servicesGroup.leave()
+             }
+         }
+        
         // Wait for all finished
         servicesGroup.notify(queue: DispatchQueue.main) {
             DLog("setupServices finished")
@@ -300,7 +322,11 @@ class AdafruitBoard {
     var isBarometricPressureAvailable: Bool {
         return blePeripheral?.adafruitBarometricPressureIsEnabled() ?? false
     }
-    
+
+    var isSoundAvailable: Bool {
+        return blePeripheral?.adafruitSoundIsEnabled() ?? false
+    }
+
     // MARK: - Read Data
     func lightLastValue() -> Float? {
         return blePeripheral?.adafruitLightLastValue()
@@ -333,7 +359,11 @@ class AdafruitBoard {
     func barometricPressureLastValue() -> Float? {
         return blePeripheral?.adafruitBarometricPressureLastValue()
     }
-    
+
+    func soundLastValue() -> [UInt16] {
+        return blePeripheral?.adafruitSoundLastValue() ?? []
+    }
+
     // MARK: - Receive Data
     private func receiveLightData(response: Result<(Float, UUID), Error>) {
         switch response {
@@ -488,6 +518,33 @@ class AdafruitBoard {
         }
     }
     
+    private func receiveSoundData(response: Result<([UInt16], UUID), Error>) {
+        switch response {
+        case let .success(value, uuid):
+            // Save value
+            let averageValue = value.count > 0 ? Float(value.reduce(0, +)) / Float(value.count) : 0
+            let entry = SensorDataSeries.Entry(value: averageValue, timestamp: CFAbsoluteTimeGetCurrent())
+            soundDataSeries.addValue(entry)
+            DLog("Sound level: \(averageValue)dB")
+            
+            // Send to delegate
+            if let soundDelegate = soundDelegate {
+                DispatchQueue.main.async {      // Delegates are called in the main thread
+                    soundDelegate.adafruitSoundReceived(value)
+                }
+            }
+            
+            // Send notification
+            NotificationCenter.default.post(name: .didReceiveSoundData, object: nil, userInfo: [
+                NotificationUserInfoKey.value.rawValue: value,
+                NotificationUserInfoKey.uuid.rawValue: uuid
+            ])
+            
+        case .failure(let error):
+            DLog("Error receiving sound data: \(error)")
+        }
+    }
+    
     // MARK: - Send Commands
     // MARK: Send Neopixel
     func neopixelSetAllPixelsColor(_ color: UIColor) {
@@ -564,4 +621,5 @@ extension Notification.Name {
     static let didReceiveHumidityData = Notification.Name(kNotificationsPrefix+".didReceiveHumidityData")
     static let didReceiveTemperatureData = Notification.Name(kNotificationsPrefix+".didReceiveTemperatureData")
     static let didReceiveBarometricPressureData = Notification.Name(kNotificationsPrefix+".didReceiveBarometricPressureData")
+    static let didReceiveSoundData = Notification.Name(kNotificationsPrefix+".didReceiveSoundData")
 }

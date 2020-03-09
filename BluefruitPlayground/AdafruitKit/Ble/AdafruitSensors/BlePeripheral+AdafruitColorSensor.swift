@@ -41,6 +41,9 @@ extension BlePeripheral {
                 if let value = self.adafruitColorSensorDataToColor(data) {
                     responseHandler(.success((value, uuid)))
                 }
+                else {
+                    responseHandler(.failure(PeripheralAdafruitError.invalidResponseData))
+                }
             case let .failure(error):
                 responseHandler(.failure(error))
             }

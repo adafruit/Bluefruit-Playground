@@ -176,7 +176,7 @@ extension BlePeripheral {
     func adafruitVersion(serviceUuid: CBUUID, completion: @escaping(Int) -> Void) {
         self.characteristic(uuid: BlePeripheral.kAdafruitMeasurementVersionCharacteristicUUID, serviceUuid: serviceUuid) { (characteristic, error) in
 
-            guard error == nil, let characteristic = characteristic, let data = characteristic.value else {
+            guard error == nil, let characteristic = characteristic, let data = characteristic.value  else {
                 completion(BlePeripheral.kAdafruitDefaultVersionValue)
                 return
             }
