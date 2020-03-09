@@ -12,6 +12,9 @@ class LightSensorViewController: ModuleViewController {
     // Constants
     static let kIdentifier = "LightSensorViewController"
 
+    // UI
+    @IBOutlet weak var boardContainerView: UIView!
+
     // Data
     private var circuitViewController: CPBBoardViewController!
     private var lightmeterPanelViewController: LightSensorPanelViewController!
@@ -21,16 +24,32 @@ class LightSensorViewController: ModuleViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Add main view
+        addBoardViewController()
+        
         // Add panels
         lightmeterPanelViewController = (addPanelViewController(storyboardIdentifier: LightSensorPanelViewController.kIdentifier) as! LightSensorPanelViewController)
-
+        
         chartPanelViewController = (addPanelViewController(storyboardIdentifier: LightChartPanelViewController.kIdentifier) as! LightChartPanelViewController)
-
+        
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("lightsensor_title")
-        moduleHelpMessage = localizationManager.localizedString("lightsensor_help")
+        
+        var textStringId: String?
+        if let model = AdafruitBoardsManager.shared.currentBoard?.model {
+            switch model {
+            case .circuitPlaygroundBluefruit:
+                textStringId = "lightsensor_help_cpb"
+            case .clue_nRF52840:
+                textStringId = "lightsensor_help_clue"
+            default:
+                textStringId = nil
+            }
+        }
+        
+        moduleHelpMessage = textStringId == nil ? nil : localizationManager.localizedString(textStringId!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +80,24 @@ class LightSensorViewController: ModuleViewController {
     }
 
     // MARK: - UI
+    private func addBoardViewController() {
+        guard let model = AdafruitBoardsManager.shared.currentBoard?.model else { return }
+        
+        let storyboardIdentifier: String?
+        switch model {
+        case .circuitPlaygroundBluefruit:
+            storyboardIdentifier = CPBBoardViewController.kIdentifier
+        case .clue_nRF52840:
+            storyboardIdentifier = ClueFrontBoardViewController.kIdentifier
+        default:
+            storyboardIdentifier = nil
+        }
+        
+        guard let identifier = storyboardIdentifier, let viewController = storyboard?.instantiateViewController(withIdentifier: identifier) else { return }
+
+        ChildViewControllersManagement.addChildViewController(viewController, contentView: boardContainerView, parentViewController: self)
+    }
+    
     private func updateValueUI() {
         if let light = self.light {
             lightmeterPanelViewController.lightValueReceived(light)

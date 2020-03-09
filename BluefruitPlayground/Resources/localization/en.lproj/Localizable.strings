@@ -167,11 +167,16 @@ Set the color of the NeoPixel by choosing a color from the Color Palette or Colo
 
 // Light Sensor
 "lightsensor_title" = "Light Sensor";
-"lightsensor_help" = "Light Sensor mode allows you to view the amount of light detected by Circuit Playground Bluefruit’s built-in ALS-PT19 light sensor.
+"lightsensor_help_cpb" = "Light Sensor mode allows you to view the amount of light detected by Circuit Playground Bluefruit’s built-in ALS-PT19 light sensor.
 
 • The current light level reading is displayed at the bottom of the screen. 
 
 • Try shining a flashlight on the CPB and watch the values change in realtime";
+"lightsensor_help_clue" = "Light Sensor mode allows you to view the amount of light detected by CLUE’s built-in ALS-PT19 light sensor.
+
+• The current light level reading is displayed at the bottom of the screen. 
+
+• Try shining a flashlight on the CLUE and watch the values change in realtime";
 
 "lightsensor_panel_title" = "Luminance Reading";
 "lightsensor_panel_unit" = "Light level";
@@ -179,11 +184,13 @@ Set the color of the NeoPixel by choosing a color from the Color Palette or Colo
 
 // Button Status
 "buttonstatus_title" = "Button Status";
-"buttonstatus_help" = "Button Status mode shows which buttons are currently being pressed on Circuit Playground Bluefruit. 
+"buttonstatus_help_cpb" = "Button Status mode shows which buttons are currently being pressed on Circuit Playground Bluefruit. 
 
 • Currently active buttons are displayed in orange at the bottom
 
 • Current state of the built-in slide switch is displayed as an arrow indicating its position";
+"buttonstatus_help_clue" = "Button Status mode shows which of CLUE's built-in buttons are currently being pressed.
+Currently active buttons are displayed in orange at the bottom.";
 
 "buttonstatus_panel_title" = "Buttons Pressed";
 "buttonstatus_panel_switch" = "Switch";

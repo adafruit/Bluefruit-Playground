@@ -28,11 +28,24 @@ class ButtonStatusViewController: ModuleViewController {
         
         // Add panels
         buttonsStatePanelViewController = (addPanelViewController(storyboardIdentifier: ButtonStatusPanelViewController.kIdentifier) as! ButtonStatusPanelViewController)
-
+        
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("buttonstatus_title")
-        moduleHelpMessage = localizationManager.localizedString("buttonstatus_help")
+        
+        
+        var textStringId: String?
+        if let model = AdafruitBoardsManager.shared.currentBoard?.model {
+            switch model {
+            case .circuitPlaygroundBluefruit:
+                textStringId = "buttonstatus_help_cpb"
+            case .clue_nRF52840:
+                textStringId = "buttonstatus_help_clue"
+            default:
+                textStringId = nil
+            }
+        }
+        moduleHelpMessage = textStringId == nil ? nil : localizationManager.localizedString(textStringId!)
     }
 
     override func viewWillAppear(_ animated: Bool) {
