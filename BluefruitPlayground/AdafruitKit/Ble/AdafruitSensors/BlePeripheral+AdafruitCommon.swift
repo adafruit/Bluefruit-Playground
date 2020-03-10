@@ -12,7 +12,7 @@ import CoreBluetooth
 extension BlePeripheral {
     // Costants
     private static let kAdafruitMeasurementPeriodCharacteristicUUID = CBUUID(string: "ADAF0001-C332-42A8-93BD-25E905756CB8")
-    private static let kAdafruitMeasurementVersionCharacteristicUUID = CBUUID(string: "ADAF0002-C332-42A8-93BD-25E905756CB8")
+    private static let kAdafruitServiceVersionCharacteristicUUID = CBUUID(string: "ADAF0002-C332-42A8-93BD-25E905756CB8")
 
     private static let kAdafruitDefaultVersionValue = 1         // Used as default version value if version characteristic cannot be read
 
@@ -41,77 +41,6 @@ extension BlePeripheral {
         }
     }
 
-    /**
-            - parameters:
-                - timePeriod: seconds between measurements. -1 to disable measurements
-
-     */
-    func adafruitServiceEnable(serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, timePeriod: TimeInterval?, responseHandler: @escaping(Result<(Data, UUID), Error>) -> Void, completion: ((Result<(Int, CBCharacteristic), Error>) -> Void)?) {
-
-        self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [unowned self] (characteristic, error) in
-            guard let characteristic = characteristic, error == nil else {
-                completion?(.failure(error ?? PeripheralAdafruitError.invalidCharacteristic))
-                return
-            }
-
-            // Check version
-            self.adafruitVersion(serviceUuid: serviceUuid) { version in
-                // Prepare notification handler
-                let notifyHandler: ((Error?) -> Void)? = { [unowned self] error in
-                    guard error == nil else {
-                        responseHandler(.failure(error!))
-                        return
-                    }
-
-                    if let data = characteristic.value {
-                        responseHandler(.success((data, self.identifier)))
-                    }
-                }
-
-                // Refresh period handler
-                let enableNotificationsHandler = {
-                    // Enable notifications
-                    if !characteristic.isNotifying {
-                        self.enableNotify(for: characteristic, handler: notifyHandler, completion: { error in
-                            guard error == nil else {
-                                completion?(.failure(error!))
-                                return
-                            }
-                            guard characteristic.isNotifying else {
-                                completion?(.failure(PeripheralAdafruitError.enableNotifyFailed))
-                                return
-                            }
-
-                            completion?(.success((version, characteristic)))
-
-                        })
-                    } else {
-                        self.updateNotifyHandler(for: characteristic, handler: notifyHandler)
-                        completion?(.success((version, characteristic)))
-                    }
-                }
-
-                // Time period
-                if let timePeriod = timePeriod {    // Set timePeriod if not nil
-                    self.adafruitSetPeriod(timePeriod, serviceUuid: serviceUuid) { _ in
-
-                        if Config.isDebugEnabled {
-                            // Check period
-                            self.adafruitPeriod(serviceUuid: serviceUuid) { period in
-                                guard period != nil else { DLog("Error setting service period"); return }
-                                //DLog("service period: \(period!)")
-                            }
-                        }
-
-                        enableNotificationsHandler()
-                    }
-                } else {        // Use default timePeriod
-                    enableNotificationsHandler()
-                }
-            }
-        }
-    }
-    
     func adafruitServiceEnableIfVersion(version expectedVersion: Int, serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID,  completion: ((Result<CBCharacteristic, Error>) -> Void)?) {
         
         self.adafruitServiceEnable(serviceUuid: serviceUuid, mainCharacteristicUuid: mainCharacteristicUuid) { [weak self] result in
@@ -119,12 +48,85 @@ extension BlePeripheral {
         }
     }
     
+
+    /**
+            - parameters:
+                - timePeriod: seconds between measurements. -1 to disable measurements
+
+     */
     func adafruitServiceEnableIfVersion(version expectedVersion: Int, serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, timePeriod: TimeInterval?, responseHandler: @escaping(Result<(Data, UUID), Error>) -> Void, completion: ((Result<CBCharacteristic, Error>) -> Void)?) {
         
-        self.adafruitServiceEnable(serviceUuid: serviceUuid, mainCharacteristicUuid: mainCharacteristicUuid, timePeriod: timePeriod, responseHandler: responseHandler) { [weak self] result in
-            self?.checkVersionResult(expectedVersion: expectedVersion, result: result, completion: completion)
+        adafruitServiceEnableIfVersion(version: expectedVersion, serviceUuid: serviceUuid, mainCharacteristicUuid: mainCharacteristicUuid) { [weak self] result in
+            
+            switch result {
+            case let .success(characteristic):      // Version supported
+                self?.adafruitServiceSetRepeatingResponse(characteristic: characteristic, timePeriod: timePeriod, responseHandler: responseHandler, completion: { result in
+                    
+                    completion?(.success(characteristic))
+                })
+                
+            case let .failure(error):           // Unsupported version (or error)
+                completion?(.failure(error))
+            }
+            
         }
-
+    }
+    
+    private func adafruitServiceSetRepeatingResponse(characteristic: CBCharacteristic, timePeriod: TimeInterval?, responseHandler: @escaping(Result<(Data, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
+        
+        // Prepare notification handler
+        let notifyHandler: ((Error?) -> Void)? = { [unowned self] error in
+            guard error == nil else {
+                responseHandler(.failure(error!))
+                return
+            }
+            
+            if let data = characteristic.value {
+                responseHandler(.success((data, self.identifier)))
+            }
+        }
+        
+        // Refresh period handler
+        let enableNotificationsHandler = {
+            // Enable notifications
+            if !characteristic.isNotifying {
+                self.enableNotify(for: characteristic, handler: notifyHandler, completion: { error in
+                    guard error == nil else {
+                        completion?(.failure(error!))
+                        return
+                    }
+                    guard characteristic.isNotifying else {
+                        completion?(.failure(PeripheralAdafruitError.enableNotifyFailed))
+                        return
+                    }
+                    
+                    completion?(.success(()))
+                    
+                })
+            } else {
+                self.updateNotifyHandler(for: characteristic, handler: notifyHandler)
+                completion?(.success(()))
+            }
+        }
+        
+        // Time period
+        if let timePeriod = timePeriod {    // Set timePeriod if not nil
+            let serviceUuid = characteristic.service.uuid
+            self.adafruitSetPeriod(timePeriod, serviceUuid: serviceUuid) { _ in
+                
+                if Config.isDebugEnabled {
+                    // Check period
+                    self.adafruitPeriod(serviceUuid: serviceUuid) { period in
+                        guard period != nil else { DLog("Error setting service period"); return }
+                        //DLog("service period: \(period!)")
+                    }
+                }
+                
+                enableNotificationsHandler()
+            }
+        } else {        // Use default timePeriod
+            enableNotificationsHandler()
+        }
     }
     
     private func checkVersionResult(expectedVersion: Int, result: Result<(Int, CBCharacteristic), Error>, completion: ((Result<CBCharacteristic, Error>) -> Void)?) {
@@ -143,17 +145,17 @@ extension BlePeripheral {
     }
     
     func adafruitServiceDisable(serviceUuid: CBUUID, mainCharacteristicUuid: CBUUID, completion: ((Result<Void, Error>) -> Void)?) {
-        self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [unowned self] (characteristic, error) in
+        self.characteristic(uuid: mainCharacteristicUuid, serviceUuid: serviceUuid) { [weak self] (characteristic, error) in
             guard let characteristic = characteristic, error == nil else {
                 completion?(.failure(error ?? PeripheralAdafruitError.invalidCharacteristic))
                 return
             }
             
             let kDisablePeriod: TimeInterval = -1       // -1 means taht the updates will be disabled
-            self.adafruitSetPeriod(kDisablePeriod, serviceUuid: serviceUuid) { result in
+            self?.adafruitSetPeriod(kDisablePeriod, serviceUuid: serviceUuid) { [weak self] result in
                 // Disable notifications
                 if characteristic.isNotifying {
-                    self.disableNotify(for: characteristic) { error in
+                    self?.disableNotify(for: characteristic) { error in
                         guard error == nil else {
                             completion?(.failure(error!))
                             return
@@ -174,14 +176,24 @@ extension BlePeripheral {
     }
 
     func adafruitVersion(serviceUuid: CBUUID, completion: @escaping(Int) -> Void) {
-        self.characteristic(uuid: BlePeripheral.kAdafruitMeasurementVersionCharacteristicUUID, serviceUuid: serviceUuid) { (characteristic, error) in
+        self.characteristic(uuid: BlePeripheral.kAdafruitServiceVersionCharacteristicUUID, serviceUuid: serviceUuid) { [weak self] (characteristic, error) in
 
-            guard error == nil, let characteristic = characteristic, let data = characteristic.value  else {
+            // Check if version characteristic exists or return default value
+            guard error == nil, let characteristic = characteristic  else {
                 completion(BlePeripheral.kAdafruitDefaultVersionValue)
                 return
             }
-            let version = data.toIntFrom32Bits()
-            completion(version)
+            
+            // Read the version
+            self?.readCharacteristic(characteristic) { (result, error) in
+                guard error == nil, let data = result as? Data, data.count >= 4 else {
+                    completion(BlePeripheral.kAdafruitDefaultVersionValue)
+                    return
+                }
+                
+                let version = data.toIntFrom32Bits()
+                completion(version)
+            }
         }
     }
 

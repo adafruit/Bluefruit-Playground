@@ -34,7 +34,7 @@ protocol AdafruitBarometricPressureDelegate: class {
 }
 
 protocol AdafruitSoundDelegate: class {
-    func adafruitSoundReceived(_ samples: [UInt16])
+    func adafruitSoundReceived(_ channelSamples: [[UInt16]])
 }
 
 /**
@@ -360,8 +360,8 @@ class AdafruitBoard {
         return blePeripheral?.adafruitBarometricPressureLastValue()
     }
 
-    func soundLastValue() -> [UInt16] {
-        return blePeripheral?.adafruitSoundLastValue() ?? []
+    func soundLastValue() -> [[UInt16]]? {
+        return blePeripheral?.adafruitSoundLastValue()
     }
 
     // MARK: - Receive Data
@@ -518,14 +518,16 @@ class AdafruitBoard {
         }
     }
     
-    private func receiveSoundData(response: Result<([UInt16], UUID), Error>) {
+    private func receiveSoundData(response: Result<([[UInt16]], UUID), Error>) {
         switch response {
         case let .success(value, uuid):
             // Save value
+            /*
             let averageValue = value.count > 0 ? Float(value.reduce(0, +)) / Float(value.count) : 0
             let entry = SensorDataSeries.Entry(value: averageValue, timestamp: CFAbsoluteTimeGetCurrent())
             soundDataSeries.addValue(entry)
             DLog("Sound level: \(averageValue)dB")
+            */
             
             // Send to delegate
             if let soundDelegate = soundDelegate {

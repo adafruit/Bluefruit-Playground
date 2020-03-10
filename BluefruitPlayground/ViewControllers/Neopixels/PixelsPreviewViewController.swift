@@ -96,6 +96,7 @@ class PixelsPreviewViewController: UIViewController {
         neopixelsContainerView.transform = transform
     }
 
+    // TODO: make this class more general, and add a parameter for the lightSequence
     private func lightSequenceGeneratorForTag(_ tag: Int) -> LightSequenceGenerator? {
         let id = tag - PixelsPreviewViewController.kButtonStartTag
         let lightSequence: LightSequenceGenerator?

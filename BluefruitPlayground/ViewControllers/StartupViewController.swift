@@ -49,7 +49,7 @@ class StartupViewController: UIViewController {
 
                 let semaphoreResult = bleSupportSemaphore.wait(timeout: .now() + StartupViewController.kMaxTimeToWaitForBleSupport)
                 if semaphoreResult == .timedOut {
-                    DLog("Bluetooth support check time-out")
+                    DLog("Bluetooth support check time-out. status: \(BleManager.shared.state.rawValue)")
                 }
 
                 registerBleStateNotifications(enabled: false)
@@ -78,9 +78,9 @@ class StartupViewController: UIViewController {
         if enabled {
             didUpdateBleStateObserver = notificationCenter.addObserver(forName: .didUpdateBleState, object: nil, queue: nil) { [weak self] _ in
                 // Status received. Continue executing...
+                DLog("Bluetooth status received: \(BleManager.shared.state.rawValue)")
                 self?.bleSupportSemaphore.signal()
              }
-
         } else {
             if let didUpdateBleStateObserver = didUpdateBleStateObserver {notificationCenter.removeObserver(didUpdateBleStateObserver)}
         }
