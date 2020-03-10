@@ -16,7 +16,7 @@ extension BlePeripheral {
     private static let kAdafruitSoundNumberOfChannelsCharacteristicUUID = CBUUID(string: "ADAF0B02-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitSoundSensorVersion = 1
     
-    private static let kAdafruitSoundSensorDefaultPeriod: TimeInterval = 0.1
+    static let kAdafruitSoundSensorDefaultPeriod: TimeInterval = 0.1
 
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
@@ -43,7 +43,7 @@ extension BlePeripheral {
     }
 
     // MARK: - Actions
-    func adafruitSoundEnable(responseHandler: @escaping(Result<([[UInt16]], UUID), Error>) -> Void, completion: ((Result<Int, Error>) -> Void)?) {
+    func adafruitSoundEnable(responseHandler: @escaping(Result<([[Int16]], UUID), Error>) -> Void, completion: ((Result<Int, Error>) -> Void)?) {
 
         self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitSoundSensorVersion, serviceUuid: BlePeripheral.kAdafruitSoundSensorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitSoundSamplesCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSoundSensorDefaultPeriod, responseHandler: { response in
             
@@ -109,27 +109,33 @@ extension BlePeripheral {
         disableNotify(for: characteristic)
     }
 
-    func adafruitSoundLastValue() -> [[UInt16]]? {       // Samples fo reach channel
+    func adafruitSoundLastValue() -> [[Int16]]? {       // Samples fo reach channel
         guard let data = adafruitSoundCharacteristic?.value else { return nil }
         return adafruitSoundDataToSound(data)
     }
 
     // MARK: - Utils
-    private func adafruitSoundDataToSound(_ data: Data) -> [[UInt16]]? {
-        guard let samples = adafruitDataToUInt16Array(data) else { return nil }
+    private func adafruitSoundDataToSound(_ data: Data) -> [[Int16]]? {
+        guard let samples = adafruitDataToInt16Array(data) else { return nil }
         let numChannels = adafruitSoundNumChannels
         guard numChannels > 0 else { return nil }
-                
+
+        /*
+        dump(samples)
+        print("----")
+ */
+        /*
         let channelSamples = [[UInt16]](repeating: [], count: numChannels)
 
         var currentChannel = 0
         for sample in samples {
-            var channel = channelSamples[currentChannel]
+            var channel = &channelSamples[currentChannel]
             channel.append(sample)
             currentChannel = (currentChannel + 1) % numChannels
         }
         
-        
         return channelSamples
+ */
+        return nil
     }
 }

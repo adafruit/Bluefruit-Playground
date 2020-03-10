@@ -257,8 +257,15 @@ extension BlePeripheral {
     }
     
     func adafruitDataToUInt16Array(_ data: Data) -> [UInt16]? {
-        let unitSize = MemoryLayout<Int16>.stride
+        let unitSize = MemoryLayout<UInt16>.stride
         var words = [UInt16](repeating: 0, count: data.count / unitSize)
+        (data as NSData).getBytes(&words, length: data.count * unitSize)
+        return words
+    }
+    
+    func adafruitDataToInt16Array(_ data: Data) -> [Int16]? {
+        let unitSize = MemoryLayout<Int16>.stride
+        var words = [Int16](repeating: 0, count: data.count / unitSize)
         (data as NSData).getBytes(&words, length: data.count * unitSize)
         return words
     }

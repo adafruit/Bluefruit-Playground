@@ -17,13 +17,13 @@ class SoundViewController: ModuleViewController {
     private static let kScaleMaxHPa: Float = 120
     
     // UI
-    @IBOutlet weak var pressureLabel: UILabel!
-    @IBOutlet weak var minScaleLabel: UILabel!
-    @IBOutlet weak var maxScaleLabel: UILabel!
+    @IBOutlet weak var soundLabel: UILabel!
+    @IBOutlet weak var soundLevelImageView: UIImageView!
     
     // Data
+    private var fillMaskView = UIView()
     private var chartPanelViewController: SoundPanelViewController!
-    private var channelSamples: [[UInt16]]?
+    private var channelSamples: [[Int16]]?
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -33,8 +33,7 @@ class SoundViewController: ModuleViewController {
         chartPanelViewController = (addPanelViewController(storyboardIdentifier: SoundPanelViewController.kIdentifier) as! SoundPanelViewController)
 
         // UI
-        minScaleLabel.text = "\(SoundViewController.kScaleMinHPa)"
-        maxScaleLabel.text = "\(SoundViewController.kScaleMaxHPa)"
+        soundLevelImageView.mask = fillMaskView
 
         // Localization
         let localizationManager = LocalizationManager.shared
@@ -81,12 +80,24 @@ class SoundViewController: ModuleViewController {
         pressureLabel.text = text
         */
     }
+    
+    private func setVolumeProgress(_ value: Float) {
+           let minValue: Float = 0
+           let maxValue: Float = 1000
+           let adjustedValue = max(minValue, min(maxValue, value))
+
+           //DLog("progress: \(adjustedValue)")
+           let height = soundLevelImageView.bounds.height * CGFloat(adjustedValue)
+           UIView.animate(withDuration: BlePeripheral.kAdafruitSoundSensorDefaultPeriod, delay: 0, options: .curveLinear, animations: {
+               self.fillMaskView.frame = CGRect(x: 0, y: self.soundLevelImageView.bounds.height - height, width: self.soundLevelImageView.bounds.width, height: height)
+           })
+       }
 
 }
 
 // MARK: - CPBBleSoundDelegate
 extension SoundViewController: AdafruitSoundDelegate {
-    func adafruitSoundReceived(_ channelSamples: [[UInt16]]) {
+    func adafruitSoundReceived(_ channelSamples: [[Int16]]) {
         self.channelSamples = channelSamples
         updateValueUI()
 
