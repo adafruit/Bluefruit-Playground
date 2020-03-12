@@ -10,7 +10,7 @@ import Foundation
 
 struct SensorDataSeries<T>: Sequence, IteratorProtocol {
     // Config
-    let kMaxNumItems = 10//1000
+    let kMaxNumItems = 1000
     
     // Data
     struct Entry {
