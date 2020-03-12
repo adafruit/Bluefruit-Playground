@@ -20,7 +20,7 @@ class SoundPanelViewController: ChartPanelViewController {
         // Init data
         if let board = AdafruitBoardsManager.shared.currentBoard {
             // Load initial data
-            reloadChartEntries(dataSeries: board.soundDataSeries)
+            reloadChartEntries(dataSeries: board.soundAmplitudeDataSeries)
         }
         
         // Localization
@@ -30,7 +30,7 @@ class SoundPanelViewController: ChartPanelViewController {
 
     // MARK: - Actions
     func updateLastEntryAddedToDataSeries() {
-        guard let entry = AdafruitBoardsManager.shared.currentBoard?.barometricPressureDataSeries.last else { return }
+        guard let entry = AdafruitBoardsManager.shared.currentBoard?.soundAmplitudeDataSeries.last else { return }
         addEntry(entry)
     }
 }

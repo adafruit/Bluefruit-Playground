@@ -1,11 +1,11 @@
 // AUTO-GENERATED
 // General
 
-"NSBluetoothAlwaysUsageDescription" = "This app needs access to Bluetooth to connect to Circuit Playground Bluefruit devices";
+"NSBluetoothAlwaysUsageDescription" = "This app needs access to Bluetooth to connect to Bluefruit devices";
 "NSCameraUsageDescription" = "Puppet module requires access to the camera";
 
 // Startup
-"startup_bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy which is needed to connect to the Circuit Playground Bluefruit device";
+"startup_bluetooth_unsupported" = "This device doesn't support Bluetooth Low Energy which is needed to connect to Bluefruit devices";
 
 
 // Splash
@@ -15,28 +15,31 @@
 
 // Welcome
 "tip0_title" = "Welcome";
-"tip0_detail" = "Bluefruit Playground provides you with a variety of tools to communicate with your Circuit Playground Bluefruit device!
-Circuit Playground Bluefruit is available at the Adafruit shop.";
-"tip0_link_text" = "Adafruit shop";
-"tip0_link_url" = "https://www.adafruit.com/product/4333";
+"tip0_detail" = "Bluefruit Playground provides you with a variety of tools to communicate with Circuit Playground Bluefruit & Adafruit CLUE!
+Click the links above to purchase a board from the Adafruit shop.";
+"tip0_link0_text" = "Circuit Playground Bluefruit";
+"tip0_link0_url" = "https://www.adafruit.com/product/4333";
+"tip0_link1_text" = "Adafruit CLUE";
+"tip0_link1_url" = "https://www.adafruit.com/product/4500";
 "tip0_action" = "Let's get started...";
 "tip1_title" = "Power Up";
-"tip1_detail" = "First, follow the instructions here to load the correct firmware. Then, connect Circuit Playground Bluefruit to USB, AAA battery pack or a Lipoly battery to power up.";
+"tip1_detail" = "First, follow the instructions here to load the correct firmware. Then, connect your Bluefruit device to USB, AAA battery pack or a Lipoly battery to power up.";
 "tip1_link_text" = "instructions here";
 "tip1_link_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
 "tip1_action" = "Next";
 "tip2_title" = "Discover";
-"tip2_detail" = "Once your Circuit Playground Bluefruit is powered, move your iPhone towards your Circuit Playground Bluefruit";
+"tip2_detail" = "Once your Bluefruit device is powered, move it close to your iPhone.";
 "tip2_action" = "Begin pairing";
 
 
 // About
 "about_title" = "About";
 "about_app_name" = "Bluefruit Playground";
-"about_ios_text" = "Bluefruit Playground is designed for use with Circuit Playground Bluefruit, available for purchase from the Adafruit shop
+"about_ios_text" = "Bluefruit Playground is designed for use with specific Adafruit Bluefruit devices. Follow the links below to purchase a compatible device from the Adafruit shop:
+• Circuit Playground Bluefruit
+• Adafruit CLUE
 
-Before you can use this app, you'll need to load the uf2 firmware file on your Circuit Playground Bluefruit.
-
+Before you can use this app, you'll need to load a special uf2 firmware file onto your device. Learn more in the Bluefruit Playground Learn Guide.
 
 Acknowledgements
 
@@ -57,21 +60,25 @@ https://github.com/optonaut/ActiveLabel.swift
 MSWeakTimer
 Copyright (c) 2013 MindSnacks
 https://github.com/mindsnacks/MSWeakTimer";
-"about_ios_link0_text" = "Adafruit shop";
+"about_ios_link0_text" = "Circuit Playground Bluefruit";
 "about_ios_link0_url" = "https://www.adafruit.com/product/4333";
-"about_ios_link1_text" = "uf2 firmware file";
-"about_ios_link1_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
+"about_ios_link1_text" = "Adafruit CLUE";
+"about_ios_link1_url" = "https://www.adafruit.com/product/4500";
+"about_ios_link2_text" = "uf2 firmware file";
+"about_ios_link2_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
+"about_ios_link3_text" = "Bluefruit Playground Learn Guide";
+"about_ios_link3_url" = "https://learn.adafruit.com/bluefruit-playground-app/overview";
 
 // Bluetooth Status
 
 "bluetooth_unsupported" = "This device doesn't support Bluetooth";
-"bluetooth_unsupported_detail" = "Bluetooth support and specifically Bluetooth Low Energy support is needed to communicate with a Circuit Playground Device";
+"bluetooth_unsupported_detail" = "Bluetooth support and specifically Bluetooth Low Energy support is needed to communicate with a Bluefruit Device";
 "bluetooth_unsupported_le" = "This device doesn't support Bluetooth Low Energy";
-"bluetooth_unsupported_le_detail" = "Bluetooth Low Energy support is needed to communicate with a Circuit Playground Device";
+"bluetooth_unsupported_le_detail" = "Bluetooth Low Energy support is needed to communicate with a Bluefruit Device";
 "bluetooth_notauthorized" = "This app is not authorized to use the Bluetooth Low Energy";
-"bluetooth_notauthorized_detail" = "Bluetooth permission should be granted or Bluefruit Playground to connect to a Circuit Playground Device";
+"bluetooth_notauthorized_detail" = "Bluetooth permission should be granted for Bluefruit Playground to connect to a Bluefruit Device";
 "bluetooth_poweredoff" = "Bluetooth is currently powered off";
-"bluetooth_poweredoff_detail" = "Bluetooth should be enabled on your device for Bluefruit Playground to communicate with a Circuit Playground Device";
+"bluetooth_poweredoff_detail" = "Bluetooth should be enabled on your device for Bluefruit Playground to communicate with a Bluefruit Device";
 
 "bluetooth_enable_action" = "Bluetooth permissions";
 
@@ -92,7 +99,7 @@ https://github.com/mindsnacks/MSWeakTimer";
 "scanner_peripheraldisconnected" = "Peripheral disconnected";
 
 "scanner_searching" = "Finding devices...";
-"scanner_subtitle" = "Select a Circuit Playground Bluefruit device to connect to:";
+"scanner_subtitle" = "Select a Bluefruit device to connect to:";
 "scanner_unnamed" = "<Unknown>";
 
 "scanner_automatic_action" = "Select device automatically";
@@ -104,21 +111,21 @@ https://github.com/mindsnacks/MSWeakTimer";
 // Scanner Problems
 "scannerproblems_title" = "Troubleshooting";
 
-"scannerproblems_tip0_title" = "Turn on the CPB";
-"scannerproblems_tip0_details" = "Make sure that the Circuit Playground Bluefruit is powered on. 
+"scannerproblems_tip0_title" = "Turn on the Bluefruit device";
+"scannerproblems_tip0_details" = "Make sure that the Bluefruit device is powered on. 
 Verify that the green \"On\" light is lit.";
-"scannerproblems_tip1_title" = "Check the Circuit Playground Bluefruit firmware";
-"scannerproblems_tip1_details" = "You'll need to load a specific firmware on your CPB to interact with this app.
+"scannerproblems_tip1_title" = "Check the Bluefruit device's firmware";
+"scannerproblems_tip1_details" = "You'll need to load a specific firmware on your Bluefruit device to interact with this app.
 Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "scannerproblems_tip1_link_text" = "Bluefruit Playground guide at learn.adafruit.com";
 "scannerproblems_tip1_link_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
-"scannerproblems_tip2_title" = "Reset Circuit Playground Bluefruit";
-"scannerproblems_tip2_details" = "Try pressing the small Reset button near the center of the Circuit Playground Bluefruit.";
+"scannerproblems_tip2_title" = "Reset Bluefruit device";
+"scannerproblems_tip2_details" = "Try pressing the Reset button on the Bluefruit device.";
 
 
 // Modules
 "modules_title" = "Modules";
-"modules_subtitle" = "Each module interacts with a type of sensor on the Circuit Playground Bluefruit device";
+"modules_subtitle" = "Each module interacts with a specific sensor on the Bluefruit device";
 
 "modules_color_title" = "NeoPixels";
 "modules_color_subtitle" = "Control LED color & animation";
@@ -127,7 +134,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_button_title" = "Button Status";
 "modules_button_subtitle" = "View state of built-in buttons & switch";
 "modules_tone_title" = "Tone Generator";
-"modules_tone_subtitle" = "Turn CPB into a musical instrument";
+"modules_tone_subtitle" = "Turn your Bluefruit device into a musical instrument";
 "modules_accelerometer_title" = "Accelerometer";
 "modules_accelerometer_subtitle" = "View orientation based on accelerometer data";
 "modules_temperature_title" = "Temperature";
@@ -138,7 +145,10 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_humidity_subtitle" = "View relative humidity percentage";
 "modules_pressure_title" = "Pressure";
 "modules_pressure_subtitle" = "View barometric pressure values";
-
+"modules_sound_title" = "Sound Level";
+"modules_sound_subtitle" = "View sound level in decibels";
+"modules_quaternion_title" = "Orientation";
+"modules_quaternion_subtitle" = "View CLUE's relative position in space";
 
 "modules_disconnect_title" = "Disconnect";
 "modules_disconnect_subtitle" = "Close the current connection and scan for a new device";
@@ -273,6 +283,34 @@ To control Sparky the Blue Smoke Monster, attach Circuit Playground Bluefruit to
 
 "pressure_panel_title" = "Barometric Pressure";
 "pressure_chart_nodata" = "No chart data available";
+
+// Sound
+"sound_title" = "Sound Level";
+"sound_units" = "dB";
+"sound_help" = "The Sound Level module displays sound level readings sent from your Bluefruit device, measured in decibels.
+Values are displayed in realtime in the form of a traditional VU meter as well as a graph showing changes over time.";
+
+"sound_panel_title" = "Sound Level";
+"sound_chart_nodata" = "No chart data available";
+
+// Quaternion
+
+"quaternion_title" = "Orientation";
+"quaternion_help" = "The Orientation module uses readings from CLUE's accelerometer, magnetometer, & gyro sensors to determine the board’s rotational position.
+
+• Orientation is reflected in the position of the 3D model
+
+• Individual values are displayed in the space at the bottom of the screen.
+
+• Drag the 3D model in any direction to apply a rotation offset.
+
+• Double tap the 3D model to remove rotation offset";
+
+"quaternion_panel_title" = "Device Orientation";
+"quaternion_panel_quaternion_title" = "Quaternion:";
+"quaternion_panel_eulerangles_title" = "Euler Angles (degrees):";
+
+
 
 // Help
 "help_title" = "Help";

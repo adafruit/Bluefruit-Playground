@@ -62,6 +62,10 @@ class LightSensorViewController: ModuleViewController {
 
         // Set delegate
         board?.lightDelegate = self
+        
+        // Force layout to adjust panel widths
+        self.view.layoutIfNeeded()
+
     }
 
     override func viewWillDisappear(_ animated: Bool) {

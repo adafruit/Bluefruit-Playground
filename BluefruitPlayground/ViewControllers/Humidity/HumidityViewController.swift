@@ -67,9 +67,9 @@ class HumidityViewController: ModuleViewController {
         // Humidity
         let text: String
         if let humidity = humidity {
-            text = String(format: "%.1f%%", humidity)
+            text = String(format: "%.1f", humidity)
         } else {  // Undefined
-            text = String(format: "--%%")
+            text = String(format: "--")
         }
         
         // Update label

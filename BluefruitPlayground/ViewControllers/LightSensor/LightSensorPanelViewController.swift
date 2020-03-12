@@ -53,7 +53,10 @@ class LightSensorPanelViewController: ModulePanelViewController {
     func lightValueReceived(_ light: Float) {
 
         valueLabel.text = String(format: "%.0f", light)
-        let progress = light / LightSensorPanelViewController.kScaleMaxLux
+
+        let adjustedValue = min(max(light, LightSensorPanelViewController.kScaleMinLux), LightSensorPanelViewController.kScaleMaxLux)
+        let progress = (adjustedValue - LightSensorPanelViewController.kScaleMinLux) / (LightSensorPanelViewController.kScaleMaxLux-LightSensorPanelViewController.kScaleMinLux)
+        
         setScaleProgress(progress)
     }
 }

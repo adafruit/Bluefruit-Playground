@@ -56,6 +56,16 @@
 		A92B9F14234DE4A2002374F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F12234DE4A2002374F0 /* Main.storyboard */; };
 		A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
 		A92BC5F523A7A7E4009CAD0E /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92BC5F423A7A7E4009CAD0E /* SnapshotHelper.swift */; };
+		A93159CD2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159CC2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift */; };
+		A93159CE2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159CC2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift */; };
+		A93159D2241A335800218092 /* QuaternionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D0241A335700218092 /* QuaternionViewController.swift */; };
+		A93159D3241A335800218092 /* QuaternionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D0241A335700218092 /* QuaternionViewController.swift */; };
+		A93159D4241A335800218092 /* QuaternionPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D1241A335700218092 /* QuaternionPanelViewController.swift */; };
+		A93159D5241A335800218092 /* QuaternionPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D1241A335700218092 /* QuaternionPanelViewController.swift */; };
+		A93159D7241A36B000218092 /* AdafruitBoard+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D6241A36B000218092 /* AdafruitBoard+Assets.swift */; };
+		A93159D8241A36B000218092 /* AdafruitBoard+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D6241A36B000218092 /* AdafruitBoard+Assets.swift */; };
+		A93159DA241A37A900218092 /* QuaternionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D9241A37A900218092 /* QuaternionUtils.swift */; };
+		A93159DB241A37A900218092 /* QuaternionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D9241A37A900218092 /* QuaternionUtils.swift */; };
 		A948298D237B73B100B6FC13 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482989237B73B100B6FC13 /* HelpViewController.swift */; };
 		A948298E237B73B100B6FC13 /* CommonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */; };
 		A948298F237B73B100B6FC13 /* ModulePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */; };
@@ -309,6 +319,11 @@
 		A92B9F18234DE4A5002374F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A92B9F1A234DE4A5002374F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A92BC5F423A7A7E4009CAD0E /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		A93159CC2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitQuaternion.swift"; sourceTree = "<group>"; };
+		A93159D0241A335700218092 /* QuaternionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuaternionViewController.swift; sourceTree = "<group>"; };
+		A93159D1241A335700218092 /* QuaternionPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuaternionPanelViewController.swift; sourceTree = "<group>"; };
+		A93159D6241A36B000218092 /* AdafruitBoard+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdafruitBoard+Assets.swift"; sourceTree = "<group>"; };
+		A93159D9241A37A900218092 /* QuaternionUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuaternionUtils.swift; sourceTree = "<group>"; };
 		A9482989237B73B100B6FC13 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTableViewCell.swift; sourceTree = "<group>"; };
 		A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModulePanelViewController.swift; sourceTree = "<group>"; };
@@ -510,6 +525,7 @@
 				A922569F2412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift */,
 				A900DCC524167EFF00DAE5C9 /* BlePeripheral+AdafruitSound.swift */,
 				A958E77923821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift */,
+				A93159CC2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift */,
 				A98B0D1C239FBE9300BF3696 /* BlePeripheral+ManufacturerAdafruit.swift */,
 			);
 			path = AdafruitSensors;
@@ -523,6 +539,9 @@
 				A901EC4C237C47D800687BE6 /* SensorDataSeries.swift */,
 				A9A08B2223A2841200498069 /* LightSequence.swift */,
 				A9A08B2423A2CBCF00498069 /* LightSequenceAnimation.swift */,
+				A93159D6241A36B000218092 /* AdafruitBoard+Assets.swift */,
+				A9D12EA123E8A80F00F3C259 /* AccelerometerUtils.swift */,
+				A93159D9241A37A900218092 /* QuaternionUtils.swift */,
 			);
 			path = AdafruitBoard;
 			sourceTree = "<group>";
@@ -613,6 +632,15 @@
 				A96A9ED823E9C6B700E46743 /* PreviewView.swift */,
 			);
 			path = Puppet;
+			sourceTree = "<group>";
+		};
+		A93159CF241A335700218092 /* Quaternion */ = {
+			isa = PBXGroup;
+			children = (
+				A93159D0241A335700218092 /* QuaternionViewController.swift */,
+				A93159D1241A335700218092 /* QuaternionPanelViewController.swift */,
+			);
+			path = Quaternion;
 			sourceTree = "<group>";
 		};
 		A9482988237B73B100B6FC13 /* Common */ = {
@@ -740,7 +768,6 @@
 				A958E77F238B75D9006A225A /* NormalBrightnessColorPickerController.swift */,
 				A9D12E8323E3661800F3C259 /* UIColor+Interpolate.swift */,
 				A9D5B21223E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift */,
-				A9D12EA123E8A80F00F3C259 /* AccelerometerUtils.swift */,
 				A9D12EAA23E902BB00F3C259 /* Float+Clamped.swift */,
 				A9D12EA423E8F91300F3C259 /* LowPassFilterSignal.swift */,
 			);
@@ -888,6 +915,7 @@
 				A92256C22413307900B8AB57 /* Humidity */,
 				A900DCB824147BAD00DAE5C9 /* BarometricPressure */,
 				A900DCC8241697F400DAE5C9 /* Sound */,
+				A93159CF241A335700218092 /* Quaternion */,
 				A92EF90623ECEEB500191C36 /* Puppet */,
 			);
 			path = ViewControllers;
@@ -1140,6 +1168,7 @@
 			files = (
 				A9BED779234FBEAB002FFF53 /* Int+Bytes.swift in Sources */,
 				A900DCAF241440E400DAE5C9 /* ModuleChartPanelViewController.swift in Sources */,
+				A93159D4241A335800218092 /* QuaternionPanelViewController.swift in Sources */,
 				A9ADE5FB23533FA000777535 /* UIView+AllSubviewsWithClass.swift in Sources */,
 				A9716BAA2350128100CB174D /* PeripheralList.swift in Sources */,
 				A9DF06142359B31C0094327F /* ButtonStatusPanelViewController.swift in Sources */,
@@ -1178,6 +1207,7 @@
 				A96AA5D123634F03004A06BA /* GridView.swift in Sources */,
 				A900DCB62414526200DAE5C9 /* ChildViewControllersManagement.swift in Sources */,
 				A9BED774234FBEAB002FFF53 /* BlePeripheral+Uart.swift in Sources */,
+				A93159DA241A37A900218092 /* QuaternionUtils.swift in Sources */,
 				A9482994237B880000B6FC13 /* BlePeripheral+AdafruitCommon.swift in Sources */,
 				A9D12EAB23E902BB00F3C259 /* Float+Clamped.swift in Sources */,
 				A9D12EA223E8A80F00F3C259 /* AccelerometerUtils.swift in Sources */,
@@ -1200,6 +1230,7 @@
 				A922569E2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift in Sources */,
 				A980FE6F2357D15400E3A909 /* TipDiscoverViewController.swift in Sources */,
 				A92256C72413307900B8AB57 /* HumidityPanelViewController.swift in Sources */,
+				A93159D2241A335800218092 /* QuaternionViewController.swift in Sources */,
 				A948298F237B73B100B6FC13 /* ModulePanelViewController.swift in Sources */,
 				A90086DF23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */,
 				A900DCB32414509F00DAE5C9 /* ClueFrontBoardViewController.swift in Sources */,
@@ -1239,8 +1270,10 @@
 				A9EAA1A3235297B400FA615E /* NeopixelsLightSequenceViewController.swift in Sources */,
 				A96A9ED923E9C6B700E46743 /* PreviewView.swift in Sources */,
 				A901EC4D237C47D800687BE6 /* SensorDataSeries.swift in Sources */,
+				A93159D7241A36B000218092 /* AdafruitBoard+Assets.swift in Sources */,
 				A99BA71D234FFE780080D03F /* Settings.swift in Sources */,
 				A900DCC32415854000DAE5C9 /* NeopixelsBoardViewController.swift in Sources */,
+				A93159CD2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift in Sources */,
 				A9D5B21323E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift in Sources */,
 				A9D5B21623E3024700178E1B /* BluetoothStatusViewController.swift in Sources */,
 				A900DCBD24147BAD00DAE5C9 /* BarometricPressureViewController.swift in Sources */,
@@ -1306,6 +1339,7 @@
 				A9A08B5823A523C900498069 /* BlePeripheral+Uart.swift in Sources */,
 				A9A08B5923A523C900498069 /* BlePeripheral+AdafruitCommon.swift in Sources */,
 				A9D5B21123E0985600178E1B /* AutoConnectViewController.swift in Sources */,
+				A93159D5241A335800218092 /* QuaternionPanelViewController.swift in Sources */,
 				A9A08B5B23A523C900498069 /* RssiUI.swift in Sources */,
 				A9A08B5C23A523C900498069 /* HelpViewController.swift in Sources */,
 				A9A08B5D23A523C900498069 /* NeoPixelsViewController.swift in Sources */,
@@ -1318,8 +1352,10 @@
 				A9A08B6723A523C900498069 /* UIView+RoundedCorners.swift in Sources */,
 				A900DCCE241697F400DAE5C9 /* SoundViewController.swift in Sources */,
 				A9A08B6823A523C900498069 /* TipWelcomeViewController.swift in Sources */,
+				A93159D3241A335800218092 /* QuaternionViewController.swift in Sources */,
 				A9D12E9423E874D000F3C259 /* PuppetViewController.swift in Sources */,
 				A9A08BA423A5286700498069 /* BlePeripheralSimulated.swift in Sources */,
+				A93159CE2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift in Sources */,
 				A900DCBE24147BAD00DAE5C9 /* BarometricPressureViewController.swift in Sources */,
 				A9D12EA623E8F91300F3C259 /* LowPassFilterSignal.swift in Sources */,
 				A9A08B6923A523C900498069 /* Config.swift in Sources */,
@@ -1347,6 +1383,7 @@
 				A9A08B7723A523C900498069 /* UartPacketManager.swift in Sources */,
 				A92256932411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift in Sources */,
 				A9A08B7823A523C900498069 /* LightSensorViewController.swift in Sources */,
+				A93159DB241A37A900218092 /* QuaternionUtils.swift in Sources */,
 				A900DCC42415854000DAE5C9 /* NeopixelsBoardViewController.swift in Sources */,
 				A92256902411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift in Sources */,
 				A9A08B7923A523C900498069 /* TitleTableViewCell.swift in Sources */,
@@ -1368,6 +1405,7 @@
 				A9A08B8723A523C900498069 /* Settings.swift in Sources */,
 				A92256C82413307900B8AB57 /* HumidityPanelViewController.swift in Sources */,
 				A9A08B8823A523C900498069 /* BlePeripheral+Battery.swift in Sources */,
+				A93159D8241A36B000218092 /* AdafruitBoard+Assets.swift in Sources */,
 				A92256962411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */,
 				A9A08B8923A523C900498069 /* TemperaturePanelViewController.swift in Sources */,
 				A9A08B8B23A523C900498069 /* ScannerViewController.swift in Sources */,

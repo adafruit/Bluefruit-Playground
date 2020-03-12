@@ -26,6 +26,8 @@ class HomeViewController: UIViewController {
         case temperature
         case humidity
         case pressure
+        case sound
+        case quaternion
         case puppet
         
         var titleStringId: String {
@@ -38,6 +40,8 @@ class HomeViewController: UIViewController {
             case .temperature: return "modules_temperature_title"
             case .humidity: return "modules_humidity_title"
             case .pressure: return "modules_pressure_title"
+            case .sound: return "modules_sound_title"
+            case .quaternion: return "modules_quaternion_title"
             case .puppet: return "modules_puppet_title"
             }
         }
@@ -52,6 +56,8 @@ class HomeViewController: UIViewController {
             case .temperature: return "modules_temperature_subtitle"
             case .humidity: return "modules_humidity_subtitle"
             case .pressure: return "modules_pressure_subtitle"
+            case .sound: return "modules_sound_subtitle"
+            case .quaternion: return "modules_quaternion_subtitle"
             case .puppet: return "modules_puppet_subtitle"
             }
         }
@@ -65,8 +71,10 @@ class HomeViewController: UIViewController {
             case .accelerometer: return UIColor(named: "module_accelerometer_color")!
             case .temperature: return UIColor(named: "module_temperature_color")!
             case .humidity: return UIColor(named: "module_humidity_color")!
-            case .puppet: return UIColor(named: "module_puppet_color")!
             case .pressure: return UIColor(named: "module_pressure_color")!
+            case .sound: return UIColor(named: "module_sound_color")!
+            case .quaternion: return UIColor(named: "module_quaternion_color")!
+            case .puppet: return UIColor(named: "module_puppet_color")!
             }
         }
         
@@ -88,27 +96,31 @@ class HomeViewController: UIViewController {
                 return HumidityViewController.kIdentifier
             case .pressure:
                 return BarometricPressureViewController.kIdentifier
+            case .sound:
+                return SoundViewController.kIdentifier
+            case .quaternion:
+                return QuaternionViewController.kIdentifier
             case .puppet:
                 return PuppetViewController.kIdentifier
             }
         }
     }
-
+    
     private var menuItems: [Modules] = []
-
+    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Setup UI
         let topContentInsetForDetails: CGFloat = 10// 20
         baseTableView.contentInset = UIEdgeInsets(top: topContentInsetForDetails, left: 0, bottom: 0, right: 0)
         
         // Setup modules
         if let blePeripheral = blePeripheralConnected() {
-            menuItems = menuItemItemsForBlePeripheral(blePeripheral)
+            menuItems = HomeViewController.menuItemItemsForBlePeripheral(blePeripheral)
         }
-
+        
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("modules_title")
@@ -134,7 +146,7 @@ class HomeViewController: UIViewController {
         return Config.bleManager.connectedPeripherals().first
     }
     
-    private func menuItemItemsForBlePeripheral(_ blePeripheral: BlePeripheral) -> [Modules] {
+    private static func menuItemItemsForBlePeripheral(_ blePeripheral: BlePeripheral) -> [Modules] {
         var result: [Modules] = []
         
         guard let board = AdafruitBoardsManager.shared.currentBoard else { return result }
@@ -163,7 +175,13 @@ class HomeViewController: UIViewController {
         if board.isBarometricPressureAvailable {
             result.append(.pressure)
         }
-        if board.model == .clue_nRF52840 && board.isAccelerometerAvailable && board.isButtonsAvailable {
+        if board.isSoundAvailable {
+            result.append(.sound)
+        }
+        if board.isQuaternionAvailable {
+            result.append(.quaternion)
+        }
+        if board.isAccelerometerAvailable && board.isButtonsAvailable {
             result.append(.puppet)
         }
         return result

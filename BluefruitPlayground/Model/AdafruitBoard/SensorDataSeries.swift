@@ -20,13 +20,15 @@ struct SensorDataSeries<T>: Sequence, IteratorProtocol {
 
     private var insertIndex = -1
     private var values = [Entry]()
-        
+    private var valuesLock = NSLock()
+    
     init() {
         values.reserveCapacity(kMaxNumItems)
     }
     
     // Acccesors
     mutating func addValue(_ value: Entry) {
+        valuesLock.lock(); defer { valuesLock.unlock() }
         insertIndex = (insertIndex + 1) % kMaxNumItems
         if insertIndex == values.count {
             values.insert(value, at: insertIndex)
@@ -41,11 +43,13 @@ struct SensorDataSeries<T>: Sequence, IteratorProtocol {
     }
 
     var first: Entry? {
+        valuesLock.lock(); defer { valuesLock.unlock() }
         guard values.count > 0 else { return nil }
         return self[0]
     }
     
     var last: Entry? {
+        valuesLock.lock(); defer { valuesLock.unlock() }
         guard values.count > 0 else { return nil }
         return self[values.count-1]
     }

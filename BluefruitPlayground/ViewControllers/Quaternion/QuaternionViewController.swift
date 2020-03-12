@@ -1,5 +1,5 @@
 //
-//  AccelerometerViewController.swift
+//  QuaternionViewController.swift
 //  BluefruitPlayground
 //
 //  Created by Antonio García on 25/10/2019.
@@ -9,24 +9,24 @@
 import UIKit
 import SceneKit
 
-class AccelerometerViewController: ModuleViewController {
+class QuaternionViewController: ModuleViewController {
     // Constants
-    static let kIdentifier = "AccelerometerViewController"
+    static let kIdentifier = "QuaternionViewController"
 
     // UI
     @IBOutlet weak var sceneView: SCNView!
 
     // Data
-    private var acceleration = BlePeripheral.AccelerometerValue(x: 0, y: 0, z: 0)
+    private var quaternion = BlePeripheral.QuaternionValue(qx: 0, qy: 0, qz: 0, qw: 1)
     private var circuitNode: SCNNode?
-    private var valuesPanelViewController: AccelerometerPanelViewController!
+    private var valuesPanelViewController: QuaternionPanelViewController!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Add panels 
-        valuesPanelViewController = (addPanelViewController(storyboardIdentifier: AccelerometerPanelViewController.kIdentifier) as! AccelerometerPanelViewController)
+        valuesPanelViewController = (addPanelViewController(storyboardIdentifier: QuaternionPanelViewController.kIdentifier) as! QuaternionPanelViewController)
 
         // Load scene
         if let asset3DFileName = AdafruitBoardsManager.shared.currentBoard?.asset3DFileName {
@@ -43,8 +43,8 @@ class AccelerometerViewController: ModuleViewController {
         
         // Localization
         let localizationManager = LocalizationManager.shared
-        self.title = localizationManager.localizedString("accelerometer_title")
-        moduleHelpMessage = localizationManager.localizedString("accelerometer_help")
+        self.title = localizationManager.localizedString("quaternion_title")
+        moduleHelpMessage = localizationManager.localizedString("quaternion_help")
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -52,13 +52,13 @@ class AccelerometerViewController: ModuleViewController {
 
         // Initial value
         let board = AdafruitBoardsManager.shared.currentBoard
-        if let acceleration = board?.accelerometerLastValue() {
-            self.acceleration = acceleration
+        if let value = board?.quaternionLastValue() {
+            self.quaternion = value
         }
         updateValueUI()
 
         // Set delegate
-        board?.accelerometerDelegate = self
+        board?.quaternionDelegate = self
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,28 +66,28 @@ class AccelerometerViewController: ModuleViewController {
 
         // Remove delegate
         let board = AdafruitBoardsManager.shared.currentBoard
-        board?.accelerometerDelegate = nil
+        board?.quaternionDelegate = nil
     }
 
     // MARK: - UI
     private func updateValueUI() {
         // Calculate Euler Angles
-        let eulerAngles = AccelerometerUtils.accelerationToEuler(acceleration)
+        let eulerAngles = QuaternionUtils.quaternionToEuler(quaternion: quaternion)
         //DLog("Euler: pitch: \(eulerAngles.x) yaw: \(eulerAngles.y) roll: \(eulerAngles.z)")
 
         // Update circuit model orientation
-        SCNTransaction.animationDuration = BlePeripheral.kAdafruitAccelerometerDefaultPeriod
+        SCNTransaction.animationDuration = BlePeripheral.kAdafruitQuaternionDefaultPeriod
         circuitNode?.eulerAngles = eulerAngles
 
         // Update panel
-        valuesPanelViewController.accelerationReceived(acceleration: self.acceleration, eulerAngles: eulerAngles)
+        valuesPanelViewController.accelerationReceived(quaternion: self.quaternion, eulerAngles: eulerAngles)
     }
 }
 
-// MARK: - CPBBleAccelerometerDelegate
-extension AccelerometerViewController: AdafruitAccelerometerDelegate {
-    func adafruitAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue) {
-        self.acceleration = acceleration
+// MARK: - CPBBleQuaternionDelegate
+extension QuaternionViewController: AdafruitQuaternionDelegate {
+    func adafruitQuaternionReceived(_ quaternion: BlePeripheral.QuaternionValue) {
+        self.quaternion = quaternion
         updateValueUI()
     }
 }

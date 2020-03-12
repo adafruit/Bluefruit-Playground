@@ -42,34 +42,51 @@ class AboutViewController: UIViewController {
 
             let linkString0 = localizationManager.localizedString("about_ios_link0_text")
             let linkString1 = localizationManager.localizedString("about_ios_link1_text")
+            let linkString2 = localizationManager.localizedString("about_ios_link2_text")
+            let linkString3 = localizationManager.localizedString("about_ios_link3_text")
 
-            //let customType = ActiveType.custom(pattern: "(\\w*\(strongString)\\w*)")
             let customType0 = ActiveType.custom(pattern: "(\\w*\(linkString0)\\w*)")
             let customType1 = ActiveType.custom(pattern: "(\\w*\(linkString1)\\w*)")
-            label.enabledTypes = [/*customType,*/ customType0, customType1]
+            let customType2 = ActiveType.custom(pattern: "(\\w*\(linkString2)\\w*)")
+            let customType3 = ActiveType.custom(pattern: "(\\w*\(linkString3)\\w*)")
+            label.enabledTypes = [customType0, customType1, customType2, customType3]
 
             let color = UIColor(named: "text_link")
             let selectedColor = color?.lighter()
-
-            // label.customColor[customType] = messageLabel.textColor.lighter()
 
             label.customColor[customType0] = color
             label.customSelectedColor[customType0] = selectedColor
             label.customColor[customType1] = color
             label.customSelectedColor[customType1] = selectedColor
+            label.customColor[customType2] = color
+            label.customSelectedColor[customType2] = selectedColor
+            label.customColor[customType3] = color
+            label.customSelectedColor[customType3] = selectedColor
 
             label.handleCustomTap(for: customType0) { _ in
                 if let url = URL(string: localizationManager.localizedString("about_ios_link0_url")) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
-
+            
             label.handleCustomTap(for: customType1) { _ in
                 if let url = URL(string: localizationManager.localizedString("about_ios_link1_url")) {
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
             }
-
+            
+            label.handleCustomTap(for: customType2) { _ in
+                if let url = URL(string: localizationManager.localizedString("about_ios_link2_url")) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+            
+            label.handleCustomTap(for: customType3) { _ in
+                if let url = URL(string: localizationManager.localizedString("about_ios_link3_url")) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+            
             label.configureLinkAttribute = { (type, attributes, isSelected) in
                 var atts = attributes
                 switch type {

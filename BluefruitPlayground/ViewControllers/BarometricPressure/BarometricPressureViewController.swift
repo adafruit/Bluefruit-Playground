@@ -86,8 +86,8 @@ class BarometricPressureViewController: ModuleViewController {
     
     //var testAngle: Float = 0
     private func updateBarometerUI() {
-        let adjustedPressure = min(max(pressure ?? 0, BarometricPressureViewController.kScaleMinHPa), BarometricPressureViewController.kScaleMaxHPa)
-        let progress = (adjustedPressure - BarometricPressureViewController.kScaleMinHPa) / (BarometricPressureViewController.kScaleMaxHPa-BarometricPressureViewController.kScaleMinHPa)
+        let adjustedValue = min(max(pressure ?? 0, BarometricPressureViewController.kScaleMinHPa), BarometricPressureViewController.kScaleMaxHPa)
+        let progress = (adjustedValue - BarometricPressureViewController.kScaleMinHPa) / (BarometricPressureViewController.kScaleMaxHPa-BarometricPressureViewController.kScaleMinHPa)
         
         let kMinDegress: Float = -136       // min rotation in degress
         let kMaxDegress: Float = 136        // max rotation in degress

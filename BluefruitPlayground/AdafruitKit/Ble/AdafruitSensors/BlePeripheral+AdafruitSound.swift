@@ -17,7 +17,8 @@ extension BlePeripheral {
     private static let kAdafruitSoundSensorVersion = 1
     
     static let kAdafruitSoundSensorDefaultPeriod: TimeInterval = 0.1
-
+    static let kAdafruitSoundSensorMaxAmplitude = 32767
+    
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
         static var adafruitSoundCharacteristic: CBCharacteristic?
@@ -43,13 +44,16 @@ extension BlePeripheral {
     }
 
     // MARK: - Actions
-    func adafruitSoundEnable(responseHandler: @escaping(Result<([[Int16]], UUID), Error>) -> Void, completion: ((Result<Int, Error>) -> Void)?) {
+    func adafruitSoundEnable(responseHandler: @escaping(Result<([Double], UUID), Error>) -> Void, completion: ((Result<Int, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitSoundSensorVersion, serviceUuid: BlePeripheral.kAdafruitSoundSensorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitSoundSamplesCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSoundSensorDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitSoundSensorVersion, serviceUuid: BlePeripheral.kAdafruitSoundSensorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitSoundSamplesCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSoundSensorDefaultPeriod, responseHandler: { [weak self] response in
+            
+            guard self?.adafruitSoundNumChannels ?? 0 > 0 else { return }      // Ignore received data until sound channels are defined
+            // TODO: read sound channels BEFORE enabling notify
             
             switch response {
             case let .success((data, uuid)):
-                if let value = self.adafruitSoundDataToSound(data) {
+                if let value = self?.adafruitSoundDataToAmplitudePerChannel(data) {
                     responseHandler(.success((value, uuid)))
                 }
                 else {
@@ -109,33 +113,44 @@ extension BlePeripheral {
         disableNotify(for: characteristic)
     }
 
-    func adafruitSoundLastValue() -> [[Int16]]? {       // Samples fo reach channel
+    func adafruitSoundLastAmplitudePerChannel() -> [Double]? {       // Samples fo reach channel
         guard let data = adafruitSoundCharacteristic?.value else { return nil }
-        return adafruitSoundDataToSound(data)
+        return adafruitSoundDataToAmplitudePerChannel(data)
     }
-
+    
     // MARK: - Utils
-    private func adafruitSoundDataToSound(_ data: Data) -> [[Int16]]? {
+    /**
+     Convert raw data into the amplitude for each channel
+     - returns: array with amplitude for each channel measured in decibel relative to full scale (dBFS)
+     */
+    private func adafruitSoundDataToAmplitudePerChannel(_ data: Data) -> [Double]? {
         guard let samples = adafruitDataToInt16Array(data) else { return nil }
         let numChannels = adafruitSoundNumChannels
-        guard numChannels > 0 else { return nil }
+        guard numChannels > 0, samples.count >= numChannels else { return nil }
 
-        /*
-        dump(samples)
-        print("----")
- */
-        /*
-        let channelSamples = [[UInt16]](repeating: [], count: numChannels)
-
-        var currentChannel = 0
-        for sample in samples {
-            var channel = &channelSamples[currentChannel]
-            channel.append(sample)
-            currentChannel = (currentChannel + 1) % numChannels
+        var samplesSumPerChannel = [Double](repeating: 0, count: numChannels)
+        for (index, sample) in samples.enumerated() {
+            let channelIndex = index % numChannels
+            samplesSumPerChannel[channelIndex] += Double(abs(sample))
         }
         
-        return channelSamples
- */
-        return nil
+        let samplesPerChannel = samples.count / numChannels
+        var amplitudePerChannel = [Double](repeating: 0, count: numChannels)
+        for (index, samplesSum) in samplesSumPerChannel.enumerated() {
+            let samplesAvg = samplesSum / Double(samplesPerChannel)
+            
+            // Calculate amplitude
+            // based on: https://devzone.nordicsemi.com/f/nordic-q-a/28248/get-amplitude-db-from-pdm/111560#111560
+            let amplitude = 20 * log10(abs(samplesAvg) / Double(BlePeripheral.kAdafruitSoundSensorMaxAmplitude))
+            
+            // Note:
+            //       The base 10 log of -1 is NaN.
+            //       The base 10 log of 0 is -Infinity.
+                        
+            amplitudePerChannel[index] = amplitude
+        }
+      
+        return amplitudePerChannel
+      
     }
 }

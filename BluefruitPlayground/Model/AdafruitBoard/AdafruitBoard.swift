@@ -34,7 +34,15 @@ protocol AdafruitBarometricPressureDelegate: class {
 }
 
 protocol AdafruitSoundDelegate: class {
-    func adafruitSoundReceived(_ channelSamples: [[Int16]])
+    func adafruitSoundReceived(_ channelSamples: [Double])
+}
+
+protocol AdafruitGyroscopeDelegate: class {
+    func adafruitGyroscopeReceived(_ gyroscope: BlePeripheral.GyroscopeValue)
+}
+
+protocol AdafruitQuaternionDelegate: class {
+    func adafruitQuaternionReceived(_ quaternion: BlePeripheral.QuaternionValue)
 }
 
 /**
@@ -76,6 +84,8 @@ class AdafruitBoard {
         case humidity
         case barometricPressure
         case sound
+        case gyroscope
+        case quaternion
     }
     
     // Notifications
@@ -92,7 +102,9 @@ class AdafruitBoard {
     weak var humidityDelegate: AdafruitHumidityDelegate?
     weak var barometricPressureDelegate: AdafruitBarometricPressureDelegate?
     weak var soundDelegate: AdafruitSoundDelegate?
-    
+    weak var gyroscopeDelegate: AdafruitGyroscopeDelegate?
+    weak var quaternionDelegate: AdafruitQuaternionDelegate?
+
     // Data
     private(set) weak var blePeripheral: BlePeripheral?
     var model: BlePeripheral.AdafruitManufacturerData.BoardModel? {
@@ -104,7 +116,9 @@ class AdafruitBoard {
     private(set) var temperatureDataSeries = SensorDataSeries<Float>()
     private(set) var humidityDataSeries = SensorDataSeries<Float>()
     private(set) var barometricPressureDataSeries = SensorDataSeries<Float>()
-    private(set) var soundDataSeries = SensorDataSeries<Float>()
+    private(set) var soundAmplitudeDataSeries = SensorDataSeries<Float>()
+    private(set) var gyroscopeDataSeries = SensorDataSeries<BlePeripheral.GyroscopeValue>()
+    private(set) var quaternionDataSeries = SensorDataSeries<BlePeripheral.QuaternionValue>()
 
     private var currentLightSequenceAnimation: LightSequenceAnimation?
     public var neopixelCurrentLightSequenceAnimationSpeed: Double {
@@ -270,18 +284,48 @@ class AdafruitBoard {
         }
         
         // Sound Service: Enable receiving data
-         if services.contains(.sound) {
-             servicesGroup.enter()
-             blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { result in
-                 
-                 if case .success = result {
-                     DLog("Sound reading enabled")
-                 } else {
-                     DLog("Warning: Sound reading enable failed")
-                 }
-                 servicesGroup.leave()
-             }
-         }
+        if services.contains(.sound) {
+            servicesGroup.enter()
+            blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { result in
+                
+                if case .success = result {
+                    DLog("Sound reading enabled")
+                } else {
+                    DLog("Warning: Sound reading enable failed")
+                }
+                servicesGroup.leave()
+            }
+        }
+        
+        
+        
+        // Gyroscope Service: Enable receiving data
+        if services.contains(.gyroscope) {
+            servicesGroup.enter()
+            blePeripheral.adafruitGyroscopeEnable(responseHandler: self.receiveGyroscopeData) { result in
+                
+                if case .success = result {
+                    DLog("Gyroscope reading enabled")
+                } else {
+                    DLog("Warning: Gyroscope reading enable failed")
+                }
+                servicesGroup.leave()
+            }
+        }
+        
+        // Quaternion Service: Enable receiving data
+        if services.contains(.quaternion) {
+            servicesGroup.enter()
+            blePeripheral.adafruitQuaternionEnable(responseHandler: self.receiveQuaternionData) { result in
+                
+                if case .success = result {
+                    DLog("Quaternion reading enabled")
+                } else {
+                    DLog("Warning: Quaternion reading enable failed")
+                }
+                servicesGroup.leave()
+            }
+        }
         
         // Wait for all finished
         servicesGroup.notify(queue: DispatchQueue.main) {
@@ -322,16 +366,24 @@ class AdafruitBoard {
     var isBarometricPressureAvailable: Bool {
         return blePeripheral?.adafruitBarometricPressureIsEnabled() ?? false
     }
-
+    
     var isSoundAvailable: Bool {
         return blePeripheral?.adafruitSoundIsEnabled() ?? false
+    }
+
+    var isGyroscopeAvailable: Bool {
+        return blePeripheral?.adafruitGyroscopeIsEnabled() ?? false
+    }
+
+    var isQuaternionAvailable: Bool {
+        return blePeripheral?.adafruitQuaternionIsEnabled() ?? false
     }
 
     // MARK: - Read Data
     func lightLastValue() -> Float? {
         return blePeripheral?.adafruitLightLastValue()
     }
-
+    
     func buttonsReadState(completion: @escaping(Result<(BlePeripheral.ButtonsState, UUID), Error>) -> Void) {
         blePeripheral?.adafruitButtonsReadState() { result in
             DispatchQueue.main.async {      // Send response in main thread
@@ -355,15 +407,28 @@ class AdafruitBoard {
     func humidityLastValue() -> Float? {
         return blePeripheral?.adafruitHumidityLastValue()
     }
- 
+    
     func barometricPressureLastValue() -> Float? {
         return blePeripheral?.adafruitBarometricPressureLastValue()
     }
-
-    func soundLastValue() -> [[Int16]]? {
-        return blePeripheral?.adafruitSoundLastValue()
+    
+    func soundLastAmplitudesPerChannel() -> [Double]? {
+        return blePeripheral?.adafruitSoundLastAmplitudePerChannel()
+    }
+    
+    func soundLastAmplitude() -> Double? {
+        return soundLastAmplitudesPerChannel()?.first
+    }
+    
+    func gyroscopeLastValue() -> BlePeripheral.GyroscopeValue? {
+        return blePeripheral?.adafruitGyroscopeLastValue()
     }
 
+    func quaternionLastValue() -> BlePeripheral.QuaternionValue? {
+        return blePeripheral?.adafruitQuaternionLastValue()
+    }
+    
+    
     // MARK: - Receive Data
     private func receiveLightData(response: Result<(Float, UUID), Error>) {
         switch response {
@@ -420,7 +485,7 @@ class AdafruitBoard {
             // Save value
             let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
             accelerometerDataSeries.addValue(entry)
-            //DLog("Accelerometer x: \(acceleration.x), y: \(acceleration.y) z: \(acceleration.z)")
+            //DLog("Accelerometer x: \(value.x), y: \(value.y) z: \(value.z)")
             
             // Send to delegate
             if let accelerometerDelegate = accelerometerDelegate {
@@ -518,33 +583,83 @@ class AdafruitBoard {
         }
     }
     
-    private func receiveSoundData(response: Result<([[Int16]], UUID), Error>) {
+    private func receiveSoundData(response: Result<([Double], UUID), Error>) {
         switch response {
-        case let .success(value, uuid):
-            
+        case let .success(amplitudesPerChannel, uuid):
             // Save value
-            /*
-            let averageValue = value.count > 0 ? Float(value.reduce(0, +)) / Float(value.count) : 0
-            let entry = SensorDataSeries.Entry(value: averageValue, timestamp: CFAbsoluteTimeGetCurrent())
-            soundDataSeries.addValue(entry)
-            DLog("Sound level: \(averageValue)dB")
-            */
+            if let amplitude = amplitudesPerChannel.first, !amplitude.isNaN {
+                let entry = SensorDataSeries.Entry(value: Float(amplitude), timestamp: CFAbsoluteTimeGetCurrent())
+                soundAmplitudeDataSeries.addValue(entry)
+                //DLog("Amplitude: \(amplitude)dBFS")
+            }
             
             // Send to delegate
             if let soundDelegate = soundDelegate {
                 DispatchQueue.main.async {      // Delegates are called in the main thread
-                    soundDelegate.adafruitSoundReceived(value)
+                    soundDelegate.adafruitSoundReceived(amplitudesPerChannel)
                 }
             }
             
             // Send notification
             NotificationCenter.default.post(name: .didReceiveSoundData, object: nil, userInfo: [
-                NotificationUserInfoKey.value.rawValue: value,
+                NotificationUserInfoKey.value.rawValue: amplitudesPerChannel,
                 NotificationUserInfoKey.uuid.rawValue: uuid
             ])
             
         case .failure(let error):
             DLog("Error receiving sound data: \(error)")
+        }
+    }
+    
+    private func receiveGyroscopeData(response: Result<(BlePeripheral.GyroscopeValue, UUID), Error>) {
+        switch response {
+        case let .success(value, uuid):
+            // Save value
+            let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
+            gyroscopeDataSeries.addValue(entry)
+            DLog("Gyroscope x: \(value.x), y: \(value.y) z: \(value.z)")
+                
+            // Send to delegate
+            if let gyroscopeDelegate = gyroscopeDelegate {
+                DispatchQueue.main.async {      // Delegates are called in the main thread
+                    gyroscopeDelegate.adafruitGyroscopeReceived(value)
+                }
+            }
+            
+            // Send notification
+            NotificationCenter.default.post(name: .didReceiveGyroscopeData, object: nil, userInfo: [
+                NotificationUserInfoKey.value.rawValue: value,
+                NotificationUserInfoKey.uuid.rawValue: uuid
+            ])
+            
+        case .failure(let error):
+            DLog("Error receiving gyroscope data: \(error)")
+        }
+    }
+    
+    private func receiveQuaternionData(response: Result<(BlePeripheral.QuaternionValue, UUID), Error>) {
+        switch response {
+        case let .success(value, uuid):
+            // Save value
+            let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
+            quaternionDataSeries.addValue(entry)
+            //DLog("Quaternion qx: \(value.qx), qy: \(value.qy) qz: \(value.qz) qw: \(value.qw)")
+            
+            // Send to delegate
+            if let quaternionDelegate = quaternionDelegate {
+                DispatchQueue.main.async {      // Delegates are called in the main thread
+                    quaternionDelegate.adafruitQuaternionReceived(value)
+                }
+            }
+            
+            // Send notification
+            NotificationCenter.default.post(name: .didReceiveQuaternionData, object: nil, userInfo: [
+                NotificationUserInfoKey.value.rawValue: value,
+                NotificationUserInfoKey.uuid.rawValue: uuid
+            ])
+            
+        case .failure(let error):
+            DLog("Error receiving quaternion data: \(error)")
         }
     }
     
@@ -616,7 +731,7 @@ class AdafruitBoard {
 extension Notification.Name {
     private static let kNotificationsPrefix = Bundle.main.bundleIdentifier!
     static let willDiscoverServices = Notification.Name(kNotificationsPrefix+".willDiscoverServices")
-
+    
     static let didUpdateNeopixelLightSequence = Notification.Name(kNotificationsPrefix+".didUpdateNeopixelLightSequence")
     static let didReceiveLightData = Notification.Name(kNotificationsPrefix+".didReceiveLightData")
     static let didReceiveButtonsData = Notification.Name(kNotificationsPrefix+".didReceiveButtonsData")
@@ -625,4 +740,6 @@ extension Notification.Name {
     static let didReceiveTemperatureData = Notification.Name(kNotificationsPrefix+".didReceiveTemperatureData")
     static let didReceiveBarometricPressureData = Notification.Name(kNotificationsPrefix+".didReceiveBarometricPressureData")
     static let didReceiveSoundData = Notification.Name(kNotificationsPrefix+".didReceiveSoundData")
+    static let didReceiveGyroscopeData = Notification.Name(kNotificationsPrefix+".didReceiveGyroscopeData")
+    static let didReceiveQuaternionData = Notification.Name(kNotificationsPrefix+".didReceiveQuaternionData")
 }
