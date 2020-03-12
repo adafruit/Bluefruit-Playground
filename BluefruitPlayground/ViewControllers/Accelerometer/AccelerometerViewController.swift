@@ -29,10 +29,8 @@ class AccelerometerViewController: ModuleViewController {
         valuesPanelViewController = (addPanelViewController(storyboardIdentifier: AccelerometerPanelViewController.kIdentifier) as! AccelerometerPanelViewController)
 
         // Load scene
-        if let asset3DFileName = AdafruitBoardsManager.shared.currentBoard?.asset3DFileName {
-            let scene = SCNScene(named: asset3DFileName)!
-            scene.background.contents = UIColor.clear
-            
+        if let scene = AdafruitBoardsManager.shared.currentBoard?.assetScene {
+           
             circuitNode = scene.rootNode.childNode(withName: "root", recursively: false)!
             
             // Setup scene

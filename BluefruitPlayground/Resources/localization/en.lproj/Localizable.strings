@@ -98,7 +98,7 @@ https://github.com/mindsnacks/MSWeakTimer";
 "scanner_errordiscoveringservices" = "Error discovering peripheral services";
 "scanner_peripheraldisconnected" = "Peripheral disconnected";
 
-"scanner_searching" = "Finding devices...";
+"scanner_searching" = "Finding Adafruit devices...";
 "scanner_subtitle" = "Select a Bluefruit device to connect to:";
 "scanner_unnamed" = "<Unknown>";
 

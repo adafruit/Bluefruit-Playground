@@ -6,11 +6,12 @@
 //  Copyright © 2020 Adafruit. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import SceneKit
 
 extension AdafruitBoard {
     
-    var asset3DFileName: String? {
+    var assetScene: SCNScene? {
         var filename: String?
         if let model = self.model {
             switch model {
@@ -23,6 +24,31 @@ extension AdafruitBoard {
             }
         }
         
-        return filename
+        let scene: SCNScene?
+        if let filename = filename {
+            scene = SCNScene(named: filename)
+            scene?.background.contents = UIColor.clear
+        }
+        else {
+            scene = nil
+        }
+                
+        return scene
+    }
+    
+    var assetFrontImage: UIImage? {
+        var name: String?
+        if let model = self.model {
+            switch model {
+            case .circuitPlaygroundBluefruit:
+                name = "board_cpb"
+            case .clue_nRF52840:
+                name = "board_clue_front"
+            default:
+                name = nil
+            }
+        }
+        
+        return name == nil ? nil : UIImage(named: name!)
     }
 }
