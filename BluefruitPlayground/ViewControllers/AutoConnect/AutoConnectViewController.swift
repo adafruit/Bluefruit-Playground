@@ -23,10 +23,11 @@ class AutoConnectViewController: UIViewController {
     @IBOutlet weak var wave1ImageView: UIImageView!
     @IBOutlet weak var wave2ImageView: UIImageView!
     @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var cpbContainerView: UIView!
-    @IBOutlet weak var cpbImageView: UIImageView!
+    @IBOutlet weak var boardContainerView: UIView!
+    @IBOutlet weak var boardImageView: UIImageView!
     @IBOutlet weak var actionsContainerView: UIStackView!
-
+    @IBOutlet weak var detailContainerView: UIView!
+    
     // Data
     private let bleManager = Config.bleManager
     private var peripheralList = PeripheralList(bleManager: Config.bleManager)
@@ -48,6 +49,9 @@ class AutoConnectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.boardImageView.alpha = 0
+        
+        
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("autoconnect_title")
@@ -204,7 +208,18 @@ class AutoConnectViewController: UIViewController {
     }
 
     private func willDiscoverServices(notification: Notification) {
-        detailLabel.text = LocalizationManager.shared.localizedString("scanner_discoveringservices")
+        
+        // Change text (animated fade-out / fade-in)
+        UIView.animate(withDuration: 0.15, animations: {
+            self.detailContainerView.alpha = 0
+        }) { finished in
+            self.detailLabel.text = LocalizationManager.shared.localizedString("scanner_discoveringservices")
+            if finished {
+                UIView.animate(withDuration: 0.2) {
+                    self.detailContainerView.alpha = 1
+                }
+            }
+        }
     }
 
     private func didDisconnectFromPeripheral(notification: Notification) {
@@ -280,29 +295,35 @@ class AutoConnectViewController: UIViewController {
         let statusText: String
         if let selectedPeripheral = selectedPeripheral {
             statusText = "Device found:\n\(selectedPeripheral.name ?? localizationManager.localizedString("scanner_unnamed"))"
-            cpbImageView.image = AdafruitBoard.assetFrontImage(model: selectedPeripheral.adafruitManufacturerData()?.boardModel)
+            boardImageView.image = AdafruitBoard.assetFrontImage(model: selectedPeripheral.adafruitManufacturerData()?.boardModel)
 
-            // Animate found CPB
-            UIView.animate(withDuration: 0.1, animations: {
-                self.cpbContainerView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            // Animate found board
+            self.boardImageView.alpha = 0.8
+            UIView.animate(withDuration: 0.15, animations: {
+                self.boardContainerView.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             }) { didFinish in
                 if didFinish {
-                    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.5, options: [.curveEaseOut], animations: {
-                        self.cpbContainerView.transform = .identity
+                    UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0.5, options: [.curveEaseOut], animations: {
+                        self.boardContainerView.transform = .identity
                     }, completion: nil)
 
                     UIView.animate(withDuration: 0.3) {
-                        self.cpbImageView.alpha = 1
+                        self.boardImageView.alpha = 1
                     }
                 }
+            }
+            
+            // Show details
+            UIView.animate(withDuration: 0.2) {
+                self.detailContainerView.alpha = 1
             }
 
         } else {
             UIView.animate(withDuration: 0.3) {
-                self.cpbImageView.alpha = 0
+                self.boardImageView.alpha = 0
             }
             statusText = localizationManager.localizedString("autoconnect_searching")
-            detailLabel.text = " "
+            detailContainerView.alpha = 0
         }
 
         statusLabel.text = statusText

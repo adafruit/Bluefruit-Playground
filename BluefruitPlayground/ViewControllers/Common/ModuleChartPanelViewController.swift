@@ -51,7 +51,10 @@ class ChartPanelViewController: ModulePanelViewController {
     
     internal func reloadChartEntries(dataSeries: SensorDataSeries<Float>) {
         
-        originTimestamp = dataSeries.first?.timestamp ?? CFAbsoluteTimeGetCurrent()
+        let maxTimestamp = dataSeries.max { (a, b) -> Bool in
+            return a.timestamp < b.timestamp
+        }?.timestamp
+        originTimestamp = maxTimestamp ?? CFAbsoluteTimeGetCurrent()
         let entries = chartEntries(dataSeries: dataSeries)
         
         // Add Dataset

@@ -13,7 +13,7 @@ class SoundViewController: ModuleViewController {
     static let kIdentifier = "SoundViewController"
 
     // Config
-    private static let kScaleMinDBFS: Double = -110     // What is a sensible value here?
+    private static let kScaleMinDBFS: Double = -120     // What is a sensible value here?
     private static let kScaleMaxDBFS: Double = 0
     
     // UI
