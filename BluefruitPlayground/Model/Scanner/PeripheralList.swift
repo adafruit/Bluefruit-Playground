@@ -32,7 +32,9 @@ class PeripheralList {
     }
 
     private func calculateFilteredPeripherals() -> [BlePeripheral] {
-        let peripherals = bleManager.peripherals().filter({$0.isManufacturerAdafruit()})
+        let peripherals = bleManager.peripherals().filter({$0.isManufacturerAdafruit()}).sorted{ (p0, p1) -> Bool in
+             return (p0.rssi ?? -127) > (p1.rssi ?? -127)
+        }
         return peripherals
 
         //return peripherals.filter({$0.rssi ?? -127 > -55})
