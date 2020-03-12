@@ -151,6 +151,5 @@ extension BlePeripheral {
         }
       
         return amplitudePerChannel
-      
     }
 }

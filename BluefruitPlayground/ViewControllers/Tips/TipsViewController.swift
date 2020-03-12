@@ -48,13 +48,7 @@ class TipsViewController: UIViewController {
             if let tipViewController = addTipViewController() {
                 let titleStringId = String(format: "tip%ld_title", i)
                 tipViewController.titleText = localizationManager.localizedString(titleStringId)
-                let detailStringId = String(format: "tip%ld_detail", i)
-                tipViewController.detailText = localizationManager.localizedString(detailStringId)
-
-                let detailTextLinkStringId = String(format: "tip%ld_link_text", i)
-                tipViewController.detailTextLinkString = localizationManager.localizedString(detailTextLinkStringId)
-                let detailTextLinkUrlId = String(format: "tip%ld_link_url", i)
-                tipViewController.detailTextLinkUrl = URL(string: localizationManager.localizedString(detailTextLinkUrlId))
+                tipViewController.detailTextLocalizationStringPrefix = localizationManager.localizedString(String(format: "tip%ld", i))
 
                 let actionStringId = String(format: "tip%ld_action", i)
                 tipViewController.actionText = localizationManager.localizedString(actionStringId).uppercased()

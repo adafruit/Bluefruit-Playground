@@ -15,7 +15,7 @@
 
 // Welcome
 "tip0_title" = "Welcome";
-"tip0_detail" = "Bluefruit Playground provides you with a variety of tools to communicate with Circuit Playground Bluefruit & Adafruit CLUE!
+"tip0_text" = "Bluefruit Playground provides you with a variety of tools to communicate with Circuit Playground Bluefruit & Adafruit CLUE!
 Click the links above to purchase a board from the Adafruit shop.";
 "tip0_link0_text" = "Circuit Playground Bluefruit";
 "tip0_link0_url" = "https://www.adafruit.com/product/4333";
@@ -23,12 +23,12 @@ Click the links above to purchase a board from the Adafruit shop.";
 "tip0_link1_url" = "https://www.adafruit.com/product/4500";
 "tip0_action" = "Let's get started...";
 "tip1_title" = "Power Up";
-"tip1_detail" = "First, follow the instructions here to load the correct firmware. Then, connect your Bluefruit device to USB, AAA battery pack or a Lipoly battery to power up.";
+"tip1_text" = "First, follow the instructions here to load the correct firmware. Then, connect your Bluefruit device to USB, AAA battery pack or a Lipoly battery to power up.";
 "tip1_link_text" = "instructions here";
 "tip1_link_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
 "tip1_action" = "Next";
 "tip2_title" = "Discover";
-"tip2_detail" = "Once your Bluefruit device is powered, move it close to your iPhone.";
+"tip2_text" = "Once your Bluefruit device is powered, move it close to your iPhone.";
 "tip2_action" = "Begin pairing";
 
 

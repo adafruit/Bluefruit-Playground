@@ -66,6 +66,8 @@
 		A93159D8241A36B000218092 /* AdafruitBoard+Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D6241A36B000218092 /* AdafruitBoard+Assets.swift */; };
 		A93159DA241A37A900218092 /* QuaternionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D9241A37A900218092 /* QuaternionUtils.swift */; };
 		A93159DB241A37A900218092 /* QuaternionUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D9241A37A900218092 /* QuaternionUtils.swift */; };
+		A93159DD241A5B6000218092 /* ActiveLabelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159DC241A5B6000218092 /* ActiveLabelUtils.swift */; };
+		A93159DE241A5B6000218092 /* ActiveLabelUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159DC241A5B6000218092 /* ActiveLabelUtils.swift */; };
 		A948298D237B73B100B6FC13 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9482989237B73B100B6FC13 /* HelpViewController.swift */; };
 		A948298E237B73B100B6FC13 /* CommonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */; };
 		A948298F237B73B100B6FC13 /* ModulePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */; };
@@ -324,6 +326,7 @@
 		A93159D1241A335700218092 /* QuaternionPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuaternionPanelViewController.swift; sourceTree = "<group>"; };
 		A93159D6241A36B000218092 /* AdafruitBoard+Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdafruitBoard+Assets.swift"; sourceTree = "<group>"; };
 		A93159D9241A37A900218092 /* QuaternionUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuaternionUtils.swift; sourceTree = "<group>"; };
+		A93159DC241A5B6000218092 /* ActiveLabelUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLabelUtils.swift; sourceTree = "<group>"; };
 		A9482989237B73B100B6FC13 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		A948298A237B73B100B6FC13 /* CommonTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTableViewCell.swift; sourceTree = "<group>"; };
 		A948298B237B73B100B6FC13 /* ModulePanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModulePanelViewController.swift; sourceTree = "<group>"; };
@@ -770,6 +773,7 @@
 				A9D5B21223E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift */,
 				A9D12EAA23E902BB00F3C259 /* Float+Clamped.swift */,
 				A9D12EA423E8F91300F3C259 /* LowPassFilterSignal.swift */,
+				A93159DC241A5B6000218092 /* ActiveLabelUtils.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1192,6 +1196,7 @@
 				A9ADE5F923533D5400777535 /* NeopixelsColorPaletteViewController.swift in Sources */,
 				A9EAA19523514B2800FA615E /* CornerShadowButton.swift in Sources */,
 				A96AA5D523635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift in Sources */,
+				A93159DD241A5B6000218092 /* ActiveLabelUtils.swift in Sources */,
 				A96AA5C823633EB3004A06BA /* UIButton+BackgroundColorForState.swift in Sources */,
 				A92256912411CEEA00B8AB57 /* BlePeripheral+AdafruitToneGenerator.swift in Sources */,
 				A9A08B2523A2CBCF00498069 /* LightSequenceAnimation.swift in Sources */,
@@ -1367,6 +1372,7 @@
 				A9A08B6D23A523C900498069 /* NormalBrightnessColorPickerController.swift in Sources */,
 				A9A08B6E23A523C900498069 /* PanelInsetView.swift in Sources */,
 				A9A08B6F23A523C900498069 /* LogHelper.swift in Sources */,
+				A93159DE241A5B6000218092 /* ActiveLabelUtils.swift in Sources */,
 				A9A08BB123A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift in Sources */,
 				A9A08B7023A523C900498069 /* CommonTableViewCell.swift in Sources */,
 				A9A08BA123A5260300498069 /* BleManagerSimulated.swift in Sources */,

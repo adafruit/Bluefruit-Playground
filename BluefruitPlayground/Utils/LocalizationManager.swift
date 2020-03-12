@@ -58,18 +58,17 @@ class LocalizationManager {
     }
 
     func localizedString(_ key: String, description: String?) -> String {
-        var result: String!
-
-        if let string = localizationBundle?.localizedString(forKey: key, value: description, table: nil) {
-            result = string
-        } else {
-            result = key
-        }
+        var result = localizationBundle?.localizedString(forKey: key, value: description, table: nil) ?? key
 
         if LocalizationManager.kDebugShowDummyCharacters {
             result = String(repeating: "x", count: result.count)
         }
 
         return result
+    }
+    
+    func localizedStringIfExists(_ key: String) -> String? {
+        let result = localizationBundle?.localizedString(forKey: key, value: nil, table: nil)
+        return result == key ? nil : result
     }
 }

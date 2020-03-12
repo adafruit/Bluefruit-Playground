@@ -10,7 +10,7 @@ import Foundation
 
 struct SensorDataSeries<T>: Sequence, IteratorProtocol {
     // Config
-    let kMaxNumItems = 1000
+    let kMaxNumItems = 10//1000
     
     // Data
     struct Entry {
@@ -18,7 +18,7 @@ struct SensorDataSeries<T>: Sequence, IteratorProtocol {
         var timestamp: CFAbsoluteTime
     }
 
-    private var insertIndex = -1
+    private var lastInsertIndex = -1        // Last index where a value was inserted
     private var values = [Entry]()
     private var valuesLock = NSLock()
     
@@ -29,13 +29,14 @@ struct SensorDataSeries<T>: Sequence, IteratorProtocol {
     // Acccesors
     mutating func addValue(_ value: Entry) {
         valuesLock.lock(); defer { valuesLock.unlock() }
-        insertIndex = (insertIndex + 1) % kMaxNumItems
-        if insertIndex == values.count {
+        let insertIndex = (lastInsertIndex + 1) % kMaxNumItems
+        if insertIndex == values.count {        // Array not full. Add value
             values.insert(value, at: insertIndex)
         }
-        else {
+        else {      // Array full, replace value
             values[insertIndex] = value
         }
+        lastInsertIndex = insertIndex
     }
     
     subscript(index: Int) -> Entry {
@@ -56,7 +57,7 @@ struct SensorDataSeries<T>: Sequence, IteratorProtocol {
 
     // MARK: - Utils
     private func internalIndex(_ index: Int) -> Int {
-        let startIndex = insertIndex - (values.count - 1)
+        let startIndex = lastInsertIndex - (values.count - 1)
         return mod((startIndex + index), kMaxNumItems)      // Use mod instead of %, because numerator could be negative
     }
     

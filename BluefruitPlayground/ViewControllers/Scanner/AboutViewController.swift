@@ -33,71 +33,9 @@ class AboutViewController: UIViewController {
         self.title = localizationManager.localizedString("about_title")
 
         appNameLabel.text = localizationManager.localizedString("about_app_name")
-        messageLabel.text  = localizationManager.localizedString("about_ios_text")
-
         doneButton.title = localizationManager.localizedString("dialog_done")
 
-        messageLabel.customize { label in
-            //let strongString = localizationManager.localizedString("about_ios_strong_text")
-
-            let linkString0 = localizationManager.localizedString("about_ios_link0_text")
-            let linkString1 = localizationManager.localizedString("about_ios_link1_text")
-            let linkString2 = localizationManager.localizedString("about_ios_link2_text")
-            let linkString3 = localizationManager.localizedString("about_ios_link3_text")
-
-            let customType0 = ActiveType.custom(pattern: "(\\w*\(linkString0)\\w*)")
-            let customType1 = ActiveType.custom(pattern: "(\\w*\(linkString1)\\w*)")
-            let customType2 = ActiveType.custom(pattern: "(\\w*\(linkString2)\\w*)")
-            let customType3 = ActiveType.custom(pattern: "(\\w*\(linkString3)\\w*)")
-            label.enabledTypes = [customType0, customType1, customType2, customType3]
-
-            let color = UIColor(named: "text_link")
-            let selectedColor = color?.lighter()
-
-            label.customColor[customType0] = color
-            label.customSelectedColor[customType0] = selectedColor
-            label.customColor[customType1] = color
-            label.customSelectedColor[customType1] = selectedColor
-            label.customColor[customType2] = color
-            label.customSelectedColor[customType2] = selectedColor
-            label.customColor[customType3] = color
-            label.customSelectedColor[customType3] = selectedColor
-
-            label.handleCustomTap(for: customType0) { _ in
-                if let url = URL(string: localizationManager.localizedString("about_ios_link0_url")) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            
-            label.handleCustomTap(for: customType1) { _ in
-                if let url = URL(string: localizationManager.localizedString("about_ios_link1_url")) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            
-            label.handleCustomTap(for: customType2) { _ in
-                if let url = URL(string: localizationManager.localizedString("about_ios_link2_url")) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            
-            label.handleCustomTap(for: customType3) { _ in
-                if let url = URL(string: localizationManager.localizedString("about_ios_link3_url")) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            
-            label.configureLinkAttribute = { (type, attributes, isSelected) in
-                var atts = attributes
-                switch type {
-                case customType0, customType1:
-                    atts[.underlineStyle] = NSUnderlineStyle.single.rawValue
-                default: ()
-                }
-
-                return atts
-            }
-        }
+        ActiveLabelUtils.addActiveLabelLinks(label: messageLabel, linksLocalizationStringsIdPrefix: "about_ios")
     }
 
     override func viewWillAppear(_ animated: Bool) {

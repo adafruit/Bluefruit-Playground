@@ -26,24 +26,17 @@ class TipViewController: UIViewController {
             titleLabel.text = titleText
         }
     }
-    var detailText: String? {
+    
+    var detailTextLocalizationStringPrefix: String? {
         didSet {
             loadViewIfNeeded()
-            detailLabel.text = detailText
-        }
-    }
-
-    var detailTextLinkString: String? {
-        didSet {
-            loadViewIfNeeded()
-            updateLink()
-        }
-    }
-
-    var detailTextLinkUrl: URL? {
-        didSet {
-            loadViewIfNeeded()
-            updateLink()
+            
+            if let detailTextLocalizationStringPrefix = detailTextLocalizationStringPrefix {
+                ActiveLabelUtils.addActiveLabelLinks(label: detailLabel, linksLocalizationStringsIdPrefix: detailTextLocalizationStringPrefix)
+            }
+            else {
+                DLog("Warning: detailTextLocalizationStringPrefix is nil")
+            }
         }
     }
 
@@ -62,39 +55,9 @@ class TipViewController: UIViewController {
 
         containerView.layer.cornerRadius = 8
         containerView.layer.masksToBounds = true
-
-        //detailLabel.enabledTypes = [.url]
-
-        updateLink()
     }
 
     @IBAction func action(_ sender: Any) {
         actionHandler?()
-    }
-
-    private func updateLink() {
-        detailLabel.customize { label in
-            guard let linkString = detailTextLinkString else { return }
-
-            let customType = ActiveType.custom(pattern: "(\\w*\(linkString)\\w*)")
-            label.enabledTypes = [customType]
-            label.customColor[customType] = UIColor(named: "text_link")
-            label.customSelectedColor[customType] = UIColor(named: "text_link")?.lighter()
-
-            label.handleCustomTap(for: customType) { [unowned self] _ in
-                if let url = self.detailTextLinkUrl {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            label.configureLinkAttribute = { (type, attributes, isSelected) in
-                var atts = attributes
-                switch type {
-                case customType:
-                    atts[.underlineStyle] = NSUnderlineStyle.single.rawValue
-                default: ()
-                }
-                return atts
-            }
-        }
     }
 }

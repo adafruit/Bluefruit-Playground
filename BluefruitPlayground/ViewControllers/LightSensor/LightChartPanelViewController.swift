@@ -16,15 +16,19 @@ class LightChartPanelViewController: ChartPanelViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Init data
+        // Localization
+        let localizationManager = LocalizationManager.shared
+        titleLabel.text = localizationManager.localizedString("lightsensor_chartpanel_title")
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // Reload data
         if let board = AdafruitBoardsManager.shared.currentBoard {
             // Load initial data
             reloadChartEntries(dataSeries: board.lightDataSeries)
         }
-        
-        // Localization
-        let localizationManager = LocalizationManager.shared
-        titleLabel.text = localizationManager.localizedString("lightsensor_chartpanel_title")
     }
     
     // MARK: - Actions
