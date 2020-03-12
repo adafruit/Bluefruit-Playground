@@ -280,6 +280,7 @@ class AutoConnectViewController: UIViewController {
         let statusText: String
         if let selectedPeripheral = selectedPeripheral {
             statusText = "Device found:\n\(selectedPeripheral.name ?? localizationManager.localizedString("scanner_unnamed"))"
+            cpbImageView.image = AdafruitBoard.assetFrontImage(model: selectedPeripheral.adafruitManufacturerData()?.boardModel)
 
             // Animate found CPB
             UIView.animate(withDuration: 0.1, animations: {
@@ -298,7 +299,7 @@ class AutoConnectViewController: UIViewController {
 
         } else {
             UIView.animate(withDuration: 0.3) {
-                self.cpbImageView.alpha = 0.1
+                self.cpbImageView.alpha = 0
             }
             statusText = localizationManager.localizedString("autoconnect_searching")
             detailLabel.text = " "
@@ -327,7 +328,7 @@ extension AutoConnectViewController {
         isAnimating = false
 
         if isViewLoaded {
-            let waveImageViews = [wave0ImageView, wave1ImageView]//, wave2ImageView]
+            let waveImageViews = [wave0ImageView, wave1ImageView, wave2ImageView]
 
             for waveImageView in waveImageViews {
                 if let waveImageView = waveImageView {
@@ -342,14 +343,14 @@ extension AutoConnectViewController {
         isAnimating = true
         guard isViewLoaded else { return }
 
-        let waveImageViews = [wave0ImageView, wave1ImageView]//, wave2ImageView]
+        let waveImageViews = [wave0ImageView, wave1ImageView, wave2ImageView]
 
         // Scanning animation
-        let duration: Double = 8
-        let initialScaleFactor: CGFloat = 0.60
+        let duration: Double = 12 //8
+        let initialScaleFactor: CGFloat = 0// 0.60
         let finalScaleFactor: CGFloat = 1.10
 
-        let initialAlphaFactor: CGFloat = 0.80
+        let initialAlphaFactor: CGFloat = 1//0.80
         let finalAlphaFactor: CGFloat = 0
 
         // -    Initial position

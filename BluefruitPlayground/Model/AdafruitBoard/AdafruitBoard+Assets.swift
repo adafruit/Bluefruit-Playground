@@ -37,16 +37,21 @@ extension AdafruitBoard {
     }
     
     var assetFrontImage: UIImage? {
+        return AdafruitBoard.assetFrontImage(model: model)
+    }
+    
+    static func assetFrontImage(model: BlePeripheral.AdafruitManufacturerData.BoardModel?) -> UIImage? {
+        guard let model = model else { return nil }
+
         var name: String?
-        if let model = self.model {
-            switch model {
-            case .circuitPlaygroundBluefruit:
-                name = "board_cpb"
-            case .clue_nRF52840:
-                name = "board_clue_front"
-            default:
-                name = nil
-            }
+
+        switch model {
+        case .circuitPlaygroundBluefruit:
+            name = "board_cpb"
+        case .clue_nRF52840:
+            name = "board_clue_front"
+        default:
+            name = nil
         }
         
         return name == nil ? nil : UIImage(named: name!)
