@@ -18,7 +18,7 @@ class HomeViewController: UIViewController {
 
     // Data
     private enum Modules {
-        case color
+        case neopixels
         case light
         case button
         case tone
@@ -32,7 +32,7 @@ class HomeViewController: UIViewController {
         
         var titleStringId: String {
             switch self {
-            case .color: return "modules_color_title"
+            case .neopixels: return "modules_color_title"
             case .light: return "modules_light_title"
             case .button: return "modules_button_title"
             case .tone: return "modules_tone_title"
@@ -48,7 +48,7 @@ class HomeViewController: UIViewController {
         
         var subtitleStringId: String {
             switch self {
-            case .color: return "modules_color_subtitle"
+            case .neopixels: return "modules_color_subtitle"
             case .light: return "modules_light_subtitle"
             case .button: return "modules_button_subtitle"
             case .tone: return "modules_tone_subtitle"
@@ -64,7 +64,7 @@ class HomeViewController: UIViewController {
         
         var color: UIColor {
             switch self {
-            case .color: return UIColor(named: "module_neopixels_color")!
+            case .neopixels: return UIColor(named: "module_neopixels_color")!
             case .light: return UIColor(named: "module_light_color")!
             case .button: return UIColor(named: "module_buttons_color")!
             case .tone: return UIColor(named: "module_tone_color")!
@@ -80,7 +80,7 @@ class HomeViewController: UIViewController {
         
         var storyboardId: String {
             switch self {
-            case .color:
+            case .neopixels:
                 return NeoPixelsViewController.kIdentifier
             case .light:
                 return LightSensorViewController.kIdentifier
@@ -152,7 +152,7 @@ class HomeViewController: UIViewController {
         guard let board = AdafruitBoardsManager.shared.currentBoard else { return result }
         
         if board.isNeopixelsAvailable {
-            result.append(.color)
+            result.append(.neopixels)
         }
         if board.isLightAvailable {
             result.append(.light)
@@ -163,8 +163,11 @@ class HomeViewController: UIViewController {
         if board.isToneGeneratorAvailable {
             result.append(.tone)
         }
-        if board.isAccelerometerAvailable {
+        if (!board.isQuaternionAvailable || Config.isDebugEnabled) && board.isAccelerometerAvailable {
             result.append(.accelerometer)
+        }
+        if board.isQuaternionAvailable {
+            result.append(.quaternion)
         }
         if board.isTemperatureAvailable {
             result.append(.temperature)
@@ -177,9 +180,6 @@ class HomeViewController: UIViewController {
         }
         if board.isSoundAvailable {
             result.append(.sound)
-        }
-        if board.isQuaternionAvailable {
-            result.append(.quaternion)
         }
         if board.isAccelerometerAvailable && board.isButtonsAvailable {
             result.append(.puppet)

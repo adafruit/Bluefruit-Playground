@@ -112,8 +112,7 @@ https://github.com/mindsnacks/MSWeakTimer";
 "scannerproblems_title" = "Troubleshooting";
 
 "scannerproblems_tip0_title" = "Turn on the Bluefruit device";
-"scannerproblems_tip0_details" = "Make sure that the Bluefruit device is powered on. 
-Verify that the green \"On\" light is lit.";
+"scannerproblems_tip0_details" = "Make sure that the Bluefruit device is connected to a USB or battery power source.";
 "scannerproblems_tip1_title" = "Check the Bluefruit device's firmware";
 "scannerproblems_tip1_details" = "You'll need to load a specific firmware on your Bluefruit device to interact with this app.
 Download it from the Bluefruit Playground guide at learn.adafruit.com";
@@ -182,7 +181,7 @@ Set the color of the NeoPixel by choosing a color from the Color Palette or Colo
 • The current light level reading is displayed at the bottom of the screen. 
 
 • Try shining a flashlight on the CPB and watch the values change in realtime";
-"lightsensor_help_clue" = "Light Sensor mode allows you to view the amount of light detected by CLUE’s built-in ALS-PT19 light sensor.
+"lightsensor_help_clue" = "Light Sensor mode allows you to view the amount of light detected by CLUE’s built-in APDS9960 multi-sensor.
 
 • The current light level reading is displayed at the bottom of the screen. 
 
@@ -287,8 +286,7 @@ To control Sparky the Blue Smoke Monster, attach Circuit Playground Bluefruit to
 // Sound
 "sound_title" = "Sound Level";
 "sound_units" = "dB";
-"sound_help" = "The Sound Level module displays sound level readings sent from your Bluefruit device, measured in decibels.
-Values are displayed in realtime in the form of a traditional VU meter as well as a graph showing changes over time.";
+"sound_help" = "The Sound Level module displays sound level readings sent from your Bluefruit device, measured in decibels. Values are displayed in realtime in the form of a traditional digital LED meter as well as a graph showing changes over time.";
 
 "sound_panel_title" = "Sound Level";
 "sound_chart_nodata" = "No chart data available";

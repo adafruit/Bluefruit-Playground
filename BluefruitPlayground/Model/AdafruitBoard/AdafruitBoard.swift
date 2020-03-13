@@ -105,14 +105,18 @@ class AdafruitBoard {
     weak var gyroscopeDelegate: AdafruitGyroscopeDelegate?
     weak var quaternionDelegate: AdafruitQuaternionDelegate?
 
+    var accelerometerAutoAdjustOrientation = true           // If true, the orientation will be modified to show the board correctly taking into account where the sensor is located in the board
+
+    
     // Data
     private(set) weak var blePeripheral: BlePeripheral?
     var model: BlePeripheral.AdafruitManufacturerData.BoardModel? {
         return blePeripheral?.adafruitManufacturerData()?.boardModel
     }
-    
+
+    // Data - DataSeries
     private(set) var lightDataSeries = SensorDataSeries<Float>()
-    private(set) var accelerometerDataSeries = SensorDataSeries<BlePeripheral.AccelerometerValue>()
+    //private(set) var accelerometerDataSeries = SensorDataSeries<BlePeripheral.AccelerometerValue>()
     private(set) var temperatureDataSeries = SensorDataSeries<Float>()
     private(set) var humidityDataSeries = SensorDataSeries<Float>()
     private(set) var barometricPressureDataSeries = SensorDataSeries<Float>()
@@ -120,6 +124,7 @@ class AdafruitBoard {
     private(set) var gyroscopeDataSeries = SensorDataSeries<BlePeripheral.GyroscopeValue>()
     private(set) var quaternionDataSeries = SensorDataSeries<BlePeripheral.QuaternionValue>()
 
+    // Data - Neopixel specific
     private var currentLightSequenceAnimation: LightSequenceAnimation?
     public var neopixelCurrentLightSequenceAnimationSpeed: Double {
         get {
@@ -130,6 +135,7 @@ class AdafruitBoard {
             currentLightSequenceAnimation?.speed = newValue
         }
     }
+    
     
     // MARK: - Setup
     
@@ -482,21 +488,32 @@ class AdafruitBoard {
     private func receiveAccelerometerData(response: Result<(BlePeripheral.AccelerometerValue, UUID), Error>) {
         switch response {
         case let .success(value, uuid):
+            var adjustedAcceleration = value
+            if accelerometerAutoAdjustOrientation {
+                if model == .clue_nRF52840 {        // Clue has the accelerometer in the back
+                    adjustedAcceleration.x = -value.x
+                    adjustedAcceleration.z = -value.z
+                }
+            }
+
+            /*
             // Save value
-            let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
+            let entry = SensorDataSeries.Entry(value: adjustedAcceleration, timestamp: CFAbsoluteTimeGetCurrent())
             accelerometerDataSeries.addValue(entry)
-            //DLog("Accelerometer x: \(value.x), y: \(value.y) z: \(value.z)")
+            //DLog("Accelerometer x: \(adjustedAcceleration.x), y: \(adjustedAcceleration.y) z: \(adjustedAcceleration.z)")
+            */
+            
             
             // Send to delegate
             if let accelerometerDelegate = accelerometerDelegate {
                 DispatchQueue.main.async {      // Delegates are called in the main thread
-                    accelerometerDelegate.adafruitAccelerationReceived(value)
+                    accelerometerDelegate.adafruitAccelerationReceived(adjustedAcceleration)
                 }
             }
             
             // Send notification
             NotificationCenter.default.post(name: .didReceiveAccelerometerData, object: nil, userInfo: [
-                NotificationUserInfoKey.value.rawValue: value,
+                NotificationUserInfoKey.value.rawValue: adjustedAcceleration,
                 NotificationUserInfoKey.uuid.rawValue: uuid
             ])
             
