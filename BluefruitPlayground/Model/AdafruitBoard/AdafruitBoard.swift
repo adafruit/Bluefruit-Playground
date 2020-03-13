@@ -86,6 +86,22 @@ class AdafruitBoard {
         case sound
         case gyroscope
         case quaternion
+        
+        var debugName: String {
+            switch self {
+            case .neopixels: return "Neopixels"
+            case .light: return "Light"
+            case .buttons: return "Buttons"
+            case .toneGenerator: return "ToneGenerator"
+            case .accelerometer: return "Accelerometer"
+            case .temperature: return "Temperature"
+            case .humidity: return "Humidity"
+            case .barometricPressure: return "Barometric Pressure"
+            case .sound: return "Sound"
+            case .gyroscope: return "Gyroscope"
+            case .quaternion: return "Quaternion"
+            }
+        }
     }
     
     // Notifications
@@ -94,7 +110,7 @@ class AdafruitBoard {
         case value = "value"
     }
     
-    // Params
+    // Params - Delegates
     weak var temperatureDelegate: AdafruitTemperatureDelegate?
     weak var lightDelegate: AdafruitLightDelegate?
     weak var buttonsDelegate: AdafruitButtonsDelegate?
@@ -105,9 +121,21 @@ class AdafruitBoard {
     weak var gyroscopeDelegate: AdafruitGyroscopeDelegate?
     weak var quaternionDelegate: AdafruitQuaternionDelegate?
 
+    // Params - Data Series
+    var isLightDataSeriesEnabled = true
+    var isAccelerometerDataSeriesEnabled = false
+    var isTemperatureDataSeriesEnabled = true
+    var isHumidityDataSeriesEnabled = true
+    var isBarometricPressureDataSeriesEnabled = true
+    var isSoundAmplitudePressureDataSeriesEnabled = true
+    var isGyroscopeDataSeriesEnabled = false
+    var isQuaternioDataSeriesEnabled = false
+
+    // Params - Specific behaviour
     var accelerometerAutoAdjustOrientation = true           // If true, the orientation will be modified to show the board correctly taking into account where the sensor is located in the board
 
-    
+    var quaternionAutoAdjustOrientation = true           // If true, the orientation will be modified to show the board correctly taking into account where the sensor is located in the board
+
     // Data
     private(set) weak var blePeripheral: BlePeripheral?
     var model: BlePeripheral.AdafruitManufacturerData.BoardModel? {
@@ -116,7 +144,7 @@ class AdafruitBoard {
 
     // Data - DataSeries
     private(set) var lightDataSeries = SensorDataSeries<Float>()
-    //private(set) var accelerometerDataSeries = SensorDataSeries<BlePeripheral.AccelerometerValue>()
+    private(set) var accelerometerDataSeries = SensorDataSeries<BlePeripheral.AccelerometerValue>()
     private(set) var temperatureDataSeries = SensorDataSeries<Float>()
     private(set) var humidityDataSeries = SensorDataSeries<Float>()
     private(set) var barometricPressureDataSeries = SensorDataSeries<Float>()
@@ -180,27 +208,15 @@ class AdafruitBoard {
         if services.contains(.neopixels), let numPixels = blePeripheral.adafruitManufacturerData()?.boardModel?.neoPixelsNumPixels, numPixels > 0 {
             
             servicesGroup.enter()
-            blePeripheral.adafruitNeoPixelsEnable(numPixels: numPixels) { result in
-                if case .success = result {
-                    DLog("NeoPixels enabled")
-                } else {
-                    DLog("Warning: NeoPixels enable failed")
-                }
+            blePeripheral.adafruitNeoPixelsEnable(numPixels: numPixels) { _ in
                 servicesGroup.leave()
             }
-            
         }
         
         // Light Service: Enable receiving data
         if services.contains(.light) {
             servicesGroup.enter()
-            blePeripheral.adafruitLightEnable(responseHandler: self.receiveLightData) { result in
-                
-                if case .success = result {
-                    DLog("Light reading enabled")
-                } else {
-                    DLog("Warning: Light reading enable failed")
-                }
+            blePeripheral.adafruitLightEnable(responseHandler: self.receiveLightData) { _ in
                 servicesGroup.leave()
             }
         }
@@ -208,13 +224,7 @@ class AdafruitBoard {
         // Buttons Service: Enable receiving data
         if services.contains(.buttons) {
             servicesGroup.enter()
-            blePeripheral.adafruitButtonsEnable(responseHandler: self.receiveButtonsData) { result in
-                
-                if case .success = result {
-                    DLog("Buttons reading enabled")
-                } else {
-                    DLog("Warning: Buttons reading enable failed")
-                }
+            blePeripheral.adafruitButtonsEnable(responseHandler: self.receiveButtonsData) { _ in
                 servicesGroup.leave()
             }
         }
@@ -222,13 +232,7 @@ class AdafruitBoard {
         // ToneGenerator Service: Enable
         if services.contains(.toneGenerator) {
             servicesGroup.enter()
-            blePeripheral.adafruitToneGeneratorEnable { result in
-                
-                if case .success = result {
-                    DLog("ToneGenerator enabled")
-                } else {
-                    DLog("Warning: ToneGenerator enable failed")
-                }
+            blePeripheral.adafruitToneGeneratorEnable { _ in
                 servicesGroup.leave()
             }
         }
@@ -236,13 +240,7 @@ class AdafruitBoard {
         // Accelerometer Service: Enable receiving data
         if services.contains(.accelerometer) {
             servicesGroup.enter()
-            blePeripheral.adafruitAccelerometerEnable(responseHandler: self.receiveAccelerometerData, completion: { result in
-                
-                if case .success = result {
-                    DLog("Accelerometer enabled")
-                } else {
-                    DLog("Warning: Accelerometer enable failed")
-                }
+            blePeripheral.adafruitAccelerometerEnable(responseHandler: self.receiveAccelerometerData, completion: { _ in
                 servicesGroup.leave()
             })
         }
@@ -250,13 +248,7 @@ class AdafruitBoard {
         // Temperature Service: Enable receiving data
         if services.contains(.temperature) {
             servicesGroup.enter()
-            blePeripheral.adafruitTemperatureEnable(responseHandler: self.receiveTemperatureData) { result in
-                
-                if case .success = result {
-                    DLog("Temperature reading enabled")
-                } else {
-                    DLog("Warning: Temperature reading enable failed")
-                }
+            blePeripheral.adafruitTemperatureEnable(responseHandler: self.receiveTemperatureData) { _ in
                 servicesGroup.leave()
             }
         }
@@ -264,13 +256,7 @@ class AdafruitBoard {
         // Humidity Service: Enable receiving data
         if services.contains(.humidity) {
             servicesGroup.enter()
-            blePeripheral.adafruitHumidityEnable(responseHandler: self.receiveHumidityData) { result in
-                
-                if case .success = result {
-                    DLog("Humidity reading enabled")
-                } else {
-                    DLog("Warning: Humidity reading enable failed")
-                }
+            blePeripheral.adafruitHumidityEnable(responseHandler: self.receiveHumidityData) { _ in
                 servicesGroup.leave()
             }
         }
@@ -278,13 +264,7 @@ class AdafruitBoard {
         // Barometric Pressure Service: Enable receiving data
         if services.contains(.barometricPressure) {
             servicesGroup.enter()
-            blePeripheral.adafruitBarometricPressureEnable(responseHandler: self.receiveBarometricPressureData) { result in
-                
-                if case .success = result {
-                    DLog("Barometric Pressure reading enabled")
-                } else {
-                    DLog("Warning: Barometric Pressure reading enable failed")
-                }
+            blePeripheral.adafruitBarometricPressureEnable(responseHandler: self.receiveBarometricPressureData) { _ in
                 servicesGroup.leave()
             }
         }
@@ -292,29 +272,15 @@ class AdafruitBoard {
         // Sound Service: Enable receiving data
         if services.contains(.sound) {
             servicesGroup.enter()
-            blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { result in
-                
-                if case .success = result {
-                    DLog("Sound reading enabled")
-                } else {
-                    DLog("Warning: Sound reading enable failed")
-                }
+            blePeripheral.adafruitSoundEnable(responseHandler: self.receiveSoundData) { _ in
                 servicesGroup.leave()
             }
         }
         
-        
-        
         // Gyroscope Service: Enable receiving data
         if services.contains(.gyroscope) {
             servicesGroup.enter()
-            blePeripheral.adafruitGyroscopeEnable(responseHandler: self.receiveGyroscopeData) { result in
-                
-                if case .success = result {
-                    DLog("Gyroscope reading enabled")
-                } else {
-                    DLog("Warning: Gyroscope reading enable failed")
-                }
+            blePeripheral.adafruitGyroscopeEnable(responseHandler: self.receiveGyroscopeData) { _ in
                 servicesGroup.leave()
             }
         }
@@ -322,67 +288,85 @@ class AdafruitBoard {
         // Quaternion Service: Enable receiving data
         if services.contains(.quaternion) {
             servicesGroup.enter()
-            blePeripheral.adafruitQuaternionEnable(responseHandler: self.receiveQuaternionData) { result in
-                
-                if case .success = result {
-                    DLog("Quaternion reading enabled")
-                } else {
-                    DLog("Warning: Quaternion reading enable failed")
-                }
+            blePeripheral.adafruitQuaternionEnable(responseHandler: self.receiveQuaternionData) { _ in
                 servicesGroup.leave()
             }
         }
         
         // Wait for all finished
-        servicesGroup.notify(queue: DispatchQueue.main) {
+        servicesGroup.notify(queue: DispatchQueue.main) { [unowned self] in
             DLog("setupServices finished")
+            
+            if Config.isDebugEnabled {
+                for service in services {
+                    DLog(self.isEnabled(service: service) ? "\(service.debugName) reading enabled":"\(service.debugName) service not available")
+                }
+            }
+            
             completion(.success(()))
         }
     }
-    
+
+
     // MARK: - Sensor availability
-    var isNeopixelsAvailable: Bool {
+    var isNeopixelsEnabled: Bool {
         return blePeripheral?.adafruitNeoPixelsIsEnabled() ?? false
     }
     
-    var isLightAvailable: Bool {
+    var isLightEnabled: Bool {
         return blePeripheral?.adafruitLightIsEnabled() ?? false
     }
     
-    var isButtonsAvailable: Bool {
+    var isButtonsEnabled: Bool {
         return blePeripheral?.adafruitButtonsIsEnabled() ?? false
     }
     
-    var isToneGeneratorAvailable: Bool {
+    var isToneGeneratorEnabled: Bool {
         return blePeripheral?.adafruitToneGeneratorIsEnabled() ?? false
     }
     
-    var isAccelerometerAvailable: Bool {
+    var isAccelerometerEnabled: Bool {
         return blePeripheral?.adafruitAccelerometerIsEnabled() ?? false
     }
     
-    var isTemperatureAvailable: Bool {
+    var isTemperatureEnabled: Bool {
         return blePeripheral?.adafruitTemperatureIsEnabled() ?? false
     }
     
-    var isHumidityAvailable: Bool {
+    var isHumidityEnabled: Bool {
         return blePeripheral?.adafruitHumidityIsEnabled() ?? false
     }
     
-    var isBarometricPressureAvailable: Bool {
+    var isBarometricPressureEnabled: Bool {
         return blePeripheral?.adafruitBarometricPressureIsEnabled() ?? false
     }
     
-    var isSoundAvailable: Bool {
+    var isSoundEnabled: Bool {
         return blePeripheral?.adafruitSoundIsEnabled() ?? false
     }
 
-    var isGyroscopeAvailable: Bool {
+    var isGyroscopeEnabled: Bool {
         return blePeripheral?.adafruitGyroscopeIsEnabled() ?? false
     }
 
-    var isQuaternionAvailable: Bool {
+    var isQuaternionEnabled: Bool {
         return blePeripheral?.adafruitQuaternionIsEnabled() ?? false
+    }
+    
+    func isEnabled(service: BoardService) -> Bool {
+        switch service {
+        case .neopixels: return isNeopixelsEnabled
+        case .light: return isLightEnabled
+        case .buttons: return isButtonsEnabled
+        case .toneGenerator: return isToneGeneratorEnabled
+        case .accelerometer: return isAccelerometerEnabled
+        case .temperature: return isTemperatureEnabled
+        case .humidity: return isHumidityEnabled
+        case .barometricPressure: return isBarometricPressureEnabled
+        case .sound: return isSoundEnabled
+        case .gyroscope: return isGyroscopeEnabled
+        case .quaternion: return isQuaternionEnabled
+        }
     }
 
     // MARK: - Read Data
@@ -439,10 +423,13 @@ class AdafruitBoard {
     private func receiveLightData(response: Result<(Float, UUID), Error>) {
         switch response {
         case let .success(light, uuid):
-            // Save value
-            let entry = SensorDataSeries.Entry(value: light, timestamp: CFAbsoluteTimeGetCurrent())
-            lightDataSeries.addValue(entry)
-            //DLog("Light (lux): \(light)")
+            
+            if isLightDataSeriesEnabled {
+                // Save value
+                let entry = SensorDataSeries.Entry(value: light, timestamp: CFAbsoluteTimeGetCurrent())
+                lightDataSeries.addValue(entry)
+                //DLog("Light (lux): \(light)")
+            }
             
             // Send to delegate
             if let lightDelegate = lightDelegate {
@@ -489,20 +476,20 @@ class AdafruitBoard {
         switch response {
         case let .success(value, uuid):
             var adjustedAcceleration = value
+            
             if accelerometerAutoAdjustOrientation {
                 if model == .clue_nRF52840 {        // Clue has the accelerometer in the back
                     adjustedAcceleration.x = -value.x
                     adjustedAcceleration.z = -value.z
                 }
             }
-
-            /*
-            // Save value
-            let entry = SensorDataSeries.Entry(value: adjustedAcceleration, timestamp: CFAbsoluteTimeGetCurrent())
-            accelerometerDataSeries.addValue(entry)
-            //DLog("Accelerometer x: \(adjustedAcceleration.x), y: \(adjustedAcceleration.y) z: \(adjustedAcceleration.z)")
-            */
             
+            if isAccelerometerDataSeriesEnabled {
+                // Save value
+                let entry = SensorDataSeries.Entry(value: adjustedAcceleration, timestamp: CFAbsoluteTimeGetCurrent())
+                accelerometerDataSeries.addValue(entry)
+                //DLog("Accelerometer x: \(adjustedAcceleration.x), y: \(adjustedAcceleration.y) z: \(adjustedAcceleration.z)")
+            }
             
             // Send to delegate
             if let accelerometerDelegate = accelerometerDelegate {
@@ -525,10 +512,13 @@ class AdafruitBoard {
     private func receiveTemperatureData(response: Result<(Float, UUID), Error>) {
         switch response {
         case let .success(value, uuid):
-            // Save value
-            let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
-            temperatureDataSeries.addValue(entry)
-            //DLog("Temperature (ºC): \(temperature)")
+            
+            if isTemperatureDataSeriesEnabled {
+                // Save value
+                let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
+                temperatureDataSeries.addValue(entry)
+                //DLog("Temperature (ºC): \(temperature)")
+            }
             
             // Send to delegate
             if let temperatureDelegate = temperatureDelegate {
@@ -551,10 +541,13 @@ class AdafruitBoard {
     private func receiveHumidityData(response: Result<(Float, UUID), Error>) {
         switch response {
         case let .success(value, uuid):
-            // Save value
-            let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
-            humidityDataSeries.addValue(entry)
-            //DLog("Humidity: \(humidity)%")
+            
+            if isHumidityDataSeriesEnabled {
+                // Save value
+                let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
+                humidityDataSeries.addValue(entry)
+                //DLog("Humidity: \(humidity)%")
+            }
             
             // Send to delegate
             if let humidityDelegate = humidityDelegate {
@@ -577,10 +570,13 @@ class AdafruitBoard {
     private func receiveBarometricPressureData(response: Result<(Float, UUID), Error>) {
         switch response {
         case let .success(value, uuid):
-            // Save value
-            let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
-            barometricPressureDataSeries.addValue(entry)
-            //DLog("Pressure: \(pressure)hPa")
+            
+            if isBarometricPressureDataSeriesEnabled {
+                // Save value
+                let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
+                barometricPressureDataSeries.addValue(entry)
+                //DLog("Pressure: \(pressure)hPa")
+            }
             
             // Send to delegate
             if let barometricPressureDelegate = barometricPressureDelegate {
@@ -603,11 +599,14 @@ class AdafruitBoard {
     private func receiveSoundData(response: Result<([Double], UUID), Error>) {
         switch response {
         case let .success(amplitudesPerChannel, uuid):
-            // Save value
-            if let amplitude = amplitudesPerChannel.first, !amplitude.isNaN {
-                let entry = SensorDataSeries.Entry(value: Float(amplitude), timestamp: CFAbsoluteTimeGetCurrent())
-                soundAmplitudeDataSeries.addValue(entry)
-                //DLog("Amplitude: \(amplitude)dBFS")
+            
+            if isSoundAmplitudePressureDataSeriesEnabled {
+                // Save value
+                if let amplitude = amplitudesPerChannel.first, !amplitude.isNaN {
+                    let entry = SensorDataSeries.Entry(value: Float(amplitude), timestamp: CFAbsoluteTimeGetCurrent())
+                    soundAmplitudeDataSeries.addValue(entry)
+                    //DLog("Amplitude: \(amplitude)dBFS")
+                }
             }
             
             // Send to delegate
@@ -631,11 +630,14 @@ class AdafruitBoard {
     private func receiveGyroscopeData(response: Result<(BlePeripheral.GyroscopeValue, UUID), Error>) {
         switch response {
         case let .success(value, uuid):
-            // Save value
-            let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
-            gyroscopeDataSeries.addValue(entry)
-            DLog("Gyroscope x: \(value.x), y: \(value.y) z: \(value.z)")
-                
+            
+            if isGyroscopeDataSeriesEnabled {
+                // Save value
+                let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
+                gyroscopeDataSeries.addValue(entry)
+                DLog("Gyroscope x: \(value.x), y: \(value.y) z: \(value.z)")
+            }
+            
             // Send to delegate
             if let gyroscopeDelegate = gyroscopeDelegate {
                 DispatchQueue.main.async {      // Delegates are called in the main thread
@@ -657,21 +659,30 @@ class AdafruitBoard {
     private func receiveQuaternionData(response: Result<(BlePeripheral.QuaternionValue, UUID), Error>) {
         switch response {
         case let .success(value, uuid):
-            // Save value
-            let entry = SensorDataSeries.Entry(value: value, timestamp: CFAbsoluteTimeGetCurrent())
-            quaternionDataSeries.addValue(entry)
-            //DLog("Quaternion qx: \(value.qx), qy: \(value.qy) qz: \(value.qz) qw: \(value.qw)")
+            var adjustedQuaternion = value
+                      if quaternionAutoAdjustOrientation {
+                          if model == .clue_nRF52840 {        // Clue has the quaternion sensor in the back
+                            adjustedQuaternion = QuaternionUtils.quaternionRotated(quaternion: value, angle: .pi, axis: (x: Float(0), y: Float(1), z: Float(0)))
+                          }
+                      }
+            
+            if isQuaternioDataSeriesEnabled {
+                // Save value
+                let entry = SensorDataSeries.Entry(value: adjustedQuaternion, timestamp: CFAbsoluteTimeGetCurrent())
+                quaternionDataSeries.addValue(entry)
+                //DLog("Quaternion qx: \(value.qx), qy: \(value.qy) qz: \(value.qz) qw: \(value.qw)")
+            }
             
             // Send to delegate
             if let quaternionDelegate = quaternionDelegate {
                 DispatchQueue.main.async {      // Delegates are called in the main thread
-                    quaternionDelegate.adafruitQuaternionReceived(value)
+                    quaternionDelegate.adafruitQuaternionReceived(adjustedQuaternion)
                 }
             }
             
             // Send notification
             NotificationCenter.default.post(name: .didReceiveQuaternionData, object: nil, userInfo: [
-                NotificationUserInfoKey.value.rawValue: value,
+                NotificationUserInfoKey.value.rawValue: adjustedQuaternion,
                 NotificationUserInfoKey.uuid.rawValue: uuid
             ])
             

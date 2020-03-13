@@ -18,14 +18,12 @@ extension BlePeripheral {
     private static let kAdafruitQuaternionCalibrationOutCharacteristicUUID = CBUUID(string: "ADAFD003-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitQuaternionVersion = 1
 
-    static let kAdafruitQuaternionDefaultPeriod: TimeInterval = 0.1
-
     // Structs
     struct QuaternionValue {
-        var qx: Float
-        var qy: Float
-        var qz: Float
-        var qw: Float
+        var x: Float
+        var y: Float
+        var z: Float
+        var w: Float
     }
 
     // MARK: - Custom properties
@@ -45,7 +43,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitQuaternionEnable(responseHandler: @escaping(Result<(QuaternionValue, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitQuaternionVersion, serviceUuid: BlePeripheral.kAdafruitQuaternionServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitQuaternionCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitQuaternionDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitQuaternionVersion, serviceUuid: BlePeripheral.kAdafruitQuaternionServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitQuaternionCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):
@@ -97,6 +95,6 @@ extension BlePeripheral {
         guard let bytes = adafruitDataToFloatArray(data) else { return nil }
         guard bytes.count >= 4 else { return nil }
 //        return QuaternionValue(qx: bytes[0], qy: bytes[1], qz: bytes[2], qw: bytes[3])
-        return QuaternionValue(qx: bytes[1], qy: bytes[2], qz: bytes[3], qw: bytes[0])
+        return QuaternionValue(x: bytes[1], y: bytes[2], z: bytes[3], w: bytes[0])
     }
 }

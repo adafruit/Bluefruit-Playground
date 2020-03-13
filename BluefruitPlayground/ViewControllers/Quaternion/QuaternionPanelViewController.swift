@@ -36,12 +36,13 @@ class QuaternionPanelViewController: ModulePanelViewController {
         quaternionEulerAnglesTitleLabel.text = localizationManager.localizedString("quaternion_panel_eulerangles_title")
     }
 
-    func accelerationReceived(quaternion: BlePeripheral.QuaternionValue, eulerAngles: SCNVector3) {
+    func accelerationReceived(quaternion: simd_quatf, eulerAngles: simd_float3) {
 
-        quaternionXLabel.text = String(format: "%.1f", quaternion.qx)
-        quaternionYLabel.text = String(format: "%.1f", quaternion.qy)
-        quaternionZLabel.text = String(format: "%.1f", quaternion.qz)
-        quaternionWLabel.text = String(format: "%.1f", quaternion.qw)
+        let quatVector = quaternion.vector
+        quaternionXLabel.text = String(format: "%.1f", quatVector.x)
+        quaternionYLabel.text = String(format: "%.1f", quatVector.y)
+        quaternionZLabel.text = String(format: "%.1f", quatVector.z)
+        quaternionWLabel.text = String(format: "%.1f", quatVector.w)
 
         let xDeg = eulerAngles.x * 180 / .pi
         let yDeg = eulerAngles.y * 180 / .pi

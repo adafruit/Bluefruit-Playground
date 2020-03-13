@@ -253,7 +253,7 @@ class PuppetViewController: UIViewController {
 
         // Update sparky rotation (only if the intro animation is not currently playing)
         if !isPlayingIntroAnimation {
-            SCNTransaction.animationDuration = BlePeripheral.kAdafruitAccelerometerDefaultPeriod
+            SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
 
             let accelAngleX = atan2(acceleration.y, acceleration.z)
             filteredAccelAngleX.update(newValue: accelAngleX)

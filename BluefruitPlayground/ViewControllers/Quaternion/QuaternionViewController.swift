@@ -17,8 +17,8 @@ class QuaternionViewController: ModuleViewController {
     @IBOutlet weak var sceneView: SCNView!
 
     // Data
-    private var quaternion = BlePeripheral.QuaternionValue(qx: 0, qy: 0, qz: 0, qw: 1)
-    private var circuitNode: SCNNode?
+    private var quaternion = BlePeripheral.QuaternionValue(x: 0, y: 0, z: 0, w: 1)
+    private var boardNode: SCNNode?
     private var valuesPanelViewController: QuaternionPanelViewController!
 
     // MARK: - Lifecycle
@@ -30,7 +30,7 @@ class QuaternionViewController: ModuleViewController {
 
         // Load scene
         if let scene = AdafruitBoardsManager.shared.currentBoard?.assetScene {
-            circuitNode = scene.rootNode.childNode(withName: "root", recursively: false)!
+            boardNode = scene.rootNode.childNode(withName: "root", recursively: false)!
             
             // Setup scene
             sceneView.scene = scene
@@ -68,16 +68,19 @@ class QuaternionViewController: ModuleViewController {
 
     // MARK: - UI
     private func updateValueUI() {
-        // Calculate Euler Angles
-        let eulerAngles = QuaternionUtils.quaternionToEuler(quaternion: quaternion)
-        //DLog("Euler: pitch: \(eulerAngles.x) yaw: \(eulerAngles.y) roll: \(eulerAngles.z)")
-
         // Update circuit model orientation
-        SCNTransaction.animationDuration = BlePeripheral.kAdafruitQuaternionDefaultPeriod
-        circuitNode?.eulerAngles = eulerAngles
-
+        SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
+//        let scnQuaternion = SCNQuaternion(quaternion.qx, quaternion.qy, quaternion.qz, quaternion.qw)
+        let scnQuaternion = simd_quatf(ix: quaternion.x, iy: quaternion.y, iz: quaternion.z, r: quaternion.w)
+        
+        //boardNode?.orientation = scnQuaternion
+        boardNode?.simdOrientation = scnQuaternion
+        
         // Update panel
-        valuesPanelViewController.accelerationReceived(quaternion: self.quaternion, eulerAngles: eulerAngles)
+        let (x, y, z) = QuaternionUtils.quaternionToEuler(quaternion: quaternion)
+        let eulerAngles = simd_float3(x, y, z)
+        //DLog("Euler: pitch: \(eulerAngles.xquaternionToEuler) yaw: \(eulerAngles.y) roll: \(eulerAngles.z)")
+        valuesPanelViewController.accelerationReceived(quaternion: scnQuaternion, eulerAngles: eulerAngles)
     }
 }
 

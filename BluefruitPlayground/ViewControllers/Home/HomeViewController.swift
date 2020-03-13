@@ -151,37 +151,37 @@ class HomeViewController: UIViewController {
         
         guard let board = AdafruitBoardsManager.shared.currentBoard else { return result }
         
-        if board.isNeopixelsAvailable {
+        if board.isNeopixelsEnabled {
             result.append(.neopixels)
         }
-        if board.isLightAvailable {
+        if board.isLightEnabled {
             result.append(.light)
         }
-        if board.isButtonsAvailable {
+        if board.isButtonsEnabled {
             result.append(.button)
         }
-        if board.isToneGeneratorAvailable {
+        if board.isToneGeneratorEnabled {
             result.append(.tone)
         }
-        if (!board.isQuaternionAvailable || Config.isDebugEnabled) && board.isAccelerometerAvailable {
+        if (!board.isQuaternionEnabled || Config.isDebugEnabled) && board.isAccelerometerEnabled {
             result.append(.accelerometer)
         }
-        if board.isQuaternionAvailable {
+        if board.isQuaternionEnabled {
             result.append(.quaternion)
         }
-        if board.isTemperatureAvailable {
+        if board.isTemperatureEnabled {
             result.append(.temperature)
         }
-        if board.isHumidityAvailable {
+        if board.isHumidityEnabled {
             result.append(.humidity)
         }
-        if board.isBarometricPressureAvailable {
+        if board.isBarometricPressureEnabled {
             result.append(.pressure)
         }
-        if board.isSoundAvailable {
+        if board.isSoundEnabled {
             result.append(.sound)
         }
-        if board.isAccelerometerAvailable && board.isButtonsAvailable {
+        if board.isAccelerometerEnabled && board.isButtonsEnabled {
             result.append(.puppet)
         }
         return result

@@ -74,7 +74,7 @@ class AccelerometerViewController: ModuleViewController {
         //DLog("Euler: pitch: \(eulerAngles.x) yaw: \(eulerAngles.y) roll: \(eulerAngles.z)")
 
         // Update circuit model orientation
-        SCNTransaction.animationDuration = BlePeripheral.kAdafruitAccelerometerDefaultPeriod
+        SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
         circuitNode?.eulerAngles = eulerAngles
 
         // Update panel

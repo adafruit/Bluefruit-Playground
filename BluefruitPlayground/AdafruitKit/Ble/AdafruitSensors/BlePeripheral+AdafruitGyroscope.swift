@@ -16,8 +16,6 @@ extension BlePeripheral {
     private static let kAdafruitGyroscopeCharacteristicUUID = CBUUID(string: "ADAF0401-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitGyroscopeVersion = 1
 
-    static let kAdafruitGyroscopeDefaultPeriod: TimeInterval = 0.1
-
     // Structs
     /// Values in rad/s
     struct GyroscopeValue {
@@ -43,7 +41,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitGyroscopeEnable(responseHandler: @escaping(Result<(GyroscopeValue, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitGyroscopeVersion, serviceUuid: BlePeripheral.kAdafruitGyroscopeServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitGyroscopeCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitGyroscopeDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitGyroscopeVersion, serviceUuid: BlePeripheral.kAdafruitGyroscopeServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitGyroscopeCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):

@@ -15,8 +15,6 @@ extension BlePeripheral {
     private static let kAdafruitTemperatureCharacteristicUUID = CBUUID(string: "ADAF0101-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitTemperatureVersion = 1
     
-    private static let kAdafruitTemperatureDefaultPeriod: TimeInterval = 0.1
-
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
         static var adafruitTemperatureCharacteristic: CBCharacteristic?
@@ -34,7 +32,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitTemperatureEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitTemperatureVersion, serviceUuid: BlePeripheral.kAdafruitTemperatureServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitTemperatureCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitTemperatureDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitTemperatureVersion, serviceUuid: BlePeripheral.kAdafruitTemperatureServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitTemperatureCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):

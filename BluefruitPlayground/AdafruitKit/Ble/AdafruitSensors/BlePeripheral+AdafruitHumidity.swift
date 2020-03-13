@@ -15,8 +15,6 @@ extension BlePeripheral {
     private static let kAdafruitHumidityCharacteristicUUID = CBUUID(string: "ADAF0701-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitHumidityVersion = 1
     
-    static let kAdafruitHumidityDefaultPeriod: TimeInterval = 0.1
-
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
         static var adafruitHumidityCharacteristic: CBCharacteristic?
@@ -34,7 +32,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitHumidityEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitHumidityVersion, serviceUuid: BlePeripheral.kAdafruitHumidityServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitHumidityCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitHumidityDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitHumidityVersion, serviceUuid: BlePeripheral.kAdafruitHumidityServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitHumidityCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):

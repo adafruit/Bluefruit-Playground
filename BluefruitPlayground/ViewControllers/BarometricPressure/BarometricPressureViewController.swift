@@ -97,7 +97,7 @@ class BarometricPressureViewController: ModuleViewController {
                
         
         //testAngle = testAngle + 2
-        UIView.animate(withDuration: BlePeripheral.kAdafruitBarometricPressureDefaultPeriod, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: BlePeripheral.kAdafruitSensorDefaultPeriod, delay: 0, options: .curveLinear, animations: {
             self.handImageView.transform = CGAffineTransform(rotationAngle: CGFloat(angle))
             //self.handImageView.transform = CGAffineTransform(rotationAngle: CGFloat(self.testAngle * .pi / 180))
         }, completion: nil)

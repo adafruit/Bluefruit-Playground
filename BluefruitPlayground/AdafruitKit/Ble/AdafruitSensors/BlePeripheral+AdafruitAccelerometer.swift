@@ -16,8 +16,6 @@ extension BlePeripheral {
     private static let kAdafruitAccelerometerCharacteristicUUID = CBUUID(string: "ADAF0201-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitAccelerometerVersion = 1
 
-    static let kAdafruitAccelerometerDefaultPeriod: TimeInterval = 0.1
-
     // Structs
     /// Acceleration in m/s²
     struct AccelerometerValue {
@@ -43,7 +41,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitAccelerometerEnable(responseHandler: @escaping(Result<(AccelerometerValue, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitAccelerometerVersion, serviceUuid: BlePeripheral.kAdafruitAccelerometerServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitAccelerometerCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitAccelerometerDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitAccelerometerVersion, serviceUuid: BlePeripheral.kAdafruitAccelerometerServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitAccelerometerCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):

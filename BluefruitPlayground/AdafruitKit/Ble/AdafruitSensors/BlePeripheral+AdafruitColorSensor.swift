@@ -15,9 +15,7 @@ extension BlePeripheral {
     private static let kAdafruitColorSensorCharacteristicUUID = CBUUID(string: "ADAF0A01-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitColorSensorVersion = 1
     
-    private static let kAdafruitColorSensorDefaultPeriod: TimeInterval = 0.1
-
-    // MARK: - Custom properties
+     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
         static var adafruitColorSensorCharacteristic: CBCharacteristic?
     }
@@ -34,7 +32,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitColorSensorEnable(responseHandler: @escaping(Result<(UIColor, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitColorSensorVersion, serviceUuid: BlePeripheral.kAdafruitColorSensorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitColorSensorCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitColorSensorDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitColorSensorVersion, serviceUuid: BlePeripheral.kAdafruitColorSensorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitColorSensorCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):

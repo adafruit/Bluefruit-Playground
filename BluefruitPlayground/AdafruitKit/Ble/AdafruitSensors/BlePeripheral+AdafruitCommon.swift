@@ -16,6 +16,9 @@ extension BlePeripheral {
 
     private static let kAdafruitDefaultVersionValue = 1         // Used as default version value if version characteristic cannot be read
 
+    static let kAdafruitSensorDefaultPeriod: TimeInterval = 0.2
+
+    
     // MARK: - Errors
     enum PeripheralAdafruitError: Error {
         case invalidCharacteristic

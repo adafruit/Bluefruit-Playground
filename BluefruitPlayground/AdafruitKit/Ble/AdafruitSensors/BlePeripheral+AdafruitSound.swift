@@ -16,7 +16,6 @@ extension BlePeripheral {
     private static let kAdafruitSoundNumberOfChannelsCharacteristicUUID = CBUUID(string: "ADAF0B02-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitSoundSensorVersion = 1
     
-    static let kAdafruitSoundSensorDefaultPeriod: TimeInterval = 0.1
     static let kAdafruitSoundSensorMaxAmplitude = 32767
     
     // MARK: - Custom properties
@@ -46,7 +45,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitSoundEnable(responseHandler: @escaping(Result<([Double], UUID), Error>) -> Void, completion: ((Result<Int, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitSoundSensorVersion, serviceUuid: BlePeripheral.kAdafruitSoundSensorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitSoundSamplesCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSoundSensorDefaultPeriod, responseHandler: { [weak self] response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitSoundSensorVersion, serviceUuid: BlePeripheral.kAdafruitSoundSensorServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitSoundSamplesCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { [weak self] response in
             
             guard self?.adafruitSoundNumChannels ?? 0 > 0 else { return }      // Ignore received data until sound channels are defined
             // TODO: read sound channels BEFORE enabling notify

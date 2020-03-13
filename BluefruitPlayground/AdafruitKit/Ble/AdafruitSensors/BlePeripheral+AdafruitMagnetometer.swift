@@ -16,8 +16,6 @@ extension BlePeripheral {
     private static let kAdafruitMagnetometerCharacteristicUUID = CBUUID(string: "ADAF0501-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitMagnetometerVersion = 1
 
-    static let kAdafruitMagnetometerDefaultPeriod: TimeInterval = 0.1
-
     // Structs
     /// Values in microTesla (μT)
     struct MagnetometerValue {
@@ -43,7 +41,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitMagnetometerEnable(responseHandler: @escaping(Result<(MagnetometerValue, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitMagnetometerVersion, serviceUuid: BlePeripheral.kAdafruitMagnetometerServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitMagnetometerCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitMagnetometerDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitMagnetometerVersion, serviceUuid: BlePeripheral.kAdafruitMagnetometerServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitMagnetometerCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):

@@ -15,8 +15,6 @@ extension BlePeripheral {
     private static let kAdafruitBarometricPressureCharacteristicUUID = CBUUID(string: "ADAF0801-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitBarometricPressureVersion = 1
     
-    static let kAdafruitBarometricPressureDefaultPeriod: TimeInterval = 0.1
-
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
         static var adafruitBarometricPressureCharacteristic: CBCharacteristic?
@@ -34,7 +32,7 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitBarometricPressureEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
 
-        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitBarometricPressureVersion, serviceUuid: BlePeripheral.kAdafruitBarometricPressureServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitBarometricPressureCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitBarometricPressureDefaultPeriod, responseHandler: { response in
+        self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitBarometricPressureVersion, serviceUuid: BlePeripheral.kAdafruitBarometricPressureServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitBarometricPressureCharacteristicUUID, timePeriod: BlePeripheral.kAdafruitSensorDefaultPeriod, responseHandler: { response in
 
             switch response {
             case let .success((data, uuid)):

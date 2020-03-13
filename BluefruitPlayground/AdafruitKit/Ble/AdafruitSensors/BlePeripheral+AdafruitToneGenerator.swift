@@ -15,7 +15,6 @@ extension BlePeripheral {
     private static let kAdafruitToneGeneratorCharacteristicUUID = CBUUID(string: "ADAF0C01-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitToneGeneratorVersion = 1
 
-
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
         static var adafruitToneGeneratorCharacteristic: CBCharacteristic?
