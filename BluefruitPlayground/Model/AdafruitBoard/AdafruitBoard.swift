@@ -111,10 +111,10 @@ class AdafruitBoard {
     }
     
     // Params - Delegates
-    weak var temperatureDelegate: AdafruitTemperatureDelegate?
     weak var lightDelegate: AdafruitLightDelegate?
-    weak var buttonsDelegate: AdafruitButtonsDelegate?
     weak var accelerometerDelegate: AdafruitAccelerometerDelegate?
+    weak var buttonsDelegate: AdafruitButtonsDelegate?
+    weak var temperatureDelegate: AdafruitTemperatureDelegate?
     weak var humidityDelegate: AdafruitHumidityDelegate?
     weak var barometricPressureDelegate: AdafruitBarometricPressureDelegate?
     weak var soundDelegate: AdafruitSoundDelegate?
@@ -191,7 +191,7 @@ class AdafruitBoard {
             }
             
             // Setup services
-            let selectedServices = services != nil ? services! : BoardService.allCases   // If services is nil, select all services
+            let selectedServices = /*Config.isDebugEnabled ? [.temperature] :*/ (services != nil ? services! : BoardService.allCases)   // If services is nil, select all services
             self.setupServices(blePeripheral: blePeripheral, services: selectedServices, completion: completion)
         }
     }
@@ -368,7 +368,7 @@ class AdafruitBoard {
         case .quaternion: return isQuaternionEnabled
         }
     }
-
+    
     // MARK: - Read Data
     func lightLastValue() -> Float? {
         return blePeripheral?.adafruitLightLastValue()

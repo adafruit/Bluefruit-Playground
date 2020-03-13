@@ -17,8 +17,8 @@ class AccelerometerViewController: ModuleViewController {
     @IBOutlet weak var sceneView: SCNView!
 
     // Data
-    private var acceleration = BlePeripheral.AccelerometerValue(x: 0, y: 0, z: 0)
-    private var circuitNode: SCNNode?
+    private var acceleration: BlePeripheral.AccelerometerValue?
+    private var boardNode: SCNNode?
     private var valuesPanelViewController: AccelerometerPanelViewController!
 
     // MARK: - Lifecycle
@@ -27,11 +27,10 @@ class AccelerometerViewController: ModuleViewController {
 
         // Add panels 
         valuesPanelViewController = (addPanelViewController(storyboardIdentifier: AccelerometerPanelViewController.kIdentifier) as! AccelerometerPanelViewController)
-
+        
         // Load scene
         if let scene = AdafruitBoardsManager.shared.currentBoard?.assetScene {
-           
-            circuitNode = scene.rootNode.childNode(withName: "root", recursively: false)!
+            boardNode = scene.rootNode.childNode(withName: "root", recursively: false)!
             
             // Setup scene
             sceneView.scene = scene
@@ -44,7 +43,7 @@ class AccelerometerViewController: ModuleViewController {
         self.title = localizationManager.localizedString("accelerometer_title")
         moduleHelpMessage = localizationManager.localizedString("accelerometer_help")
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -53,6 +52,7 @@ class AccelerometerViewController: ModuleViewController {
         if let acceleration = board?.accelerometerLastValue() {
             self.acceleration = acceleration
         }
+        SCNTransaction.animationDuration = 0        // The first render should be inmediate and not animated
         updateValueUI()
 
         // Set delegate
@@ -69,16 +69,19 @@ class AccelerometerViewController: ModuleViewController {
 
     // MARK: - UI
     private func updateValueUI() {
+        guard let acceleration = acceleration else { return }
+        
+        SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
+
         // Calculate Euler Angles
         let eulerAngles = AccelerometerUtils.accelerationToEuler(acceleration)
         //DLog("Euler: pitch: \(eulerAngles.x) yaw: \(eulerAngles.y) roll: \(eulerAngles.z)")
 
         // Update circuit model orientation
-        SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
-        circuitNode?.eulerAngles = eulerAngles
+        boardNode?.eulerAngles = eulerAngles
 
         // Update panel
-        valuesPanelViewController.accelerationReceived(acceleration: self.acceleration, eulerAngles: eulerAngles)
+        valuesPanelViewController.accelerationReceived(acceleration: acceleration, eulerAngles: eulerAngles)
     }
 }
 
@@ -89,3 +92,5 @@ extension AccelerometerViewController: AdafruitAccelerometerDelegate {
         updateValueUI()
     }
 }
+
+

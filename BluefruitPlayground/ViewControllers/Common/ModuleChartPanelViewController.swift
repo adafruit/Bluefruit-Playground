@@ -26,10 +26,17 @@ class ChartPanelViewController: ModulePanelViewController {
         setupChart()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        notifyDataSetChanged()      // Important: reload dataset to avoid showing for a moment a weird chart
+    }
+    
     // MARK: - Data
     internal func dataSeriesValueToChartValue(_ value: Float) -> Double {
         return Double(value)
     }
+    private var valuesLock = NSLock()
     
     // MARK: - Line Chart
     private func setupChart() {
@@ -50,11 +57,12 @@ class ChartPanelViewController: ModulePanelViewController {
     }
     
     internal func reloadChartEntries(dataSeries: SensorDataSeries<Float>) {
+        valuesLock.lock(); defer { valuesLock.unlock() }            // Don't change the timestamp while addingEntries
         
-        let maxTimestamp = dataSeries.max { (a, b) -> Bool in
+        let minTimestamp = dataSeries.min { (a, b) -> Bool in
             return a.timestamp < b.timestamp
-        }?.timestamp
-        originTimestamp = maxTimestamp ?? CFAbsoluteTimeGetCurrent()
+            }?.timestamp
+        originTimestamp = min(originTimestamp, minTimestamp ?? CFAbsoluteTimeGetCurrent())
         let entries = chartEntries(dataSeries: dataSeries)
         
         // Add Dataset
@@ -69,11 +77,14 @@ class ChartPanelViewController: ModulePanelViewController {
         
         // Set dataset
         chartView.data = LineChartData(dataSet: dataSet)
+        
     }
-    
+
     private func notifyDataSetChanged() {
+        /*
         let isViewVisible = self.viewIfLoaded?.window != nil  // https://stackoverflow.com/questions/2777438/how-to-tell-if-uiviewcontrollers-view-is-visible
         guard isViewVisible else { return }
+ */
         guard let dataSet = dataSet else { return }
         
         chartView.data?.notifyDataChanged()
@@ -85,8 +96,9 @@ class ChartPanelViewController: ModulePanelViewController {
             let xOffset = (dataSet.entries.last?.x ?? 0) - (visibleInterval-1)
             chartView.moveViewToX(xOffset)
         }
+        
     }
-    
+
     // MARK:- Utils
     private func chartEntries(dataSeries: SensorDataSeries<Float>) -> [ChartDataEntry] {
         let chartEntries = dataSeries.map { entry -> ChartDataEntry in
@@ -98,6 +110,7 @@ class ChartPanelViewController: ModulePanelViewController {
     
     // MARK: - Actions
     func addEntry(_ entry: SensorDataSeries<Float>.Entry) {
+        valuesLock.lock(); defer { valuesLock.unlock() }        // Don't change the timestamp while addingEntries
         guard let dataSet = dataSet else { return }
         
         let value = dataSeriesValueToChartValue(entry.value)

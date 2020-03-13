@@ -17,7 +17,7 @@ class QuaternionViewController: ModuleViewController {
     @IBOutlet weak var sceneView: SCNView!
 
     // Data
-    private var quaternion = BlePeripheral.QuaternionValue(x: 0, y: 0, z: 0, w: 1)
+    private var quaternion: BlePeripheral.QuaternionValue?
     private var boardNode: SCNNode?
     private var valuesPanelViewController: QuaternionPanelViewController!
 
@@ -68,12 +68,12 @@ class QuaternionViewController: ModuleViewController {
 
     // MARK: - UI
     private func updateValueUI() {
+        guard let quaternion = quaternion else { return }
+        
+        let scnQuaternion = simd_quatf(ix: quaternion.x, iy: quaternion.y, iz: quaternion.z, r: quaternion.w)
+
         // Update circuit model orientation
         SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
-//        let scnQuaternion = SCNQuaternion(quaternion.qx, quaternion.qy, quaternion.qz, quaternion.qw)
-        let scnQuaternion = simd_quatf(ix: quaternion.x, iy: quaternion.y, iz: quaternion.z, r: quaternion.w)
-        
-        //boardNode?.orientation = scnQuaternion
         boardNode?.simdOrientation = scnQuaternion
         
         // Update panel
