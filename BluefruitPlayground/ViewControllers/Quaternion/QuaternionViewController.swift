@@ -12,6 +12,9 @@ import SceneKit
 class QuaternionViewController: ModuleViewController {
     // Constants
     static let kIdentifier = "QuaternionViewController"
+    
+    // Config
+    private static let kDisableZComponent = true        // Z component is disabled until gyro calibration is implemented
 
     // UI
     @IBOutlet weak var sceneView: SCNView!
@@ -70,7 +73,7 @@ class QuaternionViewController: ModuleViewController {
     private func updateValueUI() {
         guard let quaternion = quaternion else { return }
         
-        let scnQuaternion = simd_quatf(ix: quaternion.x, iy: quaternion.y, iz: quaternion.z, r: quaternion.w)
+        let scnQuaternion = simd_quatf(ix: quaternion.x, iy: quaternion.y, iz: QuaternionViewController.kDisableZComponent ? 0 : quaternion.z, r: quaternion.w)
 
         // Update circuit model orientation
         SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
