@@ -28,8 +28,8 @@ Click the links above to purchase a board from the Adafruit shop.";
 "tip1_link_url" = "https://learn.adafruit.com/bluefruit-playground-app/firmware";
 "tip1_action" = "Next";
 "tip2_title" = "Discover";
-"tip2_text" = "Once your Bluefruit device is powered, move it close to your iPhone.";
-"tip2_action" = "Begin pairing";
+"tip2_text" = "Once your Bluefruit device is powered, move it close to your iPhone and tap the button below.";
+"tip2_action" = "Find Devices";
 
 
 // About
@@ -139,7 +139,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_temperature_title" = "Temperature";
 "modules_temperature_subtitle" = "View current temperature readings";
 "modules_puppet_title" = "Puppets";
-"modules_puppet_subtitle" = "Play with a 3D puppet using the accelerometer and buttons";
+"modules_puppet_subtitle" = "Control a 3D puppet";
 "modules_humidity_title" = "Humidity";
 "modules_humidity_subtitle" = "View relative humidity percentage";
 "modules_pressure_title" = "Pressure";
@@ -150,7 +150,7 @@ Download it from the Bluefruit Playground guide at learn.adafruit.com";
 "modules_quaternion_subtitle" = "View CLUE's relative position in space";
 
 "modules_disconnect_title" = "Disconnect";
-"modules_disconnect_subtitle" = "Close the current connection and scan for a new device";
+"modules_disconnect_subtitle" = "Close the current connection";
 
 
 // Neopixels
@@ -285,8 +285,8 @@ To control Sparky the Blue Smoke Monster, attach Circuit Playground Bluefruit to
 
 // Sound
 "sound_title" = "Sound Level";
-"sound_units" = "dB";
-"sound_help" = "The Sound Level module displays sound level readings sent from your Bluefruit device, measured in decibels. Values are displayed in realtime in the form of a traditional digital LED meter as well as a graph showing changes over time.";
+"sound_units" = "dBFS";
+"sound_help" = "The Sound Level module displays sound level readings sent from your Bluefruit device, measured in decibels relative to full scale (-inf to 0). Values are displayed in realtime in the form of a traditional digital LED meter as well as a graph showing changes over time.";
 
 "sound_panel_title" = "Sound Level";
 "sound_chart_nodata" = "No chart data available";
