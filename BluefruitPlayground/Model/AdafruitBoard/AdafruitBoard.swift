@@ -602,7 +602,7 @@ class AdafruitBoard {
             
             if isSoundAmplitudePressureDataSeriesEnabled {
                 // Save value
-                if let amplitude = amplitudesPerChannel.first, !amplitude.isNaN {
+                if let amplitude = amplitudesPerChannel.first, amplitude.isFinite {     // - Infinite values are not added to the dataSeries
                     let entry = SensorDataSeries.Entry(value: Float(amplitude), timestamp: CFAbsoluteTimeGetCurrent())
                     soundAmplitudeDataSeries.addValue(entry)
                     //DLog("Amplitude: \(amplitude)dBFS")

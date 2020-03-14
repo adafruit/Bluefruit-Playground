@@ -542,6 +542,12 @@ open class LineChartRenderer: LineRadarRenderer
         let phaseY = animator.phaseY
 
         let dataSets = lineData.dataSets
+
+        // [OpenRoad]: HUGE performance improvement (very noticeable on macCatalyst)
+        // This issue is related but even it they improved it, there is still a lot of elements that were unnecesarily created: https://github.com/danielgindi/Charts/issues/3798
+        let hasAnyDataSetCirclesEnabled = dataSets.first(where: {!($0 is ILineChartDataSet) || (($0 as? ILineChartDataSet)?.isDrawCirclesEnabled == true)}) != nil
+        guard hasAnyDataSetCirclesEnabled else { return }
+        // [/Openroad]
         
         var pt = CGPoint()
         var rect = CGRect()

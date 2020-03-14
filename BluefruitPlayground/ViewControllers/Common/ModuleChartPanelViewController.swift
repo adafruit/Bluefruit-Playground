@@ -81,11 +81,12 @@ class ChartPanelViewController: ModulePanelViewController {
     }
 
     private func notifyDataSetChanged() {
-        /*
+        
         let isViewVisible = self.viewIfLoaded?.window != nil  // https://stackoverflow.com/questions/2777438/how-to-tell-if-uiviewcontrollers-view-is-visible
         guard isViewVisible else { return }
- */
+ 
         guard let dataSet = dataSet else { return }
+        guard !dataSet.isEmpty else { return }  // Hack: fix crash when the dataset is empty. Charts library will crash because is not able to calculate the x interval
         
         chartView.data?.notifyDataChanged()
         chartView.notifyDataSetChanged()
