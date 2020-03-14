@@ -219,23 +219,23 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeripheralCell" id="6kk-pM-twC" customClass="CommonTableViewCell" customModule="BluefruitPlayground_SimulateBluetooth" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="90.666667938232422" width="414" height="92"/>
+                                        <rect key="frame" x="0.0" y="90.666667938232422" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6kk-pM-twC" id="Upg-lc-DCK">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fl9-vK-edj">
-                                                    <rect key="frame" x="20" y="11" width="374" height="70"/>
+                                                    <rect key="frame" x="20" y="11" width="374" height="68"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="scan_cpb" translatesAutoresizingMaskIntoConstraints="NO" id="ayV-88-SCr">
-                                                            <rect key="frame" x="304" y="0.0" width="70" height="70"/>
+                                                            <rect key="frame" x="306" y="0.0" width="68" height="68"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="ayV-88-SCr" secondAttribute="height" multiplier="1:1" id="Jip-Io-fNn"/>
                                                             </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lpH-Wl-AdF">
-                                                            <rect key="frame" x="8" y="20" width="288" height="30"/>
+                                                            <rect key="frame" x="8" y="19" width="290" height="30"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" image="signalstrength3" translatesAutoresizingMaskIntoConstraints="NO" id="cSe-Cd-Pjj">
                                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
@@ -245,7 +245,7 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Peripheral Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dz-Wv-15u">
-                                                                    <rect key="frame" x="42" y="0.0" width="246" height="30"/>
+                                                                    <rect key="frame" x="42" y="0.0" width="248" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                                                     <color key="textColor" name="text_default"/>
                                                                     <nil key="highlightedColor"/>
@@ -256,10 +256,10 @@
                                                     <color key="backgroundColor" name="cell_light"/>
                                                     <constraints>
                                                         <constraint firstItem="ayV-88-SCr" firstAttribute="leading" secondItem="lpH-Wl-AdF" secondAttribute="trailing" constant="8" id="JHc-ea-ES9"/>
-                                                        <constraint firstAttribute="bottomMargin" secondItem="lpH-Wl-AdF" secondAttribute="bottom" constant="12" id="Scr-Jm-ggT"/>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="lpH-Wl-AdF" secondAttribute="bottom" constant="11" id="Scr-Jm-ggT"/>
                                                         <constraint firstAttribute="bottom" secondItem="ayV-88-SCr" secondAttribute="bottom" id="UEz-xT-Tvn"/>
                                                         <constraint firstAttribute="trailing" secondItem="ayV-88-SCr" secondAttribute="trailing" id="Vtg-y7-zgZ"/>
-                                                        <constraint firstItem="lpH-Wl-AdF" firstAttribute="top" secondItem="Fl9-vK-edj" secondAttribute="topMargin" constant="12" id="Y9w-w5-89L"/>
+                                                        <constraint firstItem="lpH-Wl-AdF" firstAttribute="top" secondItem="Fl9-vK-edj" secondAttribute="topMargin" constant="11" id="Y9w-w5-89L"/>
                                                         <constraint firstItem="ayV-88-SCr" firstAttribute="top" secondItem="Fl9-vK-edj" secondAttribute="top" id="gNx-DK-SFn"/>
                                                         <constraint firstItem="lpH-Wl-AdF" firstAttribute="leading" secondItem="Fl9-vK-edj" secondAttribute="leadingMargin" id="vcL-xt-p5p"/>
                                                     </constraints>
@@ -1830,7 +1830,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hgu-MQ-4aK"/>
+        <segue reference="KoA-I2-yK2"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="text_default"/>
 </document>

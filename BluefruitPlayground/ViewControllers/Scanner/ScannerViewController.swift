@@ -83,7 +83,6 @@ class ScannerViewController: UIViewController {
 
         // Ble Notifications
         registerNotifications(enabled: true)
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -101,9 +100,8 @@ class ScannerViewController: UIViewController {
         updateScannedPeripherals()
 
         // Start scannning
-        //bleManager.startScan(withServices: ScannerViewController.kServicesToScan)
         if !bleManager.isScanning {
-            bleManager.startScan()
+            bleManager.refreshPeripherals()
 
         }
         // Remove saved peripheral for autoconnect
