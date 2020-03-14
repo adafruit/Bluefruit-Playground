@@ -32,8 +32,8 @@ class PuppetViewController: UIViewController {
 
     private var isPlayingIntroAnimation = true
 
-    private var filteredAccelAngleX = LowPassFilterSignal(value: 0, filterFactor: 0.6)
-    private var filteredAccelAngleY = LowPassFilterSignal(value: 0, filterFactor: 0.7)
+    private var filteredAccelAngleX = LowPassFilterSignal(value: 0, filterFactor: 0.06 / Float(BlePeripheral.kAdafruitSensorDefaultPeriod))
+    private var filteredAccelAngleY = LowPassFilterSignal(value: 0, filterFactor: 0.07 / Float(BlePeripheral.kAdafruitSensorDefaultPeriod))
 
     // Camera Data
     private let captureSession = AVCaptureSession()
