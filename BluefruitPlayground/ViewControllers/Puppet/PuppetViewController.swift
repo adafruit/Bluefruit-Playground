@@ -295,7 +295,7 @@ class PuppetViewController: UIViewController {
             jawNode?.eulerAngles = SCNVector3(jawAngle, 0, 0)
             
             // Head animation
-            headNode?.eulerAngles = SCNVector3(-filteredAngleY.value.clamped(min: deg2rad(6), max: deg2rad(40)), -filteredAngleY.value, filteredAngleY.value)
+            headNode?.eulerAngles = SCNVector3(-jawAngle/2-filteredAngleY.value.clamped(min: deg2rad(6), max: deg2rad(40)), -filteredAngleY.value, filteredAngleY.value)
         }
     }
     
