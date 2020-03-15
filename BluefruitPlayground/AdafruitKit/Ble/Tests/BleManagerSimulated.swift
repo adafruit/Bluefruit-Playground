@@ -23,10 +23,16 @@ class BleManagerSimulated: BleManager {
     override func startScan(withServices services: [CBUUID]? = nil) {
         scanningStartTime = CACurrentMediaTime()
 
-        // Add simulated peripheral
-        let simulatedBlePeripheral = BlePeripheralSimulated()
-        peripheralsFound[simulatedBlePeripheral.identifier] = simulatedBlePeripheral
-        NotificationCenter.default.post(name: .didDiscoverPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: simulatedBlePeripheral.identifier])
+        // Add simulated peripherals
+        let simulatedCPB = BlePeripheralSimulated(model: .circuitPlaygroundBluefruit)
+        peripheralsFound[simulatedCPB.identifier] = simulatedCPB
+        NotificationCenter.default.post(name: .didDiscoverPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: simulatedCPB.identifier])
+        
+        let simulatedClue = BlePeripheralSimulated(model: .clue_nRF52840)
+        peripheralsFound[simulatedClue.identifier] = simulatedClue
+        NotificationCenter.default.post(name: .didDiscoverPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: simulatedClue.identifier])
+
+        
     }
 
     override func stopScan() {
@@ -42,7 +48,7 @@ class BleManagerSimulated: BleManager {
         NotificationCenter.default.post(name: .didConnectToPeripheral, object: nil, userInfo: [NotificationUserInfoKey.uuid.rawValue: peripheral.identifier])
     }
 
-    override func reconnecToPeripherals(withIdentifiers identifiers: [UUID], withServices services: [CBUUID], timeout: Double? = nil) -> Bool {
+    override func reconnecToPeripherals(peripheralsData: [(identifier: UUID, advertisementData: [String: Any])], withServices services: [CBUUID], timeout: Double? = nil) -> Bool {
         return false
     }
 

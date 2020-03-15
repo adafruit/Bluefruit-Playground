@@ -10,10 +10,7 @@ import Foundation
 
 import CoreBluetooth
 
-extension BlePeripheral {
-    // Constants
-    static let kAdafruitAccelerometerDefaultPeriod: TimeInterval = 0.1
-    
+extension BlePeripheral {    
     // Structs
     struct AccelerometerValue {
         var x: Float

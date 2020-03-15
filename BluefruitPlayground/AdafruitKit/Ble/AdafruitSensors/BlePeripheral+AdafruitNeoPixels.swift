@@ -47,7 +47,7 @@ extension BlePeripheral {
     }
     
     // MARK: - Actions
-    func adafruitNeoPixelsEnable(numPixels: Int, completion: ((Result<Void, Error>) -> Void)?) {
+    func adafruitNeoPixelsEnable(completion: ((Result<Void, Error>) -> Void)?) {
         
         self.adafruitServiceEnableIfVersion(version: BlePeripheral.kAdafruitNeoPixelsVersion, serviceUuid: BlePeripheral.kAdafruitNeoPixelsServiceUUID, mainCharacteristicUuid: BlePeripheral.kAdafruitNeoPixelsDataCharacteristicUUID) { result in
             switch result {
@@ -63,7 +63,7 @@ extension BlePeripheral {
     }
     
     var adafruitNeoPixelsCount: Int {
-        return self.adafruitManufacturerData()?.boardModel?.neoPixelsNumPixels ?? 0
+        return self.adafruitManufacturerData()?.boardModel?.neoPixelsCount ?? 0
     }
     
     func adafruitNeoPixelsIsEnabled() -> Bool {

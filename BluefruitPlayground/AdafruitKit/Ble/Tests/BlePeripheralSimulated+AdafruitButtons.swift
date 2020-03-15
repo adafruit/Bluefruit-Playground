@@ -10,8 +10,6 @@ import Foundation
 import CoreBluetooth
 
 extension BlePeripheral {
-    // Constants
-    
     enum SlideSwitchState: Int32 {
         case right = 0
         case left = 1

@@ -11,7 +11,7 @@ import CoreBluetooth
 
 extension BlePeripheral {
     // Constants
-    private static let kManufacturerAdafruitIdentifier: [UInt8] = [0x22, 0x08]
+    internal static let kManufacturerAdafruitIdentifier: [UInt8] = [0x22, 0x08]
 
     // MARK: - Check Manufacturer
     func isManufacturerAdafruit() -> Bool {
@@ -41,7 +41,7 @@ extension BlePeripheral {
                 }
             }
             
-            var neoPixelsNumPixels: Int {
+            var neoPixelsCount: Int {
                 switch self {
                 case .circuitPlaygroundBluefruit: return 10
                 case .clue_nRF52840: return 1

@@ -12,7 +12,6 @@ import CoreBluetooth
 extension BlePeripheral {
     // Config
     private static let kAdafruitNeoPixelsServiceNumberOfBitsPerPixel = 3
-    private static let kAdafruitNeoPixelsServicePixelsCount = 10
 
     // MARK: - Actions
     func adafruitNeoPixelsEnable(completion: ((Result<Void, Error>) -> Void)?) {
@@ -27,7 +26,7 @@ extension BlePeripheral {
     }
 
     func adafruitNeoPixelsCount() -> Int {
-        return BlePeripheral.kAdafruitNeoPixelsServicePixelsCount
+        return self.adafruitManufacturerData()?.boardModel?.neoPixelsCount ?? 0
     }
 
     func adafruitNeoPixelSetAllPixelsColor(_ color: UIColor) {

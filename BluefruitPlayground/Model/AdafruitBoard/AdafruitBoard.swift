@@ -9,6 +9,8 @@
 import UIKit
 import FlexColorPicker
 
+
+// Delegates for each sensor
 protocol AdafruitTemperatureDelegate: class {
     func adafruitTemperatureReceived(_ temperature: Float)
 }
@@ -48,7 +50,7 @@ protocol AdafruitQuaternionDelegate: class {
 /**
  Manages the sensors for a connected Adafruit Board
  
- Use setupPeripheral to bind it to a connected BlePeripheral
+ Use setupPeripheral to bind it to a connected BlePeripheral. setupPeripheral verifies the that sensor firmware version is supported, sets the period for receving data and starts sending the recevied data to the delegate and the NotificationCenter
  
  - Supported sensors:
  - neopixels
@@ -205,10 +207,9 @@ class AdafruitBoard {
         let servicesGroup = DispatchGroup()
         
         // Pixel Service
-        if services.contains(.neopixels), let numPixels = blePeripheral.adafruitManufacturerData()?.boardModel?.neoPixelsNumPixels, numPixels > 0 {
-            
+        if services.contains(.neopixels) {
             servicesGroup.enter()
-            blePeripheral.adafruitNeoPixelsEnable(numPixels: numPixels) { _ in
+            blePeripheral.adafruitNeoPixelsEnable() { _ in
                 servicesGroup.leave()
             }
         }

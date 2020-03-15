@@ -27,10 +27,10 @@ extension BlePeripheral {
     // MARK: - Actions
     func adafruitTemperatureEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
         
-        adafruitTemperatureResponseDataTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+        adafruitTemperatureResponseDataTimer = Timer.scheduledTimer(withTimeInterval: BlePeripheral.kAdafruitSensorDefaultPeriod, repeats: true) { [weak self] _ in
             guard let self = self else { return }
-            guard let temperature = self.adafruitTemperatureLastValue() else { return }
-            responseHandler(.success((temperature, self.identifier)))
+            guard let value = self.adafruitTemperatureLastValue() else { return }
+            responseHandler(.success((value, self.identifier)))
         }
         
         completion?(.success(()))

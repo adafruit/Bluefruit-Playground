@@ -39,7 +39,6 @@
 		A92256962411D01100B8AB57 /* AdafruitBoardsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */; };
 		A92256982412E0AE00B8AB57 /* BlePeripheral+AdafruitGyroscope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256972412E0AE00B8AB57 /* BlePeripheral+AdafruitGyroscope.swift */; };
 		A922569A2412EC1500B8AB57 /* BlePeripheral+AdafruitMagnetometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256992412EC1500B8AB57 /* BlePeripheral+AdafruitMagnetometer.swift */; };
-		A922569D2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922569B2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift */; };
 		A922569E2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922569C2412ECF700B8AB57 /* BlePeripheral+AdafruitBarometricPressure.swift */; };
 		A92256A02412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922569F2412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift */; };
 		A92256AB24131FC300B8AB57 /* CLUETextureSurface_Color.png in Resources */ = {isa = PBXBuildFile; fileRef = A92256A824131FC300B8AB57 /* CLUETextureSurface_Color.png */; };
@@ -57,7 +56,6 @@
 		A92B9F19234DE4A5002374F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A92B9F17234DE4A5002374F0 /* LaunchScreen.storyboard */; };
 		A92BC5F523A7A7E4009CAD0E /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92BC5F423A7A7E4009CAD0E /* SnapshotHelper.swift */; };
 		A93159CD2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159CC2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift */; };
-		A93159CE2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159CC2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift */; };
 		A93159D2241A335800218092 /* QuaternionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D0241A335700218092 /* QuaternionViewController.swift */; };
 		A93159D3241A335800218092 /* QuaternionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D0241A335700218092 /* QuaternionViewController.swift */; };
 		A93159D4241A335800218092 /* QuaternionPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A93159D1241A335700218092 /* QuaternionPanelViewController.swift */; };
@@ -205,6 +203,11 @@
 		A9ADE5F923533D5400777535 /* NeopixelsColorPaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */; };
 		A9ADE5FB23533FA000777535 /* UIView+AllSubviewsWithClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9ADE5FA23533FA000777535 /* UIView+AllSubviewsWithClass.swift */; };
 		A9B3569F2365D420002093EE /* PanelInsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9B3569E2365D420002093EE /* PanelInsetView.swift */; };
+		A9BB18DB241E57C300C60AFC /* BlePeripheral+AdafruitGyroscope.swift in Sources */ = {isa = PBXBuildFile; fileRef = A92256972412E0AE00B8AB57 /* BlePeripheral+AdafruitGyroscope.swift */; };
+		A9BB18E0241E664400C60AFC /* BlePeripheralSimulated+AdafruitHumidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BB18DF241E664300C60AFC /* BlePeripheralSimulated+AdafruitHumidity.swift */; };
+		A9BB18E1241E66FE00C60AFC /* BlePeripheral+AdafruitHumidity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A922569B2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift */; };
+		A9BB18E4241E674000C60AFC /* BlePeripheralSimulated+AdafruitQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BB18E2241E674000C60AFC /* BlePeripheralSimulated+AdafruitQuaternion.swift */; };
+		A9BB18E5241E674000C60AFC /* BlePeripheralSimulated+AdafruitBarometricPressure.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BB18E3241E674000C60AFC /* BlePeripheralSimulated+AdafruitBarometricPressure.swift */; };
 		A9BDEC3D237C59C400EDDC46 /* BlePeripheral+AdafruitLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDEC3C237C59C400EDDC46 /* BlePeripheral+AdafruitLight.swift */; };
 		A9BDEC41237C75C900EDDC46 /* Types+Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BDEC40237C75C900EDDC46 /* Types+Data.swift */; };
 		A9BED702234F754B002FFF53 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9BED701234F754B002FFF53 /* GradientView.swift */; };
@@ -388,6 +391,9 @@
 		A9ADE5F823533D5400777535 /* NeopixelsColorPaletteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeopixelsColorPaletteViewController.swift; sourceTree = "<group>"; };
 		A9ADE5FA23533FA000777535 /* UIView+AllSubviewsWithClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AllSubviewsWithClass.swift"; sourceTree = "<group>"; };
 		A9B3569E2365D420002093EE /* PanelInsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelInsetView.swift; sourceTree = "<group>"; };
+		A9BB18DF241E664300C60AFC /* BlePeripheralSimulated+AdafruitHumidity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitHumidity.swift"; sourceTree = "<group>"; };
+		A9BB18E2241E674000C60AFC /* BlePeripheralSimulated+AdafruitQuaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitQuaternion.swift"; sourceTree = "<group>"; };
+		A9BB18E3241E674000C60AFC /* BlePeripheralSimulated+AdafruitBarometricPressure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BlePeripheralSimulated+AdafruitBarometricPressure.swift"; sourceTree = "<group>"; };
 		A9BDEC3C237C59C400EDDC46 /* BlePeripheral+AdafruitLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitLight.swift"; sourceTree = "<group>"; };
 		A9BDEC40237C75C900EDDC46 /* Types+Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Types+Data.swift"; sourceTree = "<group>"; };
 		A9BED701234F754B002FFF53 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -738,12 +744,15 @@
 			children = (
 				A9A08B9F23A5260300498069 /* BleManagerSimulated.swift */,
 				A9A08BA223A5286700498069 /* BlePeripheralSimulated.swift */,
-				A922568D2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift */,
+				A9A08BB023A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift */,
+				A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */,
 				A9A08BAC23A794F500498069 /* BlePeripheralSimulated+AdafruitLight.swift */,
 				A97A8E99237F5DDB00602DF0 /* BlePeripheralSimulated+AdafruitButtons.swift */,
+				A9BB18DF241E664300C60AFC /* BlePeripheralSimulated+AdafruitHumidity.swift */,
+				A9BB18E3241E674000C60AFC /* BlePeripheralSimulated+AdafruitBarometricPressure.swift */,
 				A922568F2411CEE600B8AB57 /* BlePeripheralSimulated+AdafruitToneGenerator.swift */,
-				A92256922411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift */,
-				A9A08BB023A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift */,
+				A922568D2411CD3C00B8AB57 /* BlePeripheralSimulated+AdafruitNeoPixels.swift */,
+				A9BB18E2241E674000C60AFC /* BlePeripheralSimulated+AdafruitQuaternion.swift */,
 				A9A08BAB23A789E100498069 /* ObjectBuilder.h */,
 				A9A08BA823A7891500498069 /* ObjectBuilder.m */,
 			);
@@ -1255,12 +1264,12 @@
 				A9A08BAF23A7957700498069 /* BlePeripheral+AdafruitButtons.swift in Sources */,
 				A9D12E8423E3661800F3C259 /* UIColor+Interpolate.swift in Sources */,
 				A92256A02412EF9400B8AB57 /* BlePeripheral+AdafruitColorSensor.swift in Sources */,
-				A922569D2412ECF700B8AB57 /* BlePeripheral+AdafruitHumidity.swift in Sources */,
 				A98F1B892359494500C5269E /* ConfigUI.swift in Sources */,
 				A9BED773234FBEAB002FFF53 /* UartPacketManager.swift in Sources */,
 				A986AB93235942D600DF12C8 /* LightSensorViewController.swift in Sources */,
 				A9EAA1932350F93A00FA615E /* TitleTableViewCell.swift in Sources */,
 				A96AA5BF23604DA3004A06BA /* HelpTableViewCell.swift in Sources */,
+				A9BB18E1241E66FE00C60AFC /* BlePeripheral+AdafruitHumidity.swift in Sources */,
 				A9BED708234F75E4002FFF53 /* TipViewController.swift in Sources */,
 				A9E4C02E2358E6B400B5A493 /* UIColor+LightAndDark.swift in Sources */,
 				A96AA5CD23634B45004A06BA /* AccelerometerViewController.swift in Sources */,
@@ -1343,6 +1352,7 @@
 				A96A9EDA23E9C6B700E46743 /* PreviewView.swift in Sources */,
 				A9A08B5823A523C900498069 /* BlePeripheral+Uart.swift in Sources */,
 				A9A08B5923A523C900498069 /* BlePeripheral+AdafruitCommon.swift in Sources */,
+				A9BB18E5241E674000C60AFC /* BlePeripheralSimulated+AdafruitBarometricPressure.swift in Sources */,
 				A9D5B21123E0985600178E1B /* AutoConnectViewController.swift in Sources */,
 				A93159D5241A335800218092 /* QuaternionPanelViewController.swift in Sources */,
 				A9A08B5B23A523C900498069 /* RssiUI.swift in Sources */,
@@ -1360,8 +1370,8 @@
 				A93159D3241A335800218092 /* QuaternionViewController.swift in Sources */,
 				A9D12E9423E874D000F3C259 /* PuppetViewController.swift in Sources */,
 				A9A08BA423A5286700498069 /* BlePeripheralSimulated.swift in Sources */,
-				A93159CE2419D14F00218092 /* BlePeripheral+AdafruitQuaternion.swift in Sources */,
 				A900DCBE24147BAD00DAE5C9 /* BarometricPressureViewController.swift in Sources */,
+				A9BB18E0241E664400C60AFC /* BlePeripheralSimulated+AdafruitHumidity.swift in Sources */,
 				A9D12EA623E8F91300F3C259 /* LowPassFilterSignal.swift in Sources */,
 				A9A08B6923A523C900498069 /* Config.swift in Sources */,
 				A9D5B21423E25C1600178E1B /* ActiveLabelIntrinsicSizeFix.swift in Sources */,
@@ -1374,6 +1384,7 @@
 				A9A08B6F23A523C900498069 /* LogHelper.swift in Sources */,
 				A93159DE241A5B6000218092 /* ActiveLabelUtils.swift in Sources */,
 				A9A08BB123A7966300498069 /* BlePeripheralSimulated+AdafruitTemperature.swift in Sources */,
+				A9BB18DB241E57C300C60AFC /* BlePeripheral+AdafruitGyroscope.swift in Sources */,
 				A9A08B7023A523C900498069 /* CommonTableViewCell.swift in Sources */,
 				A9A08BA123A5260300498069 /* BleManagerSimulated.swift in Sources */,
 				A9A08B7123A523C900498069 /* HomeViewController.swift in Sources */,
@@ -1385,6 +1396,7 @@
 				A9D5B21723E3024800178E1B /* BluetoothStatusViewController.swift in Sources */,
 				A9A08BAA23A7891500498069 /* ObjectBuilder.m in Sources */,
 				A900DCBC24147BAD00DAE5C9 /* BarometricPressurePanelViewController.swift in Sources */,
+				A9BB18E4241E674000C60AFC /* BlePeripheralSimulated+AdafruitQuaternion.swift in Sources */,
 				A9A08B7623A523C900498069 /* ConfigUI.swift in Sources */,
 				A9A08B7723A523C900498069 /* UartPacketManager.swift in Sources */,
 				A92256932411CF1200B8AB57 /* BlePeripheralSimulated+AdafruitAccelerometer.swift in Sources */,

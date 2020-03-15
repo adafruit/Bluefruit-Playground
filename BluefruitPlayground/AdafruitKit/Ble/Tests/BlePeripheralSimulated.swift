@@ -17,16 +17,31 @@ class BlePeripheralSimulated: BlePeripheral {
     }
 
     override var name: String? {
-        return "Simulated Peripheral"
+        let result: String
+        switch model {
+        case .circuitPlaygroundBluefruit:
+            result = "CPB"
+        case .clue_nRF52840:
+            result = "CLUE"
+        case .feather_nRF52832:
+            result = "Feather"
+        case .feather_nRF52840_express:
+            result = "Feather Express"
+        }
+        return result
     }
 
     private var simulatedState: CBPeripheralState = .disconnected
     override var state: CBPeripheralState {
         return simulatedState
     }
+    
+    private var model: AdafruitManufacturerData.BoardModel
 
      // MARK: - Lifecycle
-    init() {
+    init(model: AdafruitManufacturerData.BoardModel) {
+        self.model = model
+
         // Mocking CBPeripheral: https://forums.developer.apple.com/thread/29851
         guard let peripheral = ObjectBuilder.createInstance(ofClass: "CBPeripheral") as? CBPeripheral else {
             assertionFailure("Unable to mock CBPeripheral")
@@ -34,9 +49,13 @@ class BlePeripheralSimulated: BlePeripheral {
             super.init(peripheral: nilPeripheral, advertisementData: nil, rssi: nil)
             return
         }
+        
         peripheral.addObserver(peripheral, forKeyPath: "delegate", options: .new, context: nil)
 
-        let manufacturerDataBytes: [UInt8] = [0x22, 0x08, 0x04, 0x01, 0x00, 0x45, 0x80]     // Adafruit CPB
+        let adafruitManufacturerIdentifier = BlePeripheral.kManufacturerAdafruitIdentifier
+        let boardId = model.identifier.first!
+        let boardField: [UInt8] = [0x04, 0x01, 0x00] + boardId
+        let manufacturerDataBytes: [UInt8] = adafruitManufacturerIdentifier + boardField
         let advertisementData = [CBAdvertisementDataManufacturerDataKey: Data(manufacturerDataBytes)]
         super.init(peripheral: peripheral, advertisementData: advertisementData, rssi: 20)
     }
