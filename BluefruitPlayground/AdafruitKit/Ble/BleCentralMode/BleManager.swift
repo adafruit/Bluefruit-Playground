@@ -38,6 +38,7 @@ class BleManager: NSObject {
     internal var scanningStartTime: TimeInterval?        // Time when the scanning started. nil if stopped
     private var scanningServicesFilter: [CBUUID]?
     internal var peripheralsFound = [UUID: BlePeripheral]()
+    private var peripheralsFoundFirstTime = [UUID: Date]()       // Date that the perihperal was discovered for the first time. Useful for sorting
     internal var peripheralsFoundLock = NSLock()
 
     // Connecting
@@ -59,6 +60,7 @@ class BleManager: NSObject {
     deinit {
         scanningServicesFilter?.removeAll()
         peripheralsFound.removeAll()
+        peripheralsFoundFirstTime.removeAll()
     }
 
     public var state: CBManagerState {
@@ -136,12 +138,31 @@ class BleManager: NSObject {
         isScanningWaitingToStart = false
         NotificationCenter.default.post(name: .didStopScanning, object: nil)
     }
-
+    
     func peripherals() -> [BlePeripheral] {
         peripheralsFoundLock.lock(); defer { peripheralsFoundLock.unlock() }
         return Array(peripheralsFound.values)
     }
 
+    func peripheralsSortedByFirstDiscovery() -> [BlePeripheral] {
+        let now = Date()
+        var peripheralsList = peripherals()
+        peripheralsList.sort { (p0, p1) -> Bool in
+            peripheralsFoundFirstTime[p0.identifier] ?? now < peripheralsFoundFirstTime[p1.identifier] ?? now
+        }
+        
+        return peripheralsList
+    }
+
+    func peripheralsSortedByRSSI() -> [BlePeripheral] {
+        var peripheralsList = peripherals()
+        peripheralsList.sort { (p0, p1) -> Bool in
+            return (p0.rssi ?? -127) > (p1.rssi ?? -127)
+        }
+        
+        return peripheralsList
+    }
+    
     func connectedPeripherals() -> [BlePeripheral] {
         return peripherals().filter {$0.state == .connected}
     }
@@ -162,6 +183,7 @@ class BleManager: NSObject {
         for (identifier, peripheral) in peripheralsFound {
             if peripheral.state != .connected && peripheral.state != .connecting {
                 peripheralsFound.removeValue(forKey: identifier)
+                peripheralsFoundFirstTime.removeValue(forKey: identifier)
             }
         }
         peripheralsFoundLock.unlock()
@@ -284,6 +306,7 @@ class BleManager: NSObject {
         } else {      // New peripheral found
             let blePeripheral = BlePeripheral(peripheral: peripheral, advertisementData: advertisementData, rssi: rssi)
             peripheralsFound[peripheral.identifier] = blePeripheral
+            peripheralsFoundFirstTime[peripheral.identifier] = Date()
         }
     }
 
