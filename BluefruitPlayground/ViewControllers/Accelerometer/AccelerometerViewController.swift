@@ -72,6 +72,7 @@ class AccelerometerViewController: ModuleViewController {
         guard let acceleration = acceleration else { return }
         
         SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
+        SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: .linear)
 
         // Calculate Euler Angles
         let eulerAngles = AccelerometerUtils.accelerationToEuler(acceleration)

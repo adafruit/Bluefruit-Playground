@@ -284,7 +284,8 @@ class PuppetViewController: UIViewController {
         // Update sparky rotation (only if the intro animation is not currently playing)
         if !isPlayingIntroAnimation {
             SCNTransaction.animationDuration = BlePeripheral.kAdafruitSensorDefaultPeriod
-            
+            SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: .linear)
+
             // Calculate euler angles and feed them to the low pass filters
             let eulerAngles = AccelerometerUtils.accelerationToEuler(acceleration)
             filteredAngleX.update(newValue: eulerAngles.x)

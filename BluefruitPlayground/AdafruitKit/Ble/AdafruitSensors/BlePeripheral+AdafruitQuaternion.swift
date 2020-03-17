@@ -94,7 +94,7 @@ extension BlePeripheral {
         
         guard let bytes = adafruitDataToFloatArray(data) else { return nil }
         guard bytes.count >= 4 else { return nil }
-//        return QuaternionValue(qx: bytes[0], qy: bytes[1], qz: bytes[2], qw: bytes[3])
+        //return QuaternionValue(x: bytes[0], y: bytes[1], z: bytes[2], w: bytes[3])
         return QuaternionValue(x: bytes[1], y: bytes[2], z: bytes[3], w: bytes[0])
     }
 }

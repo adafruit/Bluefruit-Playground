@@ -11,18 +11,18 @@ import CoreBluetooth
 
 extension BlePeripheral {
     // MARK: - Custom properties
-     private struct CustomPropertiesKeys {
-         static var adafruitHumidityResponseDataTimer: Timer?
-     }
-     
-     private var adafruitHumidityResponseDataTimer: Timer? {
-         get {
-             return objc_getAssociatedObject(self, &CustomPropertiesKeys.adafruitHumidityResponseDataTimer) as! Timer?
-         }
-         set {
-             objc_setAssociatedObject(self, &CustomPropertiesKeys.adafruitHumidityResponseDataTimer, newValue, .OBJC_ASSOCIATION_RETAIN)
-         }
-     }
+    private struct CustomPropertiesKeys {
+        static var adafruitHumidityResponseDataTimer: Timer?
+    }
+    
+    private var adafruitHumidityResponseDataTimer: Timer? {
+        get {
+            return objc_getAssociatedObject(self, &CustomPropertiesKeys.adafruitHumidityResponseDataTimer) as! Timer?
+        }
+        set {
+            objc_setAssociatedObject(self, &CustomPropertiesKeys.adafruitHumidityResponseDataTimer, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
     
     // MARK: - Actions
     func adafruitHumidityEnable(responseHandler: @escaping(Result<(Float, UUID), Error>) -> Void, completion: ((Result<Void, Error>) -> Void)?) {
@@ -35,14 +35,14 @@ extension BlePeripheral {
         
         completion?(.success(()))
     }
-
+    
     func adafruitHumidityIsEnabled() -> Bool {
         return self.adafruitManufacturerData()?.boardModel == .clue_nRF52840
     }
-
+    
     func adafruitHumidityDisable() {
     }
-
+    
     func adafruitHumidityLastValue() -> Float? {
         return Float.random(in: 28.5 ..< 29.0)
     }
