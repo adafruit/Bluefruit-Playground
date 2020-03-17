@@ -32,8 +32,8 @@ class PuppetViewController: UIViewController {
     
     private var isPlayingIntroAnimation = true
     
-    private var filteredAngleX = LowPassFilterSignal(value: 0, filterFactor: 0.06 / Float(BlePeripheral.kAdafruitSensorDefaultPeriod))
-    private var filteredAngleY = LowPassFilterSignal(value: 0, filterFactor: 0.07 / Float(BlePeripheral.kAdafruitSensorDefaultPeriod))
+    private var filteredAccelerometerAngleX = LowPassFilterSignal(value: 0, filterFactor: 0.06 / Float(BlePeripheral.kAdafruitSensorDefaultPeriod))
+    private var filteredAcceleromterAngleY = LowPassFilterSignal(value: 0, filterFactor: 0.07 / Float(BlePeripheral.kAdafruitSensorDefaultPeriod))
     
     // Camera Data
     private let captureSession = AVCaptureSession()
@@ -287,20 +287,21 @@ class PuppetViewController: UIViewController {
             SCNTransaction.animationTimingFunction = CAMediaTimingFunction(name: .linear)
 
             // Calculate euler angles and feed them to the low pass filters
-            let eulerAngles = AccelerometerUtils.accelerationToEuler(acceleration)
-            filteredAngleX.update(newValue: eulerAngles.x)
-            filteredAngleY.update(newValue: eulerAngles.y)
+            let accelerometerAngles = AccelerometerUtils.accelerationToEuler(acceleration)
+            filteredAccelerometerAngleX.update(newValue: accelerometerAngles.x)
+            filteredAcceleromterAngleY.update(newValue: accelerometerAngles.y)
             
             // Jaw animation: eurlerAngles between [0º, -45º] are converted to [7º, 45º]
-            let jawAngle = converAngle(originAngle: filteredAngleX.value, originMinAngle: deg2rad(-45), originMaxAngle: deg2rad(0), isOriginRangeClockWise: true, destinationMinAngle: deg2rad(7), destinationMaxAngle: deg2rad(45))
+            let jawAngle = converAngle(originAngle: filteredAccelerometerAngleX.value, originMinAngle: deg2rad(-45), originMaxAngle: deg2rad(0), isOriginRangeClockWise: true, destinationMinAngle: deg2rad(7), destinationMaxAngle: deg2rad(45))
             jawNode?.eulerAngles = SCNVector3(jawAngle, 0, 0)
             
             // Head animation
-            headNode?.eulerAngles = SCNVector3(-jawAngle/2-filteredAngleY.value.clamped(min: deg2rad(6), max: deg2rad(40)), -filteredAngleY.value, filteredAngleY.value)
+            let xAngle = -jawAngle/2 //-filteredAcceleromterAngleY.value.clamped(min: deg2rad(6), max: deg2rad(40))
+            let yAngle = -filteredAcceleromterAngleY.value * 0.5      //   Reduce the sensitivity by a factor
+            let zAngle = filteredAcceleromterAngleY.value
+            headNode?.eulerAngles = SCNVector3(xAngle, yAngle, zAngle)
         }
     }
-    
-    
     
     private func updateRecordButtonUI() {
         recordButton.isEnabled = RPScreenRecorder.shared().isAvailable
