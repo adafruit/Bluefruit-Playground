@@ -69,4 +69,10 @@ struct QuaternionUtils {
         let twistNormalized = twist.normalized
         return twistNormalized
     }
+
+    
+    static func isQuaternionValid(_ quaternion: simd_quatf) -> Bool {
+        let vector = quaternion.vector
+        return vector.x.isFinite && vector.y.isFinite && vector.z.isFinite && vector.w.isFinite
+    }
 }

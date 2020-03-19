@@ -48,9 +48,9 @@ class PuppetViewController: UIViewController {
         let scene = SCNScene(named: "Sparky_Gold1.scn")!
         scene.background.contents = UIColor.clear
         
-        jawNode = scene.rootNode.childNode(withName: "jaw", recursively: true)!
-        headNode = scene.rootNode.childNode(withName: "SparkyHead", recursively: true)!
-        sparkyFaceNode = scene.rootNode.childNode(withName: "Face", recursively: true)!
+        jawNode = scene.rootNode.childNode(withName: "jaw", recursively: true)
+        headNode = scene.rootNode.childNode(withName: "SparkyHead", recursively: true)
+        sparkyFaceNode = scene.rootNode.childNode(withName: "Face", recursively: true)
         
         // Setup scene
         sceneView.scene = scene

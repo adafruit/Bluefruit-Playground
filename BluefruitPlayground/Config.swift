@@ -18,7 +18,7 @@ struct Config {
     static let isDebugEnabled = _isDebugAssertConfiguration()
 
     // Fastlane snapshots
-    private static let areFastlaneSnapshotsRunning = UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
+    static let areFastlaneSnapshotsRunning = UserDefaults.standard.bool(forKey: "FASTLANE_SNAPSHOT")
 
     // Bluetooth
     #if SIMULATEBLUETOOTH

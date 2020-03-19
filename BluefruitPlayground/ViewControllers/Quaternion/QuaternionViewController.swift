@@ -33,7 +33,7 @@ class QuaternionViewController: ModuleViewController {
 
         // Load scene
         if let scene = AdafruitBoardsManager.shared.currentBoard?.assetScene {
-            boardNode = scene.rootNode.childNode(withName: "root", recursively: false)!
+            boardNode = scene.rootNode.childNode(withName: "root", recursively: false)
             
             // Setup scene
             sceneView.scene = scene
@@ -88,8 +88,13 @@ class QuaternionViewController: ModuleViewController {
         if QuaternionViewController.kIsZAxisDisabled {
             // Calculate rotation around the z axis.
             let twist = QuaternionUtils.twist_decomposition(rotation: scnQuaternion, direction: simd_float3(0, 0, 1))
-            // Remove z axis rotation
-            boardNode.simdOrientation = scnQuaternion * twist.inverse
+            if QuaternionUtils.isQuaternionValid(twist) {        // Check twist singularity
+                // Remove z axis rotation
+                boardNode.simdOrientation = scnQuaternion * twist.inverse
+            }
+            else {
+                boardNode.simdOrientation = scnQuaternion
+            }
         }
         else {
             boardNode.simdOrientation = scnQuaternion

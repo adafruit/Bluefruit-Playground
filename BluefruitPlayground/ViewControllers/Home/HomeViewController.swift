@@ -163,7 +163,7 @@ class HomeViewController: UIViewController {
         if board.isToneGeneratorEnabled {
             result.append(.tone)
         }
-        if (!board.isQuaternionEnabled || Config.isDebugEnabled) && board.isAccelerometerEnabled {
+        if (!board.isQuaternionEnabled || (Config.isDebugEnabled && !Config.areFastlaneSnapshotsRunning)) && board.isAccelerometerEnabled {
             result.append(.accelerometer)
         }
         if board.isQuaternionEnabled {

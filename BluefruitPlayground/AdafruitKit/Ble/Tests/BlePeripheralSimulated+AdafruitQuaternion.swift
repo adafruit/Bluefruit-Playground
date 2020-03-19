@@ -29,8 +29,7 @@ extension BlePeripheral {
         return self.adafruitManufacturerData()?.boardModel == .clue_nRF52840
     }
 
-    func adafruitQuaternionDisable() {
-        
+    func adafruitQuaternionDisable() {        
     }
 
     func adafruitQuaternionLastValue() -> QuaternionValue? {

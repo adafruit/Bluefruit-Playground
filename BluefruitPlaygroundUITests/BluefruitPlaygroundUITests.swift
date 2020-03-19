@@ -26,70 +26,104 @@ class BluefruitPlaygroundUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testSnapshots() {
-        /*
-        // UI tests must launch the application that they test.
+    
+    func testSnapsthotsClue() {
+        
         let app = XCUIApplication()
-        app.launch()
-*/
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-
-        let app = XCUIApplication()
-        let scrollViewsQuery = app.scrollViews
-        let elementsQuery = scrollViewsQuery.otherElements
-
-        sleep(2)        // Wait for the intro animation
+        let elementsQuery = app.scrollViews.otherElements
+        
+        sleep(1)        // Wait for the intro animation
         snapshot("01a_Welcome")
-
         elementsQuery.buttons["LET'S GET STARTED..."].tap()
+        
         snapshot("01b_PowerUp")
-
         elementsQuery.buttons["NEXT"].tap()
+        
         snapshot("01c_Discover")
-        elementsQuery.buttons["BEGIN PAIRING"].tap()
-
+        elementsQuery.buttons["FIND DEVICES"].tap()
+        
         let tablesQuery = app.tables
-        tablesQuery.staticTexts["Simulated Peripheral"].tap()
-
-        snapshot("02_Modules")
-
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Control LED color & animation"]/*[[".cells.staticTexts[\"Control LED color & animation\"]",".staticTexts[\"Control LED color & animation\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-
-        let element = scrollViewsQuery.children(matching: .other).element
-        element.children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .button).element.tap()
-        snapshot("03_Neopixels_LightSequence")
-
+        
+        // CLUE
+        snapshot("01d_Scanner")
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["CLUE"]/*[[".cells.staticTexts[\"CLUE\"]",".staticTexts[\"CLUE\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("02_CLUE_Modules")
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["NeoPixels"]/*[[".cells.staticTexts[\"NeoPixels\"]",".staticTexts[\"NeoPixels\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(1)
+        snapshot("03_CLUE_Neopixels_LightSequence")
         elementsQuery.staticTexts["Light Sequence"].swipeLeft()
-        element.children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .button).element(boundBy: 2).tap()
-
-        snapshot("04a_Neopixels_ColorPalette")
-
+        snapshot("04a_CLUE_Neopixels_ColorPalette")
         elementsQuery.staticTexts["Color Palette"].swipeLeft()
-        element.children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).children(matching: .other).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.tap()
-
-        snapshot("04b_Neopixels_ColorWheel")
-
+        snapshot("04b_CLUE_Neopixels_ColorWheel")
         app.navigationBars["NeoPixels"].buttons["Modules"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["View continuous light sensor readings"]/*[[".cells.staticTexts[\"View continuous light sensor readings\"]",".staticTexts[\"View continuous light sensor readings\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        snapshot("05_LightSensor")
-        app.navigationBars["Light Sensor"].buttons["Modules"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Button Status"]/*[[".cells.staticTexts[\"Button Status\"]",".staticTexts[\"Button Status\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        snapshot("06_ButtonStatus")
-        app.navigationBars["Button Status"].buttons["Modules"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Turn CPB into a musical instrument"]/*[[".cells.staticTexts[\"Turn CPB into a musical instrument\"]",".staticTexts[\"Turn CPB into a musical instrument\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        snapshot("07_ToneGenerator")
-        app.navigationBars["Tone Generator"].buttons["Modules"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Accelerometer"]/*[[".cells.staticTexts[\"Accelerometer\"]",".staticTexts[\"Accelerometer\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        snapshot("08_Accelerometer")
-        app.navigationBars["Accelerometer"].buttons["Modules"].tap()
-        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["View current temperature readings"]/*[[".cells.staticTexts[\"View current temperature readings\"]",".staticTexts[\"View current temperature readings\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        snapshot("09_Temperature")
-        app.navigationBars["Temperature"].buttons["Modules"].tap()
-        tablesQuery.staticTexts["Puppets"].tap()
-        snapshot("10_Puppets")
 
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Light Sensor"]/*[[".cells.staticTexts[\"Light Sensor\"]",".staticTexts[\"Light Sensor\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("05a_CLUE_LightSensor")
+        elementsQuery.staticTexts["Luminance Reading"].swipeLeft()
+        snapshot("05b_CLUE_LightSensor_Chart")
+        app.navigationBars["Light Sensor"].buttons["Modules"].tap()
+
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Button Status"]/*[[".cells.staticTexts[\"Button Status\"]",".staticTexts[\"Button Status\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("06_CLUE_ButtonStatus")
+        app.navigationBars["Button Status"].buttons["Modules"].tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Tone Generator"]/*[[".cells.staticTexts[\"Tone Generator\"]",".staticTexts[\"Tone Generator\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("07_CLUE_ToneGenerator")
+        app.navigationBars["Tone Generator"].buttons["Modules"].tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Orientation"]/*[[".cells.staticTexts[\"Orientation\"]",".staticTexts[\"Orientation\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("08_CLUE_Orientation")
+        app.navigationBars["Orientation"].buttons["Modules"].tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Temperature"]/*[[".cells.staticTexts[\"Temperature\"]",".staticTexts[\"Temperature\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("09_CLUE_Temperature")
+        app.navigationBars["Temperature"].buttons["Modules"].tap()
+
+        /*
+        let buttonStatusStaticText = tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Button Status"]/*[[".cells.staticTexts[\"Button Status\"]",".staticTexts[\"Button Status\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        buttonStatusStaticText.swipeUp()        // Swipe up to see more modules
+        */
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Humidity"]/*[[".cells.staticTexts[\"Humidity\"]",".staticTexts[\"Humidity\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("10_CLUE_Humidity")
+        app.navigationBars["Humidity"].buttons["Modules"].tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Pressure"]/*[[".cells.staticTexts[\"Pressure\"]",".staticTexts[\"Pressure\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("11_CLUE_Pressure")
+        app.navigationBars["Pressure"].buttons["Modules"].tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Puppets"]/*[[".cells.staticTexts[\"Puppets\"]",".staticTexts[\"Puppets\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        sleep(2)        // Wait for the puppet animation
+        snapshot("12_Puppets")
+        app.navigationBars["Puppets"].buttons["Modules"].tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Disconnect"]/*[[".cells.staticTexts[\"Disconnect\"]",".staticTexts[\"Disconnect\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts.scrollViews.otherElements.buttons["OK"].tap()
+        
+        // CPB
+        XCUIApplication().tables/*@START_MENU_TOKEN@*/.staticTexts["CPB"]/*[[".cells.staticTexts[\"CPB\"]",".staticTexts[\"CPB\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["NeoPixels"]/*[[".cells.staticTexts[\"NeoPixels\"]",".staticTexts[\"NeoPixels\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("03_CPB_Neopixels_LightSequence")
+        elementsQuery.staticTexts["Light Sequence"].swipeLeft()
+        snapshot("04a_CPB_Neopixels_ColorPalette")
+        elementsQuery.staticTexts["Color Palette"].swipeLeft()
+        snapshot("04b_CPB_Neopixels_ColorWheel")
+        app.navigationBars["NeoPixels"].buttons["Modules"].tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Light Sensor"]/*[[".cells.staticTexts[\"Light Sensor\"]",".staticTexts[\"Light Sensor\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("05a_CPB_LightSensor")
+        elementsQuery.staticTexts["Luminance Reading"].swipeLeft()
+        snapshot("05b_CPB_LightSensor_Chart")
+        app.navigationBars["Light Sensor"].buttons["Modules"].tap()
+        
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Button Status"]/*[[".cells.staticTexts[\"Button Status\"]",".staticTexts[\"Button Status\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("06_CPB_ButtonStatus")
+        app.navigationBars["Button Status"].buttons["Modules"].tap()
+  
+        tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["Accelerometer"]/*[[".cells.staticTexts[\"Accelerometer\"]",".staticTexts[\"Accelerometer\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        snapshot("08_CPB_Accelerometer")
+        app.navigationBars["Accelerometer"].buttons["Modules"].tap()
     }
 
     func testLaunchPerformance() {

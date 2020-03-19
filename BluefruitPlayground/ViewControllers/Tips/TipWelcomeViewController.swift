@@ -28,7 +28,7 @@ class TipWelcomeViewController: TipAnimationViewController {
         }
     }
 
-    private var circuitNode: SCNNode!
+    private var boardNode: SCNNode!
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class TipWelcomeViewController: TipAnimationViewController {
         let scene = SCNScene(named: "clue.scn")!
         scene.background.contents = UIColor.clear
 
-        circuitNode = scene.rootNode.childNode(withName: "root", recursively: false)!
+        boardNode = scene.rootNode.childNode(withName: "root", recursively: false)!
 
         // Setup scene
         sceneView.scene = scene
@@ -56,13 +56,13 @@ class TipWelcomeViewController: TipAnimationViewController {
         sceneView.alpha = 1
         sceneView.transform = .identity
 
-        circuitNode.opacity = 1
-        circuitNode.removeAllActions()
-        circuitNode.removeAllAnimations()
+        boardNode.opacity = 1
+        boardNode.removeAllActions()
+        boardNode.removeAllAnimations()
         //circuitNode.position = SCNVector3(0, -5, 0)
-        circuitNode.localTranslate(by: SCNVector3(0, -5, 0))
-        circuitNode.scale = SCNVector3(0.3, 0.3, 0.3)
-        circuitNode.rotation = SCNVector4(0, 50 * CGFloat.pi / 180, 0, 1)
+        boardNode.localTranslate(by: SCNVector3(0, -5, 0))
+        boardNode.scale = SCNVector3(0.3, 0.3, 0.3)
+        boardNode.rotation = SCNVector4(0, 50 * CGFloat.pi / 180, 0, 1)
     }
 
     private func animateIntro() {
@@ -76,8 +76,8 @@ class TipWelcomeViewController: TipAnimationViewController {
         ])
 //        appearAction.timingMode = .easeOut
 
-        circuitNode.runAction(appearAction, forKey: "intro") {
-            self.circuitNode.runAction(
+        boardNode.runAction(appearAction, forKey: "intro") {
+            self.boardNode.runAction(
                 SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: -2 * .pi, z: 0, duration: 30))
             )
         }
@@ -116,10 +116,10 @@ class TipWelcomeViewController: TipAnimationViewController {
                     animateIntro()
                 } else {
                     // If coming from intro, stop the animations and restore the rotation
-                    let isTransitioningFromIntro = circuitNode.action(forKey: "intro") != nil
+                    let isTransitioningFromIntro = boardNode.action(forKey: "intro") != nil
                     if isTransitioningFromIntro {
-                        circuitNode.removeAction(forKey: "intro")
-                        self.circuitNode.runAction(
+                        boardNode.removeAction(forKey: "intro")
+                        self.boardNode.runAction(
                             SCNAction.repeatForever(SCNAction.rotateBy(x: 0, y: -2 * .pi, z: 0, duration: 30))
                         )
                     }

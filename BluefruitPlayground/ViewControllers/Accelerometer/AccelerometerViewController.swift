@@ -30,7 +30,7 @@ class AccelerometerViewController: ModuleViewController {
         
         // Load scene
         if let scene = AdafruitBoardsManager.shared.currentBoard?.assetScene {
-            boardNode = scene.rootNode.childNode(withName: "root", recursively: false)!
+            boardNode = scene.rootNode.childNode(withName: "root", recursively: false)
             
             // Setup scene
             sceneView.scene = scene
