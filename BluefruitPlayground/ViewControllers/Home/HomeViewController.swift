@@ -293,8 +293,8 @@ extension HomeViewController: UITableViewDelegate {
             self.show(viewController, sender: self)
             CATransaction.setCompletionBlock({
                 // Flash neopixels with the module color
-                let board = AdafruitBoardsManager.shared.currentBoard
-                board?.neopixelStartLightSequence(FlashLightSequence(baseColor: module.color), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+                guard let board = AdafruitBoardsManager.shared.currentBoard else { return }
+                board.neopixelFlashLightSequence(color: module.color)
             })
             CATransaction.commit()
 

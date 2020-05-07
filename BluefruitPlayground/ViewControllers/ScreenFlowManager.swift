@@ -56,9 +56,9 @@ struct ScreenFlowManager {
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: HomeViewController.kNavigationControllerIdentifier)
         
         changeRootViewController(rootViewController: rootNavigationViewController) {
-            
-            let board = AdafruitBoardsManager.shared.currentBoard
-            board?.neopixelStartLightSequence(FlashLightSequence(baseColor: .lightGray), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+            // Flash neopixels
+            guard let board = AdafruitBoardsManager.shared.currentBoard else { return }
+            board.neopixelFlashLightSequence(color: .lightGray)
         }
     }
     
@@ -68,10 +68,9 @@ struct ScreenFlowManager {
         
         let rootNavigationViewController = mainStoryboard.instantiateViewController(withIdentifier: HomeViewController.kNavigationControllerIdentifier)
         changeRootViewController(rootViewController: rootNavigationViewController) {
-           
-           
-            let board = AdafruitBoardsManager.shared.currentBoard
-            board?.neopixelStartLightSequence(FlashLightSequence(baseColor: .white), speed: 1, repeating: false, sendLightSequenceNotifications: false)
+           // Flash neopixels
+           guard let board = AdafruitBoardsManager.shared.currentBoard else { return }
+           board.neopixelFlashLightSequence(color: .white)
         }
     }
 

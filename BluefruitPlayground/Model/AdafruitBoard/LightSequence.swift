@@ -10,21 +10,20 @@ import UIKit
 
 protocol LightSequenceGenerator {
     var numFrames: Int { get }
-    var numPixels: Int { get }
     var isCyclic: Bool { get }
     func colorsForFrame(_ frame: Int) -> [[UInt8]]
 }
 
+// MARK: - Helper Base class for all LightSequences
 class LightSequence {
-    // Constants
-    static let kNumPixels = 10
-
-    var numPixels: Int {
-        return LightSequence.kNumPixels
-    }
-
+    var numPixels: Int
+    
     var isCyclic: Bool {
         return true
+    }
+    
+    init(numPixels: Int) {
+        self.numPixels = numPixels
     }
 
     // Utils
@@ -49,9 +48,9 @@ class RotateLightSequence: LightSequence, LightSequenceGenerator {
     private var colorsBytes: [[UInt8]]        // in byte format with brightness premultiplied
 
     // MARK: -
-    override init() {
+    override init(numPixels: Int) {
         colorsBytes = LightSequence.preprocessColorPalette(colors: RotateLightSequence.kColors)
-        super.init()
+        super.init(numPixels: numPixels)
     }
 
     var numFrames: Int {
@@ -86,9 +85,9 @@ class PulseLightSequence: LightSequence, LightSequenceGenerator {
     private var reverse = false
 
     // MARK: -
-    override init() {
+    override init(numPixels: Int) {
         colorsBytes = LightSequence.preprocessColorPalette(colors: PulseLightSequence.kColors)
-        super.init()
+        super.init(numPixels: numPixels)
     }
 
     var numFrames: Int {
@@ -126,9 +125,9 @@ class SizzleLightSequence: LightSequence, LightSequenceGenerator {
     private var reverse = false
 
     // MARK: -
-    override init() {
+    override init(numPixels: Int) {
         colorsBytes = LightSequence.preprocessColorPalette(colors: SizzleLightSequence.kColors)
-        super.init()
+        super.init(numPixels: numPixels)
     }
 
     var numFrames: Int {
@@ -167,9 +166,9 @@ class SweepLightSequence: LightSequence, LightSequenceGenerator {
     private var colorsBytes: [[UInt8]]        // in byte format with brightness premultiplied
 
     // MARK: -
-    override init() {
+    override init(numPixels: Int) {
         colorsBytes = LightSequence.preprocessColorPalette(colors: SweepLightSequence.kColors)
-        super.init()
+        super.init(numPixels: numPixels)
     }
 
     var numFrames: Int {
@@ -202,9 +201,9 @@ class FlashLightSequence: LightSequence, LightSequenceGenerator {
     private var baseColor: UIColor
 
     // MARK: -
-    init(baseColor: UIColor) {
+    init(baseColor: UIColor, numPixels: Int) {
         self.baseColor = baseColor
-        super.init()
+        super.init(numPixels: numPixels)
     }
 
     var numFrames: Int {

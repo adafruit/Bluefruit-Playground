@@ -75,6 +75,7 @@
 		A94AC1462363A59B0062AB11 /* TemperatureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC1452363A59B0062AB11 /* TemperatureViewController.swift */; };
 		A94AC1482363A7BD0062AB11 /* TemperaturePanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC1472363A7BD0062AB11 /* TemperaturePanelViewController.swift */; };
 		A94AC14E2364A82B0062AB11 /* AdafruitBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A94AC14D2364A82A0062AB11 /* AdafruitBoard.swift */; };
+		A9573B372464891D00E15D28 /* AdafruitBoard+FlashNeopixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9573B362464891D00E15D28 /* AdafruitBoard+FlashNeopixels.swift */; };
 		A958E77C238AFA4E006A225A /* BlePeripheral+AdafruitNeoPixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77B238AFA4E006A225A /* BlePeripheral+AdafruitNeoPixels.swift */; };
 		A958E77E238B7457006A225A /* NormalBrightnessSliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77D238B7457006A225A /* NormalBrightnessSliderControl.swift */; };
 		A958E780238B75D9006A225A /* NormalBrightnessColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A958E77F238B75D9006A225A /* NormalBrightnessColorPickerController.swift */; };
@@ -339,6 +340,7 @@
 		A94AC1452363A59B0062AB11 /* TemperatureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewController.swift; sourceTree = "<group>"; };
 		A94AC1472363A7BD0062AB11 /* TemperaturePanelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperaturePanelViewController.swift; sourceTree = "<group>"; };
 		A94AC14D2364A82A0062AB11 /* AdafruitBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdafruitBoard.swift; sourceTree = "<group>"; };
+		A9573B362464891D00E15D28 /* AdafruitBoard+FlashNeopixels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AdafruitBoard+FlashNeopixels.swift"; sourceTree = "<group>"; };
 		A958E77923821EF8006A225A /* BlePeripheral+AdafruitToneGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitToneGenerator.swift"; sourceTree = "<group>"; };
 		A958E77B238AFA4E006A225A /* BlePeripheral+AdafruitNeoPixels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlePeripheral+AdafruitNeoPixels.swift"; sourceTree = "<group>"; };
 		A958E77D238B7457006A225A /* NormalBrightnessSliderControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalBrightnessSliderControl.swift; sourceTree = "<group>"; };
@@ -545,6 +547,7 @@
 			children = (
 				A92256942411D01100B8AB57 /* AdafruitBoardsManager.swift */,
 				A94AC14D2364A82A0062AB11 /* AdafruitBoard.swift */,
+				A9573B362464891D00E15D28 /* AdafruitBoard+FlashNeopixels.swift */,
 				A901EC4C237C47D800687BE6 /* SensorDataSeries.swift */,
 				A9A08B2223A2841200498069 /* LightSequence.swift */,
 				A9A08B2423A2CBCF00498069 /* LightSequenceAnimation.swift */,
@@ -1206,6 +1209,7 @@
 				A9EAA19523514B2800FA615E /* CornerShadowButton.swift in Sources */,
 				A96AA5D523635A89004A06BA /* NSLayoutConstraint+ChangeMultiplier.swift in Sources */,
 				A93159DD241A5B6000218092 /* ActiveLabelUtils.swift in Sources */,
+				A9573B372464891D00E15D28 /* AdafruitBoard+FlashNeopixels.swift in Sources */,
 				A96AA5C823633EB3004A06BA /* UIButton+BackgroundColorForState.swift in Sources */,
 				A92256912411CEEA00B8AB57 /* BlePeripheral+AdafruitToneGenerator.swift in Sources */,
 				A9A08B2523A2CBCF00498069 /* LightSequenceAnimation.swift in Sources */,
@@ -1603,7 +1607,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = BluefruitPlayground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1628,7 +1632,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = BluefruitPlayground/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1692,7 +1696,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1718,7 +1722,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2X94RM7457;
 				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

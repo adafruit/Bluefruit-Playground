@@ -371,6 +371,10 @@ class AdafruitBoard {
     }
     
     // MARK: - Read Data
+    var neopixelPixelsCount: Int? {
+        return blePeripheral?.adafruitNeoPixelsCount
+    }
+    
     func lightLastValue() -> Float? {
         return blePeripheral?.adafruitLightLastValue()
     }
@@ -423,7 +427,7 @@ class AdafruitBoard {
     // MARK: - Receive Data
     private func receiveLightData(response: Result<(Float, UUID), Error>) {
         switch response {
-        case let .success(light, uuid):
+        case let .success((light, uuid)):
             
             if isLightDataSeriesEnabled {
                 // Save value
@@ -452,7 +456,7 @@ class AdafruitBoard {
     
     private func receiveButtonsData(response: Result<(BlePeripheral.ButtonsState, UUID), Error>) {
         switch response {
-        case let .success(buttonsState, uuid):
+        case let .success((buttonsState, uuid)):
             //DLog("Buttons: \(buttonsState.slideSwitch == .left ? "⬅️":"➡️") \(buttonsState.buttonA == .pressed ? "🔳":"🔲") \(buttonsState.buttonB == .pressed ? "🔳":"🔲") ")
             
             // Send to delegate
@@ -475,7 +479,7 @@ class AdafruitBoard {
     
     private func receiveAccelerometerData(response: Result<(BlePeripheral.AccelerometerValue, UUID), Error>) {
         switch response {
-        case let .success(value, uuid):
+        case let .success((value, uuid)):
             var adjustedAcceleration = value
             
             if accelerometerAutoAdjustOrientation {
@@ -512,7 +516,7 @@ class AdafruitBoard {
     
     private func receiveTemperatureData(response: Result<(Float, UUID), Error>) {
         switch response {
-        case let .success(value, uuid):
+        case let .success((value, uuid)):
             
             if isTemperatureDataSeriesEnabled {
                 // Save value
@@ -541,7 +545,7 @@ class AdafruitBoard {
     
     private func receiveHumidityData(response: Result<(Float, UUID), Error>) {
         switch response {
-        case let .success(value, uuid):
+        case let .success((value, uuid)):
             
             if isHumidityDataSeriesEnabled {
                 // Save value
@@ -570,7 +574,7 @@ class AdafruitBoard {
     
     private func receiveBarometricPressureData(response: Result<(Float, UUID), Error>) {
         switch response {
-        case let .success(value, uuid):
+        case let .success((value, uuid)):
             
             if isBarometricPressureDataSeriesEnabled {
                 // Save value
@@ -599,7 +603,7 @@ class AdafruitBoard {
     
     private func receiveSoundData(response: Result<([Double], UUID), Error>) {
         switch response {
-        case let .success(amplitudesPerChannel, uuid):
+        case let .success((amplitudesPerChannel, uuid)):
             
             if isSoundAmplitudePressureDataSeriesEnabled {
                 // Save value
@@ -630,7 +634,7 @@ class AdafruitBoard {
     
     private func receiveGyroscopeData(response: Result<(BlePeripheral.GyroscopeValue, UUID), Error>) {
         switch response {
-        case let .success(value, uuid):
+        case let .success((value, uuid)):
             
             if isGyroscopeDataSeriesEnabled {
                 // Save value
@@ -659,7 +663,7 @@ class AdafruitBoard {
     
     private func receiveQuaternionData(response: Result<(BlePeripheral.QuaternionValue, UUID), Error>) {
         switch response {
-        case let .success(value, uuid):
+        case let .success((value, uuid)):
             var adjustedQuaternion = value
                       if quaternionAutoAdjustOrientation {
                           if model == .clue_nRF52840 {        // Clue has the quaternion sensor in the back

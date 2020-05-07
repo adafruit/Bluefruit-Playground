@@ -98,13 +98,15 @@ class PixelsPreviewViewController: UIViewController {
 
     // TODO: make this class more general, and add a parameter for the lightSequence
     private func lightSequenceGeneratorForTag(_ tag: Int) -> LightSequenceGenerator? {
+        guard let numPixels = AdafruitBoardsManager.shared.currentBoard?.neopixelPixelsCount else { return nil }
+        
         let id = tag - PixelsPreviewViewController.kButtonStartTag
         let lightSequence: LightSequenceGenerator?
                switch id {
-               case 0: lightSequence = RotateLightSequence()
-               case 1: lightSequence = PulseLightSequence()
-               case 2: lightSequence = SizzleLightSequence()
-               case 3: lightSequence = SweepLightSequence()
+               case 0: lightSequence = RotateLightSequence(numPixels: numPixels)
+               case 1: lightSequence = PulseLightSequence(numPixels: numPixels)
+               case 2: lightSequence = SizzleLightSequence(numPixels: numPixels)
+               case 3: lightSequence = SweepLightSequence(numPixels: numPixels)
                default: lightSequence = nil
                }
 
