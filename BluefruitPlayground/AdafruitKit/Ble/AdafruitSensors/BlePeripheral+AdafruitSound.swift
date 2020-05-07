@@ -130,7 +130,7 @@ extension BlePeripheral {
         var samplesSumPerChannel = [Double](repeating: 0, count: numChannels)
         for (index, sample) in samples.enumerated() {
             let channelIndex = index % numChannels
-            samplesSumPerChannel[channelIndex] += Double(abs(sample))
+            samplesSumPerChannel[channelIndex] += abs(Double(sample))
         }
         
         let samplesPerChannel = samples.count / numChannels
