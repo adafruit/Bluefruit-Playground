@@ -16,7 +16,7 @@ extension BlePeripheral {
     private static let kAdafruitSoundNumberOfChannelsCharacteristicUUID = CBUUID(string: "ADAF0B02-C332-42A8-93BD-25E905756CB8")
     private static let kAdafruitSoundSensorVersion = 1
     
-    static let kAdafruitSoundSensorMaxAmplitude = 32767
+    static let kAdafruitSoundSensorMaxAmplitude = 32768         // Int16 range is from -32768 to 32767
     
     // MARK: - Custom properties
     private struct CustomPropertiesKeys {
