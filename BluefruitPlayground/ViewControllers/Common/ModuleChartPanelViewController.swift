@@ -116,7 +116,7 @@ class ChartPanelViewController: ModulePanelViewController {
         
         let value = dataSeriesValueToChartValue(entry.value)
         let newElement = ChartDataEntry(x: entry.timestamp - originTimestamp, y: value)
-        _ = dataSet.append(newElement)
+        dataSet.append(newElement)
         
         notifyDataSetChanged()
     }

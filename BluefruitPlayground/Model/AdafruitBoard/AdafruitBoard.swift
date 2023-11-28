@@ -11,39 +11,39 @@ import FlexColorPicker
 
 
 // Delegates for each sensor
-protocol AdafruitTemperatureDelegate: class {
+protocol AdafruitTemperatureDelegate: AnyObject {
     func adafruitTemperatureReceived(_ temperature: Float)
 }
 
-protocol AdafruitLightDelegate: class {
+protocol AdafruitLightDelegate: AnyObject {
     func adafruitLightReceived(_ light: Float)
 }
 
-protocol AdafruitButtonsDelegate: class {
+protocol AdafruitButtonsDelegate: AnyObject {
     func adafruitButtonsReceived(_ buttonsState: BlePeripheral.ButtonsState)
 }
 
-protocol AdafruitAccelerometerDelegate: class {
+protocol AdafruitAccelerometerDelegate: AnyObject {
     func adafruitAccelerationReceived(_ acceleration: BlePeripheral.AccelerometerValue)
 }
 
-protocol AdafruitHumidityDelegate: class {
+protocol AdafruitHumidityDelegate: AnyObject {
     func adafruitHumidityReceived(_ humidity: Float)
 }
 
-protocol AdafruitBarometricPressureDelegate: class {
+protocol AdafruitBarometricPressureDelegate: AnyObject {
     func adafruitBarometricPressureReceived(_ pressure: Float)
 }
 
-protocol AdafruitSoundDelegate: class {
+protocol AdafruitSoundDelegate: AnyObject {
     func adafruitSoundReceived(_ channelSamples: [Double])
 }
 
-protocol AdafruitGyroscopeDelegate: class {
+protocol AdafruitGyroscopeDelegate: AnyObject {
     func adafruitGyroscopeReceived(_ gyroscope: BlePeripheral.GyroscopeValue)
 }
 
-protocol AdafruitQuaternionDelegate: class {
+protocol AdafruitQuaternionDelegate: AnyObject {
     func adafruitQuaternionReceived(_ quaternion: BlePeripheral.QuaternionValue)
 }
 
