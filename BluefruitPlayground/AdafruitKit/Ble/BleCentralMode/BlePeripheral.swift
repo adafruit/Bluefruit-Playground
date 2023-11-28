@@ -396,11 +396,13 @@ class BlePeripheral: NSObject {
     }
 
     private func handlerIdentifier(from characteristic: CBCharacteristic) -> String {
-        return "\(characteristic.service.uuid.uuidString)-\(characteristic.uuid.uuidString)"
+        guard let service = characteristic.service else { DLog("Error: handleIdentifier with nil characteritic service"); return "" }
+        return "\(service.uuid.uuidString)-\(characteristic.uuid.uuidString)"
     }
 
     private func handlerIdentifier(from descriptor: CBDescriptor) -> String {
-        return "\(descriptor.characteristic.service.uuid.uuidString)-\(descriptor.characteristic.uuid.uuidString)-\(descriptor.uuid.uuidString)"
+        guard let characteristic = descriptor.characteristic, let service = characteristic.service else { DLog("Error: handleIdentifier with nil descriptor service"); return "" }
+        return "\(service.uuid.uuidString)-\(characteristic.uuid.uuidString)-\(descriptor.uuid.uuidString)"
     }
 
     internal func finishedExecutingCommand(error: Error?) {
