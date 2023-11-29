@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4159E50383537C1FA7FC8B5F /* Pods_BluefruitPlayground_SimulateBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC6B93F18A42B20847BD523D /* Pods_BluefruitPlayground_SimulateBluetooth.framework */; };
 		A90086DF23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */; };
 		A90086E023FC6C5600DE0DE4 /* PeripheralAutoConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */; };
 		A900DCAF241440E400DAE5C9 /* ModuleChartPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A900DCAE241440E400DAE5C9 /* ModuleChartPanelViewController.swift */; };
@@ -104,6 +105,7 @@
 		A98E4D3223566785005B166D /* cpb.scn in Resources */ = {isa = PBXBuildFile; fileRef = A98E4D3123566785005B166D /* cpb.scn */; };
 		A98F1B892359494500C5269E /* ConfigUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98F1B882359494500C5269E /* ConfigUI.swift */; };
 		A98F1B8B23594BE400C5269E /* LightSensorPanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98F1B8A23594BE400C5269E /* LightSensorPanelViewController.swift */; };
+		A99897872B1755B500FF79D4 /* AdafruitBoard+FlashNeopixels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9573B362464891D00E15D28 /* AdafruitBoard+FlashNeopixels.swift */; };
 		A99BA71D234FFE780080D03F /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99BA71C234FFE780080D03F /* Settings.swift */; };
 		A99BA71F234FFECF0080D03F /* DefaultPreferences.plist in Resources */ = {isa = PBXBuildFile; fileRef = A99BA71E234FFECF0080D03F /* DefaultPreferences.plist */; };
 		A99BA723235000520080D03F /* ScreenFlowManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A99BA722235000520080D03F /* ScreenFlowManager.swift */; };
@@ -286,8 +288,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		009A27F8A15A16BED2586FE1 /* Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig"; path = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig"; sourceTree = "<group>"; };
 		02C55600113CD967F7C0C908 /* Pods-CPX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPX.debug.xcconfig"; path = "Target Support Files/Pods-CPX/Pods-CPX.debug.xcconfig"; sourceTree = "<group>"; };
 		41FC984EE1CDB9B54C5084ED /* Pods-CPX.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CPX.release.xcconfig"; path = "Target Support Files/Pods-CPX/Pods-CPX.release.xcconfig"; sourceTree = "<group>"; };
+		50F76C3BC0445E3D58754FFF /* Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig"; path = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig"; sourceTree = "<group>"; };
 		8BFE7B5A63DA548F17D0945D /* Pods_BluefruitPlayground.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BluefruitPlayground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A90086DE23FC6C5600DE0DE4 /* PeripheralAutoConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralAutoConnect.swift; sourceTree = "<group>"; };
 		A900DCAE241440E400DAE5C9 /* ModuleChartPanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModuleChartPanelViewController.swift; sourceTree = "<group>"; };
@@ -442,6 +446,7 @@
 		A9F2F1E0234E45FD00D85E6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B04585D64EA54B46715B38DD /* Pods-BluefruitPlayground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluefruitPlayground.debug.xcconfig"; path = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.debug.xcconfig"; sourceTree = "<group>"; };
 		B96658EBBA65B90302517AEC /* Pods-BluefruitPlayground.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BluefruitPlayground.release.xcconfig"; path = "Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground.release.xcconfig"; sourceTree = "<group>"; };
+		BC6B93F18A42B20847BD523D /* Pods_BluefruitPlayground_SimulateBluetooth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BluefruitPlayground_SimulateBluetooth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -464,6 +469,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4159E50383537C1FA7FC8B5F /* Pods_BluefruitPlayground_SimulateBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				8BFE7B5A63DA548F17D0945D /* Pods_BluefruitPlayground.framework */,
+				BC6B93F18A42B20847BD523D /* Pods_BluefruitPlayground_SimulateBluetooth.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -485,6 +492,8 @@
 				41FC984EE1CDB9B54C5084ED /* Pods-CPX.release.xcconfig */,
 				B04585D64EA54B46715B38DD /* Pods-BluefruitPlayground.debug.xcconfig */,
 				B96658EBBA65B90302517AEC /* Pods-BluefruitPlayground.release.xcconfig */,
+				009A27F8A15A16BED2586FE1 /* Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig */,
+				50F76C3BC0445E3D58754FFF /* Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -990,9 +999,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9A08B9823A523C900498069 /* Build configuration list for PBXNativeTarget "BluefruitPlayground-SimulateBluetooth" */;
 			buildPhases = (
+				C8D10B1C43C039FAA44D5E8A /* [CP] Check Pods Manifest.lock */,
 				A9A08B3823A523C900498069 /* Sources */,
 				A9A08B8D23A523C900498069 /* Frameworks */,
 				A9A08B8F23A523C900498069 /* Resources */,
+				0F2482EB52311DB67E99153F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1116,6 +1127,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		0F2482EB52311DB67E99153F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B6BCA356C48844C00AD34438 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1131,6 +1159,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground/Pods-BluefruitPlayground-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C8D10B1C43C039FAA44D5E8A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BluefruitPlayground-SimulateBluetooth-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1340,6 +1390,7 @@
 				A9A08B6A23A523C900498069 /* TipDiscoverViewController.swift in Sources */,
 				A900DCB0241440E400DAE5C9 /* ModuleChartPanelViewController.swift in Sources */,
 				A9A08B6B23A523C900498069 /* ModulePanelViewController.swift in Sources */,
+				A99897872B1755B500FF79D4 /* AdafruitBoard+FlashNeopixels.swift in Sources */,
 				A9A08B6C23A523C900498069 /* TipsViewController.swift in Sources */,
 				A9A08B6D23A523C900498069 /* NormalBrightnessColorPickerController.swift in Sources */,
 				A9A08B6E23A523C900498069 /* PanelInsetView.swift in Sources */,
@@ -1655,12 +1706,14 @@
 		};
 		A9A08B9923A523C900498069 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 009A27F8A15A16BED2586FE1 /* Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2X94RM7457;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1680,12 +1733,14 @@
 		};
 		A9A08B9A23A523C900498069 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 50F76C3BC0445E3D58754FFF /* Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 22;
 				DEVELOPMENT_TEAM = 2X94RM7457;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "BluefruitPlayground-SimulatedBluetooth-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

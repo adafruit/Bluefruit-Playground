@@ -25,7 +25,7 @@ extension BlePeripheral {
     func adafruitNeoPixelsDisable() {
     }
 
-    func adafruitNeoPixelsCount() -> Int {
+    var adafruitNeoPixelsCount: Int {
         return self.adafruitManufacturerData()?.boardModel?.neoPixelsCount ?? 0
     }
 

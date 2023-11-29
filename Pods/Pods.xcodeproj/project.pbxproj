@@ -56,6 +56,7 @@
 		47E0C0DB2BBAB310D70EB1F307089699 /* ColorPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD165933A4E2A11B020B676D123ACF7 /* ColorPickerDelegate.swift */; };
 		48CCDC527BFC92E2B5409E8E5AA83C21 /* ColorPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3F19F7168C2B373A1F30259D754253 /* ColorPickerController.swift */; };
 		4A7EC7DFDECCAEBFE661A9699D362F3B /* CombinedHighlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC7099BABE7B922BE66955983A1FE04 /* CombinedHighlighter.swift */; };
+		4B6CC0A20C4BF6300D8CD72BF0A5AC07 /* Pods-BluefruitPlayground-SimulateBluetooth-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 56EEDF328E877591AB792B84E088FAC8 /* Pods-BluefruitPlayground-SimulateBluetooth-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4C38F33C9137CD495845341EDD020308 /* IMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3B900A0E1111014B9C30C2B9709E36 /* IMarker.swift */; };
 		4D3408A0839419A638406D7E31B34443 /* Charts-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F97C63E4B18D0188F90F8E533A9FF81 /* Charts-dummy.m */; };
 		4D647F465DB735D2E4CC1CFC1BDD0DA6 /* YAxis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FEBA68B570E49C3EC3C967FE5B8431 /* YAxis.swift */; };
@@ -79,7 +80,7 @@
 		5E1757840B368E30CBF47F76D83F14B8 /* ChartAnimationEasing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4E35C57719D6B61D0500737C5C83E9 /* ChartAnimationEasing.swift */; };
 		5E47EC775681C59C467F5954D516BE2D /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3D7412C8FCAC7EDF5A600A39A1CA8D /* UIViewExtension.swift */; };
 		5E5A291BC630F2B7A12E000219AEE1E6 /* ComponentBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4742DBEADBD81C96523E6A99F92EB614 /* ComponentBase.swift */; };
-		5EDB59B340EE9E25271057C2FF1B0509 /* Pods-BluefruitPlayground-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B20600430E481A22F0B473A4CEBA6DAD /* Pods-BluefruitPlayground-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5EDB59B340EE9E25271057C2FF1B0509 /* Pods-BluefruitPlayground-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A702AD283C617061FFA4619CEA3B5A2 /* Pods-BluefruitPlayground-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		61F859076EC773906B4705E6DDA14F05 /* DefaultValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18ED0BA4FA0B77BEE3C29BC9564B81A /* DefaultValueFormatter.swift */; };
 		62B0AE5C69C426B0613E35C1105A9263 /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DC5BB9BD895EFC78338D1498AA41C7 /* CGPointExtension.swift */; };
 		64AB8A0E9FA2A697280863ADA978B9E3 /* MarkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5193C755D12443CA49DFC1F668CAC33 /* MarkerView.swift */; };
@@ -142,7 +143,7 @@
 		A3804CCD25BC10351FCF961FE3215173 /* IBarLineScatterCandleBubbleChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BADA81E52DBFEE17AECF101BEC568BCD /* IBarLineScatterCandleBubbleChartDataSet.swift */; };
 		A4363ECC3F8EA39A4FE0D8A84DABC6E0 /* CircleShapedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EFED94CE582B1B918DB3030AEE680E /* CircleShapedView.swift */; };
 		A4CBDE2B1DFCCBB9795F8142C739B836 /* ControlWithThumbView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825D61DB2F28EA067367527603BE7596 /* ControlWithThumbView.swift */; };
-		A673C19FC14ED61F96569CC397842339 /* Pods-BluefruitPlayground-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 00670DC768EB94857DCE055B5339CF9C /* Pods-BluefruitPlayground-dummy.m */; };
+		A673C19FC14ED61F96569CC397842339 /* Pods-BluefruitPlayground-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EB696ECC4DB521676493E5B4F16D6C29 /* Pods-BluefruitPlayground-dummy.m */; };
 		A8DDA561A6A75AA642C91AB027716B9C /* TriangleShapeRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5413E4C39E57F4E09C6841E19E37B251 /* TriangleShapeRenderer.swift */; };
 		A90332024C9411863217799521D89900 /* ColorSliderControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5505BBDE5D660CDAFA1B0D3816C0B489 /* ColorSliderControl.swift */; };
 		A9B919DD49F97C796E3BF64D0F5AFE03 /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB1C4CA5E42D79D53EF3CC4EE6F8FF9 /* LineChartView.swift */; };
@@ -176,6 +177,7 @@
 		C38ECBB8739833A839207AB47AC94025 /* IScatterChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270477D19F9DC02821FBE66667A486AC /* IScatterChartDataSet.swift */; };
 		C6DB08B72D2A1DEFB47CDDAD4CDEA22D /* Platform+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = E87A16BDF506766B4F4AD2F8D1300E0A /* Platform+Gestures.swift */; };
 		C7EF8BCEBE9198D6EC139FECCD722D99 /* ChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE0EC8BA0646EDF3FDE1516E11902FA2 /* ChartDataSet.swift */; };
+		C82441B29298F648A3C008CE8D2E5A42 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		C95228EBD6F9D0E3E543D5F481D4C2AC /* CombinedChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC51E5EDB5702A7587994E39DA9161AE /* CombinedChartData.swift */; };
 		CC1EDFF9156131C5C3FC61CD4782F109 /* ScatterChartDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514732A3D3B56253ADD031F52EE1155F /* ScatterChartDataSet.swift */; };
 		CE5067B38ACA71E582DF300E3DCD7372 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
@@ -192,6 +194,7 @@
 		E0FAE23ECB29EE7EB9B9D04CA6CCEDC2 /* PieChartRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E0149C8D740943FFB9831BD2580629 /* PieChartRenderer.swift */; };
 		E4359DFD3F315BFCDE1A06244FCAC895 /* DefaultAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE06D710582FDA891A1CBD92FAFA773 /* DefaultAxisValueFormatter.swift */; };
 		E89D511AABE578215B45B54768AFBEF7 /* MSWeakTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = 8EDEE413DFBF1445C516E95BF0F1E9D8 /* MSWeakTimer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EC0603F0D6AC205775E08D0ACEB05BD8 /* Pods-BluefruitPlayground-SimulateBluetooth-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F4BFE80721B4B5BE021A1B74F8DCAB /* Pods-BluefruitPlayground-SimulateBluetooth-dummy.m */; };
 		F232D9A1CD11E9603CF6608C9EA7BEB6 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D69FDBAC6DFA65A0944D9A032C115601 /* Platform.swift */; };
 		F2F4C4E4A4D6E1D148AD96345CF8EC89 /* DataApproximator+N.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36FEDE1072BA6C10500B6D3234F2E7F0 /* DataApproximator+N.swift */; };
 		F3E521EF4987A2CCF2D312E1A8F6F55D /* ChartUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D40965722E280286AC9A8E67CFF03CE /* ChartUtils.swift */; };
@@ -214,6 +217,13 @@
 			remoteGlobalIDString = 6E18EE5DE3744DADF64511923F006E05;
 			remoteInfo = ActiveLabel;
 		};
+		13D70BD47E9664DF40309D060EB92323 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 420D2583DFAF7192FECF567682010347;
+			remoteInfo = MSWeakTimer;
+		};
 		28F32D2822BB77D329C40C5B3055709F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -221,7 +231,28 @@
 			remoteGlobalIDString = 9A9A6DFBF33C0809BD9B32C8C8B776E8;
 			remoteInfo = FlexColorPicker;
 		};
+		382956607CEDC18E70E8E2B2D60BC9A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A9A6DFBF33C0809BD9B32C8C8B776E8;
+			remoteInfo = FlexColorPicker;
+		};
+		3A4D59767391549D459EFAEE64BF27E5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6E18EE5DE3744DADF64511923F006E05;
+			remoteInfo = ActiveLabel;
+		};
 		DEB5DA6FD94B5633978C24AB5D6E3AF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BF03B0B2B8B052092CB5F90CC5FB3757;
+			remoteInfo = Charts;
+		};
+		F2262BD3EFC66AB8A0E567416C9981F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -238,16 +269,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		00670DC768EB94857DCE055B5339CF9C /* Pods-BluefruitPlayground-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BluefruitPlayground-dummy.m"; sourceTree = "<group>"; };
 		01A7B2B8FC40C256A3578EABFBA027F8 /* ILineRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineRadarChartDataSet.swift; sourceTree = "<group>"; };
 		022CA7FFBE6697470021B4E02E7AB210 /* Transformer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Transformer.swift; path = Source/Charts/Utils/Transformer.swift; sourceTree = "<group>"; };
 		029B9064BE4C6332695C1B320C8CFC0C /* IHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IHighlighter.swift; path = Source/Charts/Highlight/IHighlighter.swift; sourceTree = "<group>"; };
+		02FC1B87BE78084CCDC79EAD9AF4FB2B /* Pods-BluefruitPlayground-SimulateBluetooth-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BluefruitPlayground-SimulateBluetooth-acknowledgements.markdown"; sourceTree = "<group>"; };
 		03B1FA76782145E6A4AAE6EF8EA98A3D /* ChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/ChartDataEntry.swift; sourceTree = "<group>"; };
 		03FEBF567DE5CEBECE47355B4479A720 /* PieChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/PieChartDataSet.swift; sourceTree = "<group>"; };
 		06F94236C2F7A1F397BB012E2D2B7CF5 /* ILineScatterCandleRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineScatterCandleRadarChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineScatterCandleRadarChartDataSet.swift; sourceTree = "<group>"; };
-		0796E60243138A647B2FF0439EC314F0 /* Pods-BluefruitPlayground-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BluefruitPlayground-acknowledgements.markdown"; sourceTree = "<group>"; };
 		08B0201C1676AFA0C07EC891699F2593 /* GradientView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = FlexColorPicker/Classes/Views/GradientView.swift; sourceTree = "<group>"; };
 		0BDB74AB8EFA98320AADD2B5C72019D8 /* ChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartViewBase.swift; path = Source/Charts/Charts/ChartViewBase.swift; sourceTree = "<group>"; };
+		0C556B9BFBAE7D19DCF0121C97B1D6D5 /* Pods-BluefruitPlayground-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-BluefruitPlayground-acknowledgements.markdown"; sourceTree = "<group>"; };
 		0D39330960100D0706B39FD83096D43F /* UIColorExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIColorExtension.swift; path = FlexColorPicker/Classes/Utilities/UIColorExtension.swift; sourceTree = "<group>"; };
 		0D6B34E77317B13630FA2CD09D5CFB07 /* IChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IChartDataSet.swift; path = Source/Charts/Data/Interfaces/IChartDataSet.swift; sourceTree = "<group>"; };
 		0DCA91498CE705DDAD991CCAC2E18010 /* MSWeakTimer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSWeakTimer.debug.xcconfig; sourceTree = "<group>"; };
@@ -264,18 +295,22 @@
 		19E8046AC7416567CE5B3245013137A8 /* ChartData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartData.swift; path = Source/Charts/Data/Implementations/Standard/ChartData.swift; sourceTree = "<group>"; };
 		1CC5135199CA68EE26861DF12FFB63F8 /* XAxisRendererRadarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRendererRadarChart.swift; path = Source/Charts/Renderers/XAxisRendererRadarChart.swift; sourceTree = "<group>"; };
 		1D40965722E280286AC9A8E67CFF03CE /* ChartUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartUtils.swift; path = Source/Charts/Utils/ChartUtils.swift; sourceTree = "<group>"; };
+		1E176A2DC38C68C6C073066EDE08EC73 /* Pods-BluefruitPlayground-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BluefruitPlayground-Info.plist"; sourceTree = "<group>"; };
+		1E6374EBB54A344885E80C571B212828 /* Pods-BluefruitPlayground.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BluefruitPlayground.modulemap"; sourceTree = "<group>"; };
+		1EC19F81F47A9BB10DE9740440D5AE2D /* Pods-BluefruitPlayground.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BluefruitPlayground.release.xcconfig"; sourceTree = "<group>"; };
+		1ECD1442F49AC0A99038556C709AE41A /* Pods-BluefruitPlayground-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BluefruitPlayground-acknowledgements.plist"; sourceTree = "<group>"; };
 		1F97C63E4B18D0188F90F8E533A9FF81 /* Charts-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Charts-dummy.m"; sourceTree = "<group>"; };
 		20D156EC269FDEA4AB23764D46B51984 /* Animator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animator.swift; path = Source/Charts/Animation/Animator.swift; sourceTree = "<group>"; };
 		2139565CA45C31A66C0DFD2DCE653E24 /* LineChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineChartDataSet.swift; sourceTree = "<group>"; };
 		2191D2D3C476EBDF69CFB724FE2FF6B7 /* RadialHSBPaletteDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadialHSBPaletteDelegate.swift; path = FlexColorPicker/Classes/ControlDelegates/RadialHSBPaletteDelegate.swift; sourceTree = "<group>"; };
 		221C2FCBA4CE156AD3319C1767805AFB /* AnimatedViewPortJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedViewPortJob.swift; path = Source/Charts/Jobs/AnimatedViewPortJob.swift; sourceTree = "<group>"; };
 		22593CCF54A094ED2EF0A61AFA7646B4 /* MSWeakTimer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MSWeakTimer.release.xcconfig; sourceTree = "<group>"; };
-		2264D1FB24EC85594873A716C1557881 /* Pods-BluefruitPlayground-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BluefruitPlayground-Info.plist"; sourceTree = "<group>"; };
 		242698546701C13E4F3A67DBB1ADBDF8 /* ActiveLabel */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ActiveLabel; path = ActiveLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B897968B4C47D5AD4C05AA2BE1CF2C /* ActiveLabel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ActiveLabel-umbrella.h"; sourceTree = "<group>"; };
 		270477D19F9DC02821FBE66667A486AC /* IScatterChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IScatterChartDataSet.swift; path = Source/Charts/Data/Interfaces/IScatterChartDataSet.swift; sourceTree = "<group>"; };
 		274499652992EE3B70FCE30317877595 /* LineRadarRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarRenderer.swift; path = Source/Charts/Renderers/LineRadarRenderer.swift; sourceTree = "<group>"; };
 		28889599BB305A5D6A72A01C9EFE5D85 /* BubbleChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartDataEntry.swift; sourceTree = "<group>"; };
+		2A702AD283C617061FFA4619CEA3B5A2 /* Pods-BluefruitPlayground-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BluefruitPlayground-umbrella.h"; sourceTree = "<group>"; };
 		2B35970ADEBA9EC7F824D128E1CA9F10 /* BarLineScatterCandleBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BarLineScatterCandleBubbleChartDataSet.swift; sourceTree = "<group>"; };
 		2C6E186899781346AC6D741017282DC4 /* CustomColorPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomColorPickerViewController.swift; path = FlexColorPicker/Classes/CustomColorPickerViewController.swift; sourceTree = "<group>"; };
 		2CF04A2FF11E33D226A9470152A45A78 /* PieHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieHighlighter.swift; path = Source/Charts/Highlight/PieHighlighter.swift; sourceTree = "<group>"; };
@@ -290,6 +325,7 @@
 		3CAD5E933A526FEB839DD20FB1D2C939 /* LineRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineRadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineRadarChartDataSet.swift; sourceTree = "<group>"; };
 		3DE06D710582FDA891A1CBD92FAFA773 /* DefaultAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultAxisValueFormatter.swift; path = Source/Charts/Formatters/DefaultAxisValueFormatter.swift; sourceTree = "<group>"; };
 		4406659BFC9E6F50A589EE52E8352EE9 /* PieChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartView.swift; path = Source/Charts/Charts/PieChartView.swift; sourceTree = "<group>"; };
+		44928D6B7A81816A57053D469AB50AFF /* Pods-BluefruitPlayground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BluefruitPlayground.debug.xcconfig"; sourceTree = "<group>"; };
 		4742DBEADBD81C96523E6A99F92EB614 /* ComponentBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ComponentBase.swift; path = Source/Charts/Components/ComponentBase.swift; sourceTree = "<group>"; };
 		4940D98A53C487D0945CEC799D1DF5A8 /* ICandleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ICandleChartDataSet.swift; path = Source/Charts/Data/Interfaces/ICandleChartDataSet.swift; sourceTree = "<group>"; };
 		4A98B75F771FC105447405F4B2460E3C /* BubbleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataProvider.swift; path = Source/Charts/Interfaces/BubbleChartDataProvider.swift; sourceTree = "<group>"; };
@@ -300,21 +336,23 @@
 		53764DACADC3B164921D829556A9F6A8 /* FlexColorPicker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FlexColorPicker.release.xcconfig; sourceTree = "<group>"; };
 		5413E4C39E57F4E09C6841E19E37B251 /* TriangleShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TriangleShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/TriangleShapeRenderer.swift; sourceTree = "<group>"; };
 		5505BBDE5D660CDAFA1B0D3816C0B489 /* ColorSliderControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorSliderControl.swift; path = FlexColorPicker/Classes/Controls/ColorSliderControl.swift; sourceTree = "<group>"; };
+		56EEDF328E877591AB792B84E088FAC8 /* Pods-BluefruitPlayground-SimulateBluetooth-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BluefruitPlayground-SimulateBluetooth-umbrella.h"; sourceTree = "<group>"; };
 		579101AF40EB9800C3CC5F91902E987F /* CandleChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataProvider.swift; path = Source/Charts/Interfaces/CandleChartDataProvider.swift; sourceTree = "<group>"; };
 		588999CF0AC60545C2894203DD79BD78 /* IBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBubbleChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBubbleChartDataSet.swift; sourceTree = "<group>"; };
 		59EEEB2F3D0B84810B25C0E3E39676AC /* Charts-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Charts-prefix.pch"; sourceTree = "<group>"; };
+		5A2B3173001B1CD8278E0691C1D5F498 /* Pods-BluefruitPlayground-SimulateBluetooth */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BluefruitPlayground-SimulateBluetooth"; path = Pods_BluefruitPlayground_SimulateBluetooth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CB90FB045579069ABE8107596B9A92D /* IAxisValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IAxisValueFormatter.swift; path = Source/Charts/Formatters/IAxisValueFormatter.swift; sourceTree = "<group>"; };
 		60621D24BBDF68F4DED894FD70F0C8D7 /* CGRectExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGRectExtension.swift; path = FlexColorPicker/Classes/Utilities/CGRectExtension.swift; sourceTree = "<group>"; };
 		6219A4D04B2C8048F55377EEE2E189EB /* BarLineScatterCandleBubbleRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineScatterCandleBubbleRenderer.swift; path = Source/Charts/Renderers/BarLineScatterCandleBubbleRenderer.swift; sourceTree = "<group>"; };
 		6460E613014E980CE20E89185F8E4EB7 /* IFillFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IFillFormatter.swift; path = Source/Charts/Formatters/IFillFormatter.swift; sourceTree = "<group>"; };
 		64AB399AF2AF6826712EB1B0F4EFF133 /* XAxisRendererHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRendererHorizontalBarChart.swift; path = Source/Charts/Renderers/XAxisRendererHorizontalBarChart.swift; sourceTree = "<group>"; };
+		652ADF84D94FBC8C437F9BC37B6E0B90 /* Pods-BluefruitPlayground-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BluefruitPlayground-frameworks.sh"; sourceTree = "<group>"; };
 		655CE49C645B0A97E1EC51C57BABD32F /* Platform+Touch Handling.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Platform+Touch Handling.swift"; path = "Source/Charts/Utils/Platform+Touch Handling.swift"; sourceTree = "<group>"; };
 		661AEAB0D9F9E9C9F3FF43D8043B04D0 /* PieRadarChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieRadarChartViewBase.swift; path = Source/Charts/Charts/PieRadarChartViewBase.swift; sourceTree = "<group>"; };
 		67504AEADC93509C261181D4C411BF25 /* XAxisRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxisRenderer.swift; path = Source/Charts/Renderers/XAxisRenderer.swift; sourceTree = "<group>"; };
 		67A91C8A246E8ADCD42418F6E2CBC678 /* Charts-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Charts-umbrella.h"; sourceTree = "<group>"; };
 		6906FD2D997D6F0494B588273D945E7E /* IBarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBarChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBarChartDataSet.swift; sourceTree = "<group>"; };
 		692D3743EFAB61B6D41E055A59A136A2 /* LimitedGestureCircleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LimitedGestureCircleView.swift; path = FlexColorPicker/Classes/Views/LimitedGestureCircleView.swift; sourceTree = "<group>"; };
-		698576F05C69DC6C3120DB67F1A6172C /* Pods-BluefruitPlayground.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BluefruitPlayground.release.xcconfig"; sourceTree = "<group>"; };
 		69A39227AC2D16990A0F64A69458E42F /* AxisBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AxisBase.swift; path = Source/Charts/Components/AxisBase.swift; sourceTree = "<group>"; };
 		6CD165933A4E2A11B020B676D123ACF7 /* ColorPickerDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerDelegate.swift; path = FlexColorPicker/Classes/ColorPickerDelegate.swift; sourceTree = "<group>"; };
 		6E9002DE3286A13F074002D3574A436E /* CrossShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CrossShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/CrossShapeRenderer.swift; sourceTree = "<group>"; };
@@ -339,11 +377,9 @@
 		7E7837649F4A7E4531AF51C2796786DC /* ViewPortJob.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewPortJob.swift; path = Source/Charts/Jobs/ViewPortJob.swift; sourceTree = "<group>"; };
 		7F25216B277B414CC5DC545D687E3C41 /* YAxisRendererHorizontalBarChart.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRendererHorizontalBarChart.swift; path = Source/Charts/Renderers/YAxisRendererHorizontalBarChart.swift; sourceTree = "<group>"; };
 		7F46B18A34349EF4CCF9604277F0CE0E /* BarLineChartViewBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarLineChartViewBase.swift; path = Source/Charts/Charts/BarLineChartViewBase.swift; sourceTree = "<group>"; };
-		800D58C8EBEBD737A35E54564670A913 /* Pods-BluefruitPlayground.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BluefruitPlayground.debug.xcconfig"; sourceTree = "<group>"; };
 		81A014F6CC1F5B85A464A234B9337FBB /* ActiveType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActiveType.swift; path = ActiveLabel/ActiveType.swift; sourceTree = "<group>"; };
 		825D61DB2F28EA067367527603BE7596 /* ControlWithThumbView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ControlWithThumbView.swift; path = FlexColorPicker/Classes/Controls/ControlWithThumbView.swift; sourceTree = "<group>"; };
 		82665CFF3F78F3CCBF5B859A62B0A7BE /* ActiveLabel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ActiveLabel.release.xcconfig; sourceTree = "<group>"; };
-		82FC52884EC69666DA7E0153B2BEBAB4 /* Pods-BluefruitPlayground-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BluefruitPlayground-frameworks.sh"; sourceTree = "<group>"; };
 		83FEBA68B570E49C3EC3C967FE5B8431 /* YAxis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxis.swift; path = Source/Charts/Components/YAxis.swift; sourceTree = "<group>"; };
 		846352EDDD4E0F272046849B7596FC06 /* MSWeakTimer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MSWeakTimer-dummy.m"; sourceTree = "<group>"; };
 		84A175A4CBAE185ADD91E0CA466C4BDF /* DefaultColorPickerViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultColorPickerViewController.swift; path = FlexColorPicker/Classes/DefaultColorPickerViewController.swift; sourceTree = "<group>"; };
@@ -364,6 +400,7 @@
 		911D9258F6BB1DFA83D3E95C4BB2A6B3 /* XAxis.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = XAxis.swift; path = Source/Charts/Components/XAxis.swift; sourceTree = "<group>"; };
 		9251427097E9EB2734D8F908B595F301 /* ColorPickerControllerProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerControllerProtocol.swift; path = FlexColorPicker/Classes/ColorPickerControllerProtocol.swift; sourceTree = "<group>"; };
 		969012A4E0BF64DBE453935419034040 /* DataApproximator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataApproximator.swift; path = Source/Charts/Filters/DataApproximator.swift; sourceTree = "<group>"; };
+		96F4BFE80721B4B5BE021A1B74F8DCAB /* Pods-BluefruitPlayground-SimulateBluetooth-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BluefruitPlayground-SimulateBluetooth-dummy.m"; sourceTree = "<group>"; };
 		976857F9C388A9DEA359ADA23F238C00 /* MSWeakTimer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MSWeakTimer.m; sourceTree = "<group>"; };
 		976BCC3A18D3B367C73BD1FFBD5ECC02 /* RectangularHSBPaletteDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RectangularHSBPaletteDelegate.swift; path = FlexColorPicker/Classes/ControlDelegates/RectangularHSBPaletteDelegate.swift; sourceTree = "<group>"; };
 		9A3BC7BF778A0512F0106D71FCC57C6F /* PaletteControls.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaletteControls.swift; path = FlexColorPicker/Classes/Controls/PaletteControls.swift; sourceTree = "<group>"; };
@@ -375,7 +412,7 @@
 		A00A6EF6EF63A192D1525A6FF63BBC8C /* SquareShapeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SquareShapeRenderer.swift; path = Source/Charts/Renderers/Scatter/SquareShapeRenderer.swift; sourceTree = "<group>"; };
 		A04151025FAEFBC0B2F0B6A750EE99F2 /* ViewPortHandler.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewPortHandler.swift; path = Source/Charts/Utils/ViewPortHandler.swift; sourceTree = "<group>"; };
 		A13B2B52CF5F7A6722F4AF0F8B9D299F /* RadarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarHighlighter.swift; path = Source/Charts/Highlight/RadarHighlighter.swift; sourceTree = "<group>"; };
-		A1424AD3F79C0147DC9EE3688710D283 /* Pods-BluefruitPlayground-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BluefruitPlayground-acknowledgements.plist"; sourceTree = "<group>"; };
+		A19368B6D8225CB136C3319BFC76ECA4 /* Pods-BluefruitPlayground-SimulateBluetooth-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-BluefruitPlayground-SimulateBluetooth-frameworks.sh"; sourceTree = "<group>"; };
 		A1C1B977ED8804E8AEEC884E7359EE58 /* Charts */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Charts; path = Charts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29F8D9976731348BBD648B6AC1B86DD /* CandleStickChartView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleStickChartView.swift; path = Source/Charts/Charts/CandleStickChartView.swift; sourceTree = "<group>"; };
 		A35C43BA2040E1D5F0A8C8169669903E /* StringTrimExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StringTrimExtension.swift; path = ActiveLabel/StringTrimExtension.swift; sourceTree = "<group>"; };
@@ -384,21 +421,24 @@
 		A6F9ABC0B861438E1EFB8F407857E95D /* UIViewWithCommonInit.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIViewWithCommonInit.swift; path = FlexColorPicker/Classes/Views/UIViewWithCommonInit.swift; sourceTree = "<group>"; };
 		A7E0149C8D740943FFB9831BD2580629 /* PieChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieChartRenderer.swift; path = Source/Charts/Renderers/PieChartRenderer.swift; sourceTree = "<group>"; };
 		A9106A84D3F37C5BAB82C25EC9CB69A2 /* Highlight.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Highlight.swift; path = Source/Charts/Highlight/Highlight.swift; sourceTree = "<group>"; };
+		A9980386054E46C3513376FEDE411707 /* Pods-BluefruitPlayground-SimulateBluetooth-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BluefruitPlayground-SimulateBluetooth-Info.plist"; sourceTree = "<group>"; };
+		ABEF661835398085C68B97F52B9D9D8B /* Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig"; sourceTree = "<group>"; };
 		AE877F92921C7FBFCF042F5CF78DCB50 /* Renderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Renderer.swift; path = Source/Charts/Renderers/Renderer.swift; sourceTree = "<group>"; };
 		B019FA1B7253FF89010F0BE3F2415032 /* ILineChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ILineChartDataSet.swift; path = Source/Charts/Data/Interfaces/ILineChartDataSet.swift; sourceTree = "<group>"; };
 		B045D6FA086C84A2E294FEED9E123DC5 /* BarChartDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataProvider.swift; path = Source/Charts/Interfaces/BarChartDataProvider.swift; sourceTree = "<group>"; };
 		B14FB8BA41FB089CC52896D44E50511A /* ChartDataEntryBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ChartDataEntryBase.swift; path = Source/Charts/Data/Implementations/Standard/ChartDataEntryBase.swift; sourceTree = "<group>"; };
-		B20600430E481A22F0B473A4CEBA6DAD /* Pods-BluefruitPlayground-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-BluefruitPlayground-umbrella.h"; sourceTree = "<group>"; };
 		B5920EE5193FE71912393C8AF2273878 /* AbstractColorControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AbstractColorControl.swift; path = FlexColorPicker/Classes/Controls/AbstractColorControl.swift; sourceTree = "<group>"; };
 		B59F41CEC27EFD26349BF2DF3699CBED /* HorizontalBarChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalBarChartRenderer.swift; path = Source/Charts/Renderers/HorizontalBarChartRenderer.swift; sourceTree = "<group>"; };
 		B711D3E48070C22FB4C77C43E7452548 /* YAxisRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = YAxisRenderer.swift; path = Source/Charts/Renderers/YAxisRenderer.swift; sourceTree = "<group>"; };
 		B7B9CDC4298FBAB7A0F14C7C39E7528C /* RadarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/RadarChartDataEntry.swift; sourceTree = "<group>"; };
+		B8122C7855F9C3F36050CFCE762D3047 /* Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig"; sourceTree = "<group>"; };
 		B841329D29A5A6275B381CE374E5E59E /* Pods-BluefruitPlayground */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-BluefruitPlayground"; path = Pods_BluefruitPlayground.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B917A5D0032408C32FEB095A3FC8CB3A /* LimitedGestureViewDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LimitedGestureViewDelegate.swift; path = FlexColorPicker/Classes/Utilities/LimitedGestureViewDelegate.swift; sourceTree = "<group>"; };
 		B91BDE520FAD5AE0F822E6AB4F9AD058 /* LineScatterCandleRadarChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LineScatterCandleRadarChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/LineScatterCandleRadarChartDataSet.swift; sourceTree = "<group>"; };
 		BA1B0D160F53548ABE7CFDD9FAEA4865 /* CandleStickChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleStickChartRenderer.swift; path = Source/Charts/Renderers/CandleStickChartRenderer.swift; sourceTree = "<group>"; };
 		BADA81E52DBFEE17AECF101BEC568BCD /* IBarLineScatterCandleBubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IBarLineScatterCandleBubbleChartDataSet.swift; path = Source/Charts/Data/Interfaces/IBarLineScatterCandleBubbleChartDataSet.swift; sourceTree = "<group>"; };
 		BD6223F18EB0349B3AF54F22C2C852C0 /* CandleChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/CandleChartDataEntry.swift; sourceTree = "<group>"; };
+		BD7744740D925F4C8810380433073E92 /* Pods-BluefruitPlayground-SimulateBluetooth.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BluefruitPlayground-SimulateBluetooth.modulemap"; sourceTree = "<group>"; };
 		C0104AC68F3B812AA2AF134AF8603FBA /* IValueFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = IValueFormatter.swift; path = Source/Charts/Formatters/IValueFormatter.swift; sourceTree = "<group>"; };
 		C0D630B294AAE5730D47E70734FCCC84 /* Charts.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Charts.release.xcconfig; sourceTree = "<group>"; };
 		C3A2A3948BD729E592CD5F0C0EA3A309 /* Description.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Description.swift; path = Source/Charts/Components/Description.swift; sourceTree = "<group>"; };
@@ -440,6 +480,7 @@
 		E87A16BDF506766B4F4AD2F8D1300E0A /* Platform+Gestures.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Platform+Gestures.swift"; path = "Source/Charts/Utils/Platform+Gestures.swift"; sourceTree = "<group>"; };
 		EA1D91CA049B067A31D8890D225762A0 /* HSBColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBColor.swift; path = FlexColorPicker/Classes/HSBColor.swift; sourceTree = "<group>"; };
 		EA9448E8C6AE5B5D70D9926855A064D1 /* BubbleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BubbleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/BubbleChartDataSet.swift; sourceTree = "<group>"; };
+		EB696ECC4DB521676493E5B4F16D6C29 /* Pods-BluefruitPlayground-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-BluefruitPlayground-dummy.m"; sourceTree = "<group>"; };
 		EBC2FBFAA0D2CD8D035DC7D812638656 /* ColorSliderDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorSliderDelegate.swift; path = FlexColorPicker/Classes/ControlDelegates/ColorSliderDelegate.swift; sourceTree = "<group>"; };
 		EC15E6AF6CE24D3B71EB82077DB0C93C /* Platform+Graphics.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Platform+Graphics.swift"; path = "Source/Charts/Utils/Platform+Graphics.swift"; sourceTree = "<group>"; };
 		ECC7099BABE7B922BE66955983A1FE04 /* CombinedHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CombinedHighlighter.swift; path = Source/Charts/Highlight/CombinedHighlighter.swift; sourceTree = "<group>"; };
@@ -451,12 +492,12 @@
 		F1DC6980B2CE888603383AAD87B52FE7 /* CandleChartDataSet.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CandleChartDataSet.swift; path = Source/Charts/Data/Implementations/Standard/CandleChartDataSet.swift; sourceTree = "<group>"; };
 		F1ED546E050C852D635C75E0B230938E /* MSWeakTimer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MSWeakTimer-umbrella.h"; sourceTree = "<group>"; };
 		F2202AF0BC7B5FA618A3EFFC895CF22A /* BarChartDataEntry.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BarChartDataEntry.swift; path = Source/Charts/Data/Implementations/Standard/BarChartDataEntry.swift; sourceTree = "<group>"; };
-		F399B47AEDB6ED76114EA94D98DB48D8 /* Pods-BluefruitPlayground.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BluefruitPlayground.modulemap"; sourceTree = "<group>"; };
 		F538CC936C9B378ADCEE837A48833099 /* PieRadarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PieRadarHighlighter.swift; path = Source/Charts/Highlight/PieRadarHighlighter.swift; sourceTree = "<group>"; };
 		F58CF37C6B228B02D160AFFF9ADA81F1 /* HorizontalBarHighlighter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HorizontalBarHighlighter.swift; path = Source/Charts/Highlight/HorizontalBarHighlighter.swift; sourceTree = "<group>"; };
 		F68C2CAB07CD5628C31FAC6B5BBD8C4B /* FlexColorPicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FlexColorPicker.modulemap; sourceTree = "<group>"; };
 		F7A5703B8291D6FDAFE02FE9B146105C /* ActiveLabel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActiveLabel.swift; path = ActiveLabel/ActiveLabel.swift; sourceTree = "<group>"; };
 		F969F37E6329AF7A91CD87405892E558 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIImageViewExtension.swift; path = FlexColorPicker/Classes/Utilities/UIImageViewExtension.swift; sourceTree = "<group>"; };
+		F97BEA60FDA019901480B6DA01793E77 /* Pods-BluefruitPlayground-SimulateBluetooth-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BluefruitPlayground-SimulateBluetooth-acknowledgements.plist"; sourceTree = "<group>"; };
 		F998250ED808DD01D1960EEBA400DEAF /* ColorPickerThumbView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerThumbView.swift; path = FlexColorPicker/Classes/Views/ColorPickerThumbView.swift; sourceTree = "<group>"; };
 		F9FD2247275A4A12E41CE7B1BF094451 /* ScatterChartRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ScatterChartRenderer.swift; path = Source/Charts/Renderers/ScatterChartRenderer.swift; sourceTree = "<group>"; };
 		FA3F19F7168C2B373A1F30259D754253 /* ColorPickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorPickerController.swift; path = FlexColorPicker/Classes/ColorPickerController.swift; sourceTree = "<group>"; };
@@ -507,17 +548,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FB0DED64A0CB74D320FB2106863499F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C82441B29298F648A3C008CE8D2E5A42 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0CAC4C7B468BDE88DA9C9F000F1FCD98 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9ADDD1A4268F033CAC97BE85646D6F78 /* Pods-BluefruitPlayground */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		16E2F0CBD149DB8A40CC3CAB6EE40881 /* ActiveLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +571,15 @@
 			);
 			name = ActiveLabel;
 			path = ActiveLabel;
+			sourceTree = "<group>";
+		};
+		2C30F86892CCFA9F3EC9D88971B2E7D1 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F274C3C91BA3EC68500126C2F4326D29 /* Pods-BluefruitPlayground */,
+				B8157302014AA663F8CAF775EB751D4B /* Pods-BluefruitPlayground-SimulateBluetooth */,
+			);
+			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
 		2CB7F871749A673932722315DEEC0EB3 /* Support Files */ = {
@@ -596,21 +646,21 @@
 			path = "../Target Support Files/Charts";
 			sourceTree = "<group>";
 		};
-		9ADDD1A4268F033CAC97BE85646D6F78 /* Pods-BluefruitPlayground */ = {
+		B8157302014AA663F8CAF775EB751D4B /* Pods-BluefruitPlayground-SimulateBluetooth */ = {
 			isa = PBXGroup;
 			children = (
-				F399B47AEDB6ED76114EA94D98DB48D8 /* Pods-BluefruitPlayground.modulemap */,
-				0796E60243138A647B2FF0439EC314F0 /* Pods-BluefruitPlayground-acknowledgements.markdown */,
-				A1424AD3F79C0147DC9EE3688710D283 /* Pods-BluefruitPlayground-acknowledgements.plist */,
-				00670DC768EB94857DCE055B5339CF9C /* Pods-BluefruitPlayground-dummy.m */,
-				82FC52884EC69666DA7E0153B2BEBAB4 /* Pods-BluefruitPlayground-frameworks.sh */,
-				2264D1FB24EC85594873A716C1557881 /* Pods-BluefruitPlayground-Info.plist */,
-				B20600430E481A22F0B473A4CEBA6DAD /* Pods-BluefruitPlayground-umbrella.h */,
-				800D58C8EBEBD737A35E54564670A913 /* Pods-BluefruitPlayground.debug.xcconfig */,
-				698576F05C69DC6C3120DB67F1A6172C /* Pods-BluefruitPlayground.release.xcconfig */,
+				BD7744740D925F4C8810380433073E92 /* Pods-BluefruitPlayground-SimulateBluetooth.modulemap */,
+				02FC1B87BE78084CCDC79EAD9AF4FB2B /* Pods-BluefruitPlayground-SimulateBluetooth-acknowledgements.markdown */,
+				F97BEA60FDA019901480B6DA01793E77 /* Pods-BluefruitPlayground-SimulateBluetooth-acknowledgements.plist */,
+				96F4BFE80721B4B5BE021A1B74F8DCAB /* Pods-BluefruitPlayground-SimulateBluetooth-dummy.m */,
+				A19368B6D8225CB136C3319BFC76ECA4 /* Pods-BluefruitPlayground-SimulateBluetooth-frameworks.sh */,
+				A9980386054E46C3513376FEDE411707 /* Pods-BluefruitPlayground-SimulateBluetooth-Info.plist */,
+				56EEDF328E877591AB792B84E088FAC8 /* Pods-BluefruitPlayground-SimulateBluetooth-umbrella.h */,
+				ABEF661835398085C68B97F52B9D9D8B /* Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig */,
+				B8122C7855F9C3F36050CFCE762D3047 /* Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig */,
 			);
-			name = "Pods-BluefruitPlayground";
-			path = "Target Support Files/Pods-BluefruitPlayground";
+			name = "Pods-BluefruitPlayground-SimulateBluetooth";
+			path = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth";
 			sourceTree = "<group>";
 		};
 		B8DD9E7B7608CD51B99D723F50D61536 /* Core */ = {
@@ -760,26 +810,14 @@
 			name = Core;
 			sourceTree = "<group>";
 		};
-		BC6FD329125992103AFFFD95FEEE7B48 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				242698546701C13E4F3A67DBB1ADBDF8 /* ActiveLabel */,
-				A1C1B977ED8804E8AEEC884E7359EE58 /* Charts */,
-				741F9D3943FF7542B04631B29216270F /* FlexColorPicker */,
-				8E950E681365A41B93C3626C212A2891 /* MSWeakTimer */,
-				B841329D29A5A6275B381CE374E5E59E /* Pods-BluefruitPlayground */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				6B1B4E2EA768A32536116A8B166E1EB2 /* Pods */,
-				BC6FD329125992103AFFFD95FEEE7B48 /* Products */,
-				0CAC4C7B468BDE88DA9C9F000F1FCD98 /* Targets Support Files */,
+				EED570E07CE68BB8988644B5631E9840 /* Products */,
+				2C30F86892CCFA9F3EC9D88971B2E7D1 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -850,6 +888,19 @@
 			path = "../Target Support Files/ActiveLabel";
 			sourceTree = "<group>";
 		};
+		EED570E07CE68BB8988644B5631E9840 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				242698546701C13E4F3A67DBB1ADBDF8 /* ActiveLabel */,
+				A1C1B977ED8804E8AEEC884E7359EE58 /* Charts */,
+				741F9D3943FF7542B04631B29216270F /* FlexColorPicker */,
+				8E950E681365A41B93C3626C212A2891 /* MSWeakTimer */,
+				B841329D29A5A6275B381CE374E5E59E /* Pods-BluefruitPlayground */,
+				5A2B3173001B1CD8278E0691C1D5F498 /* Pods-BluefruitPlayground-SimulateBluetooth */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		F10CA41B5034D397660580FA703D785F /* Charts */ = {
 			isa = PBXGroup;
 			children = (
@@ -858,6 +909,23 @@
 			);
 			name = Charts;
 			path = Charts;
+			sourceTree = "<group>";
+		};
+		F274C3C91BA3EC68500126C2F4326D29 /* Pods-BluefruitPlayground */ = {
+			isa = PBXGroup;
+			children = (
+				1E6374EBB54A344885E80C571B212828 /* Pods-BluefruitPlayground.modulemap */,
+				0C556B9BFBAE7D19DCF0121C97B1D6D5 /* Pods-BluefruitPlayground-acknowledgements.markdown */,
+				1ECD1442F49AC0A99038556C709AE41A /* Pods-BluefruitPlayground-acknowledgements.plist */,
+				EB696ECC4DB521676493E5B4F16D6C29 /* Pods-BluefruitPlayground-dummy.m */,
+				652ADF84D94FBC8C437F9BC37B6E0B90 /* Pods-BluefruitPlayground-frameworks.sh */,
+				1E176A2DC38C68C6C073066EDE08EC73 /* Pods-BluefruitPlayground-Info.plist */,
+				2A702AD283C617061FFA4619CEA3B5A2 /* Pods-BluefruitPlayground-umbrella.h */,
+				44928D6B7A81816A57053D469AB50AFF /* Pods-BluefruitPlayground.debug.xcconfig */,
+				1EC19F81F47A9BB10DE9740440D5AE2D /* Pods-BluefruitPlayground.release.xcconfig */,
+			);
+			name = "Pods-BluefruitPlayground";
+			path = "Target Support Files/Pods-BluefruitPlayground";
 			sourceTree = "<group>";
 		};
 		FE3D84D06566652DBC8A3B94EFAB5AA7 /* MSWeakTimer */ = {
@@ -905,6 +973,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				331B1A34FA008094EC3A78C124F0542D /* ActiveLabel-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AAC5E3F7B1643FC67483761C68F3EFBC /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B6CC0A20C4BF6300D8CD72BF0A5AC07 /* Pods-BluefruitPlayground-SimulateBluetooth-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -977,6 +1053,28 @@
 			productReference = 242698546701C13E4F3A67DBB1ADBDF8 /* ActiveLabel */;
 			productType = "com.apple.product-type.framework";
 		};
+		8F6D0BBED70F5D4FE05590FB4FBCBEC9 /* Pods-BluefruitPlayground-SimulateBluetooth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 015D41EDCEFDD20EAF220D6681E2C4C0 /* Build configuration list for PBXNativeTarget "Pods-BluefruitPlayground-SimulateBluetooth" */;
+			buildPhases = (
+				AAC5E3F7B1643FC67483761C68F3EFBC /* Headers */,
+				F733891186D241F4DD2B41EF59905212 /* Sources */,
+				FB0DED64A0CB74D320FB2106863499F3 /* Frameworks */,
+				93E7AF2E5080F3C74410C7221325E24A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8296947498E08672EB65DB478C5126AA /* PBXTargetDependency */,
+				7E4FA1A11CE00EC5974B3D3BEA533876 /* PBXTargetDependency */,
+				9D6F4AD17379CD117CC34AE0CF165F62 /* PBXTargetDependency */,
+				BA9323132092EC6A5C5ADB6353362963 /* PBXTargetDependency */,
+			);
+			name = "Pods-BluefruitPlayground-SimulateBluetooth";
+			productName = Pods_BluefruitPlayground_SimulateBluetooth;
+			productReference = 5A2B3173001B1CD8278E0691C1D5F498 /* Pods-BluefruitPlayground-SimulateBluetooth */;
+			productType = "com.apple.product-type.framework";
+		};
 		9A9A6DFBF33C0809BD9B32C8C8B776E8 /* FlexColorPicker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 338E3A98A137AD8DAD22F0E2D4CF379A /* Build configuration list for PBXNativeTarget "FlexColorPicker" */;
@@ -1031,7 +1129,7 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = BC6FD329125992103AFFFD95FEEE7B48 /* Products */;
+			productRefGroup = EED570E07CE68BB8988644B5631E9840 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -1040,6 +1138,7 @@
 				9A9A6DFBF33C0809BD9B32C8C8B776E8 /* FlexColorPicker */,
 				420D2583DFAF7192FECF567682010347 /* MSWeakTimer */,
 				490B70BC1BDD09AF5B7575FE55BF2BB5 /* Pods-BluefruitPlayground */,
+				8F6D0BBED70F5D4FE05590FB4FBCBEC9 /* Pods-BluefruitPlayground-SimulateBluetooth */,
 			);
 		};
 /* End PBXProject section */
@@ -1060,6 +1159,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		8125AF448498C7152CF902735456EDF9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93E7AF2E5080F3C74410C7221325E24A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1303,6 +1409,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F733891186D241F4DD2B41EF59905212 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0603F0D6AC205775E08D0ACEB05BD8 /* Pods-BluefruitPlayground-SimulateBluetooth-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1318,11 +1432,35 @@
 			target = 9A9A6DFBF33C0809BD9B32C8C8B776E8 /* FlexColorPicker */;
 			targetProxy = 28F32D2822BB77D329C40C5B3055709F /* PBXContainerItemProxy */;
 		};
+		7E4FA1A11CE00EC5974B3D3BEA533876 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			target = BF03B0B2B8B052092CB5F90CC5FB3757 /* Charts */;
+			targetProxy = F2262BD3EFC66AB8A0E567416C9981F0 /* PBXContainerItemProxy */;
+		};
+		8296947498E08672EB65DB478C5126AA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ActiveLabel;
+			target = 6E18EE5DE3744DADF64511923F006E05 /* ActiveLabel */;
+			targetProxy = 3A4D59767391549D459EFAEE64BF27E5 /* PBXContainerItemProxy */;
+		};
 		85CE719B1E34BBFD54B8E1CECF804337 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ActiveLabel;
 			target = 6E18EE5DE3744DADF64511923F006E05 /* ActiveLabel */;
 			targetProxy = 037D23E340A6061EEB611C28DF8F416D /* PBXContainerItemProxy */;
+		};
+		9D6F4AD17379CD117CC34AE0CF165F62 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FlexColorPicker;
+			target = 9A9A6DFBF33C0809BD9B32C8C8B776E8 /* FlexColorPicker */;
+			targetProxy = 382956607CEDC18E70E8E2B2D60BC9A8 /* PBXContainerItemProxy */;
+		};
+		BA9323132092EC6A5C5ADB6353362963 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MSWeakTimer;
+			target = 420D2583DFAF7192FECF567682010347 /* MSWeakTimer */;
+			targetProxy = 13D70BD47E9664DF40309D060EB92323 /* PBXContainerItemProxy */;
 		};
 		DE372856754A5BA37F134A19BB25FFA2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1333,6 +1471,79 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		03B9327DA9490356D8158189F01A5B0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ABEF661835398085C68B97F52B9D9D8B /* Pods-BluefruitPlayground-SimulateBluetooth.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0943DADA7DA5D5CD5B5212AA8F1FFC8D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8122C7855F9C3F36050CFCE762D3047 /* Pods-BluefruitPlayground-SimulateBluetooth.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		11D6690C8FB8E0980DAC346E84F273A3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 53764DACADC3B164921D829556A9F6A8 /* FlexColorPicker.release.xcconfig */;
@@ -1402,7 +1613,7 @@
 		};
 		49B8B338051D1B8809B39D67B9537B35 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 800D58C8EBEBD737A35E54564670A913 /* Pods-BluefruitPlayground.debug.xcconfig */;
+			baseConfigurationReference = 44928D6B7A81816A57053D469AB50AFF /* Pods-BluefruitPlayground.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1505,7 +1716,7 @@
 		};
 		7EF459928D47588BDB06F6F11EC2107B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 698576F05C69DC6C3120DB67F1A6172C /* Pods-BluefruitPlayground.release.xcconfig */;
+			baseConfigurationReference = 1EC19F81F47A9BB10DE9740440D5AE2D /* Pods-BluefruitPlayground.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -1807,6 +2018,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		015D41EDCEFDD20EAF220D6681E2C4C0 /* Build configuration list for PBXNativeTarget "Pods-BluefruitPlayground-SimulateBluetooth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03B9327DA9490356D8158189F01A5B0D /* Debug */,
+				0943DADA7DA5D5CD5B5212AA8F1FFC8D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		06629A18CD34E1685199E9A3DBF4A183 /* Build configuration list for PBXNativeTarget "ActiveLabel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
