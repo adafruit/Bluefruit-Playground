@@ -32,7 +32,7 @@ import UIKit
 ///
 /// **See also:**
 /// [DefaultColorPickerViewController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/DefaultColorPickerViewController.swift), [ColorPickerController](https://github.com/RastislavMirek/FlexColorPicker/blob/master/FlexColorPicker/Classes/ColorPickerController.swift)
-public protocol ColorPickerDelegate: class {
+public protocol ColorPickerDelegate: AnyObject {
 
     /// Called when a user changes color picker's current selected color.
     ///
@@ -51,4 +51,13 @@ public protocol ColorPickerDelegate: class {
     ///   - confirmedColor: The final selected color.
     ///   - usingControl: The control that was used to confirm selected color (control that sent `primaryActionTriggered` event).
     func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl)
+}
+
+public extension ColorPickerDelegate {
+    
+    // an empty implemnetation to make this method of ColorPickerDelegate optional
+    func colorPicker(_ colorPicker: ColorPickerController, selectedColor: UIColor, usingControl: ColorControl) { }
+    
+    // an empty implemnetation to make this method of ColorPickerDelegate optional
+    func colorPicker(_ colorPicker: ColorPickerController, confirmedColor: UIColor, usingControl: ColorControl) { }
 }
