@@ -7,10 +7,10 @@ on:
 jobs:
   build-stable:
     name: Build Bluefruit in stable Xcode
-    runs-on: macos-latest
+    runs-on: macos-13
     strategy:
       matrix:
-        xcode: ['15.1']
+        xcode: ['15.0.1']
     steps:
       - name: Checkout
         uses: actions/checkout@v3    
