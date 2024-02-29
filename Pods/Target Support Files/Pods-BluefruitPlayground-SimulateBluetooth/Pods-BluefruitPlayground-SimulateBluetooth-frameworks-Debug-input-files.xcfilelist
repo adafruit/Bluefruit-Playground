@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-BluefruitPlayground-SimulateBluetooth/Pods-BluefruitPlayground-SimulateBluetooth-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ActiveLabel/ActiveLabel.framework
+${BUILT_PRODUCTS_DIR}/Charts/Charts.framework
+${BUILT_PRODUCTS_DIR}/FlexColorPicker/FlexColorPicker.framework
+${BUILT_PRODUCTS_DIR}/MSWeakTimer/MSWeakTimer.framework

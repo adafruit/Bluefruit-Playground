@@ -9,7 +9,7 @@
 import UIKit
 import FlexColorPicker
 
-protocol NeopixelColorWheelViewControllerDelegate: class {
+protocol NeopixelColorWheelViewControllerDelegate: AnyObject {
     func colorWheelColorSelected(color: UIColor, baseColor: UIColor)
 }
 
@@ -54,7 +54,7 @@ class NeopixelsColorWheelViewController: ModulePanelViewController {
             newValue?.addTarget(self, action: #selector(brightnessChanged), for: [.touchUpInside, .touchUpOutside, .touchCancel])
 
             // Set initial value (as color becasue that what the FlexColorPicker api needs)
-            newValue?.setSelectedHSBColor(HSBColor(color: UIColor.init(white: NeopixelsColorWheelViewController.kDefaultBrightness, alpha: 1)), isInteractive: false)
+            newValue?.setSelectedHSBColor(HSBColor(color: UIColor(white: NeopixelsColorWheelViewController.kDefaultBrightness, alpha: 1)), isInteractive: false)
         }
     }
 

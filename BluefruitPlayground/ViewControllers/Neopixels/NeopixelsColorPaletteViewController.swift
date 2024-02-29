@@ -9,7 +9,7 @@
 import UIKit
 import FlexColorPicker
 
-protocol NeopixelsColorPaletteViewControllerDelegate: class {
+protocol NeopixelsColorPaletteViewControllerDelegate: AnyObject {
     func colorPaletteColorSelected(color: UIColor, baseColor: UIColor)
 }
 
@@ -36,7 +36,7 @@ class NeopixelsColorPaletteViewController: ModulePanelViewController {
             newValue?.addTarget(self, action: #selector(brightnessChanged), for: [.touchUpInside, .touchUpOutside, .touchCancel])
 
             // Set initial value (as color becasue that what the FlexColorPicker api needs)
-            newValue?.setSelectedHSBColor(HSBColor(color: UIColor.init(white: NeopixelsColorPaletteViewController.kDefaultBrightness, alpha: 1)), isInteractive: false)
+            newValue?.setSelectedHSBColor(HSBColor(color: UIColor(white: NeopixelsColorPaletteViewController.kDefaultBrightness, alpha: 1)), isInteractive: false)
         }
     }
 

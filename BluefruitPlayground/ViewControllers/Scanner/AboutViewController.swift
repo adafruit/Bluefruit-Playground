@@ -24,7 +24,7 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         // Get version
-        if let shortVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"]  as? String {
+        if let shortVersion = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as? String {
             versionLabel.text = "Version \(shortVersion)"
         }
 

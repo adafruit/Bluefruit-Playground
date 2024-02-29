@@ -28,8 +28,8 @@
 
 import UIKit
 
-/// Protocol implemented by ViewControllers that contain controls to pick color.
-public protocol ColorPickerControllerProtocol: class {
+/// Protocol implemented by controllers that connect and synchronize *color controls* (`UIView`s, see protocol `ColorControl`) used to pick color. These can be view controllers that also display those *color controls*.
+public protocol ColorPickerControllerProtocol: AnyObject {
     /// Delegate notified when selected color is changed or when user confirms currently selected color.
     var delegate: ColorPickerDelegate? { get set }
     /// Currently selected color.

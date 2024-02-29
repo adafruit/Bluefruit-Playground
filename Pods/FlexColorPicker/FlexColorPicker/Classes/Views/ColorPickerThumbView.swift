@@ -45,6 +45,9 @@ private let percentageTextFont = UIFont.monospacedDigitSystemFont(ofSize: 14, we
 open class ColorPickerThumbView: UIViewWithCommonInit {
     public let borderView: CircleShapedView = LimitedGestureCircleView()
     public let colorView: CircleShapedView = LimitedGestureCircleView()
+    /// The label with thumb text visible while user is repositioning this thumbView.
+    ///
+    /// Typically used to show slider percentage or other selected value. See also `showPercentage`.
     public let percentageLabel = UILabel()
     /// When `true` the border automatically darken when color is too bright to be contrast enought with white border.
     public var autoDarken: Bool = true
@@ -68,6 +71,9 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
     }
     private(set) open var color: UIColor = defaultSelectedColor.toUIColor()
 
+    /// The percentage displayed in `percentageLabel` unless overriden by dirrectly setting `percentageLabel.text` after setting this property.
+    ///
+    /// Note: In `ColorSliderControl`s this typically corresponds to value of the slider but must not correspond to actual text displayed in `thumbLabel` if `ColorSliderControl.thumbLabelFormatter` is set.
     open var percentage: Int = 0 {
         didSet {
             updatePercentage(percentage)
@@ -89,14 +95,14 @@ open class ColorPickerThumbView: UIViewWithCommonInit {
         addAutolayoutFillingSubview(borderView)
         addAutolayoutFillingSubview(colorView, edgeInsets: UIEdgeInsets(top: wideBorderWidth, left: wideBorderWidth, bottom: wideBorderWidth, right: wideBorderWidth))
         addAutolayoutCentredView(percentageLabel)
-        borderView.borderColor = UIColor(named: "BorderColor")
+        borderView.viewBorderColor = UIColor.colorPickerBorderColor
         borderView.borderWidth = 1 / UIScreen.main.scale
         percentageLabel.font = percentageTextFont
-        percentageLabel.textColor = UIColor(named: "LabelTextsColor")
+        percentageLabel.textColor = UIColor.colorPickerLabelTextColor
         percentageLabel.textAlignment = .center
         percentageLabel.alpha = 0
         clipsToBounds = false // required for the text label to be displayed ourside of bounds
-        borderView.backgroundColor = UIColor(named: "ThumbViewWideBorderColor")
+        borderView.backgroundColor = UIColor.colorPickerThumbViewWideBorderColor
         (borderView as? LimitedGestureCircleView)?.delegate = delegate
         (colorView as? LimitedGestureCircleView)?.delegate = delegate
         setColor(color, animateBorderColor: false)
@@ -148,8 +154,8 @@ extension ColorPickerThumbView {
     }
 
     private func setWideBorderColors(_ isDark: Bool) {
-        self.borderView.borderColor = UIColor(named: isDark ? "BorderColor" : "LightBorderColor")
-        self.borderView.backgroundColor = UIColor(named: isDark ? "ThumbViewWideBorderDarkColor" : "ThumbViewWideBorderColor")
+        self.borderView.viewBorderColor = isDark ? UIColor.colorPickerBorderColor : UIColor.colorPickerLightBorderColor
+        self.borderView.backgroundColor = isDark ? UIColor.colorPickerThumbViewWideBorderDarkColor : UIColor.colorPickerThumbViewWideBorderColor
     }
 }
 

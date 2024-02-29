@@ -49,6 +49,9 @@ open class ColorPaletteControl: ColorControlWithThumbView {
     }
     open override var bounds: CGRect {
         didSet {
+            guard oldValue != bounds else {
+                return
+            }
             updatePaletteImagesAndThumb(isInteractive: false)
         }
     }

@@ -51,7 +51,6 @@ class AutoConnectViewController: UIViewController {
 
         self.boardImageView.alpha = 0
         
-        
         // Localization
         let localizationManager = LocalizationManager.shared
         self.title = localizationManager.localizedString("autoconnect_title")

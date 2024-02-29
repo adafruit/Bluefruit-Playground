@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UartDataManagerDelegate: class {
+protocol UartDataManagerDelegate: AnyObject {
     func onUartRx(data: Data, peripheralIdentifier: UUID)           // data contents depends on the isRxCacheEnabled flag
 }
 
@@ -40,7 +40,7 @@ class UartDataManager {
     init(delegate: UartDataManagerDelegate?, isRxCacheEnabled: Bool) {
         self.delegate = delegate
         self.isRxCacheEnabled = isRxCacheEnabled
-
+        
         isEnabled = true
     }
 
@@ -84,30 +84,31 @@ class UartDataManager {
         blePeripheral.uartSend(data: data, completion: completion)
     }
 
+    
     // MARK: - Received data
     func rxDataReceived(data: Data?, peripheralIdentifier identifier: UUID, error: Error?) {
         guard error == nil else { DLog("rxDataReceived error: \(error!)"); return }
         guard let data = data else { return }
-
+        
         // Pre-create rxData entry if needed
         if isRxCacheEnabled && rxDatas[identifier] == nil {
             rxDatas[identifier] = Data()
         }
-
+        
         if isRxCacheEnabled {
             rxDataSemaphore.wait()            // don't append more data, till the delegate has finished processing it
             rxDatas[identifier]!.append(data)
-
+            
             // Send data to delegate
             delegate?.onUartRx(data: rxDatas[identifier]!, peripheralIdentifier: identifier)
-
+            
             //DLog("cachedRxData: \(cachedRxData.count)")
             rxDataSemaphore.signal()
         } else {
             delegate?.onUartRx(data: data, peripheralIdentifier: identifier)
         }
     }
-
+    
     func clearRxCache(peripheralIdentifier identifier: UUID) {
         guard rxDatas[identifier] != nil else { return }
 
@@ -117,7 +118,7 @@ class UartDataManager {
     func removeRxCacheFirst(n: Int, peripheralIdentifier identifier: UUID) {
         // Note: this is usually called from onUartRx delegates, so don't use rxDataSemaphore because it is already being used by the onUartRX caller
         guard let rxData = rxDatas[identifier] else { return }
-
+        
         //DLog("remove \(n) items")
         //DLog("pre remove: \(hexDescription(data: rxData))")
 

@@ -1,0 +1,26 @@
+name: Build App
+on:
+  push:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-stable:
+    name: Build Bluefruit in stable Xcode
+    runs-on: macos-13
+    strategy:
+      matrix:
+        xcode: ['15.0.1']
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3    
+        
+      - name: Select  ${{ matrix.xcode }}
+        run: |
+          sudo xcode-select -s /Applications/Xcode_$XCODE_VERSION.app
+          xcode-select -p
+        env:
+          XCODE_VERSION: ${{ matrix.xcode }}
+      
+      - name: Build
+        run: xcodebuild -scheme BluefruitPlayground -workspace BluefruitPlayground.xcworkspace -destination "generic/platform=iOS" -configuration Release build CODE_SIGNING_ALLOWED=NO

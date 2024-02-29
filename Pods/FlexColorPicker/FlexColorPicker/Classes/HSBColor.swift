@@ -58,7 +58,7 @@ extension HSBColor {
     /// Initializes `HSBColor` instance that represents the same color as passed color.
     ///
     /// - Parameter color: A color to construct an equivalent `HSBColor` from.
-    public init(color: UIColor) {
+    public init(color: UIColor) {           // Note: Made it public manually
         var hue: CGFloat = 0, saturation: CGFloat = 0, brightness: CGFloat = 0, alpha: CGFloat = 0
         color.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha)
         self.init(hue: hue, saturation: saturation, brightness: brightness, alpha: alpha)
